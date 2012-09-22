@@ -1,0 +1,54 @@
+{
+    "hash": "167e0e81e45093e59b9a05c8ff3b6c44",
+    "packages": [
+        {
+            "name": "maximebf/cachecache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/maximebf/CacheCache.git",
+                "reference": "d6f99e47af18e9a8b49fa90d81f92120df8854a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/maximebf/CacheCache/zipball/d6f99e47af18e9a8b49fa90d81f92120df8854a4",
+                "reference": "d6f99e47af18e9a8b49fa90d81f92120df8854a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "1345280504",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "CacheCache": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                }
+            ],
+            "description": "Caching library for PHP5.3",
+            "homepage": "https://github.com/maximebf/CacheCache",
+            "keywords": [
+                "cache"
+            ]
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "maximebf/cachecache": 20
+    }
+}

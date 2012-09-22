@@ -1,0 +1,20 @@
+{
+    "name": "camspiers/classifier",
+    "version": "1.0.0",
+    "description": "Document Classifiers including Naive Bayes",
+    "keywords": ["classifier", "bayes"],
+    "homepage": "https://github.com/camspiers/classifier",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "Cam Spiers",
+        "email": "camspiers@gmail.com"
+    }],
+    "require": {
+        "php": ">=5.3.0",
+        "maximebf/cachecache": "dev-master  "
+    },
+    "autoload": {
+        "psr-0": {"Camspiers": "src/"}
+    }
+}
