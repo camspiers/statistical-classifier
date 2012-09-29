@@ -1,12 +1,13 @@
 <?php
 
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 ini_set('memory_limit', -1);
 
 use Camspiers\StatisticalClassifier\Classifiers\NaiveBayes;
 use Camspiers\StatisticalClassifier\DataSource\PDO;
 use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
+use Camspiers\StatisticalClassifier\DataSource\Json;
 use Camspiers\StatisticalClassifier\Tokenizers\Word;
 use Camspiers\StatisticalClassifier\Cache\File;
 
@@ -29,25 +30,24 @@ if (!$classifier instanceof NaiveBayes) {
 
     echo 'No cache', PHP_EOL;
 
-    $pdo = new \PDO('mysql:host=127.0.0.1:8889;dbname=dev_vsa', 'root', 'root');
+    $pdo = new \PDO('mysql:host=127.0.0.1;dbname=dev_vsa', 'root', 'root');
 
     $dataSource = new PDO(
         array(
-            new PDOQuery('Spam', $pdo, "SELECT Comment FROM PageComment WHERE IsSpam = 1", 'Comment'),
-            new PDOQuery('Ham', $pdo, "SELECT Comment FROM PageComment WHERE IsSpam = 0", 'Comment'),
-            new PDOQuery('Ham', $pdo, "SELECT CONCAT_WS(' ', Title, Content) AS Document FROM SiteTree_Live", 'Document'),
-            new PDOQuery('Ham', $pdo, "SELECT Message FROM ContactSubmission", 'Message'),
-            new PDOQuery('Ham', $pdo, "SELECT MapLeadIn FROM Partner_Live", 'MapLeadIn'),
-            new PDOQuery('Ham', $pdo, "SELECT CONCAT_WS(' ', Overview, LeadIn) AS Document FROM Programme_Live", 'Document')
+            new PDOQuery('Spam', $pdo, "SELECT Comment FROM PageComment WHERE IsSpam = 1 LIMIT 1000", 'Comment'),
+            new PDOQuery('Ham', $pdo, "SELECT Comment FROM PageComment WHERE IsSpam = 000", 'Comment'),
+            new PDOQuery('Ham', $pdo, "SELECT CONCAT_WS(' ', Title, Content) AS Document FROM SiteTree_Live LIMIT 1000", 'Document'),
+            // new PDOQuery('Ham', $pdo, "SELECT Message FROM ContactSubmission", 'Message'),
+            // new PDOQuery('Ham', $pdo, "SELECT MapLeadIn FROM Partner_Live", 'MapLeadIn'),
+            // new PDOQuery('Ham', $pdo, "SELECT CONCAT_WS(' ', Overview, LeadIn) AS Document FROM Programme_Live", 'Document')
         )
     );
 
     $classifier = new NaiveBayes(
-        $dataSource,
+        $dataSource,//new Json('vsa.json'),
         new Word(),
         15,
         true,
-        false,
         false
     );
 
@@ -71,7 +71,7 @@ $documents = array(
 );
 
 foreach ($documents as $index => $document) {
-    if ($classifier->isSpam(0.9, $document)) {
+    if ($classifier->isSpam($document)) {
         echo "$index is spam", PHP_EOL;
     } else {
         echo "$index is not spam", PHP_EOL;

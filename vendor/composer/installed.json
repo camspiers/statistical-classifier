@@ -3,6 +3,7 @@
         "name": "maximebf/cachecache",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
+        "time": "2012-08-18 09:01:44",
         "source": {
             "type": "git",
             "url": "git://github.com/maximebf/CacheCache.git",
@@ -17,14 +18,8 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2012-08-18 09:01:44",
         "type": "library",
         "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "CacheCache": "src/"
-            }
-        },
         "license": [
             "MIT"
         ],
@@ -39,6 +34,11 @@
         "homepage": "https://github.com/maximebf/CacheCache",
         "keywords": [
             "cache"
-        ]
+        ],
+        "autoload": {
+            "psr-0": {
+                "CacheCache": "src/"
+            }
+        }
     }
 ]
