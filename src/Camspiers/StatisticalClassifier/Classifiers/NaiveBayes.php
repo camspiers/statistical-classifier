@@ -52,17 +52,11 @@ class NaiveBayes implements ClassifierInterface
 
     public function __construct(
         DataSourceInterface $source,
-        TokenizerInterface $tokenizer,
-        $interestingTokenNumber = null,
-        $dynamicPriors = true,
-        $tokenFrequencyThreshold = false
+        TokenizerInterface $tokenizer
     )
     {
         $this->tokenizer = $tokenizer;
         $this->setSource($source);
-        $this->interestingTokenNumber = $interestingTokenNumber;
-        $this->dynamicPriors = $dynamicPriors;
-        $this->tokenFrequencyThreshold = $tokenFrequencyThreshold;
     }
 
     /**
@@ -102,6 +96,9 @@ class NaiveBayes implements ClassifierInterface
                 }
             }
         }
+        $categoryResults = array_filter($categoryResults, function ($val) {
+            return $val !== 0;
+        });
         asort($categoryResults, SORT_NUMERIC);
         reset($categoryResults);
         return key($categoryResults);
@@ -211,18 +208,19 @@ class NaiveBayes implements ClassifierInterface
         echo 'Apply document length transform', PHP_EOL;
         foreach ($this->tokenFrequencies as $category => $documents) {
             foreach ($documents as $documentIndex => $document) {
+                $denominator = sqrt(
+                    array_sum(
+                        array_map(
+                            $pow2,
+                            $document
+                        )
+                    )
+                );
                 foreach ($document as $token => $count) {
                     $this->tokenFrequencies
                         [$category]
                         [$documentIndex]
-                        [$token] = $count / sqrt(
-                            array_sum(
-                                array_map(
-                                    $pow2,
-                                    $document
-                                )
-                            )
-                        );
+                        [$token] = $count / $denominator;
                 }
             }
         }
@@ -233,28 +231,44 @@ class NaiveBayes implements ClassifierInterface
         foreach ($this->tokenFrequencies as $category => $documents) {
             $tokensByCategory[$category] = array();
             foreach ($documents as $document) {
-                $tokensByCategory[$category] = array_merge(
-                    $tokensByCategory[$category],
-                    array_keys($document)
-                );
+                foreach (array_keys($document) as $token) {
+                    if (!array_key_exists($token, $tokensByCategory[$category])) {
+                        $tokensByCategory[$category][$token] = $token;
+                    }
+                }
             }
         }
 
         $weights = array();
         echo 'Complement part', PHP_EOL;
+        $categories = $this->getCategories();
+
+        $documentSums = array();
+        foreach ($categories as $category) {
+            $documentSums[$category] = array();
+            foreach ($this->tokenFrequencies[$category] as $index => $documents) {
+                $documentSums[$category][$index] = array(
+                    'sum' => array_sum($documents),
+                    'count' => count($documents)
+                );
+            }
+        }
+
         foreach ($tokensByCategory as $excludeCategory => $tokens) {
             $weights[$excludeCategory] = array();
             foreach ($tokens as $token) {
                 $numerator = 0;
                 $denominator = 0;
-                foreach ($this->getCategories() as $category) {
-                    if ($category != $excludeCategory) {
-                        foreach ($this->tokenFrequencies[$category] as $documents) {
+                foreach ($categories as $category) {
+                    if ($category !== $excludeCategory) {
+                        foreach ($this->tokenFrequencies[$category] as $index => $documents) {
                             if (array_key_exists($token, $documents)) {
                                 $numerator += $documents[$token];
                             }
                             $numerator += 1;
-                            $denominator += array_sum($documents) + count($documents);
+                            $denominator += 
+                                $documentSums[$category][$index]['sum']
+                                + $documentSums[$category][$index]['count'];
                         }
 
                     }
@@ -267,8 +281,9 @@ class NaiveBayes implements ClassifierInterface
         echo 'Weight normalization', PHP_EOL;
         foreach ($weights as $category => $tokens) {
             $this->tokenWeights[$category] = array();
+            $denominator = array_sum($tokens);
             foreach ($tokens as $token => $weight) {
-                $this->tokenWeights[$category][$token] = $weight / array_sum($tokens);
+                $this->tokenWeights[$category][$token] = $weight / $denominator;
             }
         }
 
