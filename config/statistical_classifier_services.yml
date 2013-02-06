@@ -1,0 +1,29 @@
+parameters:
+
+services:
+    tokenizer.word:
+        class: Camspiers\StatisticalClassifier\Tokenizers\Word
+    normalizer.lowercase:
+        class: Camspiers\StatisticalClassifier\Nomalizers\Lowercase
+    normalizer.porter:
+        class: Camspiers\StatisticalClassifier\Nomalizers\Porter
+
+    converter.converter:
+        class: Camspiers\StatisticalClassifier\DataSource\Converter
+        arguments:
+            - @converter.from
+            - @converter.to
+    converter.from:
+        synthetic: true
+    converter.to:
+        synthetic: true
+
+    classifier.naive_bayes:
+        class: Camspiers\StatisticalClassifier\Classifiers\NaiveBayes
+        arguments:
+            - @classifier.data_source
+            - @tokenizer.word
+            - @normalizer.porter
+
+    classifier.data_source:
+        synthetic: true

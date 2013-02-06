@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Camspiers\StatisticalClassifier\Factory;
+use Camspiers\StatisticalClassifier\DependancyInjection;
+
+$container = Factory::createContainer(
+	array(),
+	array(
+		new DependancyInjection\StatisticalClassifierExtension
+	),
+	array(
+		new DependancyInjection\HeuristicPass
+	),
+	true
+);
+
+echo 'Container generated', PHP_EOL;

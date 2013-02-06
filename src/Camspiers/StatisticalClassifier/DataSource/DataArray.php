@@ -63,20 +63,8 @@ class DataArray implements DataSourceInterface, \Serializable
         return $this->data;
     }
 
-    public function getData($normalize = false)
+    public function getData()
     {
-        if ($normalize) {
-            $counts[] = array();
-            $data = $this->data;
-            foreach ($data as $category => $documents) {
-                $counts[] = count($documents);
-            }
-            $min = min($counts);
-            foreach ($data as $category => $documents) {
-                $data[$category] = array_slice($documents, 0, $min, true);
-            }
-            return $data;
-        }
         return $this->data;
     }
 

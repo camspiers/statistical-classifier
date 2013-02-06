@@ -4,7 +4,7 @@ namespace Camspiers\StatisticalClassifier\Classifiers;
 
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\Tokenizers\TokenizerInterface;
-use Camspiers\StatisticalClassifier\Stemmers\Porter;
+use Camspiers\StatisticalClassifier\Normalizers\NormalizerInterface;
 
 class NaiveBayes implements ClassifierInterface
 {
@@ -20,43 +20,26 @@ class NaiveBayes implements ClassifierInterface
      */
     private $tokenizer;
     /**
-     * List of frequencies tokens appear in categories
-     * @var array
+     * 
+     * @var NormalizerInterface
      */
-    private $frequencies = array();
-    /**
-     * List of likelihoods that a token appears in a document given that
-     * the document is of a certain category
-     * @var array
-     */
-    private $likelihoods = array();
-    /**
-     * The number of interesting tokens to consider
-     * where interesting is defined by distance a posterior is from 0.5  
-     * @var int
-     */
-    private $interestingTokenNumber = null;
-    /**
-     * Base prior probabilities of categories on training source data
-     * @var boolean
-     */
-    private $dynamicPriors = true;
-    /**
-     * Exclude tokens found with frequency lower than this
-     * @var int
-     */
-    private $tokenFrequencyThreshold = false;
+    private $normalizer;
 
     private $tokenFrequencies = array();
+
     private $tokenWeights = array();
 
     public function __construct(
         DataSourceInterface $source,
-        TokenizerInterface $tokenizer
+        TokenizerInterface $tokenizer,
+        NormalizerInterface $normalizer
     )
     {
+        $this->source = $source;
         $this->tokenizer = $tokenizer;
-        $this->setSource($source);
+        $this->normalizer = $normalizer;
+
+        //TODO do prep
     }
 
     /**
@@ -113,12 +96,6 @@ class NaiveBayes implements ClassifierInterface
         return array_keys($this->tokenFrequencies);
     }
 
-    public function setSource(DataSourceInterface $source)
-    {
-        $this->source = $source;
-        $this->calculate();
-    }
-
     protected function calculate()
     {
         $this->calculateTokenFrequencies();
@@ -127,16 +104,11 @@ class NaiveBayes implements ClassifierInterface
 
     protected function calculateTokenFrequencies()
     {
-        echo 'Calculate token frequencies', PHP_EOL;
         $data = $this->source->getData();
-        echo 'Got data', PHP_EOL;
         foreach ($data as $category => $documents) {
-            echo 'Calculating frequencies for ' , $category, PHP_EOL;
             foreach ($documents as $document) {
-                echo '.';
                 $this->updateTokenFrequencies($category, $document);
             }
-            echo PHP_EOL;
         }
     }
 
@@ -146,7 +118,7 @@ class NaiveBayes implements ClassifierInterface
             $this->tokenFrequencies[$category] = array();
         }
         $this->tokenFrequencies[$category][] = array_count_values(
-            $this->normalizeTokens(
+            $this->normalizer->normalize(
                 $this->tokenizer->tokenize(
                     $document
                 )
@@ -184,11 +156,13 @@ class NaiveBayes implements ClassifierInterface
             }
         }
 
+        //WRONG!!
         //Apply document frequency transform
         echo 'Apply document frequency transform', PHP_EOL;
         foreach ($this->tokenFrequencies as $category => $documents) {
             foreach ($documents as $documentIndex => $document) {
                 foreach ($document as $token => $count) {
+                    //$token = i
                     $this->tokenFrequencies
                         [$category]
                         [$documentIndex]
@@ -287,20 +261,6 @@ class NaiveBayes implements ClassifierInterface
             }
         }
 
-    }
-
-    protected function normalizeTokens($tokens)
-    {
-        return array_map(
-            array($this, 'normalizeToken'),
-            $tokens
-        );
-    }
-
-    protected function normalizeToken($token)
-    {
-        return strtolower($token);
-        return Porter::Stem(strtolower($token));
     }
 
     public function update($category, $document)
