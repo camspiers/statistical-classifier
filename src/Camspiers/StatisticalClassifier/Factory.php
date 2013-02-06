@@ -5,9 +5,7 @@ namespace Camspiers\StatisticalClassifier;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
-use Symfony\Component\Config\FileLocator;
 use RuntimeException;
 
 class Factory
@@ -41,21 +39,21 @@ class Factory
 
         if ($dump) {
 
-        	$dumpLocation = $dumpLocation ?: __DIR__ . '/../../../config/';
+            $dumpLocation = $dumpLocation ?: __DIR__ . '/../../../config/';
 
-        	if (file_exists($dumpLocation)) {
+            if (file_exists($dumpLocation)) {
 
-				$dumper = new PhpDumper($container);
+                $dumper = new PhpDumper($container);
 
-				file_put_contents(
-					realpath($dumpLocation) . "/$dumpClass.php",
-				    $dumper->dump(array('class' => $dumpClass))
-				);
+                file_put_contents(
+                    realpath($dumpLocation) . "/$dumpClass.php",
+                    $dumper->dump(array('class' => $dumpClass))
+                );
 
-        	} else {
+            } else {
 
-        		throw new RuntimeException("'$dumpLocation' doesn't exist");
-        	}
+                throw new RuntimeException("'$dumpLocation' doesn't exist");
+            }
 
         }
 

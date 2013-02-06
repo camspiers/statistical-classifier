@@ -29,6 +29,7 @@ class PDOQuery
         while ($row = $query->fetch()) {
             $data[] = $row[$this->documentColumn];
         }
+
         return $data;
     }
 

@@ -20,7 +20,7 @@ class NaiveBayes implements ClassifierInterface
      */
     private $tokenizer;
     /**
-     * 
+     *
      * @var NormalizerInterface
      */
     private $normalizer;
@@ -45,9 +45,9 @@ class NaiveBayes implements ClassifierInterface
     /**
      * Handles calling "isCategoryName" where "CategoryName" depends on the
      * data source
-     * @param  string $methodName The name of the method called
-     * @param  array  $arguments  An array of arguments passed into the method
-     * @return boolean|null       A boolean or null
+     * @param  string       $methodName The name of the method called
+     * @param  array        $arguments  An array of arguments passed into the method
+     * @return boolean|null A boolean or null
      */
     public function __call($methodName, $arguments)
     {
@@ -84,6 +84,7 @@ class NaiveBayes implements ClassifierInterface
         });
         asort($categoryResults, SORT_NUMERIC);
         reset($categoryResults);
+
         return key($categoryResults);
     }
     /**
@@ -113,7 +114,7 @@ class NaiveBayes implements ClassifierInterface
     }
 
     protected function updateTokenFrequencies($category, $document)
-    {    
+    {
         if (!array_key_exists($category, $this->tokenFrequencies)) {
             $this->tokenFrequencies[$category] = array();
         }
@@ -123,7 +124,7 @@ class NaiveBayes implements ClassifierInterface
                     $document
                 )
             )
-        );   
+        );
     }
 
     protected function applyTransforms()
@@ -240,7 +241,7 @@ class NaiveBayes implements ClassifierInterface
                                 $numerator += $documents[$token];
                             }
                             $numerator += 1;
-                            $denominator += 
+                            $denominator +=
                                 $documentSums[$category][$index]['sum']
                                 + $documentSums[$category][$index]['count'];
                         }

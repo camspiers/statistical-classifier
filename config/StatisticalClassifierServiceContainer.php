@@ -56,7 +56,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getClassifier_NaiveBayesService()
     {
-        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifiers\NaiveBayes($this->get('classifier.data_source'), $this->get('tokenizer.word'));
+        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifiers\NaiveBayes($this->get('classifier.data_source'), $this->get('tokenizer.word'), $this->get('normalizer.porter'));
     }
 
     /**
