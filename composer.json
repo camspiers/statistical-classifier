@@ -16,7 +16,8 @@
         "maximebf/cachecache": "dev-master",
         "symfony/dependency-injection": "~2.1",
         "symfony/yaml": "~2.1",
-        "symfony/config": "~2.1"
+        "symfony/config": "~2.1",
+        "camspiers/porter-stemmer": "1.0.*"
     },
     "require-dev": {
         "devster/ubench": "1.1.*-dev"

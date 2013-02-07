@@ -43,12 +43,12 @@ class DataArray implements DataSourceInterface, \Serializable
         }
     }
 
-    public function categoryCount($category)
+    public function getDocumentCountByCategory($category)
     {
         return isset($this->data[$category]) ? count($this->data[$category]) : 0;
     }
 
-    public function documentCount()
+    public function getDocumentCount()
     {
         $count = 0;
         foreach ($this->data as $documents) {

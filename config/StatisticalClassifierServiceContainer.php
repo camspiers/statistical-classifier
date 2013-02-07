@@ -56,7 +56,13 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getClassifier_NaiveBayesService()
     {
-        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifiers\NaiveBayes($this->get('classifier.data_source'), $this->get('tokenizer.word'), $this->get('normalizer.porter'));
+        $this->services['classifier.naive_bayes'] = $instance = new \Camspiers\StatisticalClassifier\Classifiers\NaiveBayes($this->get('classifier.data_source'), $this->get('tokenizer.word'), $this->get('normalizer.lowercase'));
+
+        $instance->addHeuristic($this->get('heuristic.tf_threaded'));
+        $instance->addHeuristic($this->get('heuristic.idf'));
+        $instance->addHeuristic($this->get('heuristic.dl'));
+
+        return $instance;
     }
 
     /**
@@ -99,16 +105,68 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
+     * Gets the 'heuristic.dl' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Heuristics\DL A Camspiers\StatisticalClassifier\Heuristics\DL instance.
+     */
+    protected function getHeuristic_DlService()
+    {
+        return $this->services['heuristic.dl'] = new \Camspiers\StatisticalClassifier\Heuristics\DL();
+    }
+
+    /**
+     * Gets the 'heuristic.idf' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Heuristics\IDF A Camspiers\StatisticalClassifier\Heuristics\IDF instance.
+     */
+    protected function getHeuristic_IdfService()
+    {
+        return $this->services['heuristic.idf'] = new \Camspiers\StatisticalClassifier\Heuristics\IDF();
+    }
+
+    /**
+     * Gets the 'heuristic.tf' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Heuristics\TF A Camspiers\StatisticalClassifier\Heuristics\TF instance.
+     */
+    protected function getHeuristic_TfService()
+    {
+        return $this->services['heuristic.tf'] = new \Camspiers\StatisticalClassifier\Heuristics\TF();
+    }
+
+    /**
+     * Gets the 'heuristic.tf_threaded' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Heuristics\TFThreaded A Camspiers\StatisticalClassifier\Heuristics\TFThreaded instance.
+     */
+    protected function getHeuristic_TfThreadedService()
+    {
+        return $this->services['heuristic.tf_threaded'] = new \Camspiers\StatisticalClassifier\Heuristics\TFThreaded();
+    }
+
+    /**
      * Gets the 'normalizer.lowercase' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Nomalizers\Lowercase A Camspiers\StatisticalClassifier\Nomalizers\Lowercase instance.
+     * @return Camspiers\StatisticalClassifier\Normalizers\Lowercase A Camspiers\StatisticalClassifier\Normalizers\Lowercase instance.
      */
     protected function getNormalizer_LowercaseService()
     {
-        return $this->services['normalizer.lowercase'] = new \Camspiers\StatisticalClassifier\Nomalizers\Lowercase();
+        return $this->services['normalizer.lowercase'] = new \Camspiers\StatisticalClassifier\Normalizers\Lowercase();
     }
 
     /**
@@ -117,11 +175,11 @@ class StatisticalClassifierServiceContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Nomalizers\Porter A Camspiers\StatisticalClassifier\Nomalizers\Porter instance.
+     * @return Camspiers\StatisticalClassifier\Normalizers\Porter A Camspiers\StatisticalClassifier\Normalizers\Porter instance.
      */
     protected function getNormalizer_PorterService()
     {
-        return $this->services['normalizer.porter'] = new \Camspiers\StatisticalClassifier\Nomalizers\Porter();
+        return $this->services['normalizer.porter'] = new \Camspiers\StatisticalClassifier\Normalizers\Porter();
     }
 
     /**

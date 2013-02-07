@@ -11,5 +11,5 @@ interface DataSourceInterface
     public function hasCategory($category);
     public function addCategory($category);
     public function addDocument($category, $document);
-    public function documentCount();
+    public function getDocumentCount();
 }

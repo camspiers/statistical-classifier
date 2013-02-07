@@ -1,6 +1,36 @@
 {
-    "hash": "1871dbc68adc0a7b8bdbe329833106ef",
+    "hash": "1d4b6cfcc1aeb4dbbcd30daceb7a6b74",
     "packages": [
+        {
+            "name": "camspiers/porter-stemmer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:camspiers/porter-stemmer.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/camspiers/porter-stemmer/zipball/1.0.0",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2013-02-06 21:39:08",
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Richard Heyes",
+                    "email": "support@rgraph.net"
+                }
+            ],
+            "description": "Porter Stemmer created by Richard Heyes"
+        },
         {
             "name": "composer/composer",
             "version": "dev-master",

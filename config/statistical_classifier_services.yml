@@ -4,9 +4,9 @@ services:
     tokenizer.word:
         class: Camspiers\StatisticalClassifier\Tokenizers\Word
     normalizer.lowercase:
-        class: Camspiers\StatisticalClassifier\Nomalizers\Lowercase
+        class: Camspiers\StatisticalClassifier\Normalizers\Lowercase
     normalizer.porter:
-        class: Camspiers\StatisticalClassifier\Nomalizers\Porter
+        class: Camspiers\StatisticalClassifier\Normalizers\Porter
 
     converter.converter:
         class: Camspiers\StatisticalClassifier\DataSource\Converter
@@ -23,7 +23,23 @@ services:
         arguments:
             - @classifier.data_source
             - @tokenizer.word
-            - @normalizer.porter
+            - @normalizer.lowercase
+        calls:
+            - [ addHeuristic, [ @heuristic.tf_threaded ] ]
+            - [ addHeuristic, [ @heuristic.idf ] ]
+            - [ addHeuristic, [ @heuristic.dl ] ]
 
     classifier.data_source:
         synthetic: true
+
+    heuristic.tf:
+        class: Camspiers\StatisticalClassifier\Heuristics\TF
+
+    heuristic.tf_threaded:
+        class: Camspiers\StatisticalClassifier\Heuristics\TFThreaded
+
+    heuristic.idf:
+        class: Camspiers\StatisticalClassifier\Heuristics\IDF
+
+    heuristic.dl:
+        class: Camspiers\StatisticalClassifier\Heuristics\DL

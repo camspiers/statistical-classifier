@@ -5,8 +5,9 @@ namespace Camspiers\StatisticalClassifier\Classifiers;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\Tokenizers\TokenizerInterface;
 use Camspiers\StatisticalClassifier\Normalizers\NormalizerInterface;
+use Camspiers\StatisticalClassifier\Heuristics\HeuristicInterface;
 
-class NaiveBayes implements ClassifierInterface
+class NaiveBayes implements ClassifierInterface, TokenCountByDocumentInterface
 {
 
     /**
@@ -25,9 +26,11 @@ class NaiveBayes implements ClassifierInterface
      */
     private $normalizer;
 
-    private $tokenFrequencies = array();
+    private $heuristics = array();
 
-    private $tokenWeights = array();
+    private $tokenCountByDocument;
+
+    private $tokenCount = array();
 
     public function __construct(
         DataSourceInterface $source,
@@ -38,8 +41,6 @@ class NaiveBayes implements ClassifierInterface
         $this->source = $source;
         $this->tokenizer = $tokenizer;
         $this->normalizer = $normalizer;
-
-        //TODO do prep
     }
 
     /**
@@ -64,6 +65,11 @@ class NaiveBayes implements ClassifierInterface
             //is of a certain category
             return $category == $this->classify($arguments[0]);
         }
+    }
+
+    public function addHeuristic(HeuristicInterface $heuristic)
+    {
+        $this->heuristics[] = $heuristic;
     }
 
     public function classify($document)
@@ -97,28 +103,47 @@ class NaiveBayes implements ClassifierInterface
         return array_keys($this->tokenFrequencies);
     }
 
-    protected function calculate()
+    public function prepare()
     {
-        $this->calculateTokenFrequencies();
-        $this->applyTransforms();
+        $this->applyHeuristics();
     }
 
-    protected function calculateTokenFrequencies()
+    protected function applyHeuristics()
     {
-        $data = $this->source->getData();
-        foreach ($data as $category => $documents) {
-            foreach ($documents as $document) {
-                $this->updateTokenFrequencies($category, $document);
+        foreach ($this->heuristics as $heuristic) {
+            $heuristic->apply($this);
+        }
+    }
+
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    public function getTokenCountByDocument($force = false)
+    {
+        if ($force || !is_array($this->tokenCountByDocument)) {
+            $data = $this->source->getData();
+            foreach ($data as $category => $documents) {
+                foreach ($documents as $document) {
+                    $this->addTokenCountByDocument($category, $document);
+                }
             }
+            echo 'Data prepped', PHP_EOL;
         }
+
+        return $this->tokenCountByDocument;
     }
 
-    protected function updateTokenFrequencies($category, $document)
+    protected function addTokenCountByDocument($category, $document)
     {
-        if (!array_key_exists($category, $this->tokenFrequencies)) {
-            $this->tokenFrequencies[$category] = array();
+        if (!is_array($this->tokenCountByDocument)) {
+            $this->tokenCountByDocument = array();
         }
-        $this->tokenFrequencies[$category][] = array_count_values(
+        if (!array_key_exists($category, $this->tokenCountByDocument)) {
+            $this->tokenCountByDocument[$category] = array();
+        }
+        $this->tokenCountByDocument[$category][] = array_count_values(
             $this->normalizer->normalize(
                 $this->tokenizer->tokenize(
                     $document
@@ -127,53 +152,73 @@ class NaiveBayes implements ClassifierInterface
         );
     }
 
+    public function setTokenCountByDocument($tokenCountByDocument)
+    {
+        $this->tokenCountByDocument = $tokenCountByDocument;
+    }
+
+    protected function calculateTokenCount()
+    {
+        $this->tokenCount = array();
+        foreach ($this->tokenCountByDocument as $category => $documents) {
+            foreach ($documents as $document) {
+                foreach ($document as $token => $count) {
+                    if (!array_key_exists($token, $this->tokenCount)) {
+                        $this->tokenCount[$token] = 0;
+                    }
+                    $this->tokenCount[$token]++;
+                }
+            }
+        }
+    }
+
     protected function applyTransforms()
     {
         $tokenCount = array();
         $documentCount = 0;
 
-        foreach ($this->tokenFrequencies as $category => $documents) {
-            $documentCount += count($documents);
-            foreach ($documents as $document) {
-                foreach ($document as $token => $count) {
-                    if (!array_key_exists($token, $tokenCount)) {
-                        $tokenCount[$token] = 0;
-                    }
-                    $tokenCount[$token]++;
-                }
-            }
-        }
+        // foreach ($this->tokenFrequencies as $category => $documents) {
+        //     $documentCount += count($documents);
+        //     foreach ($documents as $document) {
+        //         foreach ($document as $token => $count) {
+        //             if (!array_key_exists($token, $tokenCount)) {
+        //                 $tokenCount[$token] = 0;
+        //             }
+        //             $tokenCount[$token]++;
+        //         }
+        //     }
+        // }
 
         //Apply term frequency transform
         echo 'Apply term frequency transform', PHP_EOL;
-        foreach ($this->tokenFrequencies as $category => $documents) {
-            foreach ($documents as $documentIndex => $document) {
-                foreach ($document as $token => $count) {
-                    $this->tokenFrequencies
-                        [$category]
-                        [$documentIndex]
-                        [$token] = log($count + 1, 10);
-                }
-            }
-        }
+        // foreach ($this->tokenFrequencies as $category => $documents) {
+        //     foreach ($documents as $documentIndex => $document) {
+        //         foreach ($document as $token => $count) {
+        //             $this->tokenFrequencies
+        //                 [$category]
+        //                 [$documentIndex]
+        //                 [$token] = log($count + 1, 10);
+        //         }
+        //     }
+        // }
 
         //WRONG!!
         //Apply document frequency transform
         echo 'Apply document frequency transform', PHP_EOL;
-        foreach ($this->tokenFrequencies as $category => $documents) {
-            foreach ($documents as $documentIndex => $document) {
-                foreach ($document as $token => $count) {
-                    //$token = i
-                    $this->tokenFrequencies
-                        [$category]
-                        [$documentIndex]
-                        [$token] = $count * log(
-                            $documentCount / $tokenCount[$token],
-                            10
-                        );
-                }
-            }
-        }
+        // foreach ($this->tokenFrequencies as $category => $documents) {
+        //     foreach ($documents as $documentIndex => $document) {
+        //         foreach ($document as $token => $count) {
+        //             //$token = i
+        //             $this->tokenFrequencies
+        //                 [$category]
+        //                 [$documentIndex]
+        //                 [$token] = $count * log(
+        //                     $documentCount / $tokenCount[$token],
+        //                     10
+        //                 );
+        //         }
+        //     }
+        // }
 
         $pow2 = function ($val) {
             return $val * $val;
@@ -264,12 +309,14 @@ class NaiveBayes implements ClassifierInterface
 
     }
 
-    public function update($category, $document)
+    public function train($category, $document)
     {
         if ($this->source->addDocument($category, $document)) {
             $this->source->write();
-            $this->updateFrequencies($category, $document);
-            $this->calculateLikelihoods();
+            $this->addTokenCountByDocument($category, $document);
+
+            // $this->updateFrequencies($category, $document);
+            // $this->calculateLikelihoods();
         }
     }
 

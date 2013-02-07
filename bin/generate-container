@@ -4,15 +4,15 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Camspiers\StatisticalClassifier\Factory;
-use Camspiers\StatisticalClassifier\DependancyInjection;
+use Camspiers\StatisticalClassifier\DependencyInjection;
 
 $container = Factory::createContainer(
 	array(),
 	array(
-		new DependancyInjection\StatisticalClassifierExtension
+		new DependencyInjection\StatisticalClassifierExtension
 	),
 	array(
-		new DependancyInjection\HeuristicPass
+		new DependencyInjection\HeuristicPass
 	),
 	true
 );
