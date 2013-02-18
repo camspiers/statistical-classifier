@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Compiles app into phar
+ */

@@ -1,31 +1,185 @@
 {
-    "hash": "167e0e81e45093e59b9a05c8ff3b6c44",
+    "hash": "ba6ec0ba2e1c75bc06a374eb0521c861",
     "packages": [
+        {
+            "name": "camspiers/porter-stemmer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:camspiers/porter-stemmer.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/camspiers/porter-stemmer/zipball/1.0.0",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2013-02-06 21:39:08",
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Richard Heyes",
+                    "email": "support@rgraph.net"
+                }
+            ],
+            "description": "Porter Stemmer created by Richard Heyes"
+        },
+        {
+            "name": "composer/composer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/composer.git",
+                "reference": "625e174f76a44bb9adfd27fc890e73e9b1eef030"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/composer/zipball/625e174f76a44bb9adfd27fc890e73e9b1eef030",
+                "reference": "625e174f76a44bb9adfd27fc890e73e9b1eef030",
+                "shasum": ""
+            },
+            "require": {
+                "justinrainbow/json-schema": "1.1.*",
+                "seld/jsonlint": "1.*",
+                "php": ">=5.3.2",
+                "symfony/console": ">=2.1,<3.0",
+                "symfony/finder": ">=2.1,<3.0",
+                "symfony/process": ">=2.1,<3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7.10.0,<3.8"
+            },
+            "suggest": {
+                "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic",
+                "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages"
+            },
+            "time": "2013-02-14 16:14:46",
+            "bin": [
+                "bin/composer"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                }
+            ],
+            "description": "Dependency Manager",
+            "homepage": "http://getcomposer.org/",
+            "keywords": [
+                "package",
+                "dependency",
+                "autoload"
+            ]
+        },
+        {
+            "name": "justinrainbow/json-schema",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/justinrainbow/json-schema.git",
+                "reference": "v1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/justinrainbow/json-schema/archive/v1.1.0.zip",
+                "reference": "v1.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-01-03 00:33:17",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonSchema": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "NewBSD"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch",
+                    "homepage": "http://wiedler.ch/igor/"
+                },
+                {
+                    "name": "Bruno Prieto Reis",
+                    "email": "bruno.p.reis@gmail.com"
+                },
+                {
+                    "name": "Justin Rainbow",
+                    "email": "justin.rainbow@gmail.com"
+                },
+                {
+                    "name": "Robert Schönthal",
+                    "email": "seroscho@googlemail.com",
+                    "homepage": "http://digitalkaoz.net"
+                }
+            ],
+            "description": "A library to validate a json schema.",
+            "homepage": "https://github.com/justinrainbow/json-schema",
+            "keywords": [
+                "json",
+                "schema"
+            ]
+        },
         {
             "name": "maximebf/cachecache",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git://github.com/maximebf/CacheCache.git",
-                "reference": "d6f99e47af18e9a8b49fa90d81f92120df8854a4"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/maximebf/CacheCache/zipball/d6f99e47af18e9a8b49fa90d81f92120df8854a4",
-                "reference": "d6f99e47af18e9a8b49fa90d81f92120df8854a4",
+                "url": "https://api.github.com/repos/maximebf/CacheCache/zipball/1.0.0",
+                "reference": "1.0.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "1345280504",
+            "time": "2012-08-18 09:01:44",
             "type": "library",
-            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "CacheCache": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -41,13 +195,450 @@
             "keywords": [
                 "cache"
             ]
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog",
+                "reference": "48f22f4519ed17b4754c4b561101d19aeb0d0236"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/48f22f4519ed17b4754c4b561101d19aeb0d0236",
+                "reference": "48f22f4519ed17b4754c4b561101d19aeb0d0236",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": ">=1.0,<2.0"
+            },
+            "require-dev": {
+                "mlehner/gelf-php": "1.0.*",
+                "doctrine/couchdb": "dev-master",
+                "raven/raven": "0.3.*"
+            },
+            "suggest": {
+                "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mongo": "Allow sending log messages to a MongoDB server",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "raven/raven": "Allow sending log messages to a Sentry server"
+            },
+            "time": "2013-02-13 18:09:50",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Monolog": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ]
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/php-fig/log/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2012-12-21 11:40:51",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ]
+        },
+        {
+            "name": "seld/jsonlint",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/Seldaek/jsonlint",
+                "reference": "1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/1.1.1",
+                "reference": "1.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2013-02-11 23:03:12",
+            "bin": [
+                "bin/jsonlint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Seld\\JsonLint": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Linter",
+            "keywords": [
+                "json",
+                "parser",
+                "linter",
+                "validator"
+            ]
+        },
+        {
+            "name": "symfony/config",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Config",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Config",
+                "reference": "fb7ce57ccb3c418c264a28754f88e0a229b5022b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/fb7ce57ccb3c418c264a28754f88e0a229b5022b",
+                "reference": "fb7ce57ccb3c418c264a28754f88e0a229b5022b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-01-31 21:39:01",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Config\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/console",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console",
+                "reference": "f65e34d058f0990a724f78e8d091dc0a20e439ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/f65e34d058f0990a724f78e8d091dc0a20e439ac",
+                "reference": "f65e34d058f0990a724f78e8d091dc0a20e439ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-01-31 21:39:01",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/DependencyInjection",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/DependencyInjection",
+                "reference": "1c196602dc3387f6606771b12e4123914d34a24f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/1c196602dc3387f6606771b12e4123914d34a24f",
+                "reference": "1c196602dc3387f6606771b12e4123914d34a24f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/yaml": ">=2.0,<3.0",
+                "symfony/config": ">=2.2,<2.4-dev"
+            },
+            "suggest": {
+                "symfony/yaml": "2.2.*",
+                "symfony/config": "2.2.*"
+            },
+            "time": "2013-02-11 11:27:01",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony DependencyInjection Component",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder",
+                "reference": "3b6261bea9fd81593c1083087f11816df53a7fea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/3b6261bea9fd81593c1083087f11816df53a7fea",
+                "reference": "3b6261bea9fd81593c1083087f11816df53a7fea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-02-04 12:42:02",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Finder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/process",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process",
+                "reference": "c99475d555934461f079521d024d88a0d4e861eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/c99475d555934461f079521d024d88a0d4e861eb",
+                "reference": "c99475d555934461f079521d024d88a0d4e861eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-01-31 21:39:01",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml",
+                "reference": "f198ac28048eeceae852419c076123aaee59cd1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/f198ac28048eeceae852419c076123aaee59cd1c",
+                "reference": "f198ac28048eeceae852419c076123aaee59cd1c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-01-31 21:39:01",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com"
         }
     ],
     "packages-dev": null,
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "maximebf/cachecache": 20
     }

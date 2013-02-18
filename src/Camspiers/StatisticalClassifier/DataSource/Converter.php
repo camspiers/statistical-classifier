@@ -16,7 +16,6 @@ class Converter
 
     public function run()
     {
-
         $data = $this->from->read();
 
         foreach ($data as $category => $documents) {
@@ -26,7 +25,6 @@ class Converter
         }
 
         $this->to->write();
-
     }
 
 }

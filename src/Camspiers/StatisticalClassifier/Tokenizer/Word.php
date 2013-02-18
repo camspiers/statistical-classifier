@@ -1,6 +1,6 @@
 <?php
 
-namespace Camspiers\StatisticalClassifier\Tokenizers;
+namespace Camspiers\StatisticalClassifier\Tokenizer;
 
 class Word implements TokenizerInterface
 {

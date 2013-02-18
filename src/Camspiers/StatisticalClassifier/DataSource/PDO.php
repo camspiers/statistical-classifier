@@ -6,7 +6,8 @@ class PDO extends DataArray
 {
     private $queries;
 
-    public function __construct($queries = array()) {
+    public function __construct($queries = array())
+    {
         $this->queries = $queries;
         parent::__construct($this->read());
     }
