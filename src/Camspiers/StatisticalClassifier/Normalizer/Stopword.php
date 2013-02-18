@@ -16,6 +16,7 @@ class Stopword implements NormalizerInterface
     public function normalize(array $tokens)
     {
         $tokens = array_diff($tokens, $this->stopwords);
+
         return $this->normalizer instanceof NormalizerInterface ? $this->normalizer->normalize($tokens) : $tokens;
     }
 }

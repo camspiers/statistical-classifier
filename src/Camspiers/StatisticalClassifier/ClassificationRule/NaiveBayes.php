@@ -27,6 +27,7 @@ class NaiveBayes implements ClassificationRuleInterface
             }
         }
         asort($results, SORT_NUMERIC);
+
         return key($results);
     }
 }
