@@ -11,9 +11,7 @@ $container = Factory::createContainer(
 	array(
 		new DependencyInjection\StatisticalClassifierExtension
 	),
-	array(
-		new DependencyInjection\HeuristicPass
-	),
+	array(),
 	true
 );
 

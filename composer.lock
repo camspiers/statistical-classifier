@@ -1,5 +1,5 @@
 {
-    "hash": "1d4b6cfcc1aeb4dbbcd30daceb7a6b74",
+    "hash": "ba6ec0ba2e1c75bc06a374eb0521c861",
     "packages": [
         {
             "name": "camspiers/porter-stemmer",
@@ -36,13 +36,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/composer/composer",
-                "reference": "aa1c09380d8bde3436594ec27f62ec7c0cf37591"
+                "url": "https://github.com/composer/composer.git",
+                "reference": "625e174f76a44bb9adfd27fc890e73e9b1eef030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/aa1c09380d8bde3436594ec27f62ec7c0cf37591",
-                "reference": "aa1c09380d8bde3436594ec27f62ec7c0cf37591",
+                "url": "https://api.github.com/repos/composer/composer/zipball/625e174f76a44bb9adfd27fc890e73e9b1eef030",
+                "reference": "625e174f76a44bb9adfd27fc890e73e9b1eef030",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic",
                 "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages"
             },
-            "time": "2013-02-01 22:37:12",
+            "time": "2013-02-14 16:14:46",
             "bin": [
                 "bin/composer"
             ],
@@ -197,23 +197,123 @@
             ]
         },
         {
-            "name": "seld/jsonlint",
-            "version": "1.1.0",
+            "name": "monolog/monolog",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://github.com/Seldaek/jsonlint",
-                "reference": "1.1.0"
+                "url": "https://github.com/Seldaek/monolog",
+                "reference": "48f22f4519ed17b4754c4b561101d19aeb0d0236"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/jsonlint/archive/1.1.0.zip",
-                "reference": "1.1.0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/48f22f4519ed17b4754c4b561101d19aeb0d0236",
+                "reference": "48f22f4519ed17b4754c4b561101d19aeb0d0236",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": ">=1.0,<2.0"
+            },
+            "require-dev": {
+                "mlehner/gelf-php": "1.0.*",
+                "doctrine/couchdb": "dev-master",
+                "raven/raven": "0.3.*"
+            },
+            "suggest": {
+                "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mongo": "Allow sending log messages to a MongoDB server",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "raven/raven": "Allow sending log messages to a Sentry server"
+            },
+            "time": "2013-02-13 18:09:50",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Monolog": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ]
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/php-fig/log/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2012-12-21 11:40:51",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ]
+        },
+        {
+            "name": "seld/jsonlint",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/Seldaek/jsonlint",
+                "reference": "1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/1.1.1",
+                "reference": "1.1.1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-12-13 18:26:19",
+            "time": "2013-02-11 23:03:12",
             "bin": [
                 "bin/jsonlint"
             ],
@@ -344,26 +444,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection",
-                "reference": "d2b46378b3182bc80c53796206e17772a8fbf717"
+                "reference": "1c196602dc3387f6606771b12e4123914d34a24f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/d2b46378b3182bc80c53796206e17772a8fbf717",
-                "reference": "d2b46378b3182bc80c53796206e17772a8fbf717",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/1c196602dc3387f6606771b12e4123914d34a24f",
+                "reference": "1c196602dc3387f6606771b12e4123914d34a24f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "symfony/yaml": "2.2.*",
-                "symfony/config": "2.2.*"
+                "symfony/yaml": ">=2.0,<3.0",
+                "symfony/config": ">=2.2,<2.4-dev"
             },
             "suggest": {
                 "symfony/yaml": "2.2.*",
                 "symfony/config": "2.2.*"
             },
-            "time": "2013-02-04 12:42:02",
+            "time": "2013-02-11 11:27:01",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -534,59 +634,12 @@
             "homepage": "http://symfony.com"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "devster/ubench",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/devster/ubench",
-                "reference": "1.1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/devster/ubench/zipball/1.1.1",
-                "reference": "1.1.1",
-                "shasum": ""
-            },
-            "time": "2012-12-07 11:31:10",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Ubench": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeremy Perret",
-                    "email": "jeremy@devster.org"
-                }
-            ],
-            "description": "Micro PHP library for benchmarking",
-            "homepage": "https://github.com/devster/ubench",
-            "keywords": [
-                "library",
-                "micro",
-                "bench",
-                "benchmark"
-            ]
-        }
-    ],
+    "packages-dev": null,
     "aliases": [
 
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "maximebf/cachecache": 20,
-        "devster/ubench": 20
+        "maximebf/cachecache": 20
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Camspiers\StatisticalClassifier\DataSource;
 
+use PDO;
+
 class PDOQuery
 {
     private $pdo;
@@ -11,7 +13,7 @@ class PDOQuery
 
     public function __construct(
         $category,
-        \PDO $pdo,
+        PDO $pdo,
         $query,
         $documentColumn
     ) {
@@ -24,7 +26,7 @@ class PDOQuery
     public function read()
     {
         $query = $this->pdo->query($this->query);
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
         $data = array();
         while ($row = $query->fetch()) {
             $data[] = $row[$this->documentColumn];

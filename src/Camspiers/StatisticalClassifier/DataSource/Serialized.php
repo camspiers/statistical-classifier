@@ -9,7 +9,16 @@ class Serialized extends DataArray
     public function __construct($filename)
     {
         $this->filename = $filename;
-        parent::__construct($this->read());
+        parent::__construct();
+    }
+
+    public function getData()
+    {
+        if (!is_array($this->data) || array() === $this->data) {
+            $this->data = $this->read();
+        }
+
+        return $this->data;
     }
 
     public function read()

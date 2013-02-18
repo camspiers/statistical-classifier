@@ -23,6 +23,8 @@ class StatisticalClassifierServiceContainer extends Container
      */
     public function __construct()
     {
+        $this->parameters = $this->getDefaultParameters();
+
         $this->services =
         $this->scopedServices =
         $this->scopeStacks = array();
@@ -34,16 +36,29 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'classifier.data_source' service.
+     * Gets the 'cache' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @throws RuntimeException always since this service is expected to be injected dynamically
+     * @return CacheCache\Cache A CacheCache\Cache instance.
      */
-    protected function getClassifier_DataSourceService()
+    protected function getCacheService()
     {
-        throw new RuntimeException('You have requested a synthetic service ("classifier.data_source"). The DIC does not know how to construct this service.');
+        return $this->services['cache'] = new \CacheCache\Cache($this->get('cache.backend'));
+    }
+
+    /**
+     * Gets the 'cache.backend' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return CacheCache\Backends\File A CacheCache\Backends\File instance.
+     */
+    protected function getCache_BackendService()
+    {
+        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => './resources/', 'file_extension' => '.idx'));
     }
 
     /**
@@ -52,17 +67,11 @@ class StatisticalClassifierServiceContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Classifiers\NaiveBayes A Camspiers\StatisticalClassifier\Classifiers\NaiveBayes instance.
+     * @return Camspiers\StatisticalClassifier\Classifier\NaiveBayes A Camspiers\StatisticalClassifier\Classifier\NaiveBayes instance.
      */
     protected function getClassifier_NaiveBayesService()
     {
-        $this->services['classifier.naive_bayes'] = $instance = new \Camspiers\StatisticalClassifier\Classifiers\NaiveBayes($this->get('classifier.data_source'), $this->get('tokenizer.word'), $this->get('normalizer.lowercase'));
-
-        $instance->addHeuristic($this->get('heuristic.tf_threaded'));
-        $instance->addHeuristic($this->get('heuristic.idf'));
-        $instance->addHeuristic($this->get('heuristic.dl'));
-
-        return $instance;
+        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\NaiveBayes($this->get('data_source.data_source'), $this->get('index.cached_index'), $this->get('tokenizer.word'), $this->get('normalizer.lowercase'));
     }
 
     /**
@@ -105,55 +114,72 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'heuristic.dl' service.
+     * Gets the 'data_source.data_source' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Heuristics\DL A Camspiers\StatisticalClassifier\Heuristics\DL instance.
+     * @throws RuntimeException always since this service is expected to be injected dynamically
      */
-    protected function getHeuristic_DlService()
+    protected function getDataSource_DataSourceService()
     {
-        return $this->services['heuristic.dl'] = new \Camspiers\StatisticalClassifier\Heuristics\DL();
+        throw new RuntimeException('You have requested a synthetic service ("data_source.data_source"). The DIC does not know how to construct this service.');
     }
 
     /**
-     * Gets the 'heuristic.idf' service.
+     * Gets the 'index.cached_index' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Heuristics\IDF A Camspiers\StatisticalClassifier\Heuristics\IDF instance.
+     * @return Camspiers\StatisticalClassifier\Index\CachedIndex A Camspiers\StatisticalClassifier\Index\CachedIndex instance.
      */
-    protected function getHeuristic_IdfService()
+    protected function getIndex_CachedIndexService()
     {
-        return $this->services['heuristic.idf'] = new \Camspiers\StatisticalClassifier\Heuristics\IDF();
+        return $this->services['index.cached_index'] = new \Camspiers\StatisticalClassifier\Index\CachedIndex('GenericClassifierIndex', $this->get('cache'));
     }
 
     /**
-     * Gets the 'heuristic.tf' service.
+     * Gets the 'index.index' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Heuristics\TF A Camspiers\StatisticalClassifier\Heuristics\TF instance.
+     * @return Camspiers\StatisticalClassifier\Index\Index A Camspiers\StatisticalClassifier\Index\Index instance.
      */
-    protected function getHeuristic_TfService()
+    protected function getIndex_IndexService()
     {
-        return $this->services['heuristic.tf'] = new \Camspiers\StatisticalClassifier\Heuristics\TF();
+        return $this->services['index.index'] = new \Camspiers\StatisticalClassifier\Index\Index();
     }
 
     /**
-     * Gets the 'heuristic.tf_threaded' service.
+     * Gets the 'logger' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Heuristics\TFThreaded A Camspiers\StatisticalClassifier\Heuristics\TFThreaded instance.
+     * @return Monolog\Logger A Monolog\Logger instance.
      */
-    protected function getHeuristic_TfThreadedService()
+    protected function getLoggerService()
     {
-        return $this->services['heuristic.tf_threaded'] = new \Camspiers\StatisticalClassifier\Heuristics\TFThreaded();
+        $this->services['logger'] = $instance = new \Monolog\Logger('Default');
+
+        $instance->pushHandler($this->get('logger.stream'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'logger.stream' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Monolog\Handler\StreamHandler A Monolog\Handler\StreamHandler instance.
+     */
+    protected function getLogger_StreamService()
+    {
+        return $this->services['logger.stream'] = new \Monolog\Handler\StreamHandler('logs/classifier.log', 100);
     }
 
     /**
@@ -162,11 +188,11 @@ class StatisticalClassifierServiceContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Normalizers\Lowercase A Camspiers\StatisticalClassifier\Normalizers\Lowercase instance.
+     * @return Camspiers\StatisticalClassifier\Normalizer\Lowercase A Camspiers\StatisticalClassifier\Normalizer\Lowercase instance.
      */
     protected function getNormalizer_LowercaseService()
     {
-        return $this->services['normalizer.lowercase'] = new \Camspiers\StatisticalClassifier\Normalizers\Lowercase();
+        return $this->services['normalizer.lowercase'] = new \Camspiers\StatisticalClassifier\Normalizer\Lowercase();
     }
 
     /**
@@ -175,11 +201,11 @@ class StatisticalClassifierServiceContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Normalizers\Porter A Camspiers\StatisticalClassifier\Normalizers\Porter instance.
+     * @return Camspiers\StatisticalClassifier\Normalizer\Porter A Camspiers\StatisticalClassifier\Normalizer\Porter instance.
      */
     protected function getNormalizer_PorterService()
     {
-        return $this->services['normalizer.porter'] = new \Camspiers\StatisticalClassifier\Normalizers\Porter();
+        return $this->services['normalizer.porter'] = new \Camspiers\StatisticalClassifier\Normalizer\Porter();
     }
 
     /**
@@ -188,10 +214,121 @@ class StatisticalClassifierServiceContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Tokenizers\Word A Camspiers\StatisticalClassifier\Tokenizers\Word instance.
+     * @return Camspiers\StatisticalClassifier\Tokenizer\Word A Camspiers\StatisticalClassifier\Tokenizer\Word instance.
      */
     protected function getTokenizer_WordService()
     {
-        return $this->services['tokenizer.word'] = new \Camspiers\StatisticalClassifier\Tokenizers\Word();
+        return $this->services['tokenizer.word'] = new \Camspiers\StatisticalClassifier\Tokenizer\Word();
+    }
+
+    /**
+     * Gets the 'transform.dl' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Transform\DL A Camspiers\StatisticalClassifier\Transform\DL instance.
+     */
+    protected function getTransform_DlService()
+    {
+        return $this->services['transform.dl'] = new \Camspiers\StatisticalClassifier\Transform\DL();
+    }
+
+    /**
+     * Gets the 'transform.idf' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Transform\IDF A Camspiers\StatisticalClassifier\Transform\IDF instance.
+     */
+    protected function getTransform_IdfService()
+    {
+        return $this->services['transform.idf'] = new \Camspiers\StatisticalClassifier\Transform\IDF();
+    }
+
+    /**
+     * Gets the 'transform.tf' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Transform\TF A Camspiers\StatisticalClassifier\Transform\TF instance.
+     */
+    protected function getTransform_TfService()
+    {
+        return $this->services['transform.tf'] = new \Camspiers\StatisticalClassifier\Transform\TF();
+    }
+
+    /**
+     * Gets the 'transform.tf_threaded' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Transform\TFThreaded A Camspiers\StatisticalClassifier\Transform\TFThreaded instance.
+     */
+    protected function getTransform_TfThreadedService()
+    {
+        return $this->services['transform.tf_threaded'] = new \Camspiers\StatisticalClassifier\Transform\TFThreaded();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParameter($name)
+    {
+        $name = strtolower($name);
+
+        if (!(isset($this->parameters[$name]) || array_key_exists($name, $this->parameters))) {
+            throw new InvalidArgumentException(sprintf('The parameter "%s" must be defined.', $name));
+        }
+
+        return $this->parameters[$name];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasParameter($name)
+    {
+        $name = strtolower($name);
+
+        return isset($this->parameters[$name]) || array_key_exists($name, $this->parameters);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setParameter($name, $value)
+    {
+        throw new LogicException('Impossible to call set() on a frozen ParameterBag.');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getParameterBag()
+    {
+        if (null === $this->parameterBag) {
+            $this->parameterBag = new FrozenParameterBag($this->parameters);
+        }
+
+        return $this->parameterBag;
+    }
+    /**
+     * Gets the default parameters.
+     *
+     * @return array An array of the default parameters
+     */
+    protected function getDefaultParameters()
+    {
+        return array(
+            'index.cached_index_name' => 'GenericClassifierIndex',
+            'cache.backend.options' => array(
+                'dir' => './resources/',
+                'file_extension' => '.idx',
+            ),
+        );
     }
 }

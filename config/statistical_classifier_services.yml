@@ -1,45 +1,88 @@
 parameters:
+    index.cached_index_name: GenericClassifierIndex
+    cache.backend.options:
+        dir: ./resources/
+        file_extension: .idx
 
 services:
+    # Tokenizers
     tokenizer.word:
-        class: Camspiers\StatisticalClassifier\Tokenizers\Word
-    normalizer.lowercase:
-        class: Camspiers\StatisticalClassifier\Normalizers\Lowercase
-    normalizer.porter:
-        class: Camspiers\StatisticalClassifier\Normalizers\Porter
+        class: Camspiers\StatisticalClassifier\Tokenizer\Word
 
+    # Normalizers
+    normalizer.lowercase:
+        class: Camspiers\StatisticalClassifier\Normalizer\Lowercase
+    normalizer.porter:
+        class: Camspiers\StatisticalClassifier\Normalizer\Porter
+
+    # Converter
     converter.converter:
         class: Camspiers\StatisticalClassifier\DataSource\Converter
         arguments:
             - @converter.from
             - @converter.to
+
     converter.from:
         synthetic: true
     converter.to:
         synthetic: true
 
+    # Classifiers
     classifier.naive_bayes:
-        class: Camspiers\StatisticalClassifier\Classifiers\NaiveBayes
+        class: Camspiers\StatisticalClassifier\Classifier\NaiveBayes
         arguments:
-            - @classifier.data_source
+            - @data_source.data_source
+            - @index.cached_index
             - @tokenizer.word
             - @normalizer.lowercase
-        calls:
-            - [ addHeuristic, [ @heuristic.tf_threaded ] ]
-            - [ addHeuristic, [ @heuristic.idf ] ]
-            - [ addHeuristic, [ @heuristic.dl ] ]
 
-    classifier.data_source:
+    # Data sources
+    data_source.data_source:
         synthetic: true
 
-    heuristic.tf:
-        class: Camspiers\StatisticalClassifier\Heuristics\TF
+    # Indexes
+    index.index:
+        class: Camspiers\StatisticalClassifier\Index\Index
 
-    heuristic.tf_threaded:
-        class: Camspiers\StatisticalClassifier\Heuristics\TFThreaded
+    index.cached_index:
+        class: Camspiers\StatisticalClassifier\Index\CachedIndex
+        arguments:
+            - %index.cached_index_name%
+            - @cache
 
-    heuristic.idf:
-        class: Camspiers\StatisticalClassifier\Heuristics\IDF
+    # Transforms
+    transform.tf:
+        class: Camspiers\StatisticalClassifier\Transform\TF
 
-    heuristic.dl:
-        class: Camspiers\StatisticalClassifier\Heuristics\DL
+    transform.tf_threaded:
+        class: Camspiers\StatisticalClassifier\Transform\TFThreaded
+
+    transform.idf:
+        class: Camspiers\StatisticalClassifier\Transform\IDF
+
+    transform.dl:
+        class: Camspiers\StatisticalClassifier\Transform\DL
+
+    # Caches
+    cache:
+        class: CacheCache\Cache
+        arguments:
+            - @cache.backend
+
+    cache.backend:
+        class: CacheCache\Backends\File
+        arguments:
+            - %cache.backend.options%
+
+    logger:
+        class: Monolog\Logger
+        arguments:
+            - Default
+        calls:
+            - [ pushHandler, [ @logger.stream ] ]
+
+    logger.stream:
+        class: Monolog\Handler\StreamHandler
+        arguments:
+            - logs/classifier.log
+            - 100
