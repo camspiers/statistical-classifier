@@ -2,12 +2,14 @@
 
 namespace Camspiers\StatisticalClassifier\DataSource;
 
+use RuntimeException;
+
 class DataArray implements DataSourceInterface, \Serializable
 {
 
     protected $data = array();
 
-    public function __construct($data)
+    public function __construct($data = null)
     {
         if (is_array($data)) {
             $this->data = $data;
@@ -43,19 +45,9 @@ class DataArray implements DataSourceInterface, \Serializable
         }
     }
 
-    public function categoryCount($category)
+    public function getDocumentCountByCategory($category)
     {
         return isset($this->data[$category]) ? count($this->data[$category]) : 0;
-    }
-
-    public function documentCount()
-    {
-        $count = 0;
-        foreach ($this->data as $documents) {
-            $count += count($documents);
-        }
-
-        return $count;
     }
 
     public function read()
@@ -63,31 +55,23 @@ class DataArray implements DataSourceInterface, \Serializable
         return $this->data;
     }
 
-    public function getData($normalize = false)
+    public function getData()
     {
-        if ($normalize) {
-            $counts[] = array();
-            $data = $this->data;
-            foreach ($data as $category => $documents) {
-                $counts[] = count($documents);
-            }
-            $min = min($counts);
-            foreach ($data as $category => $documents) {
-                $data[$category] = array_slice($documents, 0, $min, true);
-            }
-            return $data;
-        }
         return $this->data;
     }
 
     public function write()
-    {}
+    {
+        throw new RuntimeException();
+    }
 
-    public function serialize() {
+    public function serialize()
+    {
         return serialize($this->data);
     }
-    
-    public function unserialize($data) {
+
+    public function unserialize($data)
+    {
         $this->data = unserialize($data);
     }
 

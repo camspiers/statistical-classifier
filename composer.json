@@ -1,5 +1,5 @@
 {
-    "name": "camspiers/classifier",
+    "name": "camspiers/statistical-classifier",
     "version": "1.0.0",
     "description": "Document Classifiers including Naive Bayes",
     "keywords": ["classifier", "bayes"],
@@ -12,9 +12,25 @@
     }],
     "require": {
         "php": ">=5.3.0",
-        "maximebf/cachecache": "dev-master  "
+        "composer/composer": "~1.0",
+        "maximebf/cachecache": "dev-master",
+        "symfony/dependency-injection": "~2.1",
+        "symfony/yaml": "~2.1",
+        "symfony/config": "~2.1",
+        "camspiers/porter-stemmer": "~1.0",
+        "psr/log": "~1.0",
+        "monolog/monolog": "~1.4"
+    },
+    "require-dev": {
+        "devster/ubench": "~1.1"
     },
     "autoload": {
-        "psr-0": {"Camspiers": "src/"}
+        "psr-0": {"Camspiers": "src/"},
+        "classmap": [ "config/" ]
+    },
+    "minimum-stability": "dev",
+    "scripts": {
+        "post-install-cmd": [ "bin/generate-container", "vendor/bin/composer dump-autoload -o" ],
+        "post-update-cmd": [ "bin/generate-container", "vendor/bin/composer dump-autoload -o" ]
     }
 }
