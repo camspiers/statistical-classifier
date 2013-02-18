@@ -8,6 +8,7 @@ interface IndexInterface
     public function setData($data);
     public function getData();
     public function getPartition($partitionName);
-    public function setPartition($partitionName, $partitionData, $temporary = true);
+    public function setPartition($partitionName, $partitionData);
     public function removePartition($partitionName);
+    public function getPartitions();
 }

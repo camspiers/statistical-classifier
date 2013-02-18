@@ -17,7 +17,7 @@ class Prune implements TransformInterface
 
     public function apply(IndexInterface $index)
     {
-        $partitions = $index->getTemporaryPartitions();
+        $partitions = $index->getPartitions();
         foreach ($partitions as $partition) {
             if (!in_array($partition, $this->exclude)) {
                 $index->removePartition($partition);

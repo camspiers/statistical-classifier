@@ -40,12 +40,9 @@ class Index implements IndexInterface
         return $this->partitions[$partitionName];
     }
 
-    public function setPartition($partitionName, $partition, $temporary = true)
+    public function setPartition($partitionName, $partition)
     {
         $this->partitions[$partitionName] = $partition;
-        if ($temporary) {
-            $this->temporaryPartitions[] = $partitionName;
-        }
     }
 
     public function removePartition($partitionName)
@@ -55,8 +52,8 @@ class Index implements IndexInterface
         }
     }
 
-    public function getTemporaryPartitions()
+    public function getPartitions()
     {
-        return $this->temporaryPartitions;
+        return array_keys($this->partitions);
     }
 }
