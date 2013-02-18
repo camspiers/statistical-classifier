@@ -47,6 +47,15 @@ class NaiveBayes extends GenericClassifier
                 new Transform\DL(
                     Transform\IDF::PARTITION_NAME
                 ),
+                new Transform\TBC(
+                    Transform\TCBD::PARTITION_NAME
+                ),
+                new Transform\DocumentTokenSums(
+                    Transform\DL::PARTITION_NAME
+                ),
+                new Transform\DocumentTokenCounts(
+                    Transform\DL::PARTITION_NAME
+                ),
                 new Transform\Complement(
                     Transform\DL::PARTITION_NAME
                 ),

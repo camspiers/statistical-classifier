@@ -8,14 +8,16 @@ $container = new StatisticalClassifierServiceContainer;
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 
+$cats = array('alt.atheism', 'comp.graphics', 'rec.motorcycles', 'sci.crypt');
+
 $container->set(
     'data_source.data_source',
-    new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-train')
+    new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-train', $cats)
 );
 
 $nb = $container->get('classifier.naive_bayes');
 
-$testSource = new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-test');
+$testSource = new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-test', $cats);
 
 $data = $testSource->getData();
 

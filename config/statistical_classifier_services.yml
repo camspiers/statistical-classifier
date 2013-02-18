@@ -1,3 +1,6 @@
+imports:
+    - { resource: stopwords.yml }
+
 parameters:
     index.cached_index_name: GenericClassifierIndex
     cache.backend.options:
@@ -14,6 +17,11 @@ services:
         class: Camspiers\StatisticalClassifier\Normalizer\Lowercase
     normalizer.porter:
         class: Camspiers\StatisticalClassifier\Normalizer\Porter
+    normalizer.stopword:
+        class: Camspiers\StatisticalClassifier\Normalizer\Stopword
+        arguments:
+            - %stopwords%
+            - @normalizer.lowercase
 
     # Converter
     converter.converter:
@@ -34,7 +42,7 @@ services:
             - @data_source.data_source
             - @index.cached_index
             - @tokenizer.word
-            - @normalizer.lowercase
+            - @normalizer.stopword
 
     # Data sources
     data_source.data_source:
