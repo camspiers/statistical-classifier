@@ -73,12 +73,3 @@ class Complement implements TransformInterface
         $index->setPartition(self::PARTITION_NAME, $transform);
     }
 }
-
-
-//create new thread, passing in tokens, documentTokenSums and, documentTokenCounts
-// $threads[] = new ComplementThread($tokens, array_diff($categories, array($category)), $documentTokenSums, $documentTokenCounts);
-// 
-// class ComplementThread extends Thread
-// {
-    
-// }
