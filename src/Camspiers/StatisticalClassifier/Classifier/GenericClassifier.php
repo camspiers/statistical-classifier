@@ -79,8 +79,12 @@ class GenericClassifier implements ClassifierInterface
     protected function applyTransforms()
     {
         if (is_array($this->transforms)) {
+            // $bench = new \Ubench;
             foreach ($this->transforms as $transform) {
+                // $bench->start();
                 $transform->apply($this->index);
+                // $bench->end();
+                // echo get_class($transform), ': ', $bench->getTime(), PHP_EOL;
             }
         }
     }
