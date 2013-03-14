@@ -8,7 +8,7 @@
 
 This library provides a statistical classifier written entirely in PHP. The project is written with a focus on reuse and customaizability. Using dependancy injection and interfaces, all components can be easily swapped out for your own version, or entirely new classifiers can be built.
 
-By default a Naive Bayes classifier is provided which performs well on the [20 Newsgroups Data Set](http://qwone.com/~jason/20Newsgroups/). This classifier was built using a paper *[Tackling the Poor Assumptions of Naive Bayes Text Classifiers](resources/Tackling the Poor Assumptions of Naive Bayes Text Classifiers.pdf)* by Jason Rennie.
+By default a Naive Bayes classifier is provided which performs well on the [20 Newsgroups Data Set](http://qwone.com/~jason/20Newsgroups/). This classifier was built using a paper *[Tackling the Poor Assumptions of Naive Bayes Text Classifiers](resources/Tackling the Poor Assumptions of Naive Bayes Text Classifiers.pdf?raw=true)* by Jason Rennie (PDF).
 
 ## Overview
 
