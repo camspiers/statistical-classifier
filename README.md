@@ -45,7 +45,7 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
 #### Using the service container provided
 
-```
+```php
 <?php
 // Ensure composer autoloader is required
 $container = new StatisticalClassifierServiceContainer;
@@ -73,7 +73,7 @@ echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 
 #### Building your own
 
-```
+```php
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
