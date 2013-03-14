@@ -12,7 +12,8 @@ $cats = array(
     'alt.atheism',
     'comp.graphics',
     'rec.motorcycles',
-    'sci.crypt'
+    'sci.crypt',
+    'soc.religion.christian'
 );
 
 $container->set(
@@ -39,9 +40,4 @@ foreach ($data as $category => $documents) {
         }
     }
     echo $category, ': ', ($stats[$category] / count($documents)), PHP_EOL;
-}
-
-echo 'Failures:', PHP_EOL;
-foreach ($fails as $fail) {
-    echo "Classified document from '{$fail[0]}' as '{$fail[1]}'", PHP_EOL;
 }
