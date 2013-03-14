@@ -2,6 +2,8 @@
 
 **This project is a work in progress**
 
+Currently this project is at [major version 0](http://semver.org/) so the public API should not be considered stable.
+
 ## What is statistical classification?
 
 > In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
