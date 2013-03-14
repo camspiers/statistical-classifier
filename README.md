@@ -37,7 +37,7 @@ A classifier is built using the following separate components:
 
 ## Dependancy injection (Symfony)
 
-This library uses Symfony's dependancy injection component. A container extension is provided, and a container is also provided so if you aren't using Symfony's dependancy injection component you can still take advantage of the default services provided.
+This library uses Symfony's dependancy injection component. A [container extension](http://symfony.com/doc/2.1/components/dependency_injection/compilation.html) is provided, and a container is also provided so if you aren't already using Symfony's dependancy injection component you can still take advantage of the default services provided.
 
 ## Usage
 

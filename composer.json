@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Document Classifiers including Naive Bayes",
     "keywords": ["classifier", "bayes"],
-    "homepage": "https://github.com/camspiers/classifier",
+    "homepage": "https://github.com/camspiers/statistical-classifier",
     "type": "library",
     "license": "MIT",
     "authors": [{
