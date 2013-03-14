@@ -10,7 +10,7 @@ class Grouped implements NormalizerInterface
 
     public function __construct(array $normalizers = array())
     {
-        if (count($normalizers) == 0) {
+        if (count($normalizers) === 0) {
             throw new RuntimeException('A group of normalizers must contain at least one normalizer');
         }
         foreach ($normalizers as $normalizer) {
