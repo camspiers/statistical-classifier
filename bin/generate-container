@@ -1,18 +1,27 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$root = __DIR__ . '/..';
 
-use Camspiers\StatisticalClassifier\Factory;
-use Camspiers\StatisticalClassifier\DependencyInjection;
+require_once $root . '/vendor/autoload.php';
 
-$container = Factory::createContainer(
-	array(),
-	array(
-		new DependencyInjection\StatisticalClassifierExtension
-	),
-	array(),
-	true
+use Camspiers\DependencyInjection\SharedContainerFactory;
+use Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension;
+
+SharedContainerFactory::addExtension(
+	new StatisticalClassifierExtension()
+);
+
+$c = SharedContainerFactory::createContainer(
+    array()
+);
+
+$c->loadFromExtension('statistical_classifier');
+
+SharedContainerFactory::dumpContainer(
+	$c,
+    'StatisticalClassifierServiceContainer',
+    $root . '/config/'
 );
 
 echo 'Container generated', PHP_EOL;
