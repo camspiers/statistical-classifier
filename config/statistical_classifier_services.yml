@@ -21,7 +21,10 @@ services:
         class: Camspiers\StatisticalClassifier\Normalizer\Stopword
         arguments:
             - %stopwords%
-            - @normalizer.lowercase
+    normalizer.stopword_lowercase:
+        class: Camspiers\StatisticalClassifier\Normalizer\Grouped
+        arguments:
+            - [ @normalizer.stopword, @normalizer.lowercase ]
 
     # Converter
     converter.converter:
@@ -42,7 +45,7 @@ services:
             - @data_source.data_source
             - @index.cached_index
             - @tokenizer.word
-            - @normalizer.stopword
+            - @normalizer.stopword_lowercase
 
     # Data sources
     data_source.data_source:

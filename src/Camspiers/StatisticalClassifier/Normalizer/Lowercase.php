@@ -7,13 +7,8 @@ class Lowercase implements NormalizerInterface
     public function normalize(array $tokens)
     {
         return array_map(
-            array($this, 'normalizeToken'),
+            'strtolower',
             $tokens
         );
-    }
-
-    protected function normalizeToken($token)
-    {
-        return strtolower($token);
     }
 }
