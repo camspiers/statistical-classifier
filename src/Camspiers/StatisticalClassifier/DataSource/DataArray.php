@@ -6,7 +6,6 @@ use RuntimeException;
 
 class DataArray implements DataSourceInterface, \Serializable
 {
-
     protected $data = array();
 
     public function __construct($data = null)
@@ -74,5 +73,4 @@ class DataArray implements DataSourceInterface, \Serializable
     {
         $this->data = unserialize($data);
     }
-
 }
