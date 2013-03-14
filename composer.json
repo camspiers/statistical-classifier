@@ -28,5 +28,10 @@
     "autoload": {
         "psr-0": {"Camspiers": "src/"},
         "classmap": [ "config/" ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
     }
 }
