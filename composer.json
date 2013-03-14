@@ -1,7 +1,7 @@
 {
     "name": "camspiers/statistical-classifier",
     "version": "1.0.0",
-    "description": "Document Classifiers including Naive Bayes",
+    "description": "A php implementation of a Naive Bayes statistical classifier",
     "keywords": ["classifier", "bayes"],
     "homepage": "https://github.com/camspiers/statistical-classifier",
     "type": "library",
