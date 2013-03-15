@@ -102,7 +102,49 @@ echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 
-### Command-line executable (not implemented yet)
+### Command-line executable
+
+#### Commands
+
+*train:document*
+
+```
+Usage:
+ train:document index category document
+
+Arguments:
+ index                 Name of index
+ category              Which category this data is
+ document              The document to train on
+```
+
+*train:directory*
+
+```
+Usage:
+ train:directory [-i|--include[="..."]] index directory
+
+Arguments:
+ index                 Name of index
+ directory             The directory to train on
+```
+
+*classify*
+
+```
+Usage:
+ classify index document
+
+Arguments:
+ index                 Name of index
+ document              The document to classify
+```
+
+```bash
+$ statistical-classifier train:document MyIndexName spam "This is some spam"
+$ statistical-classifier train:document MyIndexName ham "This is some ham"
+$ statistical-classifier classify MyIndexName "Some spam"
+```
 
 ## Internals
 
