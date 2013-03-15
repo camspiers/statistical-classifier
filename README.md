@@ -140,7 +140,7 @@ Arguments:
  document              The document to classify
 ```
 
-#### example
+#### Example
 
 ```bash
 $ statistical-classifier train:document MyIndexName spam "This is some spam"
