@@ -32,7 +32,7 @@ A classifier is built using the following separate components:
 
 ### For your application
 
-    $ composer requre camspiers/statistical-classifier:~0.1
+    $ composer requre camspiers/statistical-classifier:~0.2
 
 ### For command-line use
 
