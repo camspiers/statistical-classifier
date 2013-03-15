@@ -1,6 +1,6 @@
 # Statistical Classifier
 
-[![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png)](https://travis-ci.org/camspiers/statistical-classifier)
+[![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
 
 **This project is a work in progress**
 
