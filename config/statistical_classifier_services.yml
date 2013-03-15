@@ -85,10 +85,34 @@ services:
         arguments:
             - %cache.backend.options%
 
+    # Console
+    console.application:
+        class: Camspiers\StatisticalClassifier\Console\Application
+
+    console.command.index.create:
+        class: Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand
+        tags:
+            - { name: console.command }
+
+    console.command.index.remove:
+        class: Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand
+        tags:
+            - { name: console.command }
+
+    console.command.train.document:
+        class: Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand
+        tags:
+            - { name: console.command }
+
+    console.command.train.director:
+        class: Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand
+        tags:
+            - { name: console.command }
+
     logger:
         class: Monolog\Logger
         arguments:
-            - Default
+            - classifier
         calls:
             - [ pushHandler, [ @logger.stream ] ]
 

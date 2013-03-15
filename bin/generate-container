@@ -7,9 +7,14 @@ require_once $root . '/vendor/autoload.php';
 
 use Camspiers\DependencyInjection\SharedContainerFactory;
 use Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension;
+use Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass;
 
 SharedContainerFactory::addExtension(
 	new StatisticalClassifierExtension()
+);
+
+SharedContainerFactory::addCompilerPass(
+	new CommandCompilerPass()
 );
 
 $c = SharedContainerFactory::createContainer(

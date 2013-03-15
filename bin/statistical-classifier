@@ -3,5 +3,5 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = new Camspiers\StatisticalClassifier\Console\Application();
-$app->run();
+$container = new StatisticalClassifierServiceContainer;
+$container->get('console.application')->run();
