@@ -22,7 +22,8 @@
         "monolog/monolog": "~1.4"
     },
     "require-dev": {
-        "devster/ubench": "~1.1"
+        "devster/ubench": "~1.1",
+        "phpunit/phpunit": "~3.7"
     },
     "autoload": {
         "psr-0": {"Camspiers": "src/"},
