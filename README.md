@@ -148,6 +148,11 @@ $ statistical-classifier train:document MyIndexName ham "This is some ham"
 $ statistical-classifier classify MyIndexName "Some spam"
 ```
 
+## Unit testing
+
+	statistical-classifier/ $ composer install --dev
+	statistical-classifier/ $ vendor/bin/phpunit
+
 ## Internals
 
 ### Classifiers
@@ -201,9 +206,4 @@ $ statistical-classifier classify MyIndexName "Some spam"
 ### Classification Rules
 
 * NaiveBayes
-
-## Unit testing
-
-	statistical-classifier/ $ composer install --dev
-	statistical-classifier/ $ vendor/bin/phpunit
 
