@@ -34,7 +34,7 @@ A classifier is built using the following separate components:
 
     $ composer requre camspiers/statistical-classifier:~0.1
 
-### For command-line use (not implemented fully yet)
+### For command-line use
 
 	$ composer create-project camspiers/statistical-classifier .
 	$ ln -s $PWD/bin/statistical-classifier /usr/local/bin/statistical-classifier
