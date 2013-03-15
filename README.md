@@ -1,5 +1,7 @@
 # Statistical Classifier
 
+[![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png)](https://travis-ci.org/camspiers/statistical-classifier)
+
 **This project is a work in progress**
 
 Currently this project is at [major version 0](http://semver.org/) so the public API should not be considered stable.
