@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 // Ensure composer autoloader is required
-$container = new StatisticalClassifierServiceContainer;
+$c = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\Index\Index;
@@ -23,4 +23,4 @@ $c->set(
         )
     )
 );
-echo $container->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL;
+echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL;

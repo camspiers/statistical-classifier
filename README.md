@@ -52,7 +52,7 @@ This library uses Symfony's dependancy injection component. A [container extensi
 ```php
 <?php
 // Ensure composer autoloader is required
-$container = new StatisticalClassifierServiceContainer;
+$c = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\Index\Index;
@@ -74,7 +74,7 @@ $c->set(
         )
     )
 );
-echo $container->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; // ham
+echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
 ```
 
 #### Building your own
@@ -83,7 +83,7 @@ echo $container->get('classifier.naive_bayes')->classify("Some ham document"), P
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
-$classifier = new Classifier\NaiveBayes(
+$c = new Classifier\NaiveBayes(
     new Index\Index(
         new DataSource\DataArray(
             array(
@@ -101,7 +101,7 @@ $classifier = new Classifier\NaiveBayes(
     new Tokenizer\Word(),
     new Normalizer\Lowercase()
 );
-echo $classifier->classify('Some ham document'), PHP_EOL; // ham
+echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 
