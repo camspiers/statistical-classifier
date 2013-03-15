@@ -18,21 +18,23 @@ $cats = array(
 );
 
 $c->set(
-    'data_source.data_source',
-    new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-train', $cats)
-);
-
-$c->set(
     'index.index',
     new CachedIndex(
         '20news-bydate',
-        $c->get('cache')
+        $c->get('cache'),
+        new Directory(
+            __DIR__ . '/../resources/20news-bydate/20news-bydate-train',
+            $cats
+        )
     )
 );
 
 $nb = $c->get('classifier.naive_bayes');
 
-$testSource = new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-test', $cats);
+$testSource = new Directory(
+    __DIR__ . '/../resources/20news-bydate/20news-bydate-test',
+    $cats
+);
 
 $data = $testSource->getData();
 

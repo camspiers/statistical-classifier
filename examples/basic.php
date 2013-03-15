@@ -4,21 +4,23 @@ require __DIR__ . '/../vendor/autoload.php';
 $container = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
+use Camspiers\StatisticalClassifier\Index\Index;
 // This sets the data source to the soon created classifier using a synthetic symfony service
-$container->set(
-    'data_source.data_source',
-    new DataArray(array(
-        'spam' => array(
-            'Some spam document',
-            'Another spam document'
-        ),
-        'ham' => array(
-            'Some ham document',
-            'Another ham document'
+$c->set(
+    'index.index',
+    new Index(
+        new DataArray(
+            array(
+                'spam' => array(
+                    'Some spam document',
+                    'Another spam document'
+                ),
+                'ham' => array(
+                    'Some ham document',
+                    'Another ham document'
+                )
+            )
         )
-    ))
+    )
 );
-
-$nb = $container->get('classifier.naive_bayes');
-
-echo $nb->classify("Some ham document"), PHP_EOL;
+echo $container->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL;

@@ -36,8 +36,8 @@ A classifier is built using the following separate components:
 
 ### For command-line use
 
-	$ composer create-project camspiers/statistical-classifier .
-	$ ln -s $PWD/bin/statistical-classifier /usr/local/bin/statistical-classifier
+    $ composer create-project camspiers/statistical-classifier .
+    $ ln -s $PWD/bin/statistical-classifier /usr/local/bin/statistical-classifier
 
 ## Dependancy injection (Symfony)
 
@@ -55,24 +55,26 @@ This library uses Symfony's dependancy injection component. A [container extensi
 $container = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
+use Camspiers\StatisticalClassifier\Index\Index;
 // This sets the data source to the soon created classifier using a synthetic symfony service
-$container->set(
-    'data_source.data_source',
-    new DataArray(
-        array(
-            'spam' => array(
-                'Some spam document',
-                'Another spam document'
-            ),
-            'ham' => array(
-                'Some ham document',
-                'Another ham document'
+$c->set(
+    'index.index',
+    new Index(
+        new DataArray(
+            array(
+                'spam' => array(
+                    'Some spam document',
+                    'Another spam document'
+                ),
+                'ham' => array(
+                    'Some ham document',
+                    'Another ham document'
+                )
             )
         )
     )
 );
-$classifier = $container->get('classifier.naive_bayes');
-echo $classifier->classify('Some ham document'), PHP_EOL; // ham
+echo $container->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; // ham
 ```
 
 #### Building your own
@@ -82,19 +84,20 @@ echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
 $classifier = new Classifier\NaiveBayes(
-    new DataSource\DataArray(
-        array(
-            'spam' => array(
-                'Some spam document',
-                'Another spam document'
-            ),
-            'ham' => array(
-                'Some ham document',
-                'Another ham document'
+    new Index\Index(
+        new DataSource\DataArray(
+            array(
+                'spam' => array(
+                    'Some spam document',
+                    'Another spam document'
+                ),
+                'ham' => array(
+                    'Some ham document',
+                    'Another ham document'
+                )
             )
         )
     ),
-    new Index\Index(),
     new Tokenizer\Word(),
     new Normalizer\Lowercase()
 );
@@ -150,8 +153,8 @@ $ statistical-classifier classify MyIndexName "Some spam"
 
 ## Unit testing
 
-	statistical-classifier/ $ composer install --dev
-	statistical-classifier/ $ vendor/bin/phpunit
+    statistical-classifier/ $ composer install --dev
+    statistical-classifier/ $ vendor/bin/phpunit
 
 ## Internals
 
