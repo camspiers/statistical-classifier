@@ -158,7 +158,7 @@ echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 
 * NaiveBayes
 
-# Unit testing
+## Unit testing
 
 	statistical-classifier/ $ composer install --dev
 	statistical-classifier/ $ vendor/bin/phpunit
