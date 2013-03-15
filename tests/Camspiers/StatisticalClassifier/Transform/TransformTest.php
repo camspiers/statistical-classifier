@@ -2,6 +2,7 @@
 
 namespace Camspiers\StatisticalClassifier\Transform;
 
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\Index\Index;
 use PHPUnit_Framework_TestCase;
 
@@ -12,15 +13,17 @@ abstract class TransformTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->index = new Index();
-        $this->index->setData(
-            array(
-                'spam' => array(
-                    'Some spam document',
-                    'Another spam document'
-                ),
-                'ham' => array(
-                    'Some ham document',
-                    'Another ham document'
+        $this->index->setDataSource(
+            new DataArray(
+                array(
+                    'spam' => array(
+                        'Some spam document',
+                        'Another spam document'
+                    ),
+                    'ham' => array(
+                        'Some ham document',
+                        'Another ham document'
+                    )
                 )
             )
         );

@@ -2,6 +2,9 @@
 
 namespace Camspiers\StatisticalClassifier\Index;
 
+use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
+
 use PHPUnit_Framework_TestCase;
 
 class IndexTest extends PHPUnit_Framework_TestCase
@@ -22,9 +25,9 @@ class IndexTest extends PHPUnit_Framework_TestCase
 
     public function testData()
     {
-        $this->assertNull($this->index->getData());
-        $this->index->setData($data = array('test'));
-        $this->assertEquals($data, $this->index->getData());
+        $this->assertTrue($this->index->getDataSource() instanceof DataSourceInterface);
+        $this->index->setDataSource(new DataArray($data = array('test')));
+        $this->assertEquals($data, $this->index->getDataSource()->getData());
     }
 
     public function testPartitions()
