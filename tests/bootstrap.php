@@ -7,4 +7,5 @@ if (!file_exists($filename)) {
     exit(1);
 }
 
-require_once $filename;
+$autoloader = require $filename;
+$autoloader->add('Camspiers', __DIR__);
