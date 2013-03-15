@@ -13,15 +13,14 @@ class TCBD implements TransformInterface
     public function __construct(
         TokenizerInterface $tokenizer,
         NormalizerInterface $normalizer
-    )
-    {
+    ) {
         $this->tokenizer = $tokenizer;
         $this->normalizer = $normalizer;
     }
 
     public function apply(IndexInterface $index)
     {
-        $data = $index->getData();
+        $data = $index->getDataSource()->getData();
         $transform = array();
         foreach ($data as $category => $documents) {
             $transform[$category] = array();

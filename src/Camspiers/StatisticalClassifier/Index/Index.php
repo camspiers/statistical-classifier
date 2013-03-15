@@ -2,14 +2,21 @@
 
 namespace Camspiers\StatisticalClassifier\Index;
 
+use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
+
 use RuntimeException;
 
 class Index implements IndexInterface
 {
     protected $prepared = false;
-    protected $data;
+    protected $dataSource;
     protected $partitions = array();
-    protected $temporaryPartitions = array();
+
+    public function __construct(DataSourceInterface $dataSource = null)
+    {
+        $this->dataSource = $dataSource instanceof DataSourceInterface ? $dataSource : new DataArray();
+    }
 
     public function isPrepared()
     {
@@ -21,14 +28,14 @@ class Index implements IndexInterface
         $this->prepared = (boolean) $prepared;
     }
 
-    public function setData($data)
+    public function setDataSource(DataSourceInterface $dataSource)
     {
-        $this->data = $data;
+        $this->dataSource = $dataSource;
     }
 
-    public function getData()
+    public function getDataSource()
     {
-        return $this->data;
+        return $this->dataSource;
     }
 
     public function getPartition($partitionName)

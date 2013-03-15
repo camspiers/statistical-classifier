@@ -1,7 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+chdir(dirname(__DIR__));
 
-$container = new StatisticalClassifierServiceContainer;
-$container->get('console.application')->run();
+require_once 'vendor/autoload.php';
+
+$c = new StatisticalClassifierServiceContainer;
+$c->get('console.application')->setContainer($c)->run();

@@ -2,11 +2,12 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Index;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-class RemoveCommand extends Command
+use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+
+class RemoveCommand extends CacheableCommand
 {
     protected function configure()
     {
@@ -14,7 +15,7 @@ class RemoveCommand extends Command
             ->setName('index:remove')
             ->setDescription('')
             ->addArgument(
-                'name',
+                'index',
                 Input\InputArgument::REQUIRED,
                 'Name of index'
             );
@@ -22,5 +23,6 @@ class RemoveCommand extends Command
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
+        $this->cache->delete($input->getArgument('index'));
     }
 }

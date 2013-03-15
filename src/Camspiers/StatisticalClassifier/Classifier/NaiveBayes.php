@@ -13,14 +13,12 @@ class NaiveBayes extends GenericClassifier
 {
 
     public function __construct(
-        DataSourceInterface $source,
         IndexInterface $index,
         TokenizerInterface $tokenizer,
         NormalizerInterface $normalizer
     )
     {
         parent::__construct(
-            $source,
             $index,
             new ClassificationRule\NaiveBayes(
                 Transform\Weight::PARTITION_NAME

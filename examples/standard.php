@@ -4,9 +4,10 @@ ini_set('memory_limit', '6G');
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$container = new StatisticalClassifierServiceContainer;
-
 use Camspiers\StatisticalClassifier\DataSource\Directory;
+use Camspiers\StatisticalClassifier\Index\CachedIndex;
+
+$c = new StatisticalClassifierServiceContainer;
 
 $cats = array(
     'alt.atheism',
@@ -16,12 +17,20 @@ $cats = array(
     'soc.religion.christian'
 );
 
-$container->set(
+$c->set(
     'data_source.data_source',
     new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-train', $cats)
 );
 
-$nb = $container->get('classifier.naive_bayes');
+$c->set(
+    'index.index',
+    new CachedIndex(
+        '20news-bydate',
+        $c->get('cache')
+    )
+);
+
+$nb = $c->get('classifier.naive_bayes');
 
 $testSource = new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-test', $cats);
 

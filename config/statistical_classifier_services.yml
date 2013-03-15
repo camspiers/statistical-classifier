@@ -2,7 +2,6 @@ imports:
     - { resource: stopwords.yml }
 
 parameters:
-    index.cached_index_name: GenericClassifierIndex
     cache.backend.options:
         dir: ./resources/
         file_extension: .idx
@@ -42,24 +41,13 @@ services:
     classifier.naive_bayes:
         class: Camspiers\StatisticalClassifier\Classifier\NaiveBayes
         arguments:
-            - @data_source.data_source
-            - @index.cached_index
+            - @index.index
             - @tokenizer.word
             - @normalizer.stopword_lowercase
 
-    # Data sources
-    data_source.data_source:
-        synthetic: true
-
     # Indexes
     index.index:
-        class: Camspiers\StatisticalClassifier\Index\Index
-
-    index.cached_index:
-        class: Camspiers\StatisticalClassifier\Index\CachedIndex
-        arguments:
-            - %index.cached_index_name%
-            - @cache
+        synthetic: true
 
     # Transforms
     transform.tf:
@@ -92,22 +80,27 @@ services:
     console.command.index.create:
         class: Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand
         tags:
-            - { name: console.command }
+            - { name: console.cacheable_command }
 
     console.command.index.remove:
         class: Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand
         tags:
-            - { name: console.command }
+            - { name: console.cacheable_command }
 
     console.command.train.document:
         class: Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand
         tags:
-            - { name: console.command }
+            - { name: console.cacheable_command }
 
     console.command.train.director:
         class: Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand
         tags:
-            - { name: console.command }
+            - { name: console.cacheable_command }
+
+    console.command.classify:
+        class: Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand
+        tags:
+            - { name: console.cacheable_command }
 
     logger:
         class: Monolog\Logger

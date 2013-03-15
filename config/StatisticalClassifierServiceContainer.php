@@ -71,7 +71,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getClassifier_NaiveBayesService()
     {
-        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\NaiveBayes($this->get('data_source.data_source'), $this->get('index.cached_index'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'));
+        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\NaiveBayes($this->get('index.index'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'));
     }
 
     /**
@@ -90,6 +90,24 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.index.remove'));
         $instance->add($this->get('console.command.train.document'));
         $instance->add($this->get('console.command.train.director'));
+        $instance->add($this->get('console.command.classify'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.classify' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand A Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand instance.
+     */
+    protected function getConsole_Command_ClassifyService()
+    {
+        $this->services['console.command.classify'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand();
+
+        $instance->setCache($this->get('cache'));
 
         return $instance;
     }
@@ -104,7 +122,11 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getConsole_Command_Index_CreateService()
     {
-        return $this->services['console.command.index.create'] = new \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand();
+        $this->services['console.command.index.create'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
     }
 
     /**
@@ -117,7 +139,11 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getConsole_Command_Index_RemoveService()
     {
-        return $this->services['console.command.index.remove'] = new \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand();
+        $this->services['console.command.index.remove'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
     }
 
     /**
@@ -130,7 +156,11 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getConsole_Command_Train_DirectorService()
     {
-        return $this->services['console.command.train.director'] = new \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand();
+        $this->services['console.command.train.director'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
     }
 
     /**
@@ -143,7 +173,11 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getConsole_Command_Train_DocumentService()
     {
-        return $this->services['console.command.train.document'] = new \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand();
+        $this->services['console.command.train.document'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
     }
 
     /**
@@ -186,42 +220,16 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'data_source.data_source' service.
+     * Gets the 'index.index' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @throws RuntimeException always since this service is expected to be injected dynamically
      */
-    protected function getDataSource_DataSourceService()
-    {
-        throw new RuntimeException('You have requested a synthetic service ("data_source.data_source"). The DIC does not know how to construct this service.');
-    }
-
-    /**
-     * Gets the 'index.cached_index' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Index\CachedIndex A Camspiers\StatisticalClassifier\Index\CachedIndex instance.
-     */
-    protected function getIndex_CachedIndexService()
-    {
-        return $this->services['index.cached_index'] = new \Camspiers\StatisticalClassifier\Index\CachedIndex('GenericClassifierIndex', $this->get('cache'));
-    }
-
-    /**
-     * Gets the 'index.index' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Index\Index A Camspiers\StatisticalClassifier\Index\Index instance.
-     */
     protected function getIndex_IndexService()
     {
-        return $this->services['index.index'] = new \Camspiers\StatisticalClassifier\Index\Index();
+        throw new RuntimeException('You have requested a synthetic service ("index.index"). The DIC does not know how to construct this service.');
     }
 
     /**
@@ -967,7 +975,6 @@ class StatisticalClassifierServiceContainer extends Container
                 541 => 'yourselves',
                 542 => 'zero',
             ),
-            'index.cached_index_name' => 'GenericClassifierIndex',
             'cache.backend.options' => array(
                 'dir' => './resources/',
                 'file_extension' => '.idx',

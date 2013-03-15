@@ -2,6 +2,7 @@
 
 namespace Camspiers\StatisticalClassifier\Index;
 
+use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use CacheCache\Cache;
 
 class CachedIndex extends Index
@@ -9,8 +10,12 @@ class CachedIndex extends Index
     private $indexName;
     private $cache;
 
-    public function __construct($indexName, Cache $cache)
-    {
+    public function __construct(
+        $indexName,
+        Cache $cache,
+        DataSourceInterface $dataSource = null
+    ) {
+        parent::__construct($dataSource);
         $this->indexName = $indexName;
         $this->cache = $cache;
         $this->restore();
@@ -24,13 +29,13 @@ class CachedIndex extends Index
         }
     }
 
-    protected function preserve()
+    public function preserve()
     {
         $this->cache->set(
             $this->indexName,
             array(
                 'prepared'   => $this->prepared,
-                'data'       => $this->data,
+                'dataSource' => $this->dataSource,
                 'partitions' => $this->partitions
             )
         );
@@ -41,9 +46,8 @@ class CachedIndex extends Index
         $data = $this->cache->get($this->indexName);
         if (is_array($data)) {
             $this->prepared = $data['prepared'];
-            $this->data = $data['data'];
+            $this->dataSource = $data['dataSource'];
             $this->partitions = $data['partitions'];
         }
     }
-
 }

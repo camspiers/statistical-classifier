@@ -2,11 +2,14 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-class DocumentCommand extends Command
+use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
+use Camspiers\StatisticalClassifier\Index\CachedIndex;
+
+class DocumentCommand extends CacheableCommand
 {
     protected function configure()
     {
@@ -14,14 +17,14 @@ class DocumentCommand extends Command
             ->setName('train:document')
             ->setDescription('Train the classifier with a document')
             ->addArgument(
-                'category',
-                Input\InputArgument::REQUIRED,
-                'Which category this data is'
-            )
-            ->addArgument(
                 'index',
                 Input\InputArgument::REQUIRED,
                 'Name of index'
+            )
+            ->addArgument(
+                'category',
+                Input\InputArgument::REQUIRED,
+                'Which category this data is'
             )
             ->addArgument(
                 'document',
@@ -32,6 +35,11 @@ class DocumentCommand extends Command
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-
+        $index = $this->getCachedIndex($input->getArgument('index'));
+        $index->getDataSource()->addDocument(
+            $input->getArgument('category'),
+            $input->getArgument('document')
+        );
+        $index->preserve();
     }
 }

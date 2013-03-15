@@ -2,11 +2,14 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Index;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-class CreateCommand extends Command
+use CacheCache\Cache;
+
+use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+
+class CreateCommand extends CacheableCommand
 {
     protected function configure()
     {
@@ -14,7 +17,7 @@ class CreateCommand extends Command
             ->setName('index:create')
             ->setDescription('')
             ->addArgument(
-                'name',
+                'index',
                 Input\InputArgument::REQUIRED,
                 'Name of index'
             );
@@ -22,5 +25,6 @@ class CreateCommand extends Command
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
+        $this->getCachedIndex($input->getArgument('index'))->preserve();
     }
 }

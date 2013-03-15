@@ -12,11 +12,6 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
 class GenericClassifier implements ClassifierInterface
 {
     /**
-     * Source of training data
-     * @var DataSourceInterface
-     */
-    private $source;
-    /**
      * Tokenizer (the way of breaking up documents)
      * @var TokenizerInterface
      */
@@ -43,15 +38,13 @@ class GenericClassifier implements ClassifierInterface
     private $transforms = array();
 
     public function __construct(
-        DataSourceInterface $source,
         IndexInterface $index,
         ClassificationRuleInterface $classificationRule,
         TokenizerInterface $tokenizer,
         NormalizerInterface $normalizer,
         array $transforms = null
-    )
-    {
-        $this->source = $source;
+    ) {
+        // $this->source = $source;
         $this->tokenizer = $tokenizer;
         $this->normalizer = $normalizer;
         $this->classificationRule = $classificationRule;
@@ -92,7 +85,7 @@ class GenericClassifier implements ClassifierInterface
     protected function preparedIndex()
     {
         if (!$this->index->isPrepared()) {
-            $this->index->setData($this->source->getData());
+            // $this->index->setData($this->source->getData());
             $this->applyTransforms();
             $this->index->setPrepared(true);
         }
