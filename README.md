@@ -32,7 +32,7 @@ A classifier is built using the following separate components:
 
     $ composer requre camspiers/statistical-classifier:~0.1
 
-### For command-line use
+### For command-line use (not implemented fully yet)
 
 	$ composer create-project camspiers/statistical-classifier .
 	$ ln -s $PWD/bin/statistical-classifier /usr/local/bin/statistical-classifier
@@ -100,11 +100,7 @@ echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 
-### Command-line executable
-
-    $ statistical-classifier train -c ham -t Directory ./ham
-    $ statistical-classifier train -c spam -t Directory ./spam
-    $ statistical-classifier classify "Some test document"
+### Command-line executable (not implemented yet)
 
 ## Internals
 
