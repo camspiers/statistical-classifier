@@ -47,6 +47,33 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
 ### From within external PHP code
 
+#### Building your own
+
+```php
+<?php
+// Ensure composer autoloader is required
+use Camspiers\StatisticalClassifier;
+$c = new Classifier\NaiveBayes(
+    new Index\Index(
+        new DataSource\DataArray(
+            array(
+                'spam' => array(
+                    'Some spam document',
+                    'Another spam document'
+                ),
+                'ham' => array(
+                    'Some ham document',
+                    'Another ham document'
+                )
+            )
+        )
+    ),
+    new Tokenizer\Word(),
+    new Normalizer\Lowercase()
+);
+echo $c->classify('Some ham document'), PHP_EOL; // ham
+```
+
 #### Using the service container provided
 
 ```php
@@ -76,34 +103,6 @@ $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Another ham document');
 echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
 ```
-
-#### Building your own
-
-```php
-<?php
-// Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
-$c = new Classifier\NaiveBayes(
-    new Index\Index(
-        new DataSource\DataArray(
-            array(
-                'spam' => array(
-                    'Some spam document',
-                    'Another spam document'
-                ),
-                'ham' => array(
-                    'Some ham document',
-                    'Another ham document'
-                )
-            )
-        )
-    ),
-    new Tokenizer\Word(),
-    new Normalizer\Lowercase()
-);
-echo $c->classify('Some ham document'), PHP_EOL; // ham
-```
-
 
 ### Command-line executable
 
