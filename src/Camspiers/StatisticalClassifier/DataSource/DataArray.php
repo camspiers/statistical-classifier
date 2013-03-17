@@ -3,8 +3,9 @@
 namespace Camspiers\StatisticalClassifier\DataSource;
 
 use RuntimeException;
+use Serializable;
 
-class DataArray implements DataSourceInterface, \Serializable
+class DataArray implements DataSourceInterface, Serializable
 {
     protected $data = array();
 

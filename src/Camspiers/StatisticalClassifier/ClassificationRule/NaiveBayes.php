@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Statistical Classifier package.
+ *
+ * (c) Cam Spiers <camspiers@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Camspiers\StatisticalClassifier\ClassificationRule;
 
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
@@ -13,6 +22,9 @@ class NaiveBayes implements ClassificationRuleInterface
         $this->dataPartitionName = $dataPartitionName;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function classify(IndexInterface $index, $document)
     {
         $results = array();
@@ -27,7 +39,6 @@ class NaiveBayes implements ClassificationRuleInterface
             }
         }
         asort($results, SORT_NUMERIC);
-
         return key($results);
     }
 }
