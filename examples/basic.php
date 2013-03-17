@@ -9,18 +9,18 @@ use Camspiers\StatisticalClassifier\Index\Index;
 $c->set(
     'index.index',
     new Index(
-        new DataArray(
+        $source = new DataArray(
             array(
                 'spam' => array(
-                    'Some spam document',
-                    'Another spam document'
+                    'Some spam document'
                 ),
                 'ham' => array(
-                    'Some ham document',
-                    'Another ham document'
+                    'Some ham document'
                 )
             )
         )
     )
 );
+$source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Another ham document');
 echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL;
