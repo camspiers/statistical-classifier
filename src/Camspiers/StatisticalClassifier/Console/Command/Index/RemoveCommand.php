@@ -13,7 +13,7 @@ class RemoveCommand extends CacheableCommand
     {
         $this
             ->setName('index:remove')
-            ->setDescription('')
+            ->setDescription('Remove an index')
             ->addArgument(
                 'index',
                 Input\InputArgument::REQUIRED,

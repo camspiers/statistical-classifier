@@ -13,7 +13,7 @@ class CreateCommand extends CacheableCommand
     {
         $this
             ->setName('index:create')
-            ->setDescription('')
+            ->setDescription('Create an index')
             ->addArgument(
                 'index',
                 Input\InputArgument::REQUIRED,
