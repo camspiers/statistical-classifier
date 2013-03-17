@@ -58,7 +58,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getCache_BackendService()
     {
-        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => './resources/', 'file_extension' => '.idx'));
+        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => './resources/indexes/', 'file_extension' => '.idx'));
     }
 
     /**
@@ -88,6 +88,7 @@ class StatisticalClassifierServiceContainer extends Container
 
         $instance->add($this->get('console.command.index.create'));
         $instance->add($this->get('console.command.index.remove'));
+        $instance->add($this->get('console.command.index.prepare'));
         $instance->add($this->get('console.command.train.document'));
         $instance->add($this->get('console.command.train.director'));
         $instance->add($this->get('console.command.classify'));
@@ -123,6 +124,23 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getConsole_Command_Index_CreateService()
     {
         $this->services['console.command.index.create'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.index.prepare' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand A Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand instance.
+     */
+    protected function getConsole_Command_Index_PrepareService()
+    {
+        $this->services['console.command.index.prepare'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand();
 
         $instance->setCache($this->get('cache'));
 
@@ -312,6 +330,19 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getNormalizer_StopwordLowercaseService()
     {
         return $this->services['normalizer.stopword_lowercase'] = new \Camspiers\StatisticalClassifier\Normalizer\Grouped(array(0 => $this->get('normalizer.stopword'), 1 => $this->get('normalizer.lowercase')));
+    }
+
+    /**
+     * Gets the 'normalizer.stopword_lowercase_porter' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Normalizer\Grouped A Camspiers\StatisticalClassifier\Normalizer\Grouped instance.
+     */
+    protected function getNormalizer_StopwordLowercasePorterService()
+    {
+        return $this->services['normalizer.stopword_lowercase_porter'] = new \Camspiers\StatisticalClassifier\Normalizer\Grouped(array(0 => $this->get('normalizer.stopword'), 1 => $this->get('normalizer.lowercase'), 2 => $this->get('normalizer.porter')));
     }
 
     /**
@@ -976,7 +1007,7 @@ class StatisticalClassifierServiceContainer extends Container
                 542 => 'zero',
             ),
             'cache.backend.options' => array(
-                'dir' => './resources/',
+                'dir' => './resources/indexes/',
                 'file_extension' => '.idx',
             ),
         );
