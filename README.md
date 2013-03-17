@@ -68,6 +68,7 @@ $c = new Classifier\NaiveBayes(
     new Tokenizer\Word(),
     new Normalizer\Lowercase()
 );
+$c->is('ham', 'Some ham document'); // true
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
