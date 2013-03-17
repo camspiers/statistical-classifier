@@ -87,6 +87,7 @@ class GenericClassifier implements ClassifierInterface
         if (!$this->index->isPrepared()) {
             $this->prepareIndex();
         }
+
         return $this->index;
     }
 
