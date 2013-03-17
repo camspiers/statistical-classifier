@@ -3,7 +3,7 @@ imports:
 
 parameters:
     cache.backend.options:
-        dir: ./resources/indexes/
+        dir: ./indexes/
         file_extension: .idx
 
 services:

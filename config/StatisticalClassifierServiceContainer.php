@@ -58,7 +58,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getCache_BackendService()
     {
-        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => './resources/indexes/', 'file_extension' => '.idx'));
+        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => './indexes/', 'file_extension' => '.idx'));
     }
 
     /**
@@ -1007,7 +1007,7 @@ class StatisticalClassifierServiceContainer extends Container
                 542 => 'zero',
             ),
             'cache.backend.options' => array(
-                'dir' => './resources/indexes/',
+                'dir' => './indexes/',
                 'file_extension' => '.idx',
             ),
         );
