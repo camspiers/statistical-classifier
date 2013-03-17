@@ -87,8 +87,10 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.index.remove'));
         $instance->add($this->get('console.command.index.prepare'));
         $instance->add($this->get('console.command.train.document'));
-        $instance->add($this->get('console.command.train.director'));
+        $instance->add($this->get('console.command.train.directory'));
+        $instance->add($this->get('console.command.train.pdo'));
         $instance->add($this->get('console.command.classify'));
+        $instance->add($this->get('console.command.test.pdo'));
 
         return $instance;
     }
@@ -162,16 +164,33 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'console.command.train.director' service.
+     * Gets the 'console.command.test.pdo' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand A Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand instance.
+     */
+    protected function getConsole_Command_Test_PdoService()
+    {
+        $this->services['console.command.test.pdo'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.train.directory' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand A Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand instance.
      */
-    protected function getConsole_Command_Train_DirectorService()
+    protected function getConsole_Command_Train_DirectoryService()
     {
-        $this->services['console.command.train.director'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand();
+        $this->services['console.command.train.directory'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand();
 
         $instance->setCache($this->get('cache'));
 
@@ -189,6 +208,23 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getConsole_Command_Train_DocumentService()
     {
         $this->services['console.command.train.document'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.train.pdo' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand A Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand instance.
+     */
+    protected function getConsole_Command_Train_PdoService()
+    {
+        $this->services['console.command.train.pdo'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand();
 
         $instance->setCache($this->get('cache'));
 

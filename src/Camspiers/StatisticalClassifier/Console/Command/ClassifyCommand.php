@@ -35,6 +35,6 @@ class ClassifyCommand extends CacheableCommand
                 $input->getArgument('index')
             )
         );
-        die($c->get('classifier.naive_bayes')->classify($input->getArgument('document')));
+        echo $c->get('classifier.naive_bayes')->classify($input->getArgument('document'));
     }
 }

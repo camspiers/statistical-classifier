@@ -101,13 +101,23 @@ services:
         tags:
             - { name: console.cacheable_command }
 
-    console.command.train.director:
+    console.command.train.directory:
         class: Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand
+        tags:
+            - { name: console.cacheable_command }
+
+    console.command.train.pdo:
+        class: Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand
         tags:
             - { name: console.cacheable_command }
 
     console.command.classify:
         class: Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand
+        tags:
+            - { name: console.cacheable_command }
+
+    console.command.test.pdo:
+        class: Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand
         tags:
             - { name: console.cacheable_command }
 
