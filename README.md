@@ -29,7 +29,6 @@ A classifier is built using the following component types:
 | Classification rule | ClassificationRuleInterface | Uses the index prepared by the transforms and the data source to classify a document |
 
 ## Installation (with composer)
-
 ### For your application
 
     $ composer requre camspiers/statistical-classifier:~0.2
@@ -44,9 +43,7 @@ A classifier is built using the following component types:
 This library uses Symfony's dependancy injection component. A [container extension](http://symfony.com/doc/2.1/components/dependency_injection/compilation.html) is provided, and a container is also provided so if you aren't already using Symfony's dependancy injection component you can still take advantage of the default services provided.
 
 ## Usage
-
 ### From within external PHP code
-
 #### Building your own
 
 ```php
@@ -105,7 +102,6 @@ echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; 
 ```
 
 ### Command-line executable
-
 #### Commands
 
 *train:document*
@@ -156,7 +152,6 @@ $ classifier classify MyIndexName "Some spam"
     statistical-classifier/ $ vendor/bin/phpunit
 
 ## Internals
-
 ### Classifiers
 
 * Generic Classifier
