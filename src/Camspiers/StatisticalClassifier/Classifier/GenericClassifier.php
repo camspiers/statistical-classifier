@@ -8,6 +8,8 @@ use Camspiers\StatisticalClassifier\Transform\TransformInterface;
 use Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
+use RuntimeException;
+
 class GenericClassifier implements ClassifierInterface
 {
     /**
@@ -49,6 +51,15 @@ class GenericClassifier implements ClassifierInterface
         $this->index = $index;
         if (null !== $transforms) {
             $this->setTransforms($transforms);
+        }
+    }
+
+    public function is($category, $document)
+    {
+        if ($this->index->getDataSource()->hasCategory($category)) {
+            return $this->classify($document) === $category;
+        } else {
+            throw new RuntimeException("The category '$category' doesn't exist");
         }
     }
 
@@ -102,5 +113,4 @@ class GenericClassifier implements ClassifierInterface
             )
         );
     }
-
 }
