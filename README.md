@@ -37,7 +37,7 @@ A classifier is built using the following separate components:
 ### For command-line use
 
     $ composer create-project camspiers/statistical-classifier .
-    $ ln -s $PWD/bin/statistical-classifier /usr/local/bin/statistical-classifier
+    $ ln -s $PWD/bin/statistical-classifier /usr/local/bin/classifier
 
 ## Dependancy injection (Symfony)
 
@@ -146,9 +146,9 @@ Arguments:
 #### Example
 
 ```bash
-$ statistical-classifier train:document MyIndexName spam "This is some spam"
-$ statistical-classifier train:document MyIndexName ham "This is some ham"
-$ statistical-classifier classify MyIndexName "Some spam"
+$ classifier train:document MyIndexName spam "This is some spam"
+$ classifier train:document MyIndexName ham "This is some ham"
+$ classifier classify MyIndexName "Some spam"
 ```
 
 ## Unit testing
