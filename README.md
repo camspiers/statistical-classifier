@@ -16,7 +16,7 @@ By default a Naive Bayes classifier is provided which performs well on the [20 N
 
 ## Overview
 
-A classifier is built using the following separate components:
+A classifier is built using the following component types:
 
 | Component | Interface | Description |
 | --------- | --------- | ----------- |
