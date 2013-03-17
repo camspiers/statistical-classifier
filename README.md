@@ -14,6 +14,16 @@ This library provides a statistical classifier written entirely in PHP. The proj
 
 By default a Naive Bayes classifier is provided which performs well on the [20 Newsgroups Data Set](http://qwone.com/~jason/20Newsgroups/). This classifier was built using a paper *[Tackling the Poor Assumptions of Naive Bayes Text Classifiers](resources/Tackling the Poor Assumptions of Naive Bayes Text Classifiers.pdf?raw=true)* by Jason Rennie (PDF).
 
+## Installation (with composer)
+### For your application
+
+    $ composer requre camspiers/statistical-classifier:~0.2
+
+### For command-line use
+
+    $ composer create-project camspiers/statistical-classifier .
+    $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
+
 ## Overview
 
 A classifier is built using the following component types:
@@ -27,16 +37,6 @@ A classifier is built using the following component types:
 | Tokenizer | TokenizerInterface | Breaks up a string into tokens |
 | Transforms | TransformInterface | Manipulates the Index to produce data ready for a classification rule |
 | Classification rule | ClassificationRuleInterface | Uses the index prepared by the transforms and the data source to classify a document |
-
-## Installation (with composer)
-### For your application
-
-    $ composer requre camspiers/statistical-classifier:~0.2
-
-### For command-line use
-
-    $ composer create-project camspiers/statistical-classifier .
-    $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
 
 ## Dependancy injection (Symfony)
 
