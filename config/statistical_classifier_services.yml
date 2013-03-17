@@ -3,7 +3,7 @@ imports:
 
 parameters:
     cache.backend.options:
-        dir: ./resources/
+        dir: ./resources/indexes/
         file_extension: .idx
 
 services:
@@ -24,6 +24,10 @@ services:
         class: Camspiers\StatisticalClassifier\Normalizer\Grouped
         arguments:
             - [ @normalizer.stopword, @normalizer.lowercase ]
+    normalizer.stopword_lowercase_porter:
+        class: Camspiers\StatisticalClassifier\Normalizer\Grouped
+        arguments:
+            - [ @normalizer.stopword, @normalizer.lowercase, @normalizer.porter  ]
 
     # Converter
     converter.converter:
@@ -84,6 +88,11 @@ services:
 
     console.command.index.remove:
         class: Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand
+        tags:
+            - { name: console.cacheable_command }
+
+    console.command.index.prepare:
+        class: Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand
         tags:
             - { name: console.cacheable_command }
 

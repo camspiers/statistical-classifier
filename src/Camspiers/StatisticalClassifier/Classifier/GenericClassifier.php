@@ -2,7 +2,6 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
 use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
 use Camspiers\StatisticalClassifier\Transform\TransformInterface;
@@ -44,7 +43,6 @@ class GenericClassifier implements ClassifierInterface
         NormalizerInterface $normalizer,
         array $transforms = null
     ) {
-        // $this->source = $source;
         $this->tokenizer = $tokenizer;
         $this->normalizer = $normalizer;
         $this->classificationRule = $classificationRule;
@@ -54,7 +52,7 @@ class GenericClassifier implements ClassifierInterface
         }
     }
 
-    public function setTransforms($transforms)
+    public function setTransforms(array $transforms)
     {
         if (is_array($transforms)) {
             $this->transforms = array();
@@ -72,24 +70,23 @@ class GenericClassifier implements ClassifierInterface
     protected function applyTransforms()
     {
         if (is_array($this->transforms)) {
-            // $bench = new \Ubench;
             foreach ($this->transforms as $transform) {
-                // $bench->start();
                 $transform->apply($this->index);
-                // $bench->end();
-                // echo get_class($transform), ': ', $bench->getTime(), PHP_EOL;
             }
         }
+    }
+
+    public function prepareIndex()
+    {
+        $this->applyTransforms();
+        $this->index->setPrepared(true);
     }
 
     protected function preparedIndex()
     {
         if (!$this->index->isPrepared()) {
-            // $this->index->setData($this->source->getData());
-            $this->applyTransforms();
-            $this->index->setPrepared(true);
+            $this->prepareIndex();
         }
-
         return $this->index;
     }
 
