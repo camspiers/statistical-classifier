@@ -1,4 +1,4 @@
-# Statistical Classifier
+# PHP Statistical Classifier
 
 [![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
 
