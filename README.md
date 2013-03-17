@@ -37,7 +37,7 @@ A classifier is built using the following component types:
 ### For command-line use
 
     $ composer create-project camspiers/statistical-classifier .
-    $ ln -s $PWD/bin/statistical-classifier /usr/local/bin/classifier
+    $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
 
 ## Dependancy injection (Symfony)
 
@@ -83,7 +83,7 @@ $c = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\Index\Index;
-// This sets the data source to the soon created classifier using a synthetic symfony service
+// This sets the index to the soon created classifier using a synthetic symfony service
 $c->set(
     'index.index',
     new Index(
