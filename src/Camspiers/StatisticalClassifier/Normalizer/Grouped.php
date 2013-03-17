@@ -28,6 +28,7 @@ class Grouped implements NormalizerInterface
         foreach ($this->normalizers as $normalizer) {
             $tokens = $normalizer->normalize($tokens);
         }
+
         return $tokens;
     }
 }

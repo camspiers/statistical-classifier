@@ -10,11 +10,11 @@ use Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExt
 use Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass;
 
 SharedContainerFactory::addExtension(
-	new StatisticalClassifierExtension()
+    new StatisticalClassifierExtension()
 );
 
 SharedContainerFactory::addCompilerPass(
-	new CommandCompilerPass()
+    new CommandCompilerPass()
 );
 
 $c = SharedContainerFactory::createContainer(
@@ -24,7 +24,7 @@ $c = SharedContainerFactory::createContainer(
 $c->loadFromExtension('statistical_classifier');
 
 SharedContainerFactory::dumpContainer(
-	$c,
+    $c,
     'StatisticalClassifierServiceContainer',
     $root . '/config/'
 );

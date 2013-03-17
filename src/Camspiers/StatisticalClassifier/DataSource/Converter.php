@@ -4,7 +4,6 @@ namespace Camspiers\StatisticalClassifier\DataSource;
 
 class Converter
 {
-
     private $from;
     private $to;
 
@@ -26,5 +25,4 @@ class Converter
 
         $this->to->write();
     }
-
 }

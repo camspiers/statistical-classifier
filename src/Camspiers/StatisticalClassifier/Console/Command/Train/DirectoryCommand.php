@@ -8,9 +8,7 @@ use Symfony\Component\Console\Output;
 use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
 
 use Camspiers\StatisticalClassifier\DataSource\Grouped;
-use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\DataSource\Directory;
-use Camspiers\StatisticalClassifier\Index\CachedIndex;
 
 class DirectoryCommand extends CacheableCommand
 {

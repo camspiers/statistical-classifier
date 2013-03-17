@@ -7,8 +7,6 @@ use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
 
-use Camspiers\StatisticalClassifier\DataSource\DataArray;
-
 class ClassifyCommand extends CacheableCommand
 {
     protected function configure()

@@ -6,8 +6,6 @@ use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
-use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Index\CachedIndex;
 
 class DocumentCommand extends CacheableCommand
 {

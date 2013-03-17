@@ -2,7 +2,6 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
 use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
 use Camspiers\StatisticalClassifier\Transform;

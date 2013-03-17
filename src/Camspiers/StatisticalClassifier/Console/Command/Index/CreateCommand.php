@@ -5,8 +5,6 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Index;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use CacheCache\Cache;
-
 use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
 
 class CreateCommand extends CacheableCommand
