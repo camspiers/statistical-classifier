@@ -128,6 +128,52 @@ Arguments:
  directory             The directory to train on
 ```
 
+*train:pdo*
+
+```
+Usage:
+ train:pdo index category column query dsn [username] [password]
+
+Arguments:
+ index                 Name of index
+ category              Which category this data is
+ column                Which column to select
+ query                 The query to run
+ dsn                   The dsn to use
+ username              The username to use
+ password              The password to use
+```
+
+*index:create*
+
+```
+Usage:
+ index:create index
+
+Arguments:
+ index                 Name of index
+```
+
+*index:remove*
+
+```
+Usage:
+ index:remove index
+
+Arguments:
+ index                 Name of index
+```
+
+*index:prepare*
+
+```
+Usage:
+ index:prepare index
+
+Arguments:
+ index                 Name of index
+```
+
 *classify*
 
 ```
