@@ -44,7 +44,7 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
 ## Usage
 ### From within external PHP code
-#### Building your own
+#### Without Symfony Dependency Injection
 
 ```php
 <?php
@@ -71,7 +71,7 @@ $c = new Classifier\NaiveBayes(
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-#### Using the service container provided
+#### With Symfony Dependency Injection
 
 ```php
 <?php
