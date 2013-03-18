@@ -32,18 +32,301 @@
       <section>
         <div id="title">
           <h1>PHP Statistical Classifier</h1>
-          <p>A PHP implementation of a Naive Bayes statistical classifier, including a structure for building other classifiers, multiple data sources and multiple caching backends.</p>
+          <p>A PHP implementation of a Naive Bayes statistical classifier, including a structure for building other classifier, multiple data sources and multiple caching backends.</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/camspiers">camspiers</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
         </div>
 
-        <h3><a href="docs/">Documentation</a></h3>
+        <h1>PHP Statistical Classifier</h1>
 
+<p><a href="https://travis-ci.org/camspiers/statistical-classifier"><img src="https://travis-ci.org/camspiers/statistical-classifier.png?branch=master" alt="Build Status"></a></p>
+
+<p><strong>This project is a work in progress</strong></p>
+
+<p>Currently this project is at <a href="http://semver.org/">major version 0</a> so the public API should not be considered stable.</p>
+
+<h2>What is statistical classification?</h2>
+
+<blockquote>
+<p>In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - <a href="http://en.wikipedia.org/wiki/Statistical_classification">Wikipedia - Statistical Classification</a></p>
+</blockquote>
+
+<p>This library provides a statistical classifier written entirely in PHP. The project is written with a focus on reuse and customaizability. Using dependancy injection and interfaces, all components can be easily swapped out for your own version, or entirely new classifiers can be built.</p>
+
+<p>By default a Naive Bayes classifier is provided which performs well on the <a href="http://qwone.com/%7Ejason/20Newsgroups/">20 Newsgroups Data Set</a>. This classifier was built using a paper <em><a href="resources/Tackling%20the%20Poor%20Assumptions%20of%20Naive%20Bayes%20Text%20Classifiers.pdf?raw=true">Tackling the Poor Assumptions of Naive Bayes Text Classifiers</a></em> by Jason Rennie (PDF).</p>
+
+<h2>Installation (with composer)</h2>
+
+<h3>For your application</h3>
+
+<pre><code>$ composer requre camspiers/statistical-classifier:~0.2
+</code></pre>
+
+<h3>For command-line use</h3>
+
+<pre><code>$ composer create-project camspiers/statistical-classifier .
+$ ln -s $PWD/bin/classifier /usr/local/bin/classifier
+</code></pre>
+
+<h2>Overview</h2>
+
+<p>A classifier is built using the following component types:</p>
+
+<table>
+<tr>
+<th>Component</th>
+<th>Interface</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Generic Classifier</td>
+<td>ClassifierInterface</td>
+<td>Acts as a base that other components are added to to build a classifier</td>
+</tr>
+<tr>
+<td>Data Source</td>
+<td>DataSourceInterface</td>
+<td>Multiple available, they provide the raw training data to the classifier</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>IndexInterface</td>
+<td>This stores the results of each transform and is eventually the thing that is cached</td>
+</tr>
+<tr>
+<td>Normalizer</td>
+<td>NormalizerInterface</td>
+<td>Takes an array of words and makes them more consistent, for example, lowercase, porter stemmed</td>
+</tr>
+<tr>
+<td>Tokenizer</td>
+<td>TokenizerInterface</td>
+<td>Breaks up a string into tokens</td>
+</tr>
+<tr>
+<td>Transforms</td>
+<td>TransformInterface</td>
+<td>Manipulates the Index to produce data ready for a classification rule</td>
+</tr>
+<tr>
+<td>Classification rule</td>
+<td>ClassificationRuleInterface</td>
+<td>Uses the index prepared by the transforms and the data source to classify a document</td>
+</tr>
+</table><h2>Dependancy injection (Symfony)</h2>
+
+<p>This library uses Symfony's dependancy injection component. A <a href="http://symfony.com/doc/2.1/components/dependency_injection/compilation.html">container extension</a> is provided, and a container is also provided so if you aren't already using Symfony's dependancy injection component you can still take advantage of the default services provided.</p>
+
+<h2>Usage</h2>
+
+<h3>From within external PHP code</h3>
+
+<h4>Without Symfony Dependency Injection</h4>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// Ensure composer autoloader is required</span>
+<span class="k">use</span> <span class="nx">Camspiers\StatisticalClassifier</span><span class="p">;</span>
+<span class="nv">$c</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Classifier\NaiveBayes</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Index\Index</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">DataSource\DataArray</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">'spam'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">'Some spam document'</span><span class="p">,</span>
+                    <span class="s1">'Another spam document'</span>
+                <span class="p">),</span>
+                <span class="s1">'ham'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">'Some ham document'</span><span class="p">,</span>
+                    <span class="s1">'Another ham document'</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="k">new</span> <span class="nx">Tokenizer\Word</span><span class="p">(),</span>
+    <span class="k">new</span> <span class="nx">Normalizer\Lowercase</span><span class="p">()</span>
+<span class="p">);</span>
+<span class="nv">$c</span><span class="o">-&gt;</span><span class="na">is</span><span class="p">(</span><span class="s1">'ham'</span><span class="p">,</span> <span class="s1">'Some ham document'</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="k">echo</span> <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">classify</span><span class="p">(</span><span class="s1">'Some ham document'</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span> <span class="c1">// ham</span>
+</pre></div>
+
+<h4>With Symfony Dependency Injection</h4>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// Ensure composer autoloader is required</span>
+<span class="nv">$c</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">StatisticalClassifierServiceContainer</span><span class="p">;</span>
+<span class="c1">// Using a plain data array source for simplicity</span>
+<span class="k">use</span> <span class="nx">Camspiers\StatisticalClassifier\DataSource\DataArray</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Camspiers\StatisticalClassifier\Index\Index</span><span class="p">;</span>
+<span class="c1">// This sets the index to the soon created classifier using a synthetic symfony service</span>
+<span class="nv">$c</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">'index.index'</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
+        <span class="nv">$source</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DataArray</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">'spam'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">'Some spam document'</span>
+                <span class="p">),</span>
+                <span class="s1">'ham'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">'Some ham document'</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+<span class="nv">$source</span><span class="o">-&gt;</span><span class="na">addDocument</span><span class="p">(</span><span class="s1">'spam'</span><span class="p">,</span> <span class="s1">'Another spam document'</span><span class="p">);</span>
+<span class="nv">$source</span><span class="o">-&gt;</span><span class="na">addDocument</span><span class="p">(</span><span class="s1">'ham'</span><span class="p">,</span> <span class="s1">'Another ham document'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'classifier.naive_bayes'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">classify</span><span class="p">(</span><span class="s2">"Some ham document"</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span> <span class="c1">//ham</span>
+</pre></div>
+
+<h3>Command-line executable</h3>
+
+<h4>Commands</h4>
+
+<p><em>train:document</em></p>
+
+<pre><code>Usage:
+ train:document index category document
+
+Arguments:
+ index                 Name of index
+ category              Which category this data is
+ document              The document to train on
+</code></pre>
+
+<p><em>train:directory</em></p>
+
+<pre><code>Usage:
+ train:directory [-i|--include[="..."]] index directory
+
+Arguments:
+ index                 Name of index
+ directory             The directory to train on
+</code></pre>
+
+<p><em>train:pdo</em></p>
+
+<pre><code>Usage:
+ train:pdo index category column query dsn [username] [password]
+
+Arguments:
+ index                 Name of index
+ category              Which category this data is
+ column                Which column to select
+ query                 The query to run
+ dsn                   The dsn to use
+ username              The username to use
+ password              The password to use
+</code></pre>
+
+<p><em>index:create</em></p>
+
+<pre><code>Usage:
+ index:create index
+
+Arguments:
+ index                 Name of index
+</code></pre>
+
+<p><em>index:remove</em></p>
+
+<pre><code>Usage:
+ index:remove index
+
+Arguments:
+ index                 Name of index
+</code></pre>
+
+<p><em>index:prepare</em></p>
+
+<pre><code>Usage:
+ index:prepare index
+
+Arguments:
+ index                 Name of index
+</code></pre>
+
+<p><em>classify</em></p>
+
+<pre><code>Usage:
+ classify index document
+
+Arguments:
+ index                 Name of index
+ document              The document to classify
+</code></pre>
+
+<h4>Example</h4>
+
+<div class="highlight"><pre><span class="nv">$ </span>classifier train:document MyIndexName spam <span class="s2">"This is some spam"</span>
+<span class="nv">$ </span>classifier train:document MyIndexName ham <span class="s2">"This is some ham"</span>
+<span class="nv">$ </span>classifier classify MyIndexName <span class="s2">"Some spam"</span>
+</pre></div>
+
+<h2>Unit testing</h2>
+
+<pre><code>statistical-classifier/ $ composer install --dev
+statistical-classifier/ $ vendor/bin/phpunit
+</code></pre>
+
+<h2>Internals</h2>
+
+<h3>Classifiers</h3>
+
+<ul>
+<li>Generic Classifier</li>
+<li>Naive Bayes Classifier</li>
+</ul><h3>Data Sources</h3>
+
+<ul>
+<li>DataArray</li>
+<li>Directory</li>
+<li>Json</li>
+<li>PDO</li>
+<li>PDOQuery</li>
+<li>Serialized</li>
+</ul><h3>Index</h3>
+
+<ul>
+<li>Index</li>
+<li>CachedIndex</li>
+</ul><h3>Normalizers</h3>
+
+<ul>
+<li>Lowercase</li>
+<li>Porter</li>
+<li>Stopword</li>
+</ul><h3>Tokenizers</h3>
+
+<ul>
+<li>Word</li>
+</ul><h3>Tranforms</h3>
+
+<ul>
+<li>Complement</li>
+<li>DC</li>
+<li>DL</li>
+<li>DocumentTokenCounts</li>
+<li>DocumentTokenSums</li>
+<li>IDF</li>
+<li>Prune</li>
+<li>TAC</li>
+<li>TBC</li>
+<li>TCBD</li>
+<li>TF</li>
+<li>TFIDF</li>
+<li>TFThreaded</li>
+<li>TransformInterface</li>
+<li>Weight</li>
+<li>WeightNormalization</li>
+</ul><h3>Classification Rules</h3>
+
+<ul>
+<li>NaiveBayes</li>
+</ul>
       </section>
 
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-
+    
   </body>
 </html>
