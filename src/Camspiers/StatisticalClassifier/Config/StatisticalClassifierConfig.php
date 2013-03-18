@@ -14,6 +14,10 @@ namespace Camspiers\StatisticalClassifier\Config;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class StatisticalClassifierConfig implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()

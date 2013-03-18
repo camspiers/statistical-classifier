@@ -15,6 +15,10 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class CommandCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)

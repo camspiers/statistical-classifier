@@ -16,6 +16,10 @@ use CacheCache\Cache;
 
 use Camspiers\StatisticalClassifier\Index\CachedIndex;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 abstract class CacheableCommand extends Command
 {
     protected $cache;

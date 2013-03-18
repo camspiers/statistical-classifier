@@ -15,6 +15,10 @@ use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 use Camspiers\StatisticalClassifier\Classifier\TokenCountByDocumentInterface;
 use RuntimeException;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 // class TFThreaded implements TransformInterface
 // {
 

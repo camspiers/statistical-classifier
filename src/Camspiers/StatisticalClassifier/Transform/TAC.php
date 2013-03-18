@@ -13,6 +13,10 @@ namespace Camspiers\StatisticalClassifier\Transform;
 
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class TAC implements TransformInterface
 {
     const PARTITION_NAME = 'token_appearance_count';

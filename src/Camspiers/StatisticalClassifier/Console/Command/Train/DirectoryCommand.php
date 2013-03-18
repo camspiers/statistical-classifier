@@ -19,6 +19,10 @@ use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
 use Camspiers\StatisticalClassifier\DataSource\Grouped;
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class DirectoryCommand extends CacheableCommand
 {
     protected function configure()

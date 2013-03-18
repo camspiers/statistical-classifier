@@ -16,6 +16,10 @@ use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class DocumentCommand extends CacheableCommand
 {
     protected function configure()

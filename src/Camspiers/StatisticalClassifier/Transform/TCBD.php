@@ -15,6 +15,10 @@ use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
 use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class TCBD implements TransformInterface
 {
     const PARTITION_NAME = 'token_count_by_document';

@@ -14,6 +14,10 @@ namespace Camspiers\StatisticalClassifier\Index;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use CacheCache\Cache;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class CachedIndex extends Index
 {
     private $indexName;

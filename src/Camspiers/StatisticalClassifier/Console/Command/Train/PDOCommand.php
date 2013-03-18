@@ -22,6 +22,10 @@ use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
 
 use PDO as BasePDO;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class PDOCommand extends CacheableCommand
 {
     protected function configure()

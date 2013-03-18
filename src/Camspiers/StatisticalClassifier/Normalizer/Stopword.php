@@ -11,6 +11,10 @@
 
 namespace Camspiers\StatisticalClassifier\Normalizer;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class Stopword implements NormalizerInterface
 {
     protected $stopwords;

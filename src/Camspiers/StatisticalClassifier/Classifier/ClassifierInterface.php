@@ -18,6 +18,7 @@ use Camspiers\StatisticalClassifier\Transform\TransformInterface;
  * Implementing classes are classifiers capable of classifying documents into categories
  *
  * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
  */
 interface ClassifierInterface
 {

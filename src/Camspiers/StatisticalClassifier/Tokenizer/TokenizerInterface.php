@@ -11,6 +11,10 @@
 
 namespace Camspiers\StatisticalClassifier\Tokenizer;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 interface TokenizerInterface
 {
     public function tokenize($document);

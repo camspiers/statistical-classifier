@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-phpdoc -d src/ -t docs/ --title="PHP Statistical Classifier"
+phpdoc -d src/ -t docs/ --title="PHP Statistical Classifier" --defaultpackagename="Statistical Classifier"

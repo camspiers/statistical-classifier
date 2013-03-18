@@ -13,6 +13,10 @@ namespace Camspiers\StatisticalClassifier\Transform;
 
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class DocumentTokenSums implements TransformInterface
 {
     const PARTITION_NAME = 'document_token_sums';

@@ -14,13 +14,17 @@ namespace Camspiers\StatisticalClassifier\Console;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class Application extends BaseApplication
 {
     protected $container;
 
     public function __construct()
     {
-        parent::__construct('Statistical Classifier', '0.2.0');
+        parent::__construct('Statistical Classifier', '0.2.1');
     }
 
     public function setContainer(ContainerInterface $container)

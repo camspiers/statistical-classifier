@@ -22,6 +22,7 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
  *
  * This classifier is based off *Tackling the Poor Assumptions of Naive Bayes Text Classifiers* by Jason Rennie
  * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
  */
 class NaiveBayes extends GenericClassifier
 {

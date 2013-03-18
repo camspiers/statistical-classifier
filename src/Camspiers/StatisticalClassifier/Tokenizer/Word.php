@@ -11,6 +11,10 @@
 
 namespace Camspiers\StatisticalClassifier\Tokenizer;
 
+/**
+ * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
+ */
 class Word implements TokenizerInterface
 {
     public function tokenize($document)

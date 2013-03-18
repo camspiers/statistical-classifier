@@ -18,6 +18,7 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
  * Classes of this type are injected into the constructor of a classifier
  *
  * @author Cam Spiers <camspiers@gmail.com>
+ * @package Statistical Classifier
  */
 interface ClassificationRuleInterface
 {
