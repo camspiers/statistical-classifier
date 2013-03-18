@@ -1,0 +1,1822 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHP Statistical Classifier</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="css/template.css" rel="stylesheet" media="all">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="js/bootstrap.js" type="text/javascript"></script><script src="js/template.js" type="text/javascript"></script><script src="js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">PHP Statistical Classifier</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">203</span></a></li>
+<li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4"><ul class="side-nav nav nav-list">
+<li class="nav-header">Filter type</li>
+<li><div class="btn-group type-filter" data-toggle="buttons-checkbox">
+<button class="btn critical">Critical</button><button class="btn error">Error</button><button class="btn notice">Notice</button>
+</div></li>
+<li class="nav-header">Navigation</li>
+<li><a href="#Classifier/GenericClassifier.php"><i class="icon-file"></i>Classifier/GenericClassifier.php</a></li>
+<li><a href="#Config/DataSourceConfiguration.php"><i class="icon-file"></i>Config/DataSourceConfiguration.php</a></li>
+<li><a href="#Config/StatisticalClassifierConfig.php"><i class="icon-file"></i>Config/StatisticalClassifierConfig.php</a></li>
+<li><a href="#Console/Application.php"><i class="icon-file"></i>Console/Application.php</a></li>
+<li><a href="#Console/Command/CacheableCommand.php"><i class="icon-file"></i>Console/Command/CacheableCommand.php</a></li>
+<li><a href="#Console/Command/ClassifyCommand.php"><i class="icon-file"></i>Console/Command/ClassifyCommand.php</a></li>
+<li><a href="#Console/Command/Index/CreateCommand.php"><i class="icon-file"></i>Console/Command/Index/CreateCommand.php</a></li>
+<li><a href="#Console/Command/Index/PrepareCommand.php"><i class="icon-file"></i>Console/Command/Index/PrepareCommand.php</a></li>
+<li><a href="#Console/Command/Index/RemoveCommand.php"><i class="icon-file"></i>Console/Command/Index/RemoveCommand.php</a></li>
+<li><a href="#Console/Command/Test/PDOCommand.php"><i class="icon-file"></i>Console/Command/Test/PDOCommand.php</a></li>
+<li><a href="#Console/Command/Train/DirectoryCommand.php"><i class="icon-file"></i>Console/Command/Train/DirectoryCommand.php</a></li>
+<li><a href="#Console/Command/Train/DocumentCommand.php"><i class="icon-file"></i>Console/Command/Train/DocumentCommand.php</a></li>
+<li><a href="#Console/Command/Train/PDOCommand.php"><i class="icon-file"></i>Console/Command/Train/PDOCommand.php</a></li>
+<li><a href="#DataSource/Converter.php"><i class="icon-file"></i>DataSource/Converter.php</a></li>
+<li><a href="#DataSource/DataArray.php"><i class="icon-file"></i>DataSource/DataArray.php</a></li>
+<li><a href="#DataSource/DataSourceInterface.php"><i class="icon-file"></i>DataSource/DataSourceInterface.php</a></li>
+<li><a href="#DataSource/Directory.php"><i class="icon-file"></i>DataSource/Directory.php</a></li>
+<li><a href="#DataSource/Grouped.php"><i class="icon-file"></i>DataSource/Grouped.php</a></li>
+<li><a href="#DataSource/Json.php"><i class="icon-file"></i>DataSource/Json.php</a></li>
+<li><a href="#DataSource/PDO.php"><i class="icon-file"></i>DataSource/PDO.php</a></li>
+<li><a href="#DataSource/PDOQuery.php"><i class="icon-file"></i>DataSource/PDOQuery.php</a></li>
+<li><a href="#DataSource/Serialized.php"><i class="icon-file"></i>DataSource/Serialized.php</a></li>
+<li><a href="#DependencyInjection/CommandCompilerPass.php"><i class="icon-file"></i>DependencyInjection/CommandCompilerPass.php</a></li>
+<li><a href="#DependencyInjection/StatisticalClassifierExtension.php"><i class="icon-file"></i>DependencyInjection/StatisticalClassifierExtension.php</a></li>
+<li><a href="#Index/CachedIndex.php"><i class="icon-file"></i>Index/CachedIndex.php</a></li>
+<li><a href="#Index/Index.php"><i class="icon-file"></i>Index/Index.php</a></li>
+<li><a href="#Index/IndexInterface.php"><i class="icon-file"></i>Index/IndexInterface.php</a></li>
+<li><a href="#Normalizer/Grouped.php"><i class="icon-file"></i>Normalizer/Grouped.php</a></li>
+<li><a href="#Normalizer/Lowercase.php"><i class="icon-file"></i>Normalizer/Lowercase.php</a></li>
+<li><a href="#Normalizer/NormalizerInterface.php"><i class="icon-file"></i>Normalizer/NormalizerInterface.php</a></li>
+<li><a href="#Normalizer/Porter.php"><i class="icon-file"></i>Normalizer/Porter.php</a></li>
+<li><a href="#Normalizer/Stopword.php"><i class="icon-file"></i>Normalizer/Stopword.php</a></li>
+<li><a href="#Tokenizer/TokenizerInterface.php"><i class="icon-file"></i>Tokenizer/TokenizerInterface.php</a></li>
+<li><a href="#Tokenizer/Word.php"><i class="icon-file"></i>Tokenizer/Word.php</a></li>
+<li><a href="#Transform/Complement.php"><i class="icon-file"></i>Transform/Complement.php</a></li>
+<li><a href="#Transform/DC.php"><i class="icon-file"></i>Transform/DC.php</a></li>
+<li><a href="#Transform/DL.php"><i class="icon-file"></i>Transform/DL.php</a></li>
+<li><a href="#Transform/DocumentTokenCounts.php"><i class="icon-file"></i>Transform/DocumentTokenCounts.php</a></li>
+<li><a href="#Transform/DocumentTokenSums.php"><i class="icon-file"></i>Transform/DocumentTokenSums.php</a></li>
+<li><a href="#Transform/IDF.php"><i class="icon-file"></i>Transform/IDF.php</a></li>
+<li><a href="#Transform/Prune.php"><i class="icon-file"></i>Transform/Prune.php</a></li>
+<li><a href="#Transform/TAC.php"><i class="icon-file"></i>Transform/TAC.php</a></li>
+<li><a href="#Transform/TBC.php"><i class="icon-file"></i>Transform/TBC.php</a></li>
+<li><a href="#Transform/TCBD.php"><i class="icon-file"></i>Transform/TCBD.php</a></li>
+<li><a href="#Transform/TF.php"><i class="icon-file"></i>Transform/TF.php</a></li>
+<li><a href="#Transform/TFIDF.php"><i class="icon-file"></i>Transform/TFIDF.php</a></li>
+<li><a href="#Transform/TransformInterface.php"><i class="icon-file"></i>Transform/TransformInterface.php</a></li>
+<li><a href="#Transform/Weight.php"><i class="icon-file"></i>Transform/Weight.php</a></li>
+<li><a href="#Transform/WeightNormalization.php"><i class="icon-file"></i>Transform/WeightNormalization.php</a></li>
+</ul></div>
+<div class="span8">
+<ul class="breadcrumb">
+<li>
+<a href=""><i class="icon-remove-sign"></i></a><span class="divider">\</span>
+</li>
+<li>Compilation Errors</li>
+</ul>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="Classifier/GenericClassifier.php" id="Classifier/GenericClassifier.php"></a><h3>
+<i class="icon-file"></i>Classifier/GenericClassifier.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>77</td>
+<td>Argument $category is missing from the Docblock of is()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>77</td>
+<td>Argument $document is missing from the Docblock of is()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>88</td>
+<td>Argument $transforms is missing from the Docblock of setTransforms()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>100</td>
+<td>Argument $transform is missing from the Docblock of addTransform()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>138</td>
+<td>Argument $document is missing from the Docblock of classify()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="Config/DataSourceConfiguration.php" id="Config/DataSourceConfiguration.php"></a><h3>
+<i class="icon-file"></i>Config/DataSourceConfiguration.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method getConfigTreeBuilder()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Config/StatisticalClassifierConfig.php" id="Config/StatisticalClassifierConfig.php"></a><h3>
+<i class="icon-file"></i>Config/StatisticalClassifierConfig.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method getConfigTreeBuilder()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Application.php" id="Console/Application.php"></a><h3>
+<i class="icon-file"></i>Console/Application.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Application</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for property $container</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No DocBlock was found for method setContainer()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method getContainer()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/CacheableCommand.php" id="Console/Command/CacheableCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/CacheableCommand.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for property $cache</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>27</td>
+<td>No DocBlock was found for method setCache()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>32</td>
+<td>No DocBlock was found for method getCachedIndex()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/ClassifyCommand.php" id="Console/Command/ClassifyCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/ClassifyCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>42</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Index/CreateCommand.php" id="Console/Command/Index/CreateCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Index/CreateCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Index/PrepareCommand.php" id="Console/Command/Index/PrepareCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Index/PrepareCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Index/RemoveCommand.php" id="Console/Command/Index/RemoveCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Index/RemoveCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Test/PDOCommand.php" id="Console/Command/Test/PDOCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Test/PDOCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>24</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>72</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Train/DirectoryCommand.php" id="Console/Command/Train/DirectoryCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Train/DirectoryCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>22</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>51</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Train/DocumentCommand.php" id="Console/Command/Train/DocumentCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Train/DocumentCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>47</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Train/PDOCommand.php" id="Console/Command/Train/PDOCommand.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Train/PDOCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>25</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>73</td>
+<td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/Converter.php" id="DataSource/Converter.php"></a><h3>
+<i class="icon-file"></i>DataSource/Converter.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Converter</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $from</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>21</td>
+<td>No DocBlock was found for property $to</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>No DocBlock was found for method run()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/DataArray.php" id="DataSource/DataArray.php"></a><h3>
+<i class="icon-file"></i>DataSource/DataArray.php<small style="float: right;padding-right: 10px;">13</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\DataArray</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for property $data</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>32</td>
+<td>No DocBlock was found for method getCategories()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method hasCategory()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>42</td>
+<td>No DocBlock was found for method addCategory()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>47</td>
+<td>No DocBlock was found for method addDocument()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>61</td>
+<td>No DocBlock was found for method getDocumentCountByCategory()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>66</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>71</td>
+<td>No DocBlock was found for method getData()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>76</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>81</td>
+<td>No DocBlock was found for method serialize()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>86</td>
+<td>No DocBlock was found for method unserialize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/DataSourceInterface.php" id="DataSource/DataSourceInterface.php"></a><h3>
+<i class="icon-file"></i>DataSource/DataSourceInterface.php<small style="float: right;padding-right: 10px;">7</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>21</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method getData()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method getCategories()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method hasCategory()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method addCategory()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method addDocument()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/Directory.php" id="DataSource/Directory.php"></a><h3>
+<i class="icon-file"></i>DataSource/Directory.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Directory</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $directory</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>21</td>
+<td>No DocBlock was found for property $include</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>59</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/Grouped.php" id="DataSource/Grouped.php"></a><h3>
+<i class="icon-file"></i>DataSource/Grouped.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Grouped</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $dataSources</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>40</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/Json.php" id="DataSource/Json.php"></a><h3>
+<i class="icon-file"></i>DataSource/Json.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Json</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $filename</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>40</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/PDO.php" id="DataSource/PDO.php"></a><h3>
+<i class="icon-file"></i>DataSource/PDO.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\PDO</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $queries</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/PDOQuery.php" id="DataSource/PDOQuery.php"></a><h3>
+<i class="icon-file"></i>DataSource/PDOQuery.php<small style="float: right;padding-right: 10px;">8</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\PDOQuery</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for property $pdo</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for property $category</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $query</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for property $documentColumn</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>27</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>39</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>51</td>
+<td>No DocBlock was found for method getCategory()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DataSource/Serialized.php" id="DataSource/Serialized.php"></a><h3>
+<i class="icon-file"></i>DataSource/Serialized.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Serialized</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $filename</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method getData()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>49</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DependencyInjection/CommandCompilerPass.php" id="DependencyInjection/CommandCompilerPass.php"></a><h3>
+<i class="icon-file"></i>DependencyInjection/CommandCompilerPass.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>18</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method process()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="DependencyInjection/StatisticalClassifierExtension.php" id="DependencyInjection/StatisticalClassifierExtension.php"></a><h3>
+<i class="icon-file"></i>DependencyInjection/StatisticalClassifierExtension.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method load()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Index/CachedIndex.php" id="Index/CachedIndex.php"></a><h3>
+<i class="icon-file"></i>Index/CachedIndex.php<small style="float: right;padding-right: 10px;">7</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Index\CachedIndex</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for property $indexName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $cache</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>37</td>
+<td>No DocBlock was found for method setPrepared()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>45</td>
+<td>No DocBlock was found for method preserve()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>57</td>
+<td>No DocBlock was found for method restore()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Index/Index.php" id="Index/Index.php"></a><h3>
+<i class="icon-file"></i>Index/Index.php<small style="float: right;padding-right: 10px;">13</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>19</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Index\Index</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for property $prepared</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for property $dataSource</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>27</td>
+<td>No DocBlock was found for property $partitions</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>34</td>
+<td>No DocBlock was found for method isPrepared()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>39</td>
+<td>No DocBlock was found for method setPrepared()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>44</td>
+<td>No DocBlock was found for method setDataSource()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>49</td>
+<td>No DocBlock was found for method getDataSource()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
+<td>No DocBlock was found for method getPartition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>63</td>
+<td>No DocBlock was found for method setPartition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>68</td>
+<td>No DocBlock was found for method removePartition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>75</td>
+<td>No DocBlock was found for method getPartitions()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Index/IndexInterface.php" id="Index/IndexInterface.php"></a><h3>
+<i class="icon-file"></i>Index/IndexInterface.php<small style="float: right;padding-right: 10px;">7</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method isPrepared()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method setDataSource()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method getDataSource()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method getPartition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method setPartition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>27</td>
+<td>No DocBlock was found for method removePartition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method getPartitions()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Normalizer/Grouped.php" id="Normalizer/Grouped.php"></a><h3>
+<i class="icon-file"></i>Normalizer/Grouped.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Normalizer\Grouped</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for property $normalizers</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>34</td>
+<td>No DocBlock was found for method addNormalizer()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>39</td>
+<td>No DocBlock was found for method normalize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Normalizer/Lowercase.php" id="Normalizer/Lowercase.php"></a><h3>
+<i class="icon-file"></i>Normalizer/Lowercase.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Normalizer\Lowercase</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method normalize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Normalizer/NormalizerInterface.php" id="Normalizer/NormalizerInterface.php"></a><h3>
+<i class="icon-file"></i>Normalizer/NormalizerInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method normalize()</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Normalizer/Porter.php" id="Normalizer/Porter.php"></a><h3>
+<i class="icon-file"></i>Normalizer/Porter.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Normalizer\Porter</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method normalize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Normalizer/Stopword.php" id="Normalizer/Stopword.php"></a><h3>
+<i class="icon-file"></i>Normalizer/Stopword.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Normalizer\Stopword</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $stopwords</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>27</td>
+<td>No DocBlock was found for method normalize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Tokenizer/TokenizerInterface.php" id="Tokenizer/TokenizerInterface.php"></a><h3>
+<i class="icon-file"></i>Tokenizer/TokenizerInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method tokenize()</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Tokenizer/Word.php" id="Tokenizer/Word.php"></a><h3>
+<i class="icon-file"></i>Tokenizer/Word.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Tokenizer\Word</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method tokenize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/Complement.php" id="Transform/Complement.php"></a><h3>
+<i class="icon-file"></i>Transform/Complement.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\Complement</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/DC.php" id="Transform/DC.php"></a><h3>
+<i class="icon-file"></i>Transform/DC.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\DC</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/DL.php" id="Transform/DL.php"></a><h3>
+<i class="icon-file"></i>Transform/DL.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\DL</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/DocumentTokenCounts.php" id="Transform/DocumentTokenCounts.php"></a><h3>
+<i class="icon-file"></i>Transform/DocumentTokenCounts.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\DocumentTokenCounts</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/DocumentTokenSums.php" id="Transform/DocumentTokenSums.php"></a><h3>
+<i class="icon-file"></i>Transform/DocumentTokenSums.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\DocumentTokenSums</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/IDF.php" id="Transform/IDF.php"></a><h3>
+<i class="icon-file"></i>Transform/IDF.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\IDF</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for property $documentCountPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for property $tokenAppreanceCountPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>39</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/Prune.php" id="Transform/Prune.php"></a><h3>
+<i class="icon-file"></i>Transform/Prune.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\Prune</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for property $exclude</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/TAC.php" id="Transform/TAC.php"></a><h3>
+<i class="icon-file"></i>Transform/TAC.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\TAC</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/TBC.php" id="Transform/TBC.php"></a><h3>
+<i class="icon-file"></i>Transform/TBC.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\TBC</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/TCBD.php" id="Transform/TCBD.php"></a><h3>
+<i class="icon-file"></i>Transform/TCBD.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>18</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\TCBD</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>34</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/TF.php" id="Transform/TF.php"></a><h3>
+<i class="icon-file"></i>Transform/TF.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\TF</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/TFIDF.php" id="Transform/TFIDF.php"></a><h3>
+<i class="icon-file"></i>Transform/TFIDF.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\TFIDF</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="Transform/TransformInterface.php" id="Transform/TransformInterface.php"></a><h3>
+<i class="icon-file"></i>Transform/TransformInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for method apply()</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/Weight.php" id="Transform/Weight.php"></a><h3>
+<i class="icon-file"></i>Transform/Weight.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\Weight</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Transform/WeightNormalization.php" id="Transform/WeightNormalization.php"></a><h3>
+<i class="icon-file"></i>Transform/WeightNormalization.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Transform\WeightNormalization</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>26</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-03-18T22:00:30+13:00.<br></footer></div>
+</div>
+</body>
+</html>

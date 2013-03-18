@@ -1,0 +1,2994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="PHP Statistical Classifier">
+  <file path="ClassificationRule/ClassificationRuleInterface.php" hash="3b59938644bb7f970814bbd184ccec47" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\ClassificationRule" line="23" package="Statistical Classifier">
+      <name>ClassificationRuleInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</full_name>
+      <docblock line="16">
+        <description>Provides an interface for classification rule.</description>
+        <long-description>&lt;p&gt;Classes of this type are injected into the constructor of a classifier&lt;/p&gt;</long-description>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\ClassificationRule" line="31" package="Statistical Classifier">
+        <name>classify</name>
+        <full_name>classify</full_name>
+        <docblock line="25">
+          <description>Classifies a document against an index</description>
+          <long-description/>
+          <tag line="25" name="param" description="The Index to classify against" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+          </tag>
+          <tag line="25" name="param" description="The document to classify" type="string" variable="$document">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="25" name="return" description="The category of the document" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+        <argument line="31">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </interface>
+  </file>
+  <file path="ClassificationRule/NaiveBayes.php" hash="ee101eca20de8dc6e55ae342746ce872" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\ClassificationRule" line="22" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</implements>
+      <name>NaiveBayes</name>
+      <full_name>\Camspiers\StatisticalClassifier\ClassificationRule\NaiveBayes</full_name>
+      <docblock line="16">
+        <description>The classification rule for the NaiveBayes classifier</description>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="27" namespace="Camspiers\StatisticalClassifier\ClassificationRule" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+        <docblock line="24">
+          <description>The name of the location of the data in the index</description>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\ClassificationRule" line="32" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="28">
+          <description>Create the classification rule</description>
+          <long-description/>
+          <tag line="28" name="param" description="The name of the location of the data in the index" type="string" variable="$dataPartitionName">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="32">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\ClassificationRule" line="42" package="Statistical Classifier">
+        <name>classify</name>
+        <full_name>classify</full_name>
+        <docblock line="36">
+          <description>Classifies a document against an index</description>
+          <long-description/>
+          <tag line="36" name="param" description="The Index to classify against" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+          </tag>
+          <tag line="36" name="param" description="The document to classify" type="string" variable="$document">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="36" name="return" description="The category of the document" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="42">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+        <argument line="42">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Classifier/ClassifierInterface.php" hash="3e236ebd560b1bb8d960121b3f70a6cb" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\Classifier" line="23" package="Statistical Classifier">
+      <name>ClassifierInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</full_name>
+      <docblock line="16">
+        <description>Provides an interface for classifier.</description>
+        <long-description>&lt;p&gt;Implementing classes are classifiers capable of classifying documents into categories&lt;/p&gt;</long-description>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="31" package="Statistical Classifier">
+        <name>is</name>
+        <full_name>is</full_name>
+        <docblock line="25">
+          <description>Returns whether or not the document is of the category</description>
+          <long-description/>
+          <tag line="25" name="param" description="The category in question" type="string" variable="$category">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="25" name="param" description="The document to check" type="string" variable="$document">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="25" name="return" description="Whether or not the document is in the category" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="31">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="37" package="Statistical Classifier">
+        <name>classify</name>
+        <full_name>classify</full_name>
+        <docblock line="32">
+          <description>Classify the document and return its category</description>
+          <long-description/>
+          <tag line="32" name="param" description="The document to classify" type="string" variable="$document">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="32" name="return" description="The category of the document" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="37">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="42" package="Statistical Classifier">
+        <name>prepareIndex</name>
+        <full_name>prepareIndex</full_name>
+        <docblock line="38">
+          <description>Builds the index from the data source by applying transforms to the data source</description>
+          <long-description/>
+          <tag line="38" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="48" package="Statistical Classifier">
+        <name>addTransform</name>
+        <full_name>addTransform</full_name>
+        <docblock line="43">
+          <description>Add a transform to be applied to the source data to achieve classification</description>
+          <long-description/>
+          <tag line="43" name="param" description="The transform to add" type="\Camspiers\StatisticalClassifier\Transform\TransformInterface" variable="$transform">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Transform\TransformInterface</type>
+          </tag>
+          <tag line="43" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="48">
+          <name>$transform</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Transform\TransformInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="54" package="Statistical Classifier">
+        <name>setTransforms</name>
+        <full_name>setTransforms</full_name>
+        <docblock line="49">
+          <description>Set an array of transform to be applied to the source data to achieve classification</description>
+          <long-description/>
+          <tag line="49" name="param" description="The transforms to add" type="array" variable="$transforms">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="49" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="54">
+          <name>$transforms</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </interface>
+  </file>
+  <file path="Classifier/GenericClassifier.php" hash="a03ffe6582cd6c6a06f5f02009c362a1" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Classifier" line="27" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</implements>
+      <name>GenericClassifier</name>
+      <full_name>\Camspiers\StatisticalClassifier\Classifier\GenericClassifier</full_name>
+      <docblock line="22">
+        <description>A generic classifier which can be used to built a classifier given a number of injected components</description>
+        <long-description/>
+        <tag line="22" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="22" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="33" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
+        <name>$tokenizer</name>
+        <default/>
+        <docblock line="29">
+          <description>Tokenizer (the way of breaking up documents)</description>
+          <long-description/>
+          <tag line="29" name="var" description="" type="\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="38" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
+        <name>$normalizer</name>
+        <default/>
+        <docblock line="34">
+          <description>Take tokenized data and make it consistent or stem it</description>
+          <long-description/>
+          <tag line="34" name="var" description="" type="\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="43" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
+        <name>$classificationRule</name>
+        <default/>
+        <docblock line="39">
+          <description>The rule to use to classify a document</description>
+          <long-description/>
+          <tag line="39" name="var" description="" type="\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="48" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
+        <name>$index</name>
+        <default/>
+        <docblock line="44">
+          <description>The index to apply the transforms to</description>
+          <long-description/>
+          <tag line="44" name="var" description="" type="\Camspiers\StatisticalClassifier\Index\IndexInterface">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="53" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
+        <name>$transforms</name>
+        <default>array()</default>
+        <docblock line="49">
+          <description>An array of Transforms implementing TransformInterface</description>
+          <long-description/>
+          <tag line="49" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="62" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="54">
+          <description>Create the classifying using the numerous components passed in</description>
+          <long-description/>
+          <tag line="54" name="param" description="An index to modify with transforms" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+          </tag>
+          <tag line="54" name="param" description="The rule to classify the document with" type="\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface" variable="$classificationRule">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</type>
+          </tag>
+          <tag line="54" name="param" description="The tokenizer to break up the documents" type="\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface" variable="$tokenizer">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
+          </tag>
+          <tag line="54" name="param" description="The normaizer to make tokens consistent" type="\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface" variable="$normalizer">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+          </tag>
+          <tag line="54" name="param" description="Ann array of transforms to modify the index" type="array" variable="$transforms">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="63">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+        <argument line="64">
+          <name>$classificationRule</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</type>
+        </argument>
+        <argument line="65">
+          <name>$tokenizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
+        </argument>
+        <argument line="66">
+          <name>$normalizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+        </argument>
+        <argument line="67">
+          <name>$transforms</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="80" package="Statistical Classifier">
+        <name>is</name>
+        <full_name>is</full_name>
+        <docblock line="77">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="80">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="80">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="91" package="Statistical Classifier">
+        <name>setTransforms</name>
+        <full_name>setTransforms</full_name>
+        <docblock line="88">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="91">
+          <name>$transforms</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="103" package="Statistical Classifier">
+        <name>addTransform</name>
+        <full_name>addTransform</full_name>
+        <docblock line="100">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="103">
+          <name>$transform</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Transform\TransformInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Classifier" line="111" package="Statistical Classifier">
+        <name>applyTransforms</name>
+        <full_name>applyTransforms</full_name>
+        <docblock line="107">
+          <description>Apply the transforms to the index</description>
+          <long-description/>
+          <tag line="107" name="return" description="[description]" type="\Camspiers\StatisticalClassifier\Classifier\[type]">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Classifier\[type]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="122" package="Statistical Classifier">
+        <name>prepareIndex</name>
+        <full_name>prepareIndex</full_name>
+        <docblock line="119">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Classifier" line="130" package="Statistical Classifier">
+        <name>preparedIndex</name>
+        <full_name>preparedIndex</full_name>
+        <docblock line="127">
+          <description>Return an index which has been prepared for classification</description>
+          <long-description/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="141" package="Statistical Classifier">
+        <name>classify</name>
+        <full_name>classify</full_name>
+        <docblock line="138">
+          <description>{@inheritdoc}</description>
+          <long-description/>
+        </docblock>
+        <argument line="141">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="77" code="50015">Argument $category is missing from the Docblock of is()</error>
+      <error line="77" code="50015">Argument $document is missing from the Docblock of is()</error>
+      <error line="88" code="50015">Argument $transforms is missing from the Docblock of setTransforms()</error>
+      <error line="100" code="50015">Argument $transform is missing from the Docblock of addTransform()</error>
+      <error line="138" code="50015">Argument $document is missing from the Docblock of classify()</error>
+    </parse_markers>
+  </file>
+  <file path="Classifier/NaiveBayes.php" hash="51578700daf738065a057c503c5e087f" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Classifier" line="27" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Classifier\GenericClassifier</extends>
+      <name>NaiveBayes</name>
+      <full_name>\Camspiers\StatisticalClassifier\Classifier\NaiveBayes</full_name>
+      <docblock line="20">
+        <description>An implementation of a Naive Bayes classifier.</description>
+        <long-description>&lt;p&gt;This classifier is based off &lt;em&gt;Tackling the Poor Assumptions of Naive Bayes Text Classifiers&lt;/em&gt; by Jason Rennie&lt;/p&gt;</long-description>
+        <tag line="20" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="20" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="35" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="29">
+          <description>Create the Naive Bayes Classifier</description>
+          <long-description/>
+          <tag line="29" name="param" description="An index to modify with transforms" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+          </tag>
+          <tag line="29" name="param" description="The tokenizer to break up the documents" type="\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface" variable="$tokenizer">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
+          </tag>
+          <tag line="29" name="param" description="The normaizer to make tokens consistent" type="\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface" variable="$normalizer">
+            <type by_reference="false">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+          </tag>
+        </docblock>
+        <argument line="36">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+        <argument line="37">
+          <name>$tokenizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
+        </argument>
+        <argument line="38">
+          <name>$normalizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Config/DataSourceConfiguration.php" hash="2d8d684f0fb6d69d4590cbca3a72a631" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Config" line="21" package="Statistical Classifier">
+      <extends/>
+      <implements>\Symfony\Component\Config\Definition\ConfigurationInterface</implements>
+      <name>DataSourceConfiguration</name>
+      <full_name>\Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="17" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="23" package="Statistical Classifier">
+        <name>getConfigTreeBuilder</name>
+        <full_name>getConfigTreeBuilder</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</critical>
+      <error line="23" code="50010">No DocBlock was found for method getConfigTreeBuilder()</error>
+    </parse_markers>
+  </file>
+  <file path="Config/StatisticalClassifierConfig.php" hash="9a6bc11ee6291640817e6e7b06d97ee6" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Config" line="21" package="Statistical Classifier">
+      <extends/>
+      <implements>\Symfony\Component\Config\Definition\ConfigurationInterface</implements>
+      <name>StatisticalClassifierConfig</name>
+      <full_name>\Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="17" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="23" package="Statistical Classifier">
+        <name>getConfigTreeBuilder</name>
+        <full_name>getConfigTreeBuilder</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig</critical>
+      <error line="23" code="50010">No DocBlock was found for method getConfigTreeBuilder()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Application.php" hash="8e44c0245aa57217be606883cdc15502" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console" line="21" package="Statistical Classifier">
+      <extends>\Symfony\Component\Console\Application</extends>
+      <name>Application</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Application</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="17" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="23" namespace="Camspiers\StatisticalClassifier\Console" package="Statistical Classifier">
+        <name>$container</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Console" line="25" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Console" line="30" package="Statistical Classifier">
+        <name>setContainer</name>
+        <full_name>setContainer</full_name>
+        <argument line="30">
+          <name>$container</name>
+          <default/>
+          <type>\Symfony\Component\DependencyInjection\ContainerInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Console" line="37" package="Statistical Classifier">
+        <name>getContainer</name>
+        <full_name>getContainer</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Application</critical>
+      <error line="23" code="50018">No DocBlock was found for property $container</error>
+      <error line="25" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="30" code="50010">No DocBlock was found for method setContainer()</error>
+      <error line="37" code="50010">No DocBlock was found for method getContainer()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/CacheableCommand.php" hash="4293b4112b4161836e069d15699f2d8d" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="true" namespace="Camspiers\StatisticalClassifier\Console\Command" line="23" package="Statistical Classifier">
+      <extends>\Symfony\Component\Console\Command\Command</extends>
+      <name>CacheableCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="25" namespace="Camspiers\StatisticalClassifier\Console\Command" package="Statistical Classifier">
+        <name>$cache</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Console\Command" line="27" package="Statistical Classifier">
+        <name>setCache</name>
+        <full_name>setCache</full_name>
+        <argument line="27">
+          <name>$cache</name>
+          <default/>
+          <type>\CacheCache\Cache</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="32" package="Statistical Classifier">
+        <name>getCachedIndex</name>
+        <full_name>getCachedIndex</full_name>
+        <argument line="32">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</critical>
+      <error line="25" code="50018">No DocBlock was found for property $cache</error>
+      <error line="27" code="50010">No DocBlock was found for method setCache()</error>
+      <error line="32" code="50010">No DocBlock was found for method getCachedIndex()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/ClassifyCommand.php" hash="9263c534540e5acadb4bb5ab62e59773" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command" line="23" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>ClassifyCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="25" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="42" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="42">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="42">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</critical>
+      <error line="25" code="50010">No DocBlock was found for method configure()</error>
+      <error line="42" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Index/CreateCommand.php" hash="90eb9f2a8f74ac68c0e8da1da808cf54" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="23" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>CreateCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="25" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="37" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="37">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="37">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</critical>
+      <error line="25" code="50010">No DocBlock was found for method configure()</error>
+      <error line="37" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Index/PrepareCommand.php" hash="b8fd7b0905b7d49583327da05816bef7" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="23" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>PrepareCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="25" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="37" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="37">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="37">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</critical>
+      <error line="25" code="50010">No DocBlock was found for method configure()</error>
+      <error line="37" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Index/RemoveCommand.php" hash="cb75f65776900172d6c61a67fade293d" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="23" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>RemoveCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="25" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Index" line="37" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="37">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="37">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</critical>
+      <error line="25" code="50010">No DocBlock was found for method configure()</error>
+      <error line="37" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Test/PDOCommand.php" hash="569bba8610c222e89831ab77e14b96ee" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Test" line="28" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>PDOCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</full_name>
+      <docblock line="24">
+        <description/>
+        <long-description/>
+        <tag line="24" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="24" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Test" line="30" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Test" line="72" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="72">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="72">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="24" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</critical>
+      <error line="30" code="50010">No DocBlock was found for method configure()</error>
+      <error line="72" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Train/DirectoryCommand.php" hash="2344c1945a9bff6c06bc0116094d77d6" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="26" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>DirectoryCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</full_name>
+      <docblock line="22">
+        <description/>
+        <long-description/>
+        <tag line="22" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="22" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="28" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="51" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="51">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="51">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="22" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</critical>
+      <error line="28" code="50010">No DocBlock was found for method configure()</error>
+      <error line="51" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Train/DocumentCommand.php" hash="84aacaded0a534605caa744ddac52026" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="23" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>DocumentCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="25" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="47" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="47">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="47">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</critical>
+      <error line="25" code="50010">No DocBlock was found for method configure()</error>
+      <error line="47" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="Console/Command/Train/PDOCommand.php" hash="077d4ecae402c7318144e70a4a06515b" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="29" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</extends>
+      <name>PDOCommand</name>
+      <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</full_name>
+      <docblock line="25">
+        <description/>
+        <long-description/>
+        <tag line="25" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="25" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="31" package="Statistical Classifier">
+        <name>configure</name>
+        <full_name>configure</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Train" line="73" package="Statistical Classifier">
+        <name>execute</name>
+        <full_name>execute</full_name>
+        <argument line="73">
+          <name>$input</name>
+          <default/>
+          <type>\Symfony\Component\Console\Input\InputInterface</type>
+        </argument>
+        <argument line="73">
+          <name>$output</name>
+          <default/>
+          <type>\Symfony\Component\Console\Output\OutputInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="25" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</critical>
+      <error line="31" code="50010">No DocBlock was found for method configure()</error>
+      <error line="73" code="50010">No DocBlock was found for method execute()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/Converter.php" hash="13bf9c8ba94ce37ba4eaee9698d4ea34" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <extends/>
+      <name>Converter</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\Converter</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="20" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$from</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="21" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$to</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="23" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="23">
+          <name>$from</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
+        </argument>
+        <argument line="23">
+          <name>$to</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="29" package="Statistical Classifier">
+        <name>run</name>
+        <full_name>run</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\Converter</critical>
+      <error line="20" code="50018">No DocBlock was found for property $from</error>
+      <error line="21" code="50018">No DocBlock was found for property $to</error>
+      <error line="23" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="29" code="50010">No DocBlock was found for method run()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/DataArray.php" hash="47cef52538559bf7df60c054a5743a68" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="21" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</implements>
+      <implements>\Serializable</implements>
+      <name>DataArray</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\DataArray</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="17" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="23" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$data</name>
+        <default>array()</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="25" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="25">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="32" package="Statistical Classifier">
+        <name>getCategories</name>
+        <full_name>getCategories</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="37" package="Statistical Classifier">
+        <name>hasCategory</name>
+        <full_name>hasCategory</full_name>
+        <argument line="37">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="42" package="Statistical Classifier">
+        <name>addCategory</name>
+        <full_name>addCategory</full_name>
+        <argument line="42">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="47" package="Statistical Classifier">
+        <name>addDocument</name>
+        <full_name>addDocument</full_name>
+        <argument line="47">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="47">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="61" package="Statistical Classifier">
+        <name>getDocumentCountByCategory</name>
+        <full_name>getDocumentCountByCategory</full_name>
+        <argument line="61">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="66" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="71" package="Statistical Classifier">
+        <name>getData</name>
+        <full_name>getData</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="76" package="Statistical Classifier">
+        <name>write</name>
+        <full_name>write</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="81" package="Statistical Classifier">
+        <name>serialize</name>
+        <full_name>serialize</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="86" package="Statistical Classifier">
+        <name>unserialize</name>
+        <full_name>unserialize</full_name>
+        <argument line="86">
+          <name>$data</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\DataArray</critical>
+      <error line="23" code="50018">No DocBlock was found for property $data</error>
+      <error line="25" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="32" code="50010">No DocBlock was found for method getCategories()</error>
+      <error line="37" code="50010">No DocBlock was found for method hasCategory()</error>
+      <error line="42" code="50010">No DocBlock was found for method addCategory()</error>
+      <error line="47" code="50010">No DocBlock was found for method addDocument()</error>
+      <error line="61" code="50010">No DocBlock was found for method getDocumentCountByCategory()</error>
+      <error line="66" code="50010">No DocBlock was found for method read()</error>
+      <error line="71" code="50010">No DocBlock was found for method getData()</error>
+      <error line="76" code="50010">No DocBlock was found for method write()</error>
+      <error line="81" code="50010">No DocBlock was found for method serialize()</error>
+      <error line="86" code="50010">No DocBlock was found for method unserialize()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/DataSourceInterface.php" hash="5c53d772a14fca7132d3a08b23119569" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <name>DataSourceInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="20" package="Statistical Classifier">
+        <name>write</name>
+        <full_name>write</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="21" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="22" package="Statistical Classifier">
+        <name>getData</name>
+        <full_name>getData</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="23" package="Statistical Classifier">
+        <name>getCategories</name>
+        <full_name>getCategories</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="24" package="Statistical Classifier">
+        <name>hasCategory</name>
+        <full_name>hasCategory</full_name>
+        <argument line="24">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="25" package="Statistical Classifier">
+        <name>addCategory</name>
+        <full_name>addCategory</full_name>
+        <argument line="25">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="26" package="Statistical Classifier">
+        <name>addDocument</name>
+        <full_name>addDocument</full_name>
+        <argument line="26">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="26">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="20" code="50010">No DocBlock was found for method write()</error>
+      <error line="21" code="50010">No DocBlock was found for method read()</error>
+      <error line="22" code="50010">No DocBlock was found for method getData()</error>
+      <error line="23" code="50010">No DocBlock was found for method getCategories()</error>
+      <error line="24" code="50010">No DocBlock was found for method hasCategory()</error>
+      <error line="25" code="50010">No DocBlock was found for method addCategory()</error>
+      <error line="26" code="50010">No DocBlock was found for method addDocument()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/Directory.php" hash="b0d2add6100122b7dd735af28f09a8fa" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\DataSource\DataArray</extends>
+      <name>Directory</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\Directory</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="20" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$directory</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="21" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$include</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="23" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="23">
+          <name>$directory</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="23">
+          <name>$include</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="33" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="59" package="Statistical Classifier">
+        <name>write</name>
+        <full_name>write</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\Directory</critical>
+      <error line="20" code="50018">No DocBlock was found for property $directory</error>
+      <error line="21" code="50018">No DocBlock was found for property $include</error>
+      <error line="23" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="33" code="50010">No DocBlock was found for method read()</error>
+      <error line="59" code="50010">No DocBlock was found for method write()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/Grouped.php" hash="13cea64383f032046c4065b515e95229" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\DataSource\DataArray</extends>
+      <name>Grouped</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\Grouped</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="20" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$dataSources</name>
+        <default>array()</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="22" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="22">
+          <name>$dataSources</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="30" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="40" package="Statistical Classifier">
+        <name>write</name>
+        <full_name>write</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\Grouped</critical>
+      <error line="20" code="50018">No DocBlock was found for property $dataSources</error>
+      <error line="22" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="30" code="50010">No DocBlock was found for method read()</error>
+      <error line="40" code="50010">No DocBlock was found for method write()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/Json.php" hash="c4bc7d126237bd535e5fb0fbab9f1e59" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\DataSource\DataArray</extends>
+      <name>Json</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\Json</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="20" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$filename</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="22" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="22">
+          <name>$filename</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="28" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="40" package="Statistical Classifier">
+        <name>write</name>
+        <full_name>write</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\Json</critical>
+      <error line="20" code="50018">No DocBlock was found for property $filename</error>
+      <error line="22" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="28" code="50010">No DocBlock was found for method read()</error>
+      <error line="40" code="50010">No DocBlock was found for method write()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/PDO.php" hash="4f6e96c912684c24b25e4ac18cc55180" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\DataSource\DataArray</extends>
+      <name>PDO</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\PDO</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="20" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$queries</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="22" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="22">
+          <name>$queries</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="28" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\PDO</critical>
+      <error line="20" code="50018">No DocBlock was found for property $queries</error>
+      <error line="22" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="28" code="50010">No DocBlock was found for method read()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/PDOQuery.php" hash="80141b5a2decdbaeec41a7580a2d6221" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="20" package="Statistical Classifier">
+      <extends/>
+      <name>PDOQuery</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\PDOQuery</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="22" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$pdo</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="23" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$category</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$query</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="25" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$documentColumn</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="27" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="28">
+          <name>$category</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="29">
+          <name>$pdo</name>
+          <default/>
+          <type>\PDO</type>
+        </argument>
+        <argument line="30">
+          <name>$query</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$documentColumn</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="39" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="51" package="Statistical Classifier">
+        <name>getCategory</name>
+        <full_name>getCategory</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\PDOQuery</critical>
+      <error line="22" code="50018">No DocBlock was found for property $pdo</error>
+      <error line="23" code="50018">No DocBlock was found for property $category</error>
+      <error line="24" code="50018">No DocBlock was found for property $query</error>
+      <error line="25" code="50018">No DocBlock was found for property $documentColumn</error>
+      <error line="27" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="39" code="50010">No DocBlock was found for method read()</error>
+      <error line="51" code="50010">No DocBlock was found for method getCategory()</error>
+    </parse_markers>
+  </file>
+  <file path="DataSource/Serialized.php" hash="ae438e925979d10fe222845b1e693174" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="18" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\DataSource\DataArray</extends>
+      <name>Serialized</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\Serialized</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="20" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
+        <name>$filename</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="22" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="22">
+          <name>$filename</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="28" package="Statistical Classifier">
+        <name>getData</name>
+        <full_name>getData</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="37" package="Statistical Classifier">
+        <name>read</name>
+        <full_name>read</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="49" package="Statistical Classifier">
+        <name>write</name>
+        <full_name>write</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\DataSource\Serialized</critical>
+      <error line="20" code="50018">No DocBlock was found for property $filename</error>
+      <error line="22" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="28" code="50010">No DocBlock was found for method getData()</error>
+      <error line="37" code="50010">No DocBlock was found for method read()</error>
+      <error line="49" code="50010">No DocBlock was found for method write()</error>
+    </parse_markers>
+  </file>
+  <file path="DependencyInjection/CommandCompilerPass.php" hash="6fb2c6b151a22f1cb2241453f60cbe85" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="22" package="Statistical Classifier">
+      <extends/>
+      <implements>\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface</implements>
+      <name>CommandCompilerPass</name>
+      <full_name>\Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass</full_name>
+      <docblock line="18">
+        <description/>
+        <long-description/>
+        <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="18" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="24" package="Statistical Classifier">
+        <name>process</name>
+        <full_name>process</full_name>
+        <argument line="24">
+          <name>$container</name>
+          <default/>
+          <type>\Symfony\Component\DependencyInjection\ContainerBuilder</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="18" code="50005">No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass</critical>
+      <error line="24" code="50010">No DocBlock was found for method process()</error>
+    </parse_markers>
+  </file>
+  <file path="DependencyInjection/StatisticalClassifierExtension.php" hash="a075c255dfb2a54ab6a541ebee816b00" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="23" package="Statistical Classifier">
+      <extends>\Symfony\Component\DependencyInjection\Extension\Extension</extends>
+      <name>StatisticalClassifierExtension</name>
+      <full_name>\Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="25" package="Statistical Classifier">
+        <name>load</name>
+        <full_name>load</full_name>
+        <argument line="25">
+          <name>$config</name>
+          <default/>
+          <type>array</type>
+        </argument>
+        <argument line="25">
+          <name>$container</name>
+          <default/>
+          <type>\Symfony\Component\DependencyInjection\ContainerBuilder</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</critical>
+      <error line="25" code="50010">No DocBlock was found for method load()</error>
+    </parse_markers>
+  </file>
+  <file path="Index/CachedIndex.php" hash="f70eb6e689ef96af90e06ea5bc9ea846" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Index" line="21" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\Index\Index</extends>
+      <name>CachedIndex</name>
+      <full_name>\Camspiers\StatisticalClassifier\Index\CachedIndex</full_name>
+      <docblock line="17">
+        <description/>
+        <long-description/>
+        <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="17" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="23" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
+        <name>$indexName</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
+        <name>$cache</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="27">
+          <name>$indexName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="28">
+          <name>$cache</name>
+          <default/>
+          <type>\CacheCache\Cache</type>
+        </argument>
+        <argument line="29">
+          <name>$dataSource</name>
+          <default>null</default>
+          <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="37" package="Statistical Classifier">
+        <name>setPrepared</name>
+        <full_name>setPrepared</full_name>
+        <argument line="37">
+          <name>$prepared</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="45" package="Statistical Classifier">
+        <name>preserve</name>
+        <full_name>preserve</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Index" line="57" package="Statistical Classifier">
+        <name>restore</name>
+        <full_name>restore</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Index\CachedIndex</critical>
+      <error line="23" code="50018">No DocBlock was found for property $indexName</error>
+      <error line="24" code="50018">No DocBlock was found for property $cache</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="37" code="50010">No DocBlock was found for method setPrepared()</error>
+      <error line="45" code="50010">No DocBlock was found for method preserve()</error>
+      <error line="57" code="50010">No DocBlock was found for method restore()</error>
+    </parse_markers>
+  </file>
+  <file path="Index/Index.php" hash="0258218f8db4c8439d9c6451ff619ad0" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Index" line="23" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Index\IndexInterface</implements>
+      <name>Index</name>
+      <full_name>\Camspiers\StatisticalClassifier\Index\Index</full_name>
+      <docblock line="19">
+        <description/>
+        <long-description/>
+        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="19" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="25" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
+        <name>$prepared</name>
+        <default>false</default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="26" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
+        <name>$dataSource</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="protected" line="27" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
+        <name>$partitions</name>
+        <default>array()</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="29" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="29">
+          <name>$dataSource</name>
+          <default>null</default>
+          <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="34" package="Statistical Classifier">
+        <name>isPrepared</name>
+        <full_name>isPrepared</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="39" package="Statistical Classifier">
+        <name>setPrepared</name>
+        <full_name>setPrepared</full_name>
+        <argument line="39">
+          <name>$prepared</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="44" package="Statistical Classifier">
+        <name>setDataSource</name>
+        <full_name>setDataSource</full_name>
+        <argument line="44">
+          <name>$dataSource</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="49" package="Statistical Classifier">
+        <name>getDataSource</name>
+        <full_name>getDataSource</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="54" package="Statistical Classifier">
+        <name>getPartition</name>
+        <full_name>getPartition</full_name>
+        <argument line="54">
+          <name>$partitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="63" package="Statistical Classifier">
+        <name>setPartition</name>
+        <full_name>setPartition</full_name>
+        <argument line="63">
+          <name>$partitionName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="63">
+          <name>$partition</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="68" package="Statistical Classifier">
+        <name>removePartition</name>
+        <full_name>removePartition</full_name>
+        <argument line="68">
+          <name>$partitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="75" package="Statistical Classifier">
+        <name>getPartitions</name>
+        <full_name>getPartitions</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Index\Index</critical>
+      <error line="25" code="50018">No DocBlock was found for property $prepared</error>
+      <error line="26" code="50018">No DocBlock was found for property $dataSource</error>
+      <error line="27" code="50018">No DocBlock was found for property $partitions</error>
+      <error line="29" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="34" code="50010">No DocBlock was found for method isPrepared()</error>
+      <error line="39" code="50010">No DocBlock was found for method setPrepared()</error>
+      <error line="44" code="50010">No DocBlock was found for method setDataSource()</error>
+      <error line="49" code="50010">No DocBlock was found for method getDataSource()</error>
+      <error line="54" code="50010">No DocBlock was found for method getPartition()</error>
+      <error line="63" code="50010">No DocBlock was found for method setPartition()</error>
+      <error line="68" code="50010">No DocBlock was found for method removePartition()</error>
+      <error line="75" code="50010">No DocBlock was found for method getPartitions()</error>
+    </parse_markers>
+  </file>
+  <file path="Index/IndexInterface.php" hash="c7382bf47110f63aa62cdfaae67c1158" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\Index" line="20" package="Statistical Classifier">
+      <name>IndexInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\Index\IndexInterface</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="22" package="Statistical Classifier">
+        <name>isPrepared</name>
+        <full_name>isPrepared</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="23" package="Statistical Classifier">
+        <name>setDataSource</name>
+        <full_name>setDataSource</full_name>
+        <argument line="23">
+          <name>$dataSource</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="24" package="Statistical Classifier">
+        <name>getDataSource</name>
+        <full_name>getDataSource</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="25" package="Statistical Classifier">
+        <name>getPartition</name>
+        <full_name>getPartition</full_name>
+        <argument line="25">
+          <name>$partitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="26" package="Statistical Classifier">
+        <name>setPartition</name>
+        <full_name>setPartition</full_name>
+        <argument line="26">
+          <name>$partitionName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="26">
+          <name>$partitionData</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="27" package="Statistical Classifier">
+        <name>removePartition</name>
+        <full_name>removePartition</full_name>
+        <argument line="27">
+          <name>$partitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Index" line="28" package="Statistical Classifier">
+        <name>getPartitions</name>
+        <full_name>getPartitions</full_name>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="22" code="50010">No DocBlock was found for method isPrepared()</error>
+      <error line="23" code="50010">No DocBlock was found for method setDataSource()</error>
+      <error line="24" code="50010">No DocBlock was found for method getDataSource()</error>
+      <error line="25" code="50010">No DocBlock was found for method getPartition()</error>
+      <error line="26" code="50010">No DocBlock was found for method setPartition()</error>
+      <error line="27" code="50010">No DocBlock was found for method removePartition()</error>
+      <error line="28" code="50010">No DocBlock was found for method getPartitions()</error>
+    </parse_markers>
+  </file>
+  <file path="Normalizer/Grouped.php" hash="346f59bea743db01943a68af3e1108c6" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Normalizer" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</implements>
+      <name>Grouped</name>
+      <full_name>\Camspiers\StatisticalClassifier\Normalizer\Grouped</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="22" namespace="Camspiers\StatisticalClassifier\Normalizer" package="Statistical Classifier">
+        <name>$normalizers</name>
+        <default>array()</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="24" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="24">
+          <name>$normalizers</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="34" package="Statistical Classifier">
+        <name>addNormalizer</name>
+        <full_name>addNormalizer</full_name>
+        <argument line="34">
+          <name>$normalizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="39" package="Statistical Classifier">
+        <name>normalize</name>
+        <full_name>normalize</full_name>
+        <argument line="39">
+          <name>$tokens</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Normalizer\Grouped</critical>
+      <error line="22" code="50018">No DocBlock was found for property $normalizers</error>
+      <error line="24" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="34" code="50010">No DocBlock was found for method addNormalizer()</error>
+      <error line="39" code="50010">No DocBlock was found for method normalize()</error>
+    </parse_markers>
+  </file>
+  <file path="Normalizer/Lowercase.php" hash="2fb51d43e879f1d918a449c9f049f7ef" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Normalizer" line="18" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</implements>
+      <name>Lowercase</name>
+      <full_name>\Camspiers\StatisticalClassifier\Normalizer\Lowercase</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="20" package="Statistical Classifier">
+        <name>normalize</name>
+        <full_name>normalize</full_name>
+        <argument line="20">
+          <name>$tokens</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\Normalizer\Lowercase</critical>
+      <error line="20" code="50010">No DocBlock was found for method normalize()</error>
+    </parse_markers>
+  </file>
+  <file path="Normalizer/NormalizerInterface.php" hash="23f1cf6c7c664b2e112ac1d0d7246675" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\Normalizer" line="18" package="Statistical Classifier">
+      <name>NormalizerInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="20" package="Statistical Classifier">
+        <name>normalize</name>
+        <full_name>normalize</full_name>
+        <argument line="20">
+          <name>$tokens</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="20" code="50010">No DocBlock was found for method normalize()</error>
+    </parse_markers>
+  </file>
+  <file path="Normalizer/Porter.php" hash="e7398eced3bda3db22c901eabeb550bf" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Normalizer" line="18" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</implements>
+      <name>Porter</name>
+      <full_name>\Camspiers\StatisticalClassifier\Normalizer\Porter</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="20" package="Statistical Classifier">
+        <name>normalize</name>
+        <full_name>normalize</full_name>
+        <argument line="20">
+          <name>$tokens</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\Normalizer\Porter</critical>
+      <error line="20" code="50010">No DocBlock was found for method normalize()</error>
+    </parse_markers>
+  </file>
+  <file path="Normalizer/Stopword.php" hash="7547af7288ff2addddcb34baa29d72af" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Normalizer" line="18" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</implements>
+      <name>Stopword</name>
+      <full_name>\Camspiers\StatisticalClassifier\Normalizer\Stopword</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="20" namespace="Camspiers\StatisticalClassifier\Normalizer" package="Statistical Classifier">
+        <name>$stopwords</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="22" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="22">
+          <name>$stopwords</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="27" package="Statistical Classifier">
+        <name>normalize</name>
+        <full_name>normalize</full_name>
+        <argument line="27">
+          <name>$tokens</name>
+          <default/>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\Normalizer\Stopword</critical>
+      <error line="20" code="50018">No DocBlock was found for property $stopwords</error>
+      <error line="22" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="27" code="50010">No DocBlock was found for method normalize()</error>
+    </parse_markers>
+  </file>
+  <file path="Tokenizer/TokenizerInterface.php" hash="42a2cbed67ff1601c8f77db2102d3ea9" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\Tokenizer" line="18" package="Statistical Classifier">
+      <name>TokenizerInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Tokenizer" line="20" package="Statistical Classifier">
+        <name>tokenize</name>
+        <full_name>tokenize</full_name>
+        <argument line="20">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="20" code="50010">No DocBlock was found for method tokenize()</error>
+    </parse_markers>
+  </file>
+  <file path="Tokenizer/Word.php" hash="752eb0a6194b5b996a37503bdca29968" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Tokenizer" line="18" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</implements>
+      <name>Word</name>
+      <full_name>\Camspiers\StatisticalClassifier\Tokenizer\Word</full_name>
+      <docblock line="14">
+        <description/>
+        <long-description/>
+        <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="14" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Tokenizer" line="20" package="Statistical Classifier">
+        <name>tokenize</name>
+        <full_name>tokenize</full_name>
+        <argument line="20">
+          <name>$document</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="14" code="50005">No short description for class \Camspiers\StatisticalClassifier\Tokenizer\Word</critical>
+      <error line="20" code="50010">No DocBlock was found for method tokenize()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/Complement.php" hash="19d419945ff86c915195a54985785d43" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>Complement</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\Complement</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'complement'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\Complement</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/DC.php" hash="760dcaaa05521abf3ff5ef14289313ee" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>DC</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\DC</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'document_count'</value>
+      </constant>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="24" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="24">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\DC</critical>
+      <error line="24" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/DL.php" hash="1603b40f6e7531e18a8490815ccec932" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>DL</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\DL</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'document_length'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\DL</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/DocumentTokenCounts.php" hash="e9444e44018a3a448fc7a7824d41ea89" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>DocumentTokenCounts</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\DocumentTokenCounts</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'document_token_counts'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\DocumentTokenCounts</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/DocumentTokenSums.php" hash="f08eca2d7d0ca88c5284c23af16a7628" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>DocumentTokenSums</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\DocumentTokenSums</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'document_token_sums'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\DocumentTokenSums</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/IDF.php" hash="6cf9219d36e3e175f8ce2e37db3d988d" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>IDF</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\IDF</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'inverse_document_frequency'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="25" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$documentCountPartitionName</name>
+        <default/>
+      </property>
+      <property final="false" static="false" visibility="private" line="26" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$tokenAppreanceCountPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="28" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="29">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="30">
+          <name>$documentCountPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$tokenAppreanceCountPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="39" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="39">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\IDF</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="25" code="50018">No DocBlock was found for property $documentCountPartitionName</error>
+      <error line="26" code="50018">No DocBlock was found for property $tokenAppreanceCountPartitionName</error>
+      <error line="28" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="39" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/Prune.php" hash="fb76968ec1e7448339318535b20c1d52" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>Prune</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\Prune</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="22" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$exclude</name>
+        <default>array()</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="24" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="24">
+          <name>$exclude</name>
+          <default>null</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\Prune</critical>
+      <error line="22" code="50018">No DocBlock was found for property $exclude</error>
+      <error line="24" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/TAC.php" hash="3007c9fbcb34cbc0bc6f493588e92f2d" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>TAC</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\TAC</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'token_appearance_count'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\TAC</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/TBC.php" hash="e40e2523ba9b8e9ad790be947df43bf6" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>TBC</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\TBC</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'tokens_by_category'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\TBC</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/TCBD.php" hash="2c79ac53d474c9c3d07f9235a278963f" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>TCBD</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\TCBD</full_name>
+      <docblock line="18">
+        <description/>
+        <long-description/>
+        <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="18" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="24" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'token_count_by_document'</value>
+      </constant>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="27">
+          <name>$tokenizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
+        </argument>
+        <argument line="28">
+          <name>$normalizer</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="34" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="34">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="18" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\TCBD</critical>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="34" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/TF.php" hash="85a4d93a79e626fe230f3062610a6d0e" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>TF</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\TF</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'term_frequency'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\TF</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/TFIDF.php" hash="db06dcf980fb17f1f227ddf77f18c34e" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>TFIDF</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\TFIDF</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="22">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\TFIDF</critical>
+      <error line="22" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/TFThreaded.php" hash="6f1f278e196b0d1414fbaaa104fd49e9" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+  </file>
+  <file path="Transform/TransformInterface.php" hash="75f16ee0c9ece96ec60a68548fa59b16" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <interface namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <name>TransformInterface</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\TransformInterface</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="22">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="22" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/Weight.php" hash="2bf29540a989dc779a7bb2686b6c611d" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>Weight</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\Weight</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'weight'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\Weight</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <file path="Transform/WeightNormalization.php" hash="0d81655f44b15f82e729a745fcb015a4" package="Statistical Classifier">
+    <docblock line="3">
+      <description>This file is part of the Statistical Classifier package.</description>
+      <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.&lt;/p&gt;</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Transform" line="20" package="Statistical Classifier">
+      <extends/>
+      <implements>\Camspiers\StatisticalClassifier\Transform\TransformInterface</implements>
+      <name>WeightNormalization</name>
+      <full_name>\Camspiers\StatisticalClassifier\Transform\WeightNormalization</full_name>
+      <docblock line="16">
+        <description/>
+        <long-description/>
+        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="16" name="package" description="Statistical Classifier"/>
+      </docblock>
+      <constant namespace="Camspiers\StatisticalClassifier\Transform" line="22" package="Statistical Classifier">
+        <name>PARTITION_NAME</name>
+        <full_name>PARTITION_NAME</full_name>
+        <value>'weight_normalization'</value>
+      </constant>
+      <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
+        <name>$dataPartitionName</name>
+        <default/>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="26">
+          <name>$dataPartitionName</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="31" package="Statistical Classifier">
+        <name>apply</name>
+        <full_name>apply</full_name>
+        <argument line="31">
+          <name>$index</name>
+          <default/>
+          <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Transform\WeightNormalization</critical>
+      <error line="24" code="50018">No DocBlock was found for property $dataPartitionName</error>
+      <error line="26" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="31" code="50010">No DocBlock was found for method apply()</error>
+    </parse_markers>
+  </file>
+  <package name="Statistical Classifier" full_name="Statistical Classifier"/>
+  <namespace name="Camspiers" full_name="Camspiers">
+    <namespace name="StatisticalClassifier" full_name="Camspiers\StatisticalClassifier">
+      <namespace name="ClassificationRule" full_name="Camspiers\StatisticalClassifier\ClassificationRule"/>
+      <namespace name="Classifier" full_name="Camspiers\StatisticalClassifier\Classifier"/>
+      <namespace name="Config" full_name="Camspiers\StatisticalClassifier\Config"/>
+      <namespace name="Console" full_name="Camspiers\StatisticalClassifier\Console">
+        <namespace name="Command" full_name="Camspiers\StatisticalClassifier\Console\Command">
+          <namespace name="Index" full_name="Camspiers\StatisticalClassifier\Console\Command\Index"/>
+          <namespace name="Test" full_name="Camspiers\StatisticalClassifier\Console\Command\Test"/>
+          <namespace name="Train" full_name="Camspiers\StatisticalClassifier\Console\Command\Train"/>
+        </namespace>
+      </namespace>
+      <namespace name="DataSource" full_name="Camspiers\StatisticalClassifier\DataSource"/>
+      <namespace name="DependencyInjection" full_name="Camspiers\StatisticalClassifier\DependencyInjection"/>
+      <namespace name="Index" full_name="Camspiers\StatisticalClassifier\Index"/>
+      <namespace name="Normalizer" full_name="Camspiers\StatisticalClassifier\Normalizer"/>
+      <namespace name="Tokenizer" full_name="Camspiers\StatisticalClassifier\Tokenizer"/>
+      <namespace name="Transform" full_name="Camspiers\StatisticalClassifier\Transform"/>
+    </namespace>
+  </namespace>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
