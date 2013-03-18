@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the Statistical Classifier package.
  *
  * (c) Cam Spiers <camspiers@gmail.com>
@@ -19,34 +19,45 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
 use RuntimeException;
 
+/**
+ * A generic classifier which can be used to built a classifier given a number of injected components
+ * @author Cam Spiers <camspiers@gmail.com>
+ */
 class GenericClassifier implements ClassifierInterface
 {
     /**
      * Tokenizer (the way of breaking up documents)
      * @var TokenizerInterface
      */
-    private $tokenizer;
+    protected $tokenizer;
     /**
      * Take tokenized data and make it consistent or stem it
      * @var NormalizerInterface
      */
-    private $normalizer;
+    protected $normalizer;
     /**
      * The rule to use to classify a document
-     * @var ClassificationRule
+     * @var ClassificationRuleInterface
      */
-    private $classificationRule;
+    protected $classificationRule;
     /**
-     * [$index description]
-     * @var [type]
+     * The index to apply the transforms to
+     * @var IndexInterface
      */
-    private $index;
+    protected $index;
     /**
      * An array of Transforms implementing TransformInterface
      * @var array
      */
-    private $transforms = array();
-
+    protected $transforms = array();
+    /**
+     * Create the classifying using the numerous components passed in
+     * @param IndexInterface              $index              An index to modify with transforms
+     * @param ClassificationRuleInterface $classificationRule The rule to classify the document with
+     * @param TokenizerInterface          $tokenizer          The tokenizer to break up the documents
+     * @param NormalizerInterface         $normalizer         The normaizer to make tokens consistent
+     * @param array                       $transforms         Ann array of transforms to modify the index
+     */
     public function __construct(
         IndexInterface $index,
         ClassificationRuleInterface $classificationRule,
@@ -62,7 +73,9 @@ class GenericClassifier implements ClassifierInterface
             $this->setTransforms($transforms);
         }
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function is($category, $document)
     {
         if ($this->index->getDataSource()->hasCategory($category)) {
@@ -71,7 +84,9 @@ class GenericClassifier implements ClassifierInterface
             throw new RuntimeException("The category '$category' doesn't exist");
         }
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function setTransforms(array $transforms)
     {
         if (is_array($transforms)) {
@@ -81,12 +96,17 @@ class GenericClassifier implements ClassifierInterface
             }
         }
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function addTransform(TransformInterface $transform)
     {
         $this->transforms[] = $transform;
     }
-
+    /**
+     * Apply the transforms to the index
+     * @return [type] [description]
+     */
     protected function applyTransforms()
     {
         if (is_array($this->transforms)) {
@@ -95,13 +115,17 @@ class GenericClassifier implements ClassifierInterface
             }
         }
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function prepareIndex()
     {
         $this->applyTransforms();
         $this->index->setPrepared(true);
     }
-
+    /**
+     * Return an index which has been prepared for classification
+     */
     protected function preparedIndex()
     {
         if (!$this->index->isPrepared()) {
@@ -110,7 +134,9 @@ class GenericClassifier implements ClassifierInterface
 
         return $this->index;
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function classify($document)
     {
         return $this->classificationRule->classify(

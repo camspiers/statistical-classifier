@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the Statistical Classifier package.
  *
  * (c) Cam Spiers <camspiers@gmail.com>

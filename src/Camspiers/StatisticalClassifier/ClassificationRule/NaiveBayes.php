@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the Statistical Classifier package.
  *
  * (c) Cam Spiers <camspiers@gmail.com>
@@ -13,17 +13,30 @@ namespace Camspiers\StatisticalClassifier\ClassificationRule;
 
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
+/**
+ * The classification rule for the NaiveBayes classifier
+ *
+ * @author Cam Spiers <camspiers@gmail.com>
+ */
 class NaiveBayes implements ClassificationRuleInterface
 {
+    /**
+     * The name of the location of the data in the index
+     */
     private $dataPartitionName;
-
+    /**
+     * Create the classification rule
+     * @param string $dataPartitionName The name of the location of the data in the index
+     */
     public function __construct($dataPartitionName)
     {
         $this->dataPartitionName = $dataPartitionName;
     }
-
     /**
-     * {@inheritDoc}
+     * Classifies a document against an index
+     * @param  IndexInterface $index    The Index to classify against
+     * @param  string         $document The document to classify
+     * @return string         The category of the document
      */
     public function classify(IndexInterface $index, $document)
     {
@@ -39,6 +52,7 @@ class NaiveBayes implements ClassificationRuleInterface
             }
         }
         asort($results, SORT_NUMERIC);
+
         return key($results);
     }
 }

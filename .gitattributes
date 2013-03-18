@@ -1,5 +1,6 @@
 tests/ export-ignore
 resources/ export-ignore
+docs/ export-ignore
 phpunit.xml.dist export-ignore
 .travis.yml export-ignore
 .php_cs export-ignore

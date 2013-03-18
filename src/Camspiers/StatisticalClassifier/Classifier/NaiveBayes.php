@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the Statistical Classifier package.
  *
  * (c) Cam Spiers <camspiers@gmail.com>
@@ -17,15 +17,25 @@ use Camspiers\StatisticalClassifier\Transform;
 use Camspiers\StatisticalClassifier\ClassificationRule;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
+/**
+ * An implementation of a Naive Bayes classifier.
+ *
+ * This classifier is based off *Tackling the Poor Assumptions of Naive Bayes Text Classifiers* by Jason Rennie
+ * @author Cam Spiers <camspiers@gmail.com>
+ */
 class NaiveBayes extends GenericClassifier
 {
-
+    /**
+     * Create the Naive Bayes Classifier
+     * @param IndexInterface      $index      An index to modify with transforms
+     * @param TokenizerInterface  $tokenizer  The tokenizer to break up the documents
+     * @param NormalizerInterface $normalizer The normaizer to make tokens consistent
+     */
     public function __construct(
         IndexInterface $index,
         TokenizerInterface $tokenizer,
         NormalizerInterface $normalizer
-    )
-    {
+    ) {
         parent::__construct(
             $index,
             new ClassificationRule\NaiveBayes(
@@ -68,9 +78,6 @@ class NaiveBayes extends GenericClassifier
                 new Transform\Weight(
                     Transform\Complement::PARTITION_NAME
                 ),
-                // new Transform\WeightNormalization(
-                //     Transform\Weight::PARTITION_NAME
-                // ),
                 new Transform\Prune(
                     array(
                         Transform\Weight::PARTITION_NAME

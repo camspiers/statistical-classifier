@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the Statistical Classifier package.
  *
  * (c) Cam Spiers <camspiers@gmail.com>
@@ -16,7 +16,7 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
 /**
  * Provides an interface for classification rule.
  * Classes of this type are injected into the constructor of a classifier
- * 
+ *
  * @author Cam Spiers <camspiers@gmail.com>
  */
 interface ClassificationRuleInterface
@@ -25,7 +25,7 @@ interface ClassificationRuleInterface
      * Classifies a document against an index
      * @param  IndexInterface $index    The Index to classify against
      * @param  string         $document The document to classify
-     * @return string                   The category of the document
+     * @return string         The category of the document
      */
     public function classify(IndexInterface $index, $document);
 }
