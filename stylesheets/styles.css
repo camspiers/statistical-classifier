@@ -390,7 +390,7 @@ fieldset {
 
 /*
  * 1. Corrects color not being inherited in IE6/7/8/9
- * 2. Corrects text not wrapping in FF3 
+ * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
 legend {
@@ -716,16 +716,26 @@ dt {
   margin: 6px auto;
 }
 #header nav li {
+  list-style: none;
+  line-height: 50px;
+}
+#header nav li.item {
   font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  list-style: none;
   display: inline;
   color: white;
-  line-height: 50px;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   font-size: 14px;
 }
 #header nav li a {
+	padding: 10px 12px;
+  margin-top: 6px;
+  line-height: 14px;
+  font-size: 14px;
+  display: inline-block;
+  text-align: center;
+}
+#header nav li.item a {
   color: white;
   border: 1px solid #5d910b;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #93bd20), color-stop(100%, #659e10));
@@ -745,14 +755,8 @@ dt {
   -o-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
   background-color: #93bd20;
-  padding: 10px 12px;
-  margin-top: 6px;
-  line-height: 14px;
-  font-size: 14px;
-  display: inline-block;
-  text-align: center;
 }
-#header nav li a:hover {
+#header nav li.item a:hover {
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #749619), color-stop(100%, #527f0e));
   background: -webkit-linear-gradient(#749619, #527f0e);
   background: -moz-linear-gradient(#749619, #527f0e);
@@ -766,7 +770,7 @@ dt {
   -o-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
 }
-#header nav li.fork {
+#header nav li.left {
   float: left;
   margin-left: 0px;
 }

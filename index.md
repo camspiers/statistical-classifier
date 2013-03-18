@@ -2,7 +2,7 @@
 layout: default
 title: PHP Statistical Classifier
 ---
-This project uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
+NOTE: PHP Statistical Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
 
 # What is statistical classification?
 
