@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/resources/Tackling%20the%20Poor%20Assumptions%20of%20Naive%20Bayes%20Text%20Classifiers.pdf?raw=true</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/index.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/graph_class.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/errors.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/markers.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/deprecated.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/packages/Statistical%20Classifier.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Config.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Console.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Console.Command.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Console.Command.Index.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Console.Command.Train.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.DataSource.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.DependencyInjection.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Index.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Normalizer.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Tokenizer.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.Transform.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/namespaces/Camspiers.StatisticalClassifier.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Config.DataSourceConfiguration.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Config.StatisticalClassifierConfig.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Application.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.CacheableCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.Converter.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.DataArray.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.Directory.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.Grouped.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.Json.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.PDO.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.PDOQuery.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DataSource.Serialized.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DependencyInjection.CommandCompilerPass.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.DependencyInjection.StatisticalClassifierExtension.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Index.Index.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.TransformInterface.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.Complement.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.DC.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.DL.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenCounts.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenSums.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.IDF.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.Prune.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.TAC.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.TBC.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.TCBD.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.TF.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.TFIDF.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.Weight.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://camspiers.github.com/statistical-classifier/docs/classes/Camspiers.StatisticalClassifier.Transform.WeightNormalization.html</loc>
+  <lastmod>2013-03-18T23:01:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+</urlset>
