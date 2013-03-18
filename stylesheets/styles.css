@@ -773,8 +773,9 @@ dt {
 #header nav li.left {
   float: left;
   margin-left: 0px;
+  margin-right: 6px;
 }
-#header nav li.downloads {
+#header nav li.right {
   float: right;
   margin-left: 6px;
 }
