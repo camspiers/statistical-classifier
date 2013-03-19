@@ -240,6 +240,10 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
 # Internals
 
+## Class diagram
+
+![Class Diagram](docs/classes.svg)
+
 ## Classifiers
 
 * Generic Classifier
