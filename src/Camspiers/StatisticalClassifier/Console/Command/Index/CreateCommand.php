@@ -22,6 +22,10 @@ use Camspiers\StatisticalClassifier\Console\Command\Command;
  */
 class CreateCommand extends Command
 {
+    /**
+     * Configure the commands options
+     * @return null
+     */
     protected function configure()
     {
         $this
@@ -29,7 +33,12 @@ class CreateCommand extends Command
             ->setDescription('Create an index')
             ->configureIndex();
     }
-
+    /**
+     * Create the index using the specified name
+     * @param  Input\InputInterface   $input  The input object
+     * @param  Output\OutputInterface $output The output object
+     * @return null
+     */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $this->getCachedIndex($input->getArgument('index'))->preserve();

@@ -28,6 +28,10 @@ use PDO as BasePDO;
  */
 class PDOCommand extends Command
 {
+    /**
+     * Configure the commands options
+     * @return null
+     */
     protected function configure()
     {
         $this
@@ -67,7 +71,12 @@ class PDOCommand extends Command
             ->configureClassifier()
             ->configurePrepare();
     }
-
+    /**
+     * Train a classifier with a PDO datasource
+     * @param  Input\InputInterface   $input  The commands input
+     * @param  Output\OutputInterface $output The commands output
+     * @return null
+     */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $index = $this->getCachedIndex($input->getArgument('index'));

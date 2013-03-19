@@ -22,6 +22,10 @@ use Camspiers\StatisticalClassifier\Console\Command\Command;
  */
 class ClassifyCommand extends Command
 {
+    /**
+     * Configure the commands options
+     * @return null
+     */
     protected function configure()
     {
         $this
@@ -35,7 +39,12 @@ class ClassifyCommand extends Command
             )
             ->configureClassifier();
     }
-
+    /**
+     * Classify a document against an index and an optionally specified classifier
+     * @param  Input\InputInterface   $input  The commands input
+     * @param  Output\OutputInterface $output The commands output
+     * @return null
+     */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         echo $this->getClassifier($input)->classify($input->getArgument('document')), PHP_EOL;

@@ -22,6 +22,10 @@ use Camspiers\StatisticalClassifier\Console\Command\Command;
  */
 class PrepareCommand extends Command
 {
+    /**
+     * Configure the commands options
+     * @return null
+     */
     protected function configure()
     {
         $this
@@ -30,7 +34,12 @@ class PrepareCommand extends Command
             ->configureIndex()
             ->configureClassifier();
     }
-
+    /**
+     * Prepare a specified index
+     * @param  Input\InputInterface   $input  The input object
+     * @param  Output\OutputInterface $output The output object
+     * @return null
+     */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $this->getClassifier($input)->prepareIndex();

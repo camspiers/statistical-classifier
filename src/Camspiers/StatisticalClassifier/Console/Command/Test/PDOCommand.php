@@ -14,8 +14,6 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Test;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\Command;
-
 use Camspiers\StatisticalClassifier\DataSource\PDO;
 use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
 
@@ -25,8 +23,12 @@ use PDO as BasePDO;
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class PDOCommand extends Command
+class PDOCommand extends TestCommand
 {
+    /**
+     * Configure the commands options
+     * @return null
+     */
     protected function configure()
     {
         $this
@@ -64,40 +66,31 @@ class PDOCommand extends Command
                 'The password to use'
             );
     }
-
+    /**
+     * Test a PDO data source
+     * @param  Input\InputInterface   $input  The input object
+     * @param  Output\OutputInterface $output The output object
+     * @return null
+     */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $classifier = $this->getClassifier($input);
-
-        $data = new PDO(
-            array(
-                new PDOQuery(
-                    $input->getArgument('category'),
-                    new BasePDO(
-                        $input->getArgument('dsn'),
-                        $input->getArgument('username'),
-                        $input->getArgument('password')
-                    ),
-                    $input->getArgument('query'),
-                    $input->getArgument('column')
+        $this->test(
+            $output,
+            $this->getClassifier($input),
+            new PDO(
+                array(
+                    new PDOQuery(
+                        $input->getArgument('category'),
+                        new BasePDO(
+                            $input->getArgument('dsn'),
+                            $input->getArgument('username'),
+                            $input->getArgument('password')
+                        ),
+                        $input->getArgument('query'),
+                        $input->getArgument('column')
+                    )
                 )
             )
         );
-
-        $stats = array();
-        $fails = array();
-
-        foreach ($data->getData() as $category => $documents) {
-            $stats[$category] = 0;
-            foreach ($documents as $document) {
-                if (($classifiedAs = $classifier->classify($document)) == $category) {
-                    $stats[$category]++;
-                } else {
-                    $fails[] = array($category, $classifiedAs, $document);
-                }
-            }
-            echo $category, ': ', ($stats[$category] / count($documents)), PHP_EOL;
-        }
-
     }
 }

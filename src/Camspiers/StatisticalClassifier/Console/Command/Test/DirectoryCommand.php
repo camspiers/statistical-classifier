@@ -14,16 +14,18 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Test;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\Command;
-
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class DirectoryCommand extends Command
+class DirectoryCommand extends TestCommand
 {
+    /**
+     * Configure the commands options
+     * @return null
+     */
     protected function configure()
     {
         $this
@@ -44,29 +46,21 @@ class DirectoryCommand extends Command
             ->configureClassifier()
             ->configurePrepare();
     }
-
+    /**
+     * Test a directory data source
+     * @param  Input\InputInterface   $input  The input object
+     * @param  Output\OutputInterface $output The output object
+     * @return null
+     */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $classifier = $this->getClassifier($input);
-
-        $data = new Directory(
-            $input->getArgument('directory'),
-            $input->getOption('include')
+        $this->test(
+            $output,
+            $this->getClassifier($input),
+            new Directory(
+                $input->getArgument('directory'),
+                $input->getOption('include')
+            )
         );
-
-        $stats = array();
-        $fails = array();
-
-        foreach ($data->getData() as $category => $documents) {
-            $stats[$category] = 0;
-            foreach ($documents as $document) {
-                if (($classifiedAs = $classifier->classify($document)) == $category) {
-                    $stats[$category]++;
-                } else {
-                    $fails[] = array($category, $classifiedAs, $document);
-                }
-            }
-            echo $category, ': ', ($stats[$category] / count($documents)), PHP_EOL;
-        }
     }
 }
