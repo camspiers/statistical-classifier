@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">210</span></a></li>
+                <span class="label label-info">197</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -56,12 +56,9 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_getContainer" title="getContainer :: "><span class="description">getContainer()
-        </span><pre>getContainer()</pre></a></li>
-<li class="method public "><a href="#method_setContainer" title="setContainer :: "><span class="description">setContainer()
-        </span><pre>setContainer()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Creates the application, setting the name and version"><span class="description">Creates the application, setting the name and version</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_getContainer" title="getContainer :: Returns the set container or returns a newly instantiated one"><span class="description">Returns the set container or returns a newly instantiated one</span><pre>getContainer()</pre></a></li>
+<li class="method public "><a href="#method_setContainer" title="setContainer :: Allows the setting of a container on the appliaction"><span class="description">Allows the setting of a container on the appliaction</span><pre>setContainer()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -69,7 +66,7 @@
                     <ul></ul>
 </li>
 <li class="nav-header protected">» Protected
-                    <ul><li class="property protected "><a href="#property_container" title="$container :: "><span class="description"></span><pre>$container</pre></a></li></ul>
+                    <ul><li class="property protected "><a href="#property_container" title="$container :: Holds the dependency injection container"><span class="description"></span><pre>$container</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -106,35 +103,39 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
+<h2>Creates the application, setting the name and version</h2>
 <pre>__construct() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_getContainer"></a><div class="element clickable method public method_getContainer" data-toggle="collapse" data-target=".method_getContainer .collapse">
-<h2>getContainer()
-        </h2>
-<pre>getContainer() </pre>
+<h2>Returns the set container or returns a newly instantiated one</h2>
+<pre>getContainer() : \Symfony\Component\DependencyInjection\ContainerInterface</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Symfony\Component\DependencyInjection\ContainerInterface</code>The container</div>
+</div></div>
 </div>
 <a id="method_setContainer"></a><div class="element clickable method public method_setContainer" data-toggle="collapse" data-target=".method_setContainer .collapse">
-<h2>setContainer()
-        </h2>
+<h2>Allows the setting of a container on the appliaction</h2>
 <pre>setContainer(\Symfony\Component\DependencyInjection\ContainerInterface $container) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$container</h4></div>
+<div class="subelement argument">
+<h4>$container</h4>
+<code>\Symfony\Component\DependencyInjection\ContainerInterface</code><p>The container to set</p></div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_container"> </a><div class="element clickable property protected property_container" data-toggle="collapse" data-target=".property_container .collapse">
 <h2></h2>
-<pre>$container </pre>
+<pre>$container : \Symfony\Component\DependencyInjection\ContainerInterface</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -145,7 +146,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-19T14:02:11+13:00.<br></footer></div>
+            generated on 2013-03-19T14:25:26+13:00.<br></footer></div>
 </div>
 </body>
 </html>
