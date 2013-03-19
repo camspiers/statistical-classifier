@@ -131,6 +131,9 @@ Usage:
 Arguments:
  index                 Name of index
  directory             The directory to train on
+
+ Options:
+ --include (-i)        The categories from the directory to include (multiple values allowed)
 ```
 
 *train:pdo*
