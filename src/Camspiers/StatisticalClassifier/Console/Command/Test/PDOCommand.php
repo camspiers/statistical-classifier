@@ -67,14 +67,7 @@ class PDOCommand extends Command
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $c = $this->getApplication()->getContainer();
-        $c->set(
-            'index.index',
-            $index = $this->getCachedIndex(
-                $input->getArgument('index')
-            )
-        );
-        $classifier = $c->get('classifier.naive_bayes');
+        $classifier = $this->getClassifier($input);
 
         $data = new PDO(
             array(
