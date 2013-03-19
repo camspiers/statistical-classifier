@@ -2,47 +2,53 @@
 
 [![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
 
-Currently this project is at [major version 0](http://semver.org/) so the public API should not be considered stable.
+NOTE: PHP Statistical Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
 
-## What is statistical classification?
+# What is it?
 
 > In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
 
-This library provides a statistical classifier written entirely in PHP. The project is written with a focus on reuse and customaizability. Using dependancy injection and interfaces, all components can be easily swapped out for your own version, or entirely new classifiers can be built.
+PHP Statistical Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
 
-By default a Naive Bayes classifier is provided which performs well on the [20 Newsgroups Data Set](http://qwone.com/~jason/20Newsgroups/). This classifier was built using a paper *[Tackling the Poor Assumptions of Naive Bayes Text Classifiers](resources/Tackling the Poor Assumptions of Naive Bayes Text Classifiers.pdf?raw=true)* by Jason Rennie (PDF).
+Important Features:
 
-## Installation (with composer)
-### For your application
+* Multiple **data import types** to get your data into the classifier (Directory of files, Database queries, Json, Serialized arrays)
+* Multiple **types of caching** for the index the classifier builds (Memcache, Apc, File, Session)
+* Multiple ways to make your input data more consistent (Lowercase, Porter Stemmer)
+* Multiple ways to use the classifier depending on your applications needs
+* Support for use from non-PHP programming languages
+* Faster setup time in applications using Symfony Dependency Injection
 
-    $ composer requre camspiers/statistical-classifier:~0.2
+PHP Classifier is also built with a structure that allows developers to easily implement their own classifiers, even reusing the underlying algorithms between classifiers.
 
-### For command-line use
+By default a Naive Bayes classifier is provided which performs well on the [20 Newsgroups Data Set](http://qwone.com/~jason/20Newsgroups/). This classifier was built using a paper *[Tackling the Poor Assumptions of Naive Bayes Text Classifiers](resources/Tackling the Poor Assumptions of Naive Bayes Text Classifiers.pdf)* by Jason Rennie (PDF).
 
-    $ composer create-project camspiers/statistical-classifier .
-    $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
+# Does it work?
 
-## Overview
+Classifiers are extensively used in combating spam. Having your own classifier allows you to have a classifier that is trained on the type of spam and ham your site receives, meaning it will be more accurate and allow you to not have dropoffs through using captcha methods.
 
-A classifier is built using the following component types:
+Classifiers are also used in automatically categorizing site content (pages, articles, news etc.).
 
-| Component | Interface | Description |
-| --------- | --------- | ----------- |
-| Generic Classifier | ClassifierInterface | Acts as a base that other components are added to to build a classifier |
-| Data Source | DataSourceInterface | Multiple available, they provide the raw training data to the classifier |
-| Index | IndexInterface | This stores the results of each transform and is eventually the thing that is cached |
-| Normalizer | NormalizerInterface | Takes an array of words and makes them more consistent, for example, lowercase, porter stemmed |
-| Tokenizer | TokenizerInterface | Breaks up a string into tokens |
-| Transforms | TransformInterface | Manipulates the Index to produce data ready for a classification rule |
-| Classification rule | ClassificationRuleInterface | Uses the index prepared by the transforms and the data source to classify a document |
+# How you get it
 
-## Dependancy injection (Symfony)
+## For your PHP application
 
-This library uses Symfony's dependancy injection component. A [container extension](http://symfony.com/doc/2.1/components/dependency_injection/compilation.html) is provided, and a container is also provided so if you aren't already using Symfony's dependancy injection component you can still take advantage of the default services provided.
+```bash
+$ composer requre camspiers/statistical-classifier:~0.2
+```
 
-## Usage
-### From within external PHP code
-#### Without Symfony Dependency Injection
+## For command-line use
+
+```bash
+$ composer create-project camspiers/statistical-classifier .
+$ ln -s $PWD/bin/classifier /usr/local/bin/classifier
+```
+
+# Usage
+
+## From within external PHP code
+
+### Without Symfony Dependency Injection
 
 ```php
 <?php
@@ -70,7 +76,7 @@ $c->is('ham', 'Some ham document'); // true
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-#### With Symfony Dependency Injection
+### With Symfony Dependency Injection
 
 ```php
 <?php
@@ -100,8 +106,9 @@ $source->addDocument('ham', 'Another ham document');
 echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
 ```
 
-### Command-line executable
-#### Commands
+## From command-line
+
+### Commands
 
 *train:document*
 
@@ -124,6 +131,9 @@ Usage:
 Arguments:
  index                 Name of index
  directory             The directory to train on
+
+Options:
+ --include (-i)        The categories from the directory to include (multiple values allowed)
 ```
 
 *train:pdo*
@@ -183,7 +193,7 @@ Arguments:
  document              The document to classify
 ```
 
-#### Example
+### Example
 
 ```bash
 $ classifier train:document MyIndexName spam "This is some spam"
@@ -191,18 +201,37 @@ $ classifier train:document MyIndexName ham "This is some ham"
 $ classifier classify MyIndexName "Some spam"
 ```
 
-## Unit testing
+# Technical details
+
+A classifier is built using the following component types:
+
+| Component | Interface | Description |
+| --------- | --------- | ----------- |
+| Generic Classifier | ClassifierInterface | Acts as a base that other components are added to to build a classifier |
+| Data Source | DataSourceInterface | Multiple available, they provide the raw training data to the classifier |
+| Index | IndexInterface | This stores the results of each transform and is eventually the thing that is cached |
+| Normalizer | NormalizerInterface | Takes an array of words and makes them more consistent, for example, lowercase, porter stemmed |
+| Tokenizer | TokenizerInterface | Breaks up a string into tokens |
+| Transforms | TransformInterface | Manipulates the Index to produce data ready for a classification rule |
+| Classification rule | ClassificationRuleInterface | Uses the index prepared by the transforms and the data source to classify a document |
+
+# Dependency injection (Symfony)
+
+This library uses Symfony's dependancy injection component. A [container extension](http://symfony.com/doc/2.1/components/dependency_injection/compilation.html) is provided, and a container is also provided so if you aren't already using Symfony's dependancy injection component you can still take advantage of the default services provided.
+
+# Unit testing
 
     statistical-classifier/ $ composer install --dev
     statistical-classifier/ $ vendor/bin/phpunit
 
-## Internals
-### Classifiers
+# Internals
+
+## Classifiers
 
 * Generic Classifier
 * Naive Bayes Classifier
 
-### Data Sources
+## Data Sources
 
 * DataArray
 * Directory
@@ -211,22 +240,22 @@ $ classifier classify MyIndexName "Some spam"
 * PDOQuery
 * Serialized
 
-### Index
+## Index
 
 * Index
 * CachedIndex
 
-### Normalizers
+## Normalizers
 
 * Lowercase
 * Porter
 * Stopword
 
-### Tokenizers
+## Tokenizers
 
 * Word
 
-### Tranforms
+## Tranforms
 
 * Complement
 * DC
@@ -245,7 +274,6 @@ $ classifier classify MyIndexName "Some spam"
 * Weight
 * WeightNormalization
 
-### Classification Rules
+## Classification Rules
 
 * NaiveBayes
-
