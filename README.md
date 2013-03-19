@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
 
+---
+layout: default
+title: PHP Statistical Classifier
+---
 NOTE: PHP Statistical Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
 
 # What is it?
@@ -114,19 +118,23 @@ echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; 
 
 ```
 Usage:
- train:document index category document
+ train:document [-c|--classifier[="..."]] [-p|--prepare] index category document
 
 Arguments:
  index                 Name of index
  category              Which category this data is
  document              The document to train on
+
+Options:
+ --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --prepare (-p)        Prepare the index after training
 ```
 
 *train:directory*
 
 ```
 Usage:
- train:directory [-i|--include[="..."]] index directory
+ train:directory [-i|--include[="..."]] [-c|--classifier[="..."]] [-p|--prepare] index directory
 
 Arguments:
  index                 Name of index
@@ -134,13 +142,16 @@ Arguments:
 
 Options:
  --include (-i)        The categories from the directory to include (multiple values allowed)
+ --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --prepare (-p)        Prepare the index after training
+
 ```
 
 *train:pdo*
 
 ```
 Usage:
- train:pdo index category column query dsn [username] [password]
+ train:pdo [-c|--classifier[="..."]] [-p|--prepare] index category column query dsn [username] [password]
 
 Arguments:
  index                 Name of index
@@ -150,6 +161,10 @@ Arguments:
  dsn                   The dsn to use
  username              The username to use
  password              The password to use
+
+Options:
+ --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --prepare (-p)        Prepare the index after training
 ```
 
 *index:create*
@@ -186,11 +201,14 @@ Arguments:
 
 ```
 Usage:
- classify index document
+ classify [-c|--classifier[="..."]] index document
 
 Arguments:
  index                 Name of index
  document              The document to classify
+
+Options:
+ --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
 ```
 
 ### Example
