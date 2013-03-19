@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Transform\TBC</title>
+<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Console\Command\Command</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -55,28 +55,40 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
+                    <ul><li class="method public "><a href="#method_setCache" title="setCache :: "><span class="description">setCache()
+        </span><pre>setCache()</pre></a></li></ul>
+</li>
+<li class="nav-header protected">» Protected
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_apply" title="apply :: "><span class="description">apply()
-        </span><pre>apply()</pre></a></li>
+<li class="method protected "><a href="#method_configureClassifier" title="configureClassifier :: "><span class="description">configureClassifier()
+        </span><pre>configureClassifier()</pre></a></li>
+<li class="method protected "><a href="#method_configureIndex" title="configureIndex :: "><span class="description">configureIndex()
+        </span><pre>configureIndex()</pre></a></li>
+<li class="method protected "><a href="#method_configurePrepare" title="configurePrepare :: "><span class="description">configurePrepare()
+        </span><pre>configurePrepare()</pre></a></li>
+<li class="method protected "><a href="#method_getCachedIndex" title="getCachedIndex :: "><span class="description">getCachedIndex()
+        </span><pre>getCachedIndex()</pre></a></li>
+<li class="method protected "><a href="#method_getClassifier" title="getClassifier :: "><span class="description">getClassifier()
+        </span><pre>getClassifier()</pre></a></li>
+<li class="method protected "><a href="#method_getContainer" title="getContainer :: "><span class="description">getContainer()
+        </span><pre>getContainer()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
-<li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_dataPartitionName" title="$dataPartitionName :: "><span class="description"></span><pre>$dataPartitionName</pre></a></li></ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-constant"></i> Constants
-                    <ul><li class="constant  "><a href="#constant_PARTITION_NAME" title="PARTITION_NAME :: "><span class="description">PARTITION_NAME</span><pre>PARTITION_NAME</pre></a></li></ul>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_cache" title="$cache :: "><span class="description"></span><pre>$cache</pre></a></li>
+<li class="property protected "><a href="#property_classifier" title="$classifier :: "><span class="description"></span><pre>$classifier</pre></a></li>
+<li class="property protected "><a href="#property_container" title="$container :: "><span class="description"></span><pre>$container</pre></a></li>
+</ul>
 </li>
 </ul>
 </div>
 <div class="span8">
-<a id="\Camspiers\StatisticalClassifier\Transform\TBC"></a><ul class="breadcrumb">
+<a id="\Camspiers\StatisticalClassifier\Console\Command\Command"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -85,10 +97,13 @@
 <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
 </li>
 <li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Transform.html">Transform</a>
+<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Transform.TBC.html">TBC</a>
+<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">Command</a>
 </li>
 </ul>
 <div class="element class">
@@ -107,41 +122,85 @@
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
+<a id="method_setCache"></a><div class="element clickable method public method_setCache" data-toggle="collapse" data-target=".method_setCache .collapse">
+<h2>setCache()
         </h2>
-<pre>__construct($dataPartitionName) </pre>
+<pre>setCache(\CacheCache\Cache $cache) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$dataPartitionName</h4></div>
+<div class="subelement argument"><h4>$cache</h4></div>
 </div></div>
 </div>
-<a id="method_apply"></a><div class="element clickable method public method_apply" data-toggle="collapse" data-target=".method_apply .collapse">
-<h2>apply()
+<a id="method_configureClassifier"></a><div class="element clickable method protected method_configureClassifier" data-toggle="collapse" data-target=".method_configureClassifier .collapse">
+<h2>configureClassifier()
         </h2>
-<pre>apply(\Camspiers\StatisticalClassifier\Index\IndexInterface $index) </pre>
+<pre>configureClassifier() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_configureIndex"></a><div class="element clickable method protected method_configureIndex" data-toggle="collapse" data-target=".method_configureIndex .collapse">
+<h2>configureIndex()
+        </h2>
+<pre>configureIndex() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_configurePrepare"></a><div class="element clickable method protected method_configurePrepare" data-toggle="collapse" data-target=".method_configurePrepare .collapse">
+<h2>configurePrepare()
+        </h2>
+<pre>configurePrepare() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_getCachedIndex"></a><div class="element clickable method protected method_getCachedIndex" data-toggle="collapse" data-target=".method_getCachedIndex .collapse">
+<h2>getCachedIndex()
+        </h2>
+<pre>getCachedIndex($name) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
+<div class="subelement argument"><h4>$name</h4></div>
+</div></div>
+</div>
+<a id="method_getClassifier"></a><div class="element clickable method protected method_getClassifier" data-toggle="collapse" data-target=".method_getClassifier .collapse">
+<h2>getClassifier()
+        </h2>
+<pre>getClassifier(\Symfony\Component\Console\Input\InputInterface $input, \Camspiers\StatisticalClassifier\Index\Index $index) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$input</h4></div>
 <div class="subelement argument"><h4>$index</h4></div>
 </div></div>
 </div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_dataPartitionName"> </a><div class="element clickable property private property_dataPartitionName" data-toggle="collapse" data-target=".property_dataPartitionName .collapse">
-<h2></h2>
-<pre>$dataPartitionName </pre>
+<a id="method_getContainer"></a><div class="element clickable method protected method_getContainer" data-toggle="collapse" data-target=".method_getContainer .collapse">
+<h2>getContainer()
+        </h2>
+<pre>getContainer() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <h3>
-<i class="icon-custom icon-constant"></i> Constants</h3>
-<a id="constant_PARTITION_NAME"> </a><div class="element clickable constant  constant_PARTITION_NAME" data-toggle="collapse" data-target=".constant_PARTITION_NAME .collapse">
-<h2>PARTITION_NAME</h2>
-<pre>PARTITION_NAME </pre>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_cache"> </a><div class="element clickable property protected property_cache" data-toggle="collapse" data-target=".property_cache .collapse">
+<h2></h2>
+<pre>$cache </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_classifier"> </a><div class="element clickable property protected property_classifier" data-toggle="collapse" data-target=".property_classifier .collapse">
+<h2></h2>
+<pre>$classifier </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_container"> </a><div class="element clickable property protected property_container" data-toggle="collapse" data-target=".property_container .collapse">
+<h2></h2>
+<pre>$container </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>

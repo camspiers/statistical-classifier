@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">203</span></a></li>
+                <span class="label label-info">210</span></a></li>
 <li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -58,8 +58,8 @@
 <li><a href="#Config/DataSourceConfiguration.php"><i class="icon-file"></i>Config/DataSourceConfiguration.php</a></li>
 <li><a href="#Config/StatisticalClassifierConfig.php"><i class="icon-file"></i>Config/StatisticalClassifierConfig.php</a></li>
 <li><a href="#Console/Application.php"><i class="icon-file"></i>Console/Application.php</a></li>
-<li><a href="#Console/Command/CacheableCommand.php"><i class="icon-file"></i>Console/Command/CacheableCommand.php</a></li>
 <li><a href="#Console/Command/ClassifyCommand.php"><i class="icon-file"></i>Console/Command/ClassifyCommand.php</a></li>
+<li><a href="#Console/Command/Command.php"><i class="icon-file"></i>Console/Command/Command.php</a></li>
 <li><a href="#Console/Command/Index/CreateCommand.php"><i class="icon-file"></i>Console/Command/Index/CreateCommand.php</a></li>
 <li><a href="#Console/Command/Index/PrepareCommand.php"><i class="icon-file"></i>Console/Command/Index/PrepareCommand.php</a></li>
 <li><a href="#Console/Command/Index/RemoveCommand.php"><i class="icon-file"></i>Console/Command/Index/RemoveCommand.php</a></li>
@@ -242,40 +242,6 @@
 </table></div>
 </div>
 <div class="package-contents">
-<a name="Console/Command/CacheableCommand.php" id="Console/Command/CacheableCommand.php"></a><h3>
-<i class="icon-file"></i>Console/Command/CacheableCommand.php<small style="float: right;padding-right: 10px;">4</small>
-</h3>
-<div><table class="table markers table-bordered">
-<thead><tr>
-<th>Type</th>
-<th>Line</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="critical">
-<td>critical</td>
-<td>19</td>
-<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\CacheableCommand</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>25</td>
-<td>No DocBlock was found for property $cache</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>27</td>
-<td>No DocBlock was found for method setCache()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>32</td>
-<td>No DocBlock was found for method getCachedIndex()</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="package-contents">
 <a name="Console/Command/ClassifyCommand.php" id="Console/Command/ClassifyCommand.php"></a><h3>
 <i class="icon-file"></i>Console/Command/ClassifyCommand.php<small style="float: right;padding-right: 10px;">3</small>
 </h3>
@@ -298,8 +264,77 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>42</td>
+<td>39</td>
 <td>No DocBlock was found for method execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Console/Command/Command.php" id="Console/Command/Command.php"></a><h3>
+<i class="icon-file"></i>Console/Command/Command.php<small style="float: right;padding-right: 10px;">11</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>22</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Command</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for property $cache</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>29</td>
+<td>No DocBlock was found for property $container</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No DocBlock was found for property $classifier</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>32</td>
+<td>No DocBlock was found for method configureClassifier()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>45</td>
+<td>No DocBlock was found for method configureIndex()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>56</td>
+<td>No DocBlock was found for method configurePrepare()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>68</td>
+<td>No DocBlock was found for method setCache()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>73</td>
+<td>No DocBlock was found for method getCachedIndex()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>81</td>
+<td>No DocBlock was found for method getContainer()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>89</td>
+<td>No DocBlock was found for method getClassifier()</td>
 </tr>
 </tbody>
 </table></div>
@@ -327,7 +362,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>37</td>
+<td>33</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -356,7 +391,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>37</td>
+<td>34</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -385,7 +420,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>37</td>
+<td>33</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -414,7 +449,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>72</td>
+<td>68</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -443,7 +478,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>51</td>
+<td>49</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -472,7 +507,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>47</td>
+<td>45</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -501,7 +536,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>73</td>
+<td>71</td>
 <td>No DocBlock was found for method execute()</td>
 </tr>
 </tbody>
@@ -1816,7 +1851,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-18T22:00:30+13:00.<br></footer></div>
+            generated on 2013-03-19T14:02:11+13:00.<br></footer></div>
 </div>
 </body>
 </html>
