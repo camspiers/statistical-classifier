@@ -37,8 +37,10 @@ class TBC implements TransformInterface
             $transform[$category] = array();
             foreach ($documents as $document) {
                 foreach (array_keys($document) as $token) {
-                    if (!array_key_exists($token, $transform[$category])) {
-                        $transform[$category][$token] = true;
+                    if (array_key_exists($token, $transform[$category])) {
+                        $transform[$category][$token] += $document[$token];
+                    } else {
+                        $transform[$category][$token] = $document[$token];
                     }
                 }
             }

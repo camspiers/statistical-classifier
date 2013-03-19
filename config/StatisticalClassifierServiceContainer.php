@@ -169,11 +169,11 @@ class StatisticalClassifierServiceContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand A Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand instance.
+     * @return Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand A Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand instance.
      */
     protected function getConsole_Command_Test_PdoService()
     {
-        $this->services['console.command.test.pdo'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand();
+        $this->services['console.command.test.pdo'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand();
 
         $instance->setCache($this->get('cache'));
 

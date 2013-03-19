@@ -29,8 +29,7 @@ class IDF implements TransformInterface
         $dataPartitionName,
         $documentCountPartitionName,
         $tokenAppreanceCountPartitionName
-    )
-    {
+    ) {
         $this->dataPartitionName = $dataPartitionName;
         $this->documentCountPartitionName = $documentCountPartitionName;
         $this->tokenAppreanceCountPartitionName = $tokenAppreanceCountPartitionName;

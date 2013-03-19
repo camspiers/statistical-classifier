@@ -50,19 +50,16 @@ class NaiveBayes extends GenericClassifier
                     $tokenizer,
                     $normalizer
                 ),
-                new Transform\TF(
-                    Transform\TCBD::PARTITION_NAME
-                ),
                 new Transform\TAC(
                     Transform\TCBD::PARTITION_NAME
                 ),
-                new Transform\IDF(
-                    Transform\TF::PARTITION_NAME,
+                new Transform\TFIDF(
+                    Transform\TCBD::PARTITION_NAME,
                     Transform\DC::PARTITION_NAME,
                     Transform\TAC::PARTITION_NAME
                 ),
                 new Transform\DL(
-                    Transform\IDF::PARTITION_NAME
+                    Transform\TFIDF::PARTITION_NAME
                 ),
                 new Transform\TBC(
                     Transform\TCBD::PARTITION_NAME

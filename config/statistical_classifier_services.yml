@@ -121,6 +121,11 @@ services:
         tags:
             - { name: console.cacheable_command }
 
+    console.command.test.pdo:
+        class: Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand
+        tags:
+            - { name: console.cacheable_command }
+
     logger:
         class: Monolog\Logger
         arguments:

@@ -32,55 +32,45 @@ class Complement implements TransformInterface
     {
         $data = $index->getPartition($this->dataPartitionName);
         $tokensByCategory = $index->getPartition(TBC::PARTITION_NAME);
-        $documentTokenSums = $index->getPartition(DocumentTokenSums::PARTITION_NAME);
+        $documentCount = $index->getPartition(DC::PARTITION_NAME);
         $documentTokenCounts = $index->getPartition(DocumentTokenCounts::PARTITION_NAME);
         $categories = array_keys($tokensByCategory);
         $transform = array();
         $numeratorCache = array();
 
+        $tokensByCategorySums = array();
+
+        foreach ($tokensByCategory as $category => $tokens) {
+            $tokensByCategorySums[$category] = array_sum($tokens);
+        }
+
+        $documentCounts = array();
+
+        foreach ($data as $category => $documents) {
+            $documentCounts[$category] = count($documents);
+        }
+
         foreach ($tokensByCategory as $category => $tokens) {
 
-            $tokens = array_keys($tokens);
             $transform[$category] = array();
             $categoriesSelection = array_diff($categories, array($category));
 
-            $denominators = array();
+            $docsInOtherCategories = $documentCount - $documentCounts[$category];
 
-            foreach ($categoriesSelection as $category2) {
-                $denominators[$category2] = array_sum($documentTokenSums[$category2]) + array_sum($documentTokenCounts[$category2]);
-            }
-
-            foreach ($tokens as $token) {
-
-                $numerator = 0;
-                $denominator = 0;
-                foreach ($categoriesSelection as $category2) {
-                    $numerator += count($data[$category2]);
-                    $denominator += $denominators[$category2];
-
-                    if (!isset($numeratorCache[$category2])) {
-                        $numeratorCache[$category2] = array();
+            foreach ($tokens as $token => $count) {
+                $transform[$category][$token] = $docsInOtherCategories;
+                foreach ($categoriesSelection as $selectedCategory) {
+                    if (array_key_exists($token, $tokensByCategory[$selectedCategory])) {
+                        $transform[$category][$token] += $tokensByCategory[$selectedCategory][$token];
                     }
-
-                    if (!isset($numeratorCache[$category2][$token])) {
-
-                        $numeratorCache[$category2][$token] = 0;
-
-                        foreach ($data[$category2] as $docIndex => $document) {
-                            if (array_key_exists($token, $document)) {
-                                $numeratorCache[$category2][$token] += $document[$token];
-                            }
-                        }
-
-                    }
-
-                    $numerator += $numeratorCache[$category2][$token];
-
                 }
 
-                $transform[$category][$token] = $numerator / $denominator;
+                foreach ($categoriesSelection as $selectedCategory) {
+                    $transform[$category][$token] = $transform[$category][$token] / ($tokensByCategorySums[$selectedCategory] + $documentTokenCounts[$selectedCategory]);
+                }
 
             }
+
         }
 
         $index->setPartition(self::PARTITION_NAME, $transform);

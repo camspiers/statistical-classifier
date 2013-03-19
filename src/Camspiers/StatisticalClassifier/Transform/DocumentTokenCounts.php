@@ -34,9 +34,9 @@ class DocumentTokenCounts implements TransformInterface
         $transform = array();
 
         foreach ($data as $category => $documents) {
-            $transform[$category] = array();
-            foreach ($documents as $docIndex => $document) {
-                $transform[$category][$docIndex] = count($document);
+            $transform[$category] = 0;
+            foreach ($documents as $document) {
+                $transform[$category] += count($document);
             }
         }
 
