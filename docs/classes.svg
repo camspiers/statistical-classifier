@@ -65,26 +65,26 @@
 <text text-anchor="middle" x="1337" y="-469" font-family="Times,serif" font-size="11.00" fill="gray">Config</text>
 </g>
 <g id="graph7" class="cluster"><title>cluster_Camspiers\StatisticalClassifier\Console</title>
-<polyline fill="none" stroke="gray" points="767,-1599 1410,-1599 "/>
+<polyline fill="none" stroke="gray" points="786,-1599 1410,-1599 "/>
 <path fill="none" stroke="gray" d="M1410,-1599C1416,-1599 1422,-1605 1422,-1611"/>
 <polyline fill="none" stroke="gray" points="1422,-1611 1422,-2204 "/>
 <path fill="none" stroke="gray" d="M1422,-2204C1422,-2210 1416,-2216 1410,-2216"/>
-<polyline fill="none" stroke="gray" points="1410,-2216 767,-2216 "/>
-<path fill="none" stroke="gray" d="M767,-2216C761,-2216 755,-2210 755,-2204"/>
-<polyline fill="none" stroke="gray" points="755,-2204 755,-1611 "/>
-<path fill="none" stroke="gray" d="M755,-1611C755,-1605 761,-1599 767,-1599"/>
-<text text-anchor="middle" x="1088.5" y="-2201" font-family="Times,serif" font-size="11.00" fill="gray">Console</text>
+<polyline fill="none" stroke="gray" points="1410,-2216 786,-2216 "/>
+<path fill="none" stroke="gray" d="M786,-2216C780,-2216 774,-2210 774,-2204"/>
+<polyline fill="none" stroke="gray" points="774,-2204 774,-1611 "/>
+<path fill="none" stroke="gray" d="M774,-1611C774,-1605 780,-1599 786,-1599"/>
+<text text-anchor="middle" x="1098" y="-2201" font-family="Times,serif" font-size="11.00" fill="gray">Console</text>
 </g>
 <g id="graph8" class="cluster"><title>cluster_Camspiers\StatisticalClassifier\Console\Command</title>
-<polyline fill="none" stroke="gray" points="775,-1653 1402,-1653 "/>
+<polyline fill="none" stroke="gray" points="794,-1653 1402,-1653 "/>
 <path fill="none" stroke="gray" d="M1402,-1653C1408,-1653 1414,-1659 1414,-1665"/>
 <polyline fill="none" stroke="gray" points="1414,-1665 1414,-2175 "/>
 <path fill="none" stroke="gray" d="M1414,-2175C1414,-2181 1408,-2187 1402,-2187"/>
-<polyline fill="none" stroke="gray" points="1402,-2187 775,-2187 "/>
-<path fill="none" stroke="gray" d="M775,-2187C769,-2187 763,-2181 763,-2175"/>
-<polyline fill="none" stroke="gray" points="763,-2175 763,-1665 "/>
-<path fill="none" stroke="gray" d="M763,-1665C763,-1659 769,-1653 775,-1653"/>
-<text text-anchor="middle" x="1088.5" y="-2172" font-family="Times,serif" font-size="11.00" fill="gray">Command</text>
+<polyline fill="none" stroke="gray" points="1402,-2187 794,-2187 "/>
+<path fill="none" stroke="gray" d="M794,-2187C788,-2187 782,-2181 782,-2175"/>
+<polyline fill="none" stroke="gray" points="782,-2175 782,-1665 "/>
+<path fill="none" stroke="gray" d="M782,-1665C782,-1659 788,-1653 794,-1653"/>
+<text text-anchor="middle" x="1098" y="-2172" font-family="Times,serif" font-size="11.00" fill="gray">Command</text>
 </g>
 <g id="graph9" class="cluster"><title>cluster_Camspiers\StatisticalClassifier\Console\Command\Index</title>
 <polyline fill="none" stroke="gray" points="1287,-1977 1387,-1977 "/>
@@ -271,16 +271,16 @@
 <text text-anchor="middle" x="1337" y="-2106.6" font-family="Courier,monospace" font-size="11.00">CreateCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="node25" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<a xlink:href="Console.Command.CacheableCommand.html" xlink:title="«abstract»&lt;br/&gt;CacheableCommand" target="_parent">
-<polygon fill="none" stroke="black" points="893,-1859 771,-1859 771,-1823 893,-1823 893,-1859"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="node26" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<a xlink:href="Console.Command.Command.html" xlink:title="«abstract»&lt;br/&gt;Command" target="_parent">
+<polygon fill="none" stroke="black" points="873.5,-1859 790.5,-1859 790.5,-1823 873.5,-1823 873.5,-1859"/>
 <text text-anchor="start" x="799" y="-1842.5" font-family="Courier,monospace" font-size="11.00">«abstract»</text>
-<text text-anchor="start" x="779.5" y="-1831.5" font-family="Courier,monospace" font-size="11.00">CacheableCommand</text>
+<text text-anchor="start" x="809" y="-1831.5" font-family="Courier,monospace" font-size="11.00">Command</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge58" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge58" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
 <path fill="none" stroke="black" d="M1286.07,-2102.85C1265.73,-2098.59 1242.27,-2092.46 1222,-2084 1078.54,-2024.11 927.647,-1914.24 864.098,-1865.45"/>
 <polygon fill="none" stroke="black" points="866.13,-1862.6 856.075,-1859.26 861.853,-1868.14 866.13,-1862.6"/>
 </g>
@@ -291,8 +291,8 @@
 <text text-anchor="middle" x="1337" y="-2052.6" font-family="Courier,monospace" font-size="11.00">PrepareCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\PrepareCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge60" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\PrepareCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\PrepareCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge60" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\PrepareCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
 <path fill="none" stroke="black" d="M1282.51,-2046.88C1263.18,-2042.56 1241.35,-2036.9 1222,-2030 1089.34,-1982.71 942.235,-1903.25 873.08,-1864.15"/>
 <polygon fill="none" stroke="black" points="874.669,-1861.03 864.245,-1859.14 871.213,-1867.12 874.669,-1861.03"/>
 </g>
@@ -303,10 +303,10 @@
 <text text-anchor="middle" x="1337" y="-1998.6" font-family="Courier,monospace" font-size="11.00">RemoveCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge62" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<path fill="none" stroke="black" d="M1286.13,-1990.68C1266.11,-1985.53 1242.87,-1979.28 1222,-1973 1104.19,-1937.56 968.519,-1889.94 892.552,-1862.65"/>
-<polygon fill="none" stroke="black" points="893.282,-1859.2 882.687,-1859.1 890.912,-1865.78 893.282,-1859.2"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge62" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M1286.13,-1990.68C1266.11,-1985.53 1242.87,-1979.28 1222,-1973 1099.13,-1936.03 956.819,-1885.83 883.09,-1859.25"/>
+<polygon fill="none" stroke="black" points="884.176,-1855.92 873.582,-1855.82 881.799,-1862.51 884.176,-1855.92"/>
 </g>
 <!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand -->
 <g id="node20" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand</title>
@@ -315,10 +315,10 @@
 <text text-anchor="middle" x="1337" y="-1917.6" font-family="Courier,monospace" font-size="11.00">PDOCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge64" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<path fill="none" stroke="black" d="M1295.69,-1915.51C1210.32,-1901.76 1010.39,-1869.57 903.434,-1852.34"/>
-<polygon fill="none" stroke="black" points="903.81,-1848.86 893.381,-1850.72 902.697,-1855.77 903.81,-1848.86"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge64" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M1295.69,-1915.51C1204.72,-1900.86 983.684,-1865.27 883.658,-1849.16"/>
+<polygon fill="none" stroke="black" points="883.934,-1845.66 873.504,-1847.52 882.821,-1852.57 883.934,-1845.66"/>
 </g>
 <!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand -->
 <g id="node22" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand</title>
@@ -327,10 +327,10 @@
 <text text-anchor="middle" x="1337" y="-1836.6" font-family="Courier,monospace" font-size="11.00">DirectoryCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge66" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<path fill="none" stroke="black" d="M1276.32,-1841C1183.08,-1841 1003.22,-1841 903.643,-1841"/>
-<polygon fill="none" stroke="black" points="903.381,-1837.5 893.381,-1841 903.381,-1844.5 903.381,-1837.5"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge66" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M1276.32,-1841C1176.49,-1841 977.385,-1841 883.811,-1841"/>
+<polygon fill="none" stroke="black" points="883.743,-1837.5 873.743,-1841 883.743,-1844.5 883.743,-1837.5"/>
 </g>
 <!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand -->
 <g id="node23" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand</title>
@@ -339,10 +339,10 @@
 <text text-anchor="middle" x="1337" y="-1782.6" font-family="Courier,monospace" font-size="11.00">DocumentCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge68" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<path fill="none" stroke="black" d="M1279.28,-1793.09C1186.75,-1803.02 1003.59,-1822.69 903.078,-1833.48"/>
-<polygon fill="none" stroke="black" points="902.59,-1830.01 893.021,-1834.56 903.338,-1836.97 902.59,-1830.01"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge68" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M1279.28,-1793.09C1180.47,-1803.7 978.303,-1825.4 883.801,-1835.55"/>
+<polygon fill="none" stroke="black" points="883.208,-1832.09 873.639,-1836.64 883.955,-1839.05 883.208,-1832.09"/>
 </g>
 <!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand -->
 <g id="node24" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand</title>
@@ -351,32 +351,32 @@
 <text text-anchor="middle" x="1337" y="-1728.6" font-family="Courier,monospace" font-size="11.00">PDOCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge70" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<path fill="none" stroke="black" d="M1295.69,-1741.66C1210.32,-1759.98 1010.39,-1802.91 903.434,-1825.88"/>
-<polygon fill="none" stroke="black" points="902.423,-1822.51 893.381,-1828.04 903.893,-1829.36 902.423,-1822.51"/>
-</g>
-<!-- \\Symfony\\Component\\Console\\Command\\Command -->
-<g id="node106" class="node"><title>\\Symfony\\Component\\Console\\Command\\Command</title>
-<ellipse fill="none" stroke="black" cx="217" cy="-126" rx="217.106" ry="18"/>
-<text text-anchor="middle" x="217" y="-120.4" font-family="Times,serif" font-size="14.00" fill="gray">\Symfony\Component\Console\Command\Command</text>
-</g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand&#45;&gt;\\Symfony\\Component\\Console\\Command\\Command -->
-<g id="edge54" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand&#45;&gt;\\Symfony\\Component\\Console\\Command\\Command</title>
-<path fill="none" stroke="black" d="M787.26,-1822.91C713.922,-1789.94 568.103,-1712.45 506,-1595 431.014,-1453.18 543.134,-270.579 434,-153 429.445,-148.092 424.485,-143.734 419.199,-139.874"/>
-<polygon fill="none" stroke="black" points="420.906,-136.807 410.635,-134.209 417.045,-142.645 420.906,-136.807"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge70" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M1295.69,-1741.66C1204.63,-1761.21 983.237,-1808.74 883.355,-1830.19"/>
+<polygon fill="none" stroke="black" points="882.547,-1826.78 873.504,-1832.3 884.016,-1833.63 882.547,-1826.78"/>
 </g>
 <!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand -->
-<g id="node26" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand</title>
+<g id="node25" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand</title>
 <a xlink:href="Console.Command.ClassifyCommand.html" xlink:title="ClassifyCommand" target="_parent">
 <polygon fill="none" stroke="black" points="1394.52,-1697 1279.48,-1697 1279.48,-1661 1394.52,-1661 1394.52,-1697"/>
 <text text-anchor="middle" x="1337" y="-1674.6" font-family="Courier,monospace" font-size="11.00">ClassifyCommand</text>
 </a>
 </g>
-<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand -->
-<g id="edge56" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\CacheableCommand</title>
-<path fill="none" stroke="black" d="M1279.39,-1689.36C1260.96,-1693.15 1240.5,-1697.8 1222,-1703 1100.36,-1737.21 961.734,-1789.77 887.231,-1819.16"/>
-<polygon fill="none" stroke="black" points="885.601,-1816.05 877.591,-1822.98 888.177,-1822.55 885.601,-1816.05"/>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command -->
+<g id="edge54" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand&#45;&gt;\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M1279.39,-1689.36C1260.96,-1693.15 1240.5,-1697.8 1222,-1703 1098.05,-1737.86 956.461,-1791.77 883.055,-1820.81"/>
+<polygon fill="none" stroke="black" points="881.591,-1817.63 873.588,-1824.57 884.174,-1824.14 881.591,-1817.63"/>
+</g>
+<!-- \\Symfony\\Component\\Console\\Command\\Command -->
+<g id="node107" class="node"><title>\\Symfony\\Component\\Console\\Command\\Command</title>
+<ellipse fill="none" stroke="black" cx="217" cy="-126" rx="217.106" ry="18"/>
+<text text-anchor="middle" x="217" y="-120.4" font-family="Times,serif" font-size="14.00" fill="gray">\Symfony\Component\Console\Command\Command</text>
+</g>
+<!-- \\Camspiers\\StatisticalClassifier\\Console\\Command\\Command&#45;&gt;\\Symfony\\Component\\Console\\Command\\Command -->
+<g id="edge56" class="edge"><title>\\Camspiers\\StatisticalClassifier\\Console\\Command\\Command&#45;&gt;\\Symfony\\Component\\Console\\Command\\Command</title>
+<path fill="none" stroke="black" d="M790.435,-1824.33C718.212,-1792.2 569.013,-1714.17 506,-1595 431.014,-1453.18 543.134,-270.579 434,-153 429.445,-148.092 424.485,-143.734 419.199,-139.874"/>
+<polygon fill="none" stroke="black" points="420.906,-136.807 410.635,-134.209 417.045,-142.645 420.906,-136.807"/>
 </g>
 <!-- \\Camspiers\\StatisticalClassifier\\Console\\Application -->
 <g id="node30" class="node"><title>\\Camspiers\\StatisticalClassifier\\Console\\Application</title>

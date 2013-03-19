@@ -14,24 +14,20 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Index;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class CreateCommand extends CacheableCommand
+class CreateCommand extends Command
 {
     protected function configure()
     {
         $this
             ->setName('index:create')
             ->setDescription('Create an index')
-            ->addArgument(
-                'index',
-                Input\InputArgument::REQUIRED,
-                'Name of index'
-            );
+            ->configureIndex();
     }
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)

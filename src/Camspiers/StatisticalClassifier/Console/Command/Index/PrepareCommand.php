@@ -14,35 +14,25 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Index;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class PrepareCommand extends CacheableCommand
+class PrepareCommand extends Command
 {
     protected function configure()
     {
         $this
             ->setName('index:prepare')
             ->setDescription('Prepare an index')
-            ->addArgument(
-                'index',
-                Input\InputArgument::REQUIRED,
-                'Name of index'
-            );
+            ->configureIndex()
+            ->configureClassifier();
     }
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $c = $this->getApplication()->getContainer();
-        $c->set(
-            'index.index',
-            $this->getCachedIndex(
-                $input->getArgument('index')
-            )
-        );
-        $c->get('classifier.naive_bayes')->prepareIndex();
+        $this->getClassifier($input)->prepareIndex();
     }
 }

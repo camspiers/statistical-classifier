@@ -14,24 +14,20 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class DocumentCommand extends CacheableCommand
+class DocumentCommand extends Command
 {
     protected function configure()
     {
         $this
             ->setName('train:document')
             ->setDescription('Train the classifier with a document')
-            ->addArgument(
-                'index',
-                Input\InputArgument::REQUIRED,
-                'Name of index'
-            )
+            ->configureIndex()
             ->addArgument(
                 'category',
                 Input\InputArgument::REQUIRED,
@@ -41,7 +37,9 @@ class DocumentCommand extends CacheableCommand
                 'document',
                 Input\InputArgument::REQUIRED,
                 'The document to train on'
-            );
+            )
+            ->configureClassifier()
+            ->configurePrepare();
     }
 
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
@@ -52,5 +50,8 @@ class DocumentCommand extends CacheableCommand
             $input->getArgument('document')
         );
         $index->preserve();
+        if ($input->getOption('prepare')) {
+            $this->getClassifier($input, $index)->prepareIndex();
+        }
     }
 }

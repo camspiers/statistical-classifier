@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Test;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\CacheableCommand;
+use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 use Camspiers\StatisticalClassifier\DataSource\PDO;
 use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
@@ -25,18 +25,14 @@ use PDO as BasePDO;
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class PDOCommand extends CacheableCommand
+class PDOCommand extends Command
 {
     protected function configure()
     {
         $this
             ->setName('test:pdo')
             ->setDescription('Test the classifier with a PDO query')
-            ->addArgument(
-                'index',
-                Input\InputArgument::REQUIRED,
-                'Name of index'
-            )
+            ->configureIndex()
             ->addArgument(
                 'category',
                 Input\InputArgument::REQUIRED,
