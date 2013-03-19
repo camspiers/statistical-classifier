@@ -132,7 +132,7 @@ Arguments:
  index                 Name of index
  directory             The directory to train on
 
- Options:
+Options:
  --include (-i)        The categories from the directory to include (multiple values allowed)
 ```
 
