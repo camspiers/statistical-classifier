@@ -34,7 +34,7 @@ class Directory extends DataArray
     {
         $data = array();
         if (file_exists($this->directory)) {
-            if (is_array($this->include)) {
+            if (is_array($this->include) && count($this->include) !== 0) {
                 $files = array();
                 foreach ($this->include as $include) {
                     $files = array_merge($files, glob("$this->directory/$include/*", GLOB_NOSORT));
