@@ -30,7 +30,7 @@ class Application extends BaseApplication
      */
     public function __construct()
     {
-        parent::__construct('Statistical Classifier', '0.2.1');
+        parent::__construct('Statistical Classifier', '0.3.0');
     }
     /**
      * Allows the setting of a container on the appliaction
