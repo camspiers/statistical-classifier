@@ -20,20 +20,32 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class Application extends BaseApplication
 {
+    /**
+     * Holds the dependency injection container
+     * @var ContainerInterface
+     */
     protected $container;
-
+    /**
+     * Creates the application, setting the name and version
+     */
     public function __construct()
     {
         parent::__construct('Statistical Classifier', '0.2.1');
     }
-
+    /**
+     * Allows the setting of a container on the appliaction
+     * @param ContainerInterface $container The container to set
+     */
     public function setContainer(ContainerInterface $container)
     {
         $this->container = $container;
 
         return $this;
     }
-
+    /**
+     * Returns the set container or returns a newly instantiated one
+     * @return ContainerInterface The container
+     */
     public function getContainer()
     {
         if (null == $this->container) {

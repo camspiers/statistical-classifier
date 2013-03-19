@@ -126,6 +126,7 @@ class GenericClassifier implements ClassifierInterface
     }
     /**
      * Return an index which has been prepared for classification
+     * @return IndexInterface
      */
     protected function preparedIndex()
     {

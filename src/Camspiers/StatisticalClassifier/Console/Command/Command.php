@@ -13,7 +13,6 @@ namespace Camspiers\StatisticalClassifier\Console\Command;
 
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input;
-use Symfony\Component\Console\Output;
 
 use CacheCache\Cache;
 
@@ -25,10 +24,25 @@ use Camspiers\StatisticalClassifier\Index;
  */
 abstract class Command extends BaseCommand
 {
+    /**
+     * Holds the CacheCache\Cache instance
+     * @var CacheCache\Cache
+     */
     protected $cache;
+    /**
+     * Holds the container instance for caching
+     * @var Symfony\Component\DependencyInjection\ContainerInterface
+     */
     protected $container;
+    /**
+     * Holds the classifier instance for caching
+     * @var Camspiers\StatisticalClassifier\Classifier\ClassifierInterface
+     */
     protected $classifier;
-
+    /**
+     * Adds options nessacary for calling getClassifier in a command
+     * @return Command This command to allow chaining
+     */
     protected function configureClassifier()
     {
         $this
@@ -39,9 +53,13 @@ abstract class Command extends BaseCommand
                 'Name of classifier',
                 'classifier.naive_bayes'
             );
+
         return $this;
     }
-
+    /**
+     * Adds arguments required for using a specified index in a command
+     * @return Command This command to allow chaining
+     */
     protected function configureIndex()
     {
         $this
@@ -50,9 +68,13 @@ abstract class Command extends BaseCommand
                 Input\InputArgument::REQUIRED,
                 'Name of index'
             );
+
         return $this;
     }
-
+    /**
+     * Adds options to allow automatically prepare the index
+     * @return Command This command to allow chaining
+     */
     protected function configurePrepare()
     {
         $this
@@ -62,14 +84,22 @@ abstract class Command extends BaseCommand
                 Input\InputOption::VALUE_NONE,
                 'Prepare the index after training'
             );
+
         return $this;
     }
-
+    /**
+     * Allow for cache to be stored on command for setter injection
+     * @param Cache $cache The cache to store
+     */
     public function setCache(Cache $cache)
     {
         $this->cache = $cache;
     }
-
+    /**
+     * Get an CachedIndex based off a index name and the Cache instance
+     * @param  string            $name The name of the index
+     * @return Index\CachedIndex The cached index
+     */
     protected function getCachedIndex($name)
     {
         return new Index\CachedIndex(
@@ -77,15 +107,24 @@ abstract class Command extends BaseCommand
             $this->cache
         );
     }
-
+    /**
+     * Return the dependency injection container fetching it off the app if it doesn't exist
+     * @return Symfony\Component\DependencyInjection\ContainerInterface The container
+     */
     protected function getContainer()
     {
         if (null == $this->container) {
             $this->container = $this->getApplication()->getContainer();
         }
+
         return $this->container;
     }
-
+    /**
+     * Returns a classifier based of the commands input and the specified index (if exists)
+     * @param  Input\InputInterface                                           $input The commands input
+     * @param  Index\IndexInterface                                           $index Optional index to use in the classifier
+     * @return Camspiers\StatisticalClassifier\Classifier\ClassifierInterface The built classifier
+     */
     protected function getClassifier(Input\InputInterface $input, Index\Index $index = null)
     {
         if (null === $this->classifier) {
@@ -101,6 +140,7 @@ abstract class Command extends BaseCommand
             );
             $this->classifier = $container->get($input->getOption('classifier'));
         }
+
         return $this->classifier;
     }
 }
