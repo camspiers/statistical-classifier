@@ -46,9 +46,7 @@ $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
 
 # Usage
 
-## From within external PHP code
-
-### Without Symfony Dependency Injection
+## Without Symfony Dependency Injection
 
 ```php
 <?php
@@ -76,7 +74,7 @@ $c->is('ham', 'Some ham document'); // true
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-### With Symfony Dependency Injection
+## With Symfony Dependency Injection
 
 ```php
 <?php
@@ -237,57 +235,3 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
     statistical-classifier/ $ composer install --dev
     statistical-classifier/ $ vendor/bin/phpunit
-
-# Internals
-
-## Classifiers
-
-* Generic Classifier
-* Naive Bayes Classifier
-
-## Data Sources
-
-* DataArray
-* Directory
-* Json
-* PDO
-* PDOQuery
-* Serialized
-
-## Index
-
-* Index
-* CachedIndex
-
-## Normalizers
-
-* Lowercase
-* Porter
-* Stopword
-
-## Tokenizers
-
-* Word
-
-## Tranforms
-
-* Complement
-* DC
-* DL
-* DocumentTokenCounts
-* DocumentTokenSums
-* IDF
-* Prune
-* TAC
-* TBC
-* TCBD
-* TF
-* TFIDF
-* TFThreaded
-* TransformInterface
-* Weight
-* WeightNormalization
-
-## Classification Rules
-
-* NaiveBayes
