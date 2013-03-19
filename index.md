@@ -46,9 +46,7 @@ $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
 
 # Usage
 
-## From within external PHP code
-
-### Without Symfony Dependency Injection
+## Without Symfony Dependency Injection
 
 ```php
 <?php
@@ -76,7 +74,7 @@ $c->is('ham', 'Some ham document'); // true
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-### With Symfony Dependency Injection
+## With Symfony Dependency Injection
 
 ```php
 <?php
