@@ -44,6 +44,14 @@ $ composer create-project camspiers/statistical-classifier .
 $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
 ```
 
+## Manual (not recommended)
+
+```bash
+$ curl -LO https://github.com/camspiers/statistical-classifier/archive/master.zip
+$ unzip master.zip -d statistical-classifier
+$ composer install -d statistical-classifier
+```
+
 # Usage
 
 ## Without Symfony Dependency Injection
@@ -238,9 +246,7 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
 # Internals
 
-## Class diagram
-
-![Class Diagram](docs/classes.svg)
+## [View class diagram](docs/graph_class.html)
 
 ## Classifiers
 
