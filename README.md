@@ -29,7 +29,7 @@ Classifiers are extensively used in combating spam. Having your own classifier a
 
 Classifiers are also used in automatically categorizing site content (pages, articles, news etc.).
 
-# How you get it
+# Installation
 
 ## For your PHP application
 
