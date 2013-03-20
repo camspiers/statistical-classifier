@@ -44,6 +44,14 @@ $ composer create-project camspiers/statistical-classifier .
 $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
 ```
 
+## Manual (not recommended)
+
+```bash
+$ curl -LO https://github.com/camspiers/statistical-classifier/archive/master.zip
+$ unzip master.zip -d statistical-classifier
+$ composer install -d statistical-classifier
+```
+
 # Usage
 
 ## Without Symfony Dependency Injection
@@ -211,6 +219,21 @@ Options:
 $ classifier train:document MyIndexName spam "This is some spam"
 $ classifier train:document MyIndexName ham "This is some ham"
 $ classifier classify MyIndexName "Some spam"
+```
+
+## As a server
+
+```bash
+$ bin/classifier-server
+```
+
+### Examples
+
+```bash
+$ curl http://127.0.0.1/classify/?index=MyIndex&document=Some%20Document%20to%20classify
+> {"category":"example"}
+$ curl -X POST -d @mydocument.txt http://127.0.0.1/classify/?index=MyIndex
+> {"category":"example"}
 ```
 
 # Technical details
