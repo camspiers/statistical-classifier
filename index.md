@@ -221,6 +221,21 @@ $ classifier train:document MyIndexName ham "This is some ham"
 $ classifier classify MyIndexName "Some spam"
 ```
 
+## As a server
+
+```bash
+$ bin/classifier-server
+```
+
+### Examples
+
+```bash
+$ curl http://127.0.0.1/classify/?index=MyIndex&document=Some%20Document%20to%20classify
+> {"category":"example"}
+$ curl -X POST -d @mydocument.txt http://127.0.0.1/classify/?index=MyIndex
+> {"category":"example"}
+```
+
 # Technical details
 
 A classifier is built using the following component types:
