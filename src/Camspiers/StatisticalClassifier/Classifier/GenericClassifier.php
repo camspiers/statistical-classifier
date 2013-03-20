@@ -139,6 +139,13 @@ class GenericClassifier implements ClassifierInterface
     /**
      * {@inheritdoc}
      */
+    public function setIndex(IndexInterface $index)
+    {
+        $this->index = $index;
+    }
+    /**
+     * {@inheritdoc}
+     */
     public function classify($document)
     {
         return $this->classificationRule->classify(

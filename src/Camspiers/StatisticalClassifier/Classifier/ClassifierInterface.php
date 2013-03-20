@@ -12,6 +12,7 @@
 namespace Camspiers\StatisticalClassifier\Classifier;
 
 use Camspiers\StatisticalClassifier\Transform\TransformInterface;
+use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
 /**
  * Provides an interface for classifier.
@@ -40,6 +41,11 @@ interface ClassifierInterface
      * @return null
      */
     public function prepareIndex();
+    /**
+     * Set the index
+     * @param IndexInterface $index The index to set
+     */
+    public function setIndex(IndexInterface $index);
     /**
      * Add a transform to be applied to the source data to achieve classification
      * @param  TransformInterface $transform The transform to add
