@@ -12,11 +12,12 @@ PHP Statistical Classifier is written entirely in PHP, with a focus on reuse and
 
 Important Features:
 
+* Highly customizable
+* Multiple ways of using the library (PHP, command-line, HTTP server)
+* Support for use from non-PHP programming languages (through command-line or HTTP server)
 * Multiple **data import types** to get your data into the classifier (Directory of files, Database queries, Json, Serialized arrays)
 * Multiple **types of caching** for the index the classifier builds (Memcache, Apc, File, Session)
 * Multiple ways to make your input data more consistent (Lowercase, Porter Stemmer)
-* Multiple ways to use the classifier depending on your applications needs
-* Support for use from non-PHP programming languages
 * Faster setup time in applications using Symfony Dependency Injection
 
 PHP Classifier is also built with a structure that allows developers to easily implement their own classifiers, even reusing the underlying algorithms between classifiers.
