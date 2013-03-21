@@ -13,16 +13,16 @@ namespace Camspiers\StatisticalClassifier\Console\Command;
 
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
-use Symfony\Component\Console\Command\Command as BaseCommand;
 
 use Camspiers\DependencyInjection\SharedContainerFactory;
 use Camspiers\StatisticalClassifier\DependencyInjection;
+use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class GenerateContainerCommand extends BaseCommand
+class GenerateContainerCommand extends Command
 {
     /**
      * Configure the commands options
@@ -32,12 +32,7 @@ class GenerateContainerCommand extends BaseCommand
     {
         $this
             ->setName('generate-container')
-            ->setDescription('Generate container')
-            ->addArgument(
-                'services',
-                Input\InputArgument::OPTIONAL,
-                'A services yml to add extra services'
-            );
+            ->setDescription('Generate container');
     }
     /**
      * Generate the container
@@ -48,28 +43,38 @@ class GenerateContainerCommand extends BaseCommand
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
 
-        SharedContainerFactory::addExtension(
-            new DependencyInjection\StatisticalClassifierExtension()
-        );
+        $config = $this->getConfig();
 
-        SharedContainerFactory::addCompilerPass(
-            new DependencyInjection\CommandCompilerPass()
-        );
+        if (isset($config['require']) && is_array($config['require'])) {
+            foreach ($config['require'] as $file) {
+                if (file_exists($file)) {
+                    include_once $file;
+                } else {
+                    include_once $config['basepath'] . $file;
+                }
+            }
+        }
 
-        if ($input->getArgument('services')) {
-            $container = SharedContainerFactory::createContainer(
-                array(),
-                $input->getArgument('services')
-            );
-        } else {
-            $container = SharedContainerFactory::createContainer(
-                array()
-            );
-            $container->loadFromExtension('statistical_classifier');
+        if (isset($config['extensions']) && is_array($config['extensions'])) {
+            foreach ($config['extensions'] as $extension) {
+                SharedContainerFactory::addExtension(
+                    new $extension
+                );
+            }
+        }
+        if (isset($config['compiler_passes']) && is_array($config['compiler_passes'])) {
+            foreach ($config['compiler_passes'] as $compilerPass) {
+                SharedContainerFactory::addCompilerPass(
+                    new $compilerPass
+                );
+            }
         }
 
         SharedContainerFactory::dumpContainer(
-            $container,
+            SharedContainerFactory::createContainer(
+                array(),
+                $config['basepath'] . $config['services']
+            ),
             'StatisticalClassifierServiceContainer',
             'config/'
         );

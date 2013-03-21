@@ -6,4 +6,12 @@ chdir(dirname(__DIR__));
 require_once 'src/bootstrap.php';
 
 $c = new StatisticalClassifierServiceContainer;
+
+if (!$c->has('console.application')) {
+	unlink('config/StatisticalClassifierServiceContainer.php');
+	echo 'There appears to be a problem with your container. The service \'console.application\' must exist.', PHP_EOL;
+	echo 'The current container has been deleted, please make the required modifications and re-run the classifier', PHP_EOL;
+	exit(1);
+}
+
 $c->get('console.application')->setContainer($c)->run();

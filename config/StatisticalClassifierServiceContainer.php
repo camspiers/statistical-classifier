@@ -96,6 +96,8 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.test.pdo'));
         $instance->add($this->get('console.command.test.directory'));
         $instance->add($this->get('console.command.server.start'));
+        $instance->add($this->get('console.command.config.create'));
+        $instance->add($this->get('console.command.config.remove'));
         $instance->add($this->get('console.command.generate_container'));
 
         return $instance;
@@ -116,6 +118,32 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->setCache($this->get('cache'));
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.config.create' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand A Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand instance.
+     */
+    protected function getConsole_Command_Config_CreateService()
+    {
+        return $this->services['console.command.config.create'] = new \Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand();
+    }
+
+    /**
+     * Gets the 'console.command.config.remove' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand A Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand instance.
+     */
+    protected function getConsole_Command_Config_RemoveService()
+    {
+        return $this->services['console.command.config.remove'] = new \Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand();
     }
 
     /**
@@ -1052,8 +1080,6 @@ class StatisticalClassifierServiceContainer extends Container
             'normalizer.grouped.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Grouped',
             'converter.converter.class' => 'Camspiers\\StatisticalClassifier\\DataSource\\Converter',
             'classifier.naive_bayes.class' => 'Camspiers\\StatisticalClassifier\\Classifier\\NaiveBayes',
-            'cache.class' => 'CacheCache\\Cache',
-            'cache.backend.class' => 'CacheCache\\Backends\\File',
             'console.application.class' => 'Camspiers\\StatisticalClassifier\\Console\\Application',
             'console.command.index.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand',
             'console.command.index.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand',
@@ -1066,6 +1092,10 @@ class StatisticalClassifierServiceContainer extends Container
             'console.command.test.directory.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\DirectoryCommand',
             'console.command.server.start.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Server\\StartCommand',
             'console.command.generate_container.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\GenerateContainerCommand',
+            'console.command.config.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\CreateCommand',
+            'console.command.config.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\RemoveCommand',
+            'cache.class' => 'CacheCache\\Cache',
+            'cache.backend.class' => 'CacheCache\\Backends\\File',
             'logger.class' => 'Monolog\\Logger',
             'logger.stream.class' => 'Monolog\\Handler\\StreamHandler',
             'logger.stream.stream' => 'logs/classifier.log',

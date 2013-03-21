@@ -23,22 +23,24 @@ class CommandCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $application = $container->getDefinition('console.application');
-        foreach ($container->findTaggedServiceIds('console.command') as $id => $tags) {
-            foreach ($tags as $tag) {
-                $application->addMethodCall(
-                    'add',
-                    array(
-                        new Reference($id)
-                    )
-                );
-                if (isset($tag['cache']) && $tag['cache']) {
-                    $container->getDefinition($id)->addMethodCall(
-                        'setCache',
+        if ($container->hasDefinition('console.application')) {
+            $application = $container->getDefinition('console.application');
+            foreach ($container->findTaggedServiceIds('console.command') as $id => $tags) {
+                foreach ($tags as $tag) {
+                    $application->addMethodCall(
+                        'add',
                         array(
-                            new Reference('cache')
+                            new Reference($id)
                         )
                     );
+                    if (isset($tag['cache']) && $tag['cache']) {
+                        $container->getDefinition($id)->addMethodCall(
+                            'setCache',
+                            array(
+                                new Reference('cache')
+                            )
+                        );
+                    }
                 }
             }
         }

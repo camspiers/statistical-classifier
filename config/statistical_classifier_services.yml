@@ -9,21 +9,13 @@ parameters:
     classifier_namespace: Camspiers\StatisticalClassifier
 
     tokenizer.word.class: %classifier_namespace%\Tokenizer\Word
-
     normalizer.lowercase.class: %classifier_namespace%\Normalizer\Lowercase
     normalizer.porter.class: %classifier_namespace%\Normalizer\Porter
     normalizer.stopword.class: %classifier_namespace%\Normalizer\Stopword
     normalizer.grouped.class: %classifier_namespace%\Normalizer\Grouped
-
     converter.converter.class: %classifier_namespace%\DataSource\Converter
-
     classifier.naive_bayes.class: %classifier_namespace%\Classifier\NaiveBayes
-
-    cache.class: CacheCache\Cache
-    cache.backend.class: CacheCache\Backends\File
-
     console.application.class: %classifier_namespace%\Console\Application
-
     console.command.index.create.class: %classifier_namespace%\Console\Command\Index\CreateCommand
     console.command.index.remove.class: %classifier_namespace%\Console\Command\Index\RemoveCommand
     console.command.index.prepare.class: %classifier_namespace%\Console\Command\Index\PrepareCommand
@@ -35,6 +27,11 @@ parameters:
     console.command.test.directory.class: %classifier_namespace%\Console\Command\Test\DirectoryCommand
     console.command.server.start.class: %classifier_namespace%\Console\Command\Server\StartCommand
     console.command.generate_container.class: %classifier_namespace%\Console\Command\GenerateContainerCommand
+    console.command.config.create.class: %classifier_namespace%\Console\Command\Config\CreateCommand
+    console.command.config.remove.class: %classifier_namespace%\Console\Command\Config\RemoveCommand
+
+    cache.class: CacheCache\Cache
+    cache.backend.class: CacheCache\Backends\File
 
     logger.class: Monolog\Logger
     logger.stream.class: Monolog\Handler\StreamHandler
@@ -152,6 +149,16 @@ services:
         class: %console.command.server.start.class%
         tags:
             - { name: console.command, cache: true }
+
+    console.command.config.create:
+        class: %console.command.config.create.class%
+        tags:
+            - { name: console.command }
+
+    console.command.config.remove:
+        class: %console.command.config.remove.class%
+        tags:
+            - { name: console.command }
 
     console.command.generate_container:
         class: %console.command.generate_container.class%

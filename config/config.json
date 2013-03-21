@@ -1,0 +1,10 @@
+{
+    "basepath": "",
+    "services": "config/services.yml",
+    "extensions": [
+        "Camspiers\\StatisticalClassifier\\DependencyInjection\\StatisticalClassifierExtension"
+    ],
+    "compiler_passes": [
+        "Camspiers\\StatisticalClassifier\\DependencyInjection\\CommandCompilerPass"
+    ]
+}

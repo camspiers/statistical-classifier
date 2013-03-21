@@ -23,7 +23,25 @@ class StatisticalClassifierConfig implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('statistical_classifier');
+        $rootNode = $treeBuilder->root('config');
+
+        $rootNode
+            ->children()
+                ->scalarNode('basepath')->end()
+                ->scalarNode('services')->end()
+                ->arrayNode('require')
+                    ->defaultValue(array())
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('extensions')
+                    ->defaultValue(array())
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('compiler_passes')
+                    ->defaultValue(array())
+                    ->prototype('scalar')->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }
