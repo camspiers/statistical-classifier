@@ -213,7 +213,6 @@ Options:
  --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
 ```
 
-
 *server:start*
 
 ```
@@ -223,6 +222,17 @@ Usage:
 Options:
  --host                Set a host (default: "127.0.0.1")
  --port (-p)           Set a port (default: 1337)
+```
+
+*generate-container*
+
+```
+Usage:
+ generate-container [services]
+
+Arguments:
+ services              A services yml to add extra services
+
 ```
 
 ### Example
