@@ -95,6 +95,7 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.classify'));
         $instance->add($this->get('console.command.test.pdo'));
         $instance->add($this->get('console.command.server.start'));
+        $instance->add($this->get('console.command.generate_container'));
 
         return $instance;
     }
@@ -114,6 +115,19 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->setCache($this->get('cache'));
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.generate_container' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand A Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand instance.
+     */
+    protected function getConsole_Command_GenerateContainerService()
+    {
+        return $this->services['console.command.generate_container'] = new \Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand();
     }
 
     /**

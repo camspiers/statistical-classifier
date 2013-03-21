@@ -32,12 +32,14 @@ class CommandCompilerPass implements CompilerPassInterface
                         new Reference($id)
                     )
                 );
-                $container->getDefinition($id)->addMethodCall(
-                    'setCache',
-                    array(
-                        new Reference('cache')
-                    )
-                );
+                if (isset($tag['cache']) && $tag['cache']) {
+                    $container->getDefinition($id)->addMethodCall(
+                        'setCache',
+                        array(
+                            new Reference('cache')
+                        )
+                    );
+                }
             }
         }
     }
