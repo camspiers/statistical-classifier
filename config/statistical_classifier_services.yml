@@ -6,32 +6,67 @@ parameters:
         dir: ./indexes/
         file_extension: .idx
 
+    classifier_namespace: Camspiers\StatisticalClassifier
+
+    tokenizer.word.class: %classifier_namespace%\Tokenizer\Word
+
+    normalizer.lowercase.class: %classifier_namespace%\Normalizer\Lowercase
+    normalizer.porter.class: %classifier_namespace%\Normalizer\Porter
+    normalizer.stopword.class: %classifier_namespace%\Normalizer\Stopword
+    normalizer.grouped.class: %classifier_namespace%\Normalizer\Grouped
+
+    converter.converter.class: %classifier_namespace%\DataSource\Converter
+
+    classifier.naive_bayes.class: %classifier_namespace%\Classifier\NaiveBayes
+
+    cache.class: CacheCache\Cache
+    cache.backend.class: CacheCache\Backends\File
+
+    console.application.class: %classifier_namespace%\Console\Application
+
+    console.command.index.create.class: %classifier_namespace%\Console\Command\Index\CreateCommand
+    console.command.index.remove.class: %classifier_namespace%\Console\Command\Index\RemoveCommand
+    console.command.index.prepare.class: %classifier_namespace%\Console\Command\Index\PrepareCommand
+    console.command.train.document.class: %classifier_namespace%\Console\Command\Train\DocumentCommand
+    console.command.train.directory.class: %classifier_namespace%\Console\Command\Train\DirectoryCommand
+    console.command.train.pdo.class: %classifier_namespace%\Console\Command\Train\PDOCommand
+    console.command.classify.class: %classifier_namespace%\Console\Command\ClassifyCommand
+    console.command.test.pdo.class: %classifier_namespace%\Console\Command\Test\PDOCommand
+    console.command.test.directory.class: %classifier_namespace%\Console\Command\Test\DirectoryCommand
+    console.command.server.start.class: %classifier_namespace%\Console\Command\Server\StartCommand
+    console.command.generate_container.class: %classifier_namespace%\Console\Command\GenerateContainerCommand
+
+    logger.class: Monolog\Logger
+    logger.stream.class: Monolog\Handler\StreamHandler
+    logger.stream.stream: logs/classifier.log
+    logger.stream.level: 100
+
 services:
     # Tokenizers
     tokenizer.word:
-        class: Camspiers\StatisticalClassifier\Tokenizer\Word
+        class: %tokenizer.word.class%
 
     # Normalizers
     normalizer.lowercase:
-        class: Camspiers\StatisticalClassifier\Normalizer\Lowercase
+        class: %normalizer.lowercase.class%
     normalizer.porter:
-        class: Camspiers\StatisticalClassifier\Normalizer\Porter
+        class: %normalizer.porter.class%
     normalizer.stopword:
-        class: Camspiers\StatisticalClassifier\Normalizer\Stopword
+        class: %normalizer.stopword.class%
         arguments:
             - %stopwords%
     normalizer.stopword_lowercase:
-        class: Camspiers\StatisticalClassifier\Normalizer\Grouped
+        class: %normalizer.grouped.class%
         arguments:
             - [ @normalizer.stopword, @normalizer.lowercase ]
     normalizer.stopword_lowercase_porter:
-        class: Camspiers\StatisticalClassifier\Normalizer\Grouped
+        class: %normalizer.grouped.class%
         arguments:
             - [ @normalizer.stopword, @normalizer.lowercase, @normalizer.porter  ]
 
     # Converter
     converter.converter:
-        class: Camspiers\StatisticalClassifier\DataSource\Converter
+        class: %converter.converter.class%
         arguments:
             - @converter.from
             - @converter.to
@@ -43,7 +78,7 @@ services:
 
     # Classifiers
     classifier.naive_bayes:
-        class: Camspiers\StatisticalClassifier\Classifier\NaiveBayes
+        class: %classifier.naive_bayes.class%
         arguments:
             - @index.index
             - @tokenizer.word
@@ -53,98 +88,85 @@ services:
     index.index:
         synthetic: true
 
-    # Transforms
-    transform.tf:
-        class: Camspiers\StatisticalClassifier\Transform\TF
-
-    transform.tf_threaded:
-        class: Camspiers\StatisticalClassifier\Transform\TFThreaded
-
-    transform.idf:
-        class: Camspiers\StatisticalClassifier\Transform\IDF
-
-    transform.dl:
-        class: Camspiers\StatisticalClassifier\Transform\DL
-
     # Caches
     cache:
-        class: CacheCache\Cache
+        class: %cache.class%
         arguments:
             - @cache.backend
 
     cache.backend:
-        class: CacheCache\Backends\File
+        class: %cache.backend.class%
         arguments:
             - %cache.backend.options%
 
     # Console
     console.application:
-        class: Camspiers\StatisticalClassifier\Console\Application
+        class: %console.application.class%
 
     console.command.index.create:
-        class: Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand
+        class: %console.command.index.create.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.index.remove:
-        class: Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand
+        class: %console.command.index.remove.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.index.prepare:
-        class: Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand
+        class: %console.command.index.prepare.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.train.document:
-        class: Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand
+        class: %console.command.train.document.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.train.directory:
-        class: Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand
+        class: %console.command.train.directory.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.train.pdo:
-        class: Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand
+        class: %console.command.train.pdo.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.classify:
-        class: Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand
+        class: %console.command.classify.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.test.pdo:
-        class: Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand
+        class: %console.command.test.pdo.class%
         tags:
             - { name: console.command, cache: true }
 
-    console.command.test.pdo:
-        class: Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand
+    console.command.test.directory:
+        class: %console.command.test.directory.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.server.start:
-        class: Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand
+        class: %console.command.server.start.class%
         tags:
             - { name: console.command, cache: true }
 
     console.command.generate_container:
-        class: Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand
+        class: %console.command.generate_container.class%
         tags:
             - { name: console.command }
 
     logger:
-        class: Monolog\Logger
+        class: %logger.class%
         arguments:
             - classifier
         calls:
             - [ pushHandler, [ @logger.stream ] ]
 
     logger.stream:
-        class: Monolog\Handler\StreamHandler
+        class: %logger.stream.class%
         arguments:
-            - logs/classifier.log
-            - 100
+            - %logger.stream.stream%
+            - %logger.stream.level%

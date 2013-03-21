@@ -94,6 +94,7 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.train.pdo'));
         $instance->add($this->get('console.command.classify'));
         $instance->add($this->get('console.command.test.pdo'));
+        $instance->add($this->get('console.command.test.directory'));
         $instance->add($this->get('console.command.server.start'));
         $instance->add($this->get('console.command.generate_container'));
 
@@ -199,16 +200,33 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'console.command.test.pdo' service.
+     * Gets the 'console.command.test.directory' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand A Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand instance.
      */
+    protected function getConsole_Command_Test_DirectoryService()
+    {
+        $this->services['console.command.test.directory'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.test.pdo' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand A Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand instance.
+     */
     protected function getConsole_Command_Test_PdoService()
     {
-        $this->services['console.command.test.pdo'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand();
+        $this->services['console.command.test.pdo'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand();
 
         $instance->setCache($this->get('cache'));
 
@@ -424,58 +442,6 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getTokenizer_WordService()
     {
         return $this->services['tokenizer.word'] = new \Camspiers\StatisticalClassifier\Tokenizer\Word();
-    }
-
-    /**
-     * Gets the 'transform.dl' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Transform\DL A Camspiers\StatisticalClassifier\Transform\DL instance.
-     */
-    protected function getTransform_DlService()
-    {
-        return $this->services['transform.dl'] = new \Camspiers\StatisticalClassifier\Transform\DL();
-    }
-
-    /**
-     * Gets the 'transform.idf' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Transform\IDF A Camspiers\StatisticalClassifier\Transform\IDF instance.
-     */
-    protected function getTransform_IdfService()
-    {
-        return $this->services['transform.idf'] = new \Camspiers\StatisticalClassifier\Transform\IDF();
-    }
-
-    /**
-     * Gets the 'transform.tf' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Transform\TF A Camspiers\StatisticalClassifier\Transform\TF instance.
-     */
-    protected function getTransform_TfService()
-    {
-        return $this->services['transform.tf'] = new \Camspiers\StatisticalClassifier\Transform\TF();
-    }
-
-    /**
-     * Gets the 'transform.tf_threaded' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Transform\TFThreaded A Camspiers\StatisticalClassifier\Transform\TFThreaded instance.
-     */
-    protected function getTransform_TfThreadedService()
-    {
-        return $this->services['transform.tf_threaded'] = new \Camspiers\StatisticalClassifier\Transform\TFThreaded();
     }
 
     /**
@@ -1078,6 +1044,32 @@ class StatisticalClassifierServiceContainer extends Container
                 'dir' => './indexes/',
                 'file_extension' => '.idx',
             ),
+            'classifier_namespace' => 'Camspiers\\StatisticalClassifier',
+            'tokenizer.word.class' => 'Camspiers\\StatisticalClassifier\\Tokenizer\\Word',
+            'normalizer.lowercase.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Lowercase',
+            'normalizer.porter.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Porter',
+            'normalizer.stopword.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Stopword',
+            'normalizer.grouped.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Grouped',
+            'converter.converter.class' => 'Camspiers\\StatisticalClassifier\\DataSource\\Converter',
+            'classifier.naive_bayes.class' => 'Camspiers\\StatisticalClassifier\\Classifier\\NaiveBayes',
+            'cache.class' => 'CacheCache\\Cache',
+            'cache.backend.class' => 'CacheCache\\Backends\\File',
+            'console.application.class' => 'Camspiers\\StatisticalClassifier\\Console\\Application',
+            'console.command.index.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand',
+            'console.command.index.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand',
+            'console.command.index.prepare.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\PrepareCommand',
+            'console.command.train.document.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand',
+            'console.command.train.directory.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand',
+            'console.command.train.pdo.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand',
+            'console.command.classify.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand',
+            'console.command.test.pdo.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand',
+            'console.command.test.directory.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\DirectoryCommand',
+            'console.command.server.start.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Server\\StartCommand',
+            'console.command.generate_container.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\GenerateContainerCommand',
+            'logger.class' => 'Monolog\\Logger',
+            'logger.stream.class' => 'Monolog\\Handler\\StreamHandler',
+            'logger.stream.stream' => 'logs/classifier.log',
+            'logger.stream.level' => 100,
         );
     }
 }
