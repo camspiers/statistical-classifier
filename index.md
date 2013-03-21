@@ -213,27 +213,24 @@ Options:
  --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
 ```
 
+
+*server:start*
+
+```
+Usage:
+ server:start [--host[="..."]] [-p|--port[="..."]]
+
+Options:
+ --host                Set a host (default: "127.0.0.1")
+ --port (-p)           Set a port (default: 1337)
+```
+
 ### Example
 
 ```bash
 $ classifier train:document MyIndexName spam "This is some spam"
 $ classifier train:document MyIndexName ham "This is some ham"
 $ classifier classify MyIndexName "Some spam"
-```
-
-## As a server
-
-```bash
-$ bin/classifier-server
-```
-
-### Examples
-
-```bash
-$ curl http://127.0.0.1/classify/?index=MyIndex&document=Some%20Document%20to%20classify
-> {"category":"example"}
-$ curl -X POST -d @mydocument.txt http://127.0.0.1/classify/?index=MyIndex
-> {"category":"example"}
 ```
 
 # Technical details
