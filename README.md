@@ -213,27 +213,24 @@ Options:
  --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
 ```
 
+
+*server:start*
+
+```
+Usage:
+ server:start [--host[="..."]] [-p|--port[="..."]]
+
+Options:
+ --host                Set a host (default: "127.0.0.1")
+ --port (-p)           Set a port (default: 1337)
+```
+
 ### Example
 
 ```bash
 $ classifier train:document MyIndexName spam "This is some spam"
 $ classifier train:document MyIndexName ham "This is some ham"
 $ classifier classify MyIndexName "Some spam"
-```
-
-## As a server
-
-```bash
-$ bin/classifier-server
-```
-
-### Examples
-
-```bash
-$ curl http://127.0.0.1/classify/?index=MyIndex&document=Some%20Document%20to%20classify
-> {"category":"example"}
-$ curl -X POST -d @mydocument.txt http://127.0.0.1/classify/?index=MyIndex
-> {"category":"example"}
 ```
 
 # Technical details
@@ -258,3 +255,60 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
     statistical-classifier/ $ composer install --dev
     statistical-classifier/ $ vendor/bin/phpunit
+
+# Internals
+
+## [View class diagram](docs/graph_class.html)
+
+## Classifiers
+
+* Generic Classifier
+* Naive Bayes Classifier
+
+## Data Sources
+
+* DataArray
+* Directory
+* Json
+* PDO
+* PDOQuery
+* Serialized
+
+## Index
+
+* Index
+* CachedIndex
+
+## Normalizers
+
+* Lowercase
+* Porter
+* Stopword
+
+## Tokenizers
+
+* Word
+
+## Tranforms
+
+* Complement
+* DC
+* DL
+* DocumentTokenCounts
+* DocumentTokenSums
+* IDF
+* Prune
+* TAC
+* TBC
+* TCBD
+* TF
+* TFIDF
+* TFThreaded
+* TransformInterface
+* Weight
+* WeightNormalization
+
+## Classification Rules
+
+* NaiveBayes
+

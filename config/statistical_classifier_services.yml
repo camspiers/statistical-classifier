@@ -84,47 +84,52 @@ services:
     console.command.index.create:
         class: Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.index.remove:
         class: Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.index.prepare:
         class: Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.train.document:
         class: Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.train.directory:
         class: Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.train.pdo:
         class: Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.classify:
         class: Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.test.pdo:
         class: Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
 
     console.command.test.pdo:
         class: Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand
         tags:
-            - { name: console.cacheable_command }
+            - { name: console.command }
+
+    console.command.server.start:
+        class: Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand
+        tags:
+            - { name: console.command }
 
     logger:
         class: Monolog\Logger

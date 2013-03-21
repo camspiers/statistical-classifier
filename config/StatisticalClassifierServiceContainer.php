@@ -1,9 +1,12 @@
 <?php
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\Exception\InactiveScopeException;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
 
@@ -91,6 +94,7 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.train.pdo'));
         $instance->add($this->get('console.command.classify'));
         $instance->add($this->get('console.command.test.pdo'));
+        $instance->add($this->get('console.command.server.start'));
 
         return $instance;
     }
@@ -157,6 +161,23 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getConsole_Command_Index_RemoveService()
     {
         $this->services['console.command.index.remove'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand();
+
+        $instance->setCache($this->get('cache'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'console.command.server.start' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand A Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand instance.
+     */
+    protected function getConsole_Command_Server_StartService()
+    {
+        $this->services['console.command.server.start'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand();
 
         $instance->setCache($this->get('cache'));
 

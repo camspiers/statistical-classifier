@@ -32,16 +32,6 @@ class CommandCompilerPass implements CompilerPassInterface
                         new Reference($id)
                     )
                 );
-            }
-        }
-        foreach ($container->findTaggedServiceIds('console.cacheable_command') as $id => $tags) {
-            foreach ($tags as $tag) {
-                $application->addMethodCall(
-                    'add',
-                    array(
-                        new Reference($id)
-                    )
-                );
                 $container->getDefinition($id)->addMethodCall(
                     'setCache',
                     array(
