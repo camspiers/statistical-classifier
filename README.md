@@ -132,6 +132,12 @@ Options:
  --prepare (-p)        Prepare the index after training
 ```
 
+#### Example
+
+```bash
+$ classifier train:document MyIndex spam "This is spam"
+```
+
 *train:directory*
 
 ```
@@ -147,6 +153,13 @@ Options:
  --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
  --prepare (-p)        Prepare the index after training
 
+```
+
+#### Examples
+
+```bash
+$ classifier train:directory MyIndex ./mydocs/
+$ classifier train:directory -i MyCategory MyIndex ./mydocs/
 ```
 
 *train:pdo*
@@ -169,6 +182,12 @@ Options:
  --prepare (-p)        Prepare the index after training
 ```
 
+#### Example
+
+```bash
+$ classifier train:pdo MyIndex spam Comment "SELECT Comment FROM Comment WHERE Spam = 1" "mysql:dbname=mydb;host=127.0.0.1" root root
+```
+
 *index:create*
 
 ```
@@ -177,6 +196,12 @@ Usage:
 
 Arguments:
  index                 Name of index
+```
+
+#### Example
+
+```bash
+$ classifier index:create MyIndex
 ```
 
 *index:remove*
@@ -189,6 +214,12 @@ Arguments:
  index                 Name of index
 ```
 
+#### Example
+
+```bash
+$ classifier index:remove MyIndex
+```
+
 *index:prepare*
 
 ```
@@ -197,6 +228,12 @@ Usage:
 
 Arguments:
  index                 Name of index
+```
+
+#### Example
+
+```bash
+$ classifier index:prepare MyIndex
 ```
 
 *classify*
@@ -213,6 +250,12 @@ Options:
  --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
 ```
 
+#### Example
+
+```bash
+$ classifier classify MyIndex "Some document to classify"
+```
+
 *server:start*
 
 ```
@@ -224,6 +267,14 @@ Options:
  --port (-p)           Set a port (default: 1337)
 ```
 
+#### Examples
+
+```bash
+$ classifier server:start
+$ classifier server:start -p 9999
+$ classifier server:start &
+```
+
 *generate-container*
 
 ```
@@ -232,15 +283,13 @@ Usage:
 
 Arguments:
  services              A services yml to add extra services
-
 ```
 
-### Example
+#### Examples
 
 ```bash
-$ classifier train:document MyIndexName spam "This is some spam"
-$ classifier train:document MyIndexName ham "This is some ham"
-$ classifier classify MyIndexName "Some spam"
+$ classifier generate-container
+$ classifier generate-container ./myservicesfile.yml
 ```
 
 # Technical details
