@@ -280,17 +280,13 @@ $ classifier server:start &
 
 ```
 Usage:
- generate-container [services]
-
-Arguments:
- services              A services yml to add extra services
+ generate-container
 ```
 
 #### Examples
 
 ```bash
 $ classifier generate-container
-$ classifier generate-container ./myservicesfile.yml
 ```
 
 # Technical details
@@ -315,4 +311,3 @@ This library uses Symfony's dependancy injection component. A [container extensi
 
     statistical-classifier/ $ composer install --dev
     statistical-classifier/ $ vendor/bin/phpunit
-
