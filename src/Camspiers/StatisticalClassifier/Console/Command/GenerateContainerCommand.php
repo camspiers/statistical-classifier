@@ -32,7 +32,12 @@ class GenerateContainerCommand extends BaseCommand
     {
         $this
             ->setName('generate-container')
-            ->setDescription('Generate container');
+            ->setDescription('Generate container')
+            ->addArgument(
+                'services',
+                Input\InputArgument::OPTIONAL,
+                'A services yml to add extra services'
+            );
     }
     /**
      * Generate the container
@@ -42,6 +47,7 @@ class GenerateContainerCommand extends BaseCommand
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
+
         SharedContainerFactory::addExtension(
             new DependencyInjection\StatisticalClassifierExtension()
         );
@@ -50,11 +56,17 @@ class GenerateContainerCommand extends BaseCommand
             new DependencyInjection\CommandCompilerPass()
         );
 
-        $container = SharedContainerFactory::createContainer(
-            array()
-        );
-
-        $container->loadFromExtension('statistical_classifier');
+        if ($input->getArgument('services')) {
+            $container = SharedContainerFactory::createContainer(
+                array(),
+                $input->getArgument('services')
+            );
+        } else {
+            $container = SharedContainerFactory::createContainer(
+                array()
+            );
+            $container->loadFromExtension('statistical_classifier');
+        }
 
         SharedContainerFactory::dumpContainer(
             $container,
@@ -64,5 +76,7 @@ class GenerateContainerCommand extends BaseCommand
 
         SharedContainerFactory::clearExtensions();
         SharedContainerFactory::clearCompilerPasses();
+
+        $output->writeLn('Container generated');
     }
 }

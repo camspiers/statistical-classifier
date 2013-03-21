@@ -1,0 +1,5 @@
+statistical_classifier:
+
+services:
+    fake:
+        class: Blah
