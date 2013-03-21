@@ -158,8 +158,8 @@ class StartCommand extends Command
 
                 break;
             default:
-                $response->writeHead(400, array('Content-Type' => 'text/plain'));
-                $response->end('Bad request');
+                $response->writeHead(404, array('Content-Type' => 'text/plain'));
+                $response->end('Not found');
                 break;
 
         }
