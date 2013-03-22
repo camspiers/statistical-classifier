@@ -289,6 +289,57 @@ Usage:
 $ classifier generate-container
 ```
 
+*config:create*
+
+```
+Usage:
+ config:create [-g|--global]
+
+Options:
+ --global (-g)         Uses global config applied across all users
+```
+
+#### Examples
+
+```bash
+$ classifier config:create
+$ classifier config:create -g
+```
+
+*config:remove*
+
+```
+Usage:
+ config:remove [-g|--global]
+
+Options:
+ --global (-g)         Uses global config applied across all users
+```
+
+#### Examples
+
+```bash
+$ classifier config:remove
+$ classifier config:remove -g
+```
+
+*config:open*
+
+```
+Usage:
+ config:open [-g|--global]
+
+Options:
+ --global (-g)         Uses global config applied across all users
+```
+
+#### Examples
+
+```bash
+$ classifier config:open
+$ classifier config:open -g
+```
+
 # Technical details
 
 A classifier is built using the following component types:
