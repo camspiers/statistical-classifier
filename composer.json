@@ -25,7 +25,6 @@
         "react/http": "~0.2"
     },
     "require-dev": {
-        "devster/ubench": "~1.1",
         "phpunit/phpunit": "~3.7"
     },
     "autoload": {
