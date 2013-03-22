@@ -70,5 +70,4 @@ class Directory extends DataArray
             }
         }
     }
-
 }

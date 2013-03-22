@@ -41,5 +41,4 @@ class Json extends DataArray
     {
         file_put_contents($this->filename, json_encode($this->data));
     }
-
 }

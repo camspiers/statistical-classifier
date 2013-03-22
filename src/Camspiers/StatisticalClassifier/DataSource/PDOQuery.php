@@ -52,5 +52,4 @@ class PDOQuery
     {
         return $this->category;
     }
-
 }

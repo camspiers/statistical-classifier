@@ -19,6 +19,7 @@ use CacheCache\Cache;
 
 use Camspiers\StatisticalClassifier\Index;
 use Camspiers\StatisticalClassifier\Loader\JsonConfigLoader;
+use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
@@ -39,7 +40,7 @@ abstract class Command extends BaseCommand
     protected $container;
     /**
      * Holds the classifier instance for caching
-     * @var Camspiers\StatisticalClassifier\Classifier\ClassifierInterface
+     * @var ClassifierInterface
      */
     protected $classifier;
     /**
@@ -124,9 +125,9 @@ abstract class Command extends BaseCommand
     }
     /**
      * Returns a classifier based of the commands input and the specified index (if exists)
-     * @param  Input\InputInterface                                           $input The commands input
-     * @param  Index\IndexInterface                                           $index Optional index to use in the classifier
-     * @return Camspiers\StatisticalClassifier\Classifier\ClassifierInterface The built classifier
+     * @param  Input\InputInterface $input The commands input
+     * @param  Index\IndexInterface $index Optional index to use in the classifier
+     * @return ClassifierInterface  The built classifier
      */
     protected function getClassifier(Input\InputInterface $input, Index\Index $index = null)
     {
@@ -164,6 +165,7 @@ abstract class Command extends BaseCommand
             );
             $this->config = $loader->load('config.json');
         }
+
         return $this->config;
     }
 }

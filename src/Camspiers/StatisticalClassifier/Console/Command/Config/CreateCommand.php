@@ -52,7 +52,7 @@ class CreateCommand extends Command
         } else {
             if (!file_exists($_SERVER['HOME'] . '/.classifier')) {
                 mkdir($_SERVER['HOME'] . '/.classifier');
-            }  
+            }
         }
 
         if (file_exists($filename)) {

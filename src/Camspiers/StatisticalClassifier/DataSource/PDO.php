@@ -42,5 +42,4 @@ class PDO extends DataArray
 
         return $data;
     }
-
 }

@@ -28,7 +28,7 @@ use React\Http;
 class StartCommand extends Command
 {
     /**
-     * Holds classifier instances 
+     * Holds classifier instances
      * @var array
      */
     protected $classifiers = array();
@@ -96,7 +96,7 @@ class StartCommand extends Command
     }
     /**
      * Serve a request
-     * @param  Http\Request $request  The request object
+     * @param  Http\Request  $request  The request object
      * @param  Http\Response $response The response object
      * @return null
      */
@@ -121,7 +121,7 @@ class StartCommand extends Command
     }
     /**
      * Respond to a classify request
-     * @param  Http\Request $request  The request object
+     * @param  Http\Request  $request  The request object
      * @param  Http\Response $response The response object
      * @return null
      */
@@ -129,7 +129,7 @@ class StartCommand extends Command
         Http\Request $request,
         Http\Response $response
     ) {
-                
+
         $query = $request->getQuery();
 
         if (isset($query['index'])) {

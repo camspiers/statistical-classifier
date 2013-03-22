@@ -12,12 +12,8 @@
 namespace Camspiers\StatisticalClassifier\Console\Command\Config;
 
 use Symfony\Component\Console\Input;
-use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
-use Camspiers\JsonPretty\JsonPretty;
-
-use RuntimeException;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
@@ -33,6 +29,7 @@ abstract class Command extends BaseCommand
             Input\InputOption::VALUE_NONE,
             'Uses global config applied across all users'
         );
+
         return $this;
     }
 

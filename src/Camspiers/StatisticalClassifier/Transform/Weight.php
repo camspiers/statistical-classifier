@@ -38,5 +38,4 @@ class Weight implements TransformInterface
         }
         $index->setPartition(self::PARTITION_NAME, $data);
     }
-
 }

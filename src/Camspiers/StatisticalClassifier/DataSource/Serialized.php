@@ -50,5 +50,4 @@ class Serialized extends DataArray
     {
         file_put_contents($this->filename, serialize($this->data));
     }
-
 }
