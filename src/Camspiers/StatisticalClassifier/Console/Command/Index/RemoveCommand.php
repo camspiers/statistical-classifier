@@ -16,6 +16,8 @@ use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\Command;
 
+use RuntimeException;
+
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
@@ -41,6 +43,12 @@ class RemoveCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $this->cache->delete($input->getArgument('index'));
+        $index = $input->getArgument('index');
+        if ($this->cache->exists($index)) {
+            $this->cache->delete($index);
+            $output->writeLn("Index '$index' was removed");
+        } else {
+            throw new RuntimeException("Inddex '$index' doesn't exist");
+        }
     }
 }

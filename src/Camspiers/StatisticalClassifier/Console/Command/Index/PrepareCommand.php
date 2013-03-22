@@ -16,6 +16,8 @@ use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\Command;
 
+use RuntimeException;
+
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
@@ -42,6 +44,12 @@ class PrepareCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $this->getClassifier($input)->prepareIndex();
+        $index = $input->getArgument('index');
+        if ($this->cache->exists($index)) {
+            $this->getClassifier($input)->prepareIndex();
+            $output->writeLn("Index '$index' was prepared");
+        } else {
+            throw new RuntimeException("Index '$index' doesn't exist");
+        }
     }
 }
