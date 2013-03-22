@@ -41,6 +41,8 @@ class StatisticalClassifierConfig implements ConfigurationInterface
                     ->defaultValue(array())
                     ->prototype('scalar')->end()
                 ->end()
+                ->variableNode('parameters')
+                ->end()
             ->end();
 
         return $treeBuilder;

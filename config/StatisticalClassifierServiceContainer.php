@@ -98,6 +98,7 @@ class StatisticalClassifierServiceContainer extends Container
         $instance->add($this->get('console.command.server.start'));
         $instance->add($this->get('console.command.config.create'));
         $instance->add($this->get('console.command.config.remove'));
+        $instance->add($this->get('console.command.config.open'));
         $instance->add($this->get('console.command.generate_container'));
 
         return $instance;
@@ -131,6 +132,19 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getConsole_Command_Config_CreateService()
     {
         return $this->services['console.command.config.create'] = new \Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand();
+    }
+
+    /**
+     * Gets the 'console.command.config.open' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand A Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand instance.
+     */
+    protected function getConsole_Command_Config_OpenService()
+    {
+        return $this->services['console.command.config.open'] = new \Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand();
     }
 
     /**
@@ -1094,6 +1108,7 @@ class StatisticalClassifierServiceContainer extends Container
             'console.command.generate_container.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\GenerateContainerCommand',
             'console.command.config.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\CreateCommand',
             'console.command.config.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\RemoveCommand',
+            'console.command.config.open.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\OpenCommand',
             'cache.class' => 'CacheCache\\Cache',
             'cache.backend.class' => 'CacheCache\\Backends\\File',
             'logger.class' => 'Monolog\\Logger',
