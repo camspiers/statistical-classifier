@@ -17,6 +17,9 @@ namespace Camspiers\StatisticalClassifier\Normalizer;
  */
 class Lowercase implements NormalizerInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function normalize(array $tokens)
     {
         return array_map(

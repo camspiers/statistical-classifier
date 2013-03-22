@@ -21,6 +21,11 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
  */
 class CommandCompilerPass implements CompilerPassInterface
 {
+    /**
+     * Finds services tagged with console.command and adds them to the console application
+     * @param  ContainerBuilder $container The container with the relevant definitions
+     * @return null
+     */
     public function process(ContainerBuilder $container)
     {
         if ($container->hasDefinition('console.application')) {

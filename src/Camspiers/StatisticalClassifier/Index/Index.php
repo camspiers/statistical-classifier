@@ -22,35 +22,61 @@ use RuntimeException;
  */
 class Index implements IndexInterface
 {
+    /**
+     * This is an status variable indicating that the nessacary processing
+     * has occured on the index
+     * @var boolean
+     */
     protected $prepared = false;
+    /**
+     * Contains the data from which to build the index from
+     * @var DataSourceInterface
+     */
     protected $dataSource;
+    /**
+     * Holds various data by key
+     * @var array
+     */
     protected $partitions = array();
-
+    /**
+     * Create the Index using a data source
+     * @param DataSourceInterface $dataSource The data source
+     */
     public function __construct(DataSourceInterface $dataSource = null)
     {
         $this->dataSource = $dataSource instanceof DataSourceInterface ? $dataSource : new DataArray();
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function isPrepared()
     {
         return $this->prepared;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function setPrepared($prepared)
     {
         $this->prepared = (boolean) $prepared;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function setDataSource(DataSourceInterface $dataSource)
     {
         $this->dataSource = $dataSource;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function getDataSource()
     {
         return $this->dataSource;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function getPartition($partitionName)
     {
         if (!isset($this->partitions[$partitionName])) {
@@ -59,19 +85,25 @@ class Index implements IndexInterface
 
         return $this->partitions[$partitionName];
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function setPartition($partitionName, $partition)
     {
         $this->partitions[$partitionName] = $partition;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function removePartition($partitionName)
     {
         if (isset($this->partitions[$partitionName])) {
             unset($this->partitions[$partitionName]);
         }
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function getPartitions()
     {
         return array_keys($this->partitions);

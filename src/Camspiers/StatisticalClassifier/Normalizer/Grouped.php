@@ -19,8 +19,15 @@ use RuntimeException;
  */
 class Grouped implements NormalizerInterface
 {
+    /**
+     * An array of normalizers to run
+     * @var array
+     */
     protected $normalizers = array();
-
+    /**
+     * Create the normalizer using an array or normalizers as input
+     * @param array $normalizers [description]
+     */
     public function __construct(array $normalizers = array())
     {
         if (count($normalizers) === 0) {
@@ -30,12 +37,17 @@ class Grouped implements NormalizerInterface
             $this->addNormalizer($normalizer);
         }
     }
-
+    /**
+     * Add a normalizer to the group
+     * @param NormalizerInterface $normalizer The normalizer
+     */
     public function addNormalizer(NormalizerInterface $normalizer)
     {
         $this->normalizers[] = $normalizer;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function normalize(array $tokens)
     {
         foreach ($this->normalizers as $normalizer) {

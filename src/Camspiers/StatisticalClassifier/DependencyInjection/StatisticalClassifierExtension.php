@@ -22,6 +22,12 @@ use Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
  */
 class StatisticalClassifierExtension extends BaseExtension
 {
+    /**
+     * Loads the packages services from a yaml file
+     * @param  array            $config    The config the extension is loaded with
+     * @param  ContainerBuilder $container The container to add the services to
+     * @return null
+     */
     public function load(array $config, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../../../config'));
