@@ -27,6 +27,10 @@ use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
  */
 abstract class Command extends BaseCommand
 {
+    /**
+     * Holds the config from the config.json files
+     * @var array
+     */
     protected $config;
     /**
      * Holds the CacheCache\Cache instance

@@ -20,6 +20,10 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
  */
 class StatisticalClassifierConfig implements ConfigurationInterface
 {
+    /**
+     * Return a TreeBuilder to validate configs against
+     * @return TreeBuilder An instance of Treebuilder
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
