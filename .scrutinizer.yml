@@ -1,16 +1,26 @@
-before_commands:
-    - composer install
-
 tools:
-    php_cpd: true
-    php_cs_fixer:
-        config:
-            level: psr2
-    php_code_sniffer:
-        config:
-            standard: PSR2
-    php_mess_detector: true
+    php_cpd:
+        enabled: true
+        filter:               
+            paths: ["src/*"]
+    php_mess_detector:
+        enabled: true
+        filter:               
+            paths: ["src/*"]
+    php_cs_fixer: 
+        filter:                 
+            paths: ["src/*"]
+        enabled: true        
+        config:               
+            level: all
     php_analyzer:
-        filter:
-            excluded_paths: ["tests/*", "config/*"]
+        enabled: true        
+        filter:                 
+            paths: ["src/*"]
+    php_code_sniffer:     
+        filter:                 
+            paths: ["src/*"]
+        enabled: true
+        config:               
+            standard: PSR2 
     sensiolabs_security_checker: true
