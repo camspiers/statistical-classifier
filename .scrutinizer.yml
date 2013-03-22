@@ -7,7 +7,6 @@ tools:
         enabled: true
         filter:
             paths: ["src/"]
-        command: vendor/bin/phpmd
     php_cs_fixer:
         enabled: true
         filter:
@@ -24,7 +23,4 @@ tools:
             paths: ["src/"]
         config:
             standard: PSR2
-        command: vendor/bin/phpcs
-    php_code_coverage:
-        enabled: true
-        test_command: vendor/bin/phpunit
+    php_code_coverage: true
