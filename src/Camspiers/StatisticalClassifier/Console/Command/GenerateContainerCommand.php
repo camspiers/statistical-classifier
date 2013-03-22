@@ -72,7 +72,7 @@ class GenerateContainerCommand extends Command
 
         SharedContainerFactory::dumpContainer(
             SharedContainerFactory::createContainer(
-                array(),
+                isset($config['parameters']) ? $config['parameters'] : array(),
                 $config['basepath'] . $config['services']
             ),
             'StatisticalClassifierServiceContainer',

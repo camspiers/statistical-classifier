@@ -14,8 +14,10 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Config;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\Command;
-use Camspiers\JsonPretty\JsonPretty;;
+use Camspiers\StatisticalClassifier\Console\Command\Config\Command;
+use Camspiers\JsonPretty\JsonPretty;
+
+use RuntimeException;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
@@ -31,7 +33,8 @@ class CreateCommand extends Command
     {
         $this
             ->setName('config:create')
-            ->setDescription('Creates a global config');
+            ->setDescription('Creates the config')
+            ->configureGlobal();
     }
     /**
      * Create the index using the specified name
@@ -41,22 +44,34 @@ class CreateCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $fileName = $_SERVER['HOME'] . '/.classifier/config.json';
-        if (!file_exists($fileName)) {
+        $filename = $this->getConfigFilename($input);
+        if ($input->getOption('global')) {
+            if (!file_exists('/usr/local/.classifier')) {
+                mkdir('/usr/local/.classifier');
+            }
+        } else {
             if (!file_exists($_SERVER['HOME'] . '/.classifier')) {
                 mkdir($_SERVER['HOME'] . '/.classifier');
-            }
-            $jsonPretty = new JsonPretty();
-            file_put_contents(
-                $fileName,
-                $jsonPretty->prettify(
-                    array(
-                        'require' => array(),
-                        'extensions' => array(),
-                        'compiler_passes' => array()
-                    )
-                )
-            );
+            }  
         }
+
+        if (file_exists($filename)) {
+            throw new RuntimeException('Config file already exists, please run config:open to edit');
+        }
+
+        $jsonPretty = new JsonPretty();
+
+        file_put_contents(
+            $filename,
+            $jsonPretty->prettify(
+                array(
+                    'require' => array(),
+                    'extensions' => array(),
+                    'compiler_passes' => array()
+                )
+            )
+        );
+
+        $output->writeLn("A config file was create at '$filename'");
     }
 }

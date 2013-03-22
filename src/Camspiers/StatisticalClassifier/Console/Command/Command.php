@@ -157,7 +157,8 @@ abstract class Command extends BaseCommand
                 new FileLocator(
                     array(
                         'config',
-                        $_SERVER['HOME'] . '/.classifier'
+                        $_SERVER['HOME'] . '/.classifier',
+                        '/usr/local/.classifier'
                     )
                 )
             );

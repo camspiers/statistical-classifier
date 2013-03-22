@@ -14,7 +14,9 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Config;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\Command;
+use Camspiers\StatisticalClassifier\Console\Command\Config\Command;
+
+use RuntimeException;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
@@ -30,7 +32,8 @@ class RemoveCommand extends Command
     {
         $this
             ->setName('config:remove')
-            ->setDescription('Removes the global config');
+            ->setDescription('Removes the config')
+            ->configureGlobal();
     }
     /**
      * Create the index using the specified name
@@ -40,8 +43,12 @@ class RemoveCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        if (file_exists($_SERVER['HOME'] . '/.classifier/config.json')) {
-            unlink($_SERVER['HOME'] . '/.classifier/config.json');
+        $filename = $this->getConfigFilename($input);
+        if (file_exists($filename)) {
+            unlink($filename);
+            $output->writeLn("Config file '$filename' removed");
+        } else {
+            throw new RuntimeException("Config file '$filename' doesn't exist");
         }
     }
 }
