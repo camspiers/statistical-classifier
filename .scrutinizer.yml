@@ -15,7 +15,7 @@ tools:
         config:
             level: all
     php_analyzer:
-        enabled: true
+        enabled: false
         filter:
             paths: ["src/"]
     php_code_sniffer:
