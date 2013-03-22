@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Console\Command\Test\TestCommand</title>
+<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -59,14 +59,19 @@
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
+<li class="method protected "><a href="#method_configure" title="configure :: Configure the commands options"><span class="description">Configure the commands options</span><pre>configure()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configureClassifier" title="configureClassifier :: Adds options nessacary for calling getClassifier in a command"><span class="description">Adds options nessacary for calling getClassifier in a command</span><pre>configureClassifier()</pre></a></li>
+<li class="method protected inherited"><a href="#method_configureGlobal" title="configureGlobal :: "><span class="description">configureGlobal()
+        </span><pre>configureGlobal()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configureIndex" title="configureIndex :: Adds arguments required for using a specified index in a command"><span class="description">Adds arguments required for using a specified index in a command</span><pre>configureIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configurePrepare" title="configurePrepare :: Adds options to allow automatically prepare the index"><span class="description">Adds options to allow automatically prepare the index</span><pre>configurePrepare()</pre></a></li>
+<li class="method protected "><a href="#method_execute" title="execute :: Create the index using the specified name"><span class="description">Create the index using the specified name</span><pre>execute()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getCachedIndex" title="getCachedIndex :: Get an CachedIndex based off a index name and the Cache instance"><span class="description">Get an CachedIndex based off a index name and the Cache instance</span><pre>getCachedIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getClassifier" title="getClassifier :: Returns a classifier based of the commands input and the specified index (if exists)"><span class="description">Returns a classifier based of the commands input and the specified index (if exists)</span><pre>getClassifier()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getConfig" title="getConfig :: Returns the config which is a combination of the default and the global"><span class="description">Returns the config which is a combination of the default and the global</span><pre>getConfig()</pre></a></li>
+<li class="method protected inherited"><a href="#method_getConfigFilename" title="getConfigFilename :: "><span class="description">getConfigFilename()
+        </span><pre>getConfigFilename()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getContainer" title="getContainer :: Return the dependency injection container fetching it off the app if it doesn't exist"><span class="description">Return the dependency injection container fetching it off the app if it doesn't exist</span><pre>getContainer()</pre></a></li>
-<li class="method protected "><a href="#method_test" title="test :: Classifies a data source against a classifier and outputs results"><span class="description">Classifies a data source against a classifier and outputs results</span><pre>test()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -84,7 +89,7 @@
 </ul>
 </div>
 <div class="span8">
-<a id="\Camspiers\StatisticalClassifier\Console\Command\Test\TestCommand"></a><ul class="breadcrumb">
+<a id="\Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -99,10 +104,10 @@
 <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
 </li>
 <li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html">Test</a>
+<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Config.html">Config</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.TestCommand.html">TestCommand</a>
+<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html">RemoveCommand</a>
 </li>
 </ul>
 <div class="element class">
@@ -127,14 +132,30 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::setCache()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::setCache()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$cache</h4>
 <code>\CacheCache\Cache</code><p>The cache to store</p></div>
+</div></div>
+</div>
+<a id="method_configure"></a><div class="element clickable method protected method_configure" data-toggle="collapse" data-target=".method_configure .collapse">
+<h2>Configure the commands options</h2>
+<pre>configure() : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_configureClassifier"></a><div class="element clickable method protected method_configureClassifier" data-toggle="collapse" data-target=".method_configureClassifier .collapse">
@@ -143,13 +164,32 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::configureClassifier()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::configureClassifier()</td>
+</tr>
+</table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">\Camspiers\StatisticalClassifier\Console\Command\Command</a></code>This command to allow chaining</div>
+</div></div>
+</div>
+<a id="method_configureGlobal"></a><div class="element clickable method protected method_configureGlobal" data-toggle="collapse" data-target=".method_configureGlobal .collapse">
+<h2>configureGlobal()
+        </h2>
+<pre>configureGlobal() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::configureGlobal()</td>
+</tr></table>
 </div></div>
 </div>
 <a id="method_configureIndex"></a><div class="element clickable method protected method_configureIndex" data-toggle="collapse" data-target=".method_configureIndex .collapse">
@@ -158,10 +198,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::configureIndex()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::configureIndex()</td>
+</tr>
+</table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">\Camspiers\StatisticalClassifier\Console\Command\Command</a></code>This command to allow chaining</div>
@@ -173,13 +219,36 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::configurePrepare()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::configurePrepare()</td>
+</tr>
+</table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">\Camspiers\StatisticalClassifier\Console\Command\Command</a></code>This command to allow chaining</div>
+</div></div>
+</div>
+<a id="method_execute"></a><div class="element clickable method protected method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
+<h2>Create the index using the specified name</h2>
+<pre>execute(\Symfony\Component\Console\Input\InputInterface $input, \Symfony\Component\Console\Output\OutputInterface $output) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>\Symfony\Component\Console\Input\InputInterface</code><p>The input object</p></div>
+<div class="subelement argument">
+<h4>$output</h4>
+<code>\Symfony\Component\Console\Output\OutputInterface</code><p>The output object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_getCachedIndex"></a><div class="element clickable method protected method_getCachedIndex" data-toggle="collapse" data-target=".method_getCachedIndex .collapse">
@@ -188,10 +257,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::getCachedIndex()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::getCachedIndex()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
@@ -207,10 +282,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::getClassifier()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::getClassifier()</td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$input</h4>
@@ -229,13 +310,34 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::getConfig()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::getConfig()</td>
+</tr>
+</table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>The configuration</div>
+</div></div>
+</div>
+<a id="method_getConfigFilename"></a><div class="element clickable method protected method_getConfigFilename" data-toggle="collapse" data-target=".method_getConfigFilename .collapse">
+<h2>getConfigFilename()
+        </h2>
+<pre>getConfigFilename(\Symfony\Component\Console\Input\InputInterface $input) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::getConfigFilename()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$input</h4></div>
 </div></div>
 </div>
 <a id="method_getContainer"></a><div class="element clickable method protected method_getContainer" data-toggle="collapse" data-target=".method_getContainer .collapse">
@@ -244,33 +346,19 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::getContainer()</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::getContainer()</td>
+</tr>
+</table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface</code>The container</div>
-</div></div>
-</div>
-<a id="method_test"></a><div class="element clickable method protected method_test" data-toggle="collapse" data-target=".method_test .collapse">
-<h2>Classifies a data source against a classifier and outputs results</h2>
-<pre>test(\Symfony\Component\Console\Output\OutputInterface $output, \Camspiers\StatisticalClassifier\Classifier\ClassifierInterface $classifier, \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface $data) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$output</h4>
-<code>\Symfony\Component\Console\Output\OutputInterface</code><p>Output object</p></div>
-<div class="subelement argument">
-<h4>$classifier</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></code><p>The classifier to use</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</a></code><p>The data source</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <h3>
@@ -281,10 +369,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::$$cache</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::$$cache</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_classifier"> </a><div class="element clickable property protected property_classifier" data-toggle="collapse" data-target=".property_classifier .collapse">
@@ -293,10 +387,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::$$classifier</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::$$classifier</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_config"> </a><div class="element clickable property protected property_config" data-toggle="collapse" data-target=".property_config .collapse">
@@ -305,10 +405,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::$$config</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::$$config</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="property_container"> </a><div class="element clickable property protected property_container" data-toggle="collapse" data-target=".property_container .collapse">
@@ -317,10 +423,16 @@
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::$$container</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\Console\Command\Config\Command::$$container</td>
+</tr>
+</table>
 </div></div>
 </div>
 </div>

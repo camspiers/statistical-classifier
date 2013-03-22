@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Console\Command\Test\TestCommand</title>
+<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -55,18 +55,23 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
-                    <ul><li class="method public inherited"><a href="#method_setCache" title="setCache :: Allow for cache to be stored on command for setter injection"><span class="description">Allow for cache to be stored on command for setter injection</span><pre>setCache()</pre></a></li></ul>
+                    <ul>
+<li class="method public "><a href="#method_serve" title="serve :: Serve a request"><span class="description">Serve a request</span><pre>serve()</pre></a></li>
+<li class="method public inherited"><a href="#method_setCache" title="setCache :: Allow for cache to be stored on command for setter injection"><span class="description">Allow for cache to be stored on command for setter injection</span><pre>setCache()</pre></a></li>
+</ul>
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
+<li class="method protected "><a href="#method_classify" title="classify :: Respond to a classify request"><span class="description">Respond to a classify request</span><pre>classify()</pre></a></li>
+<li class="method protected "><a href="#method_configure" title="configure :: Configure the commands options"><span class="description">Configure the commands options</span><pre>configure()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configureClassifier" title="configureClassifier :: Adds options nessacary for calling getClassifier in a command"><span class="description">Adds options nessacary for calling getClassifier in a command</span><pre>configureClassifier()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configureIndex" title="configureIndex :: Adds arguments required for using a specified index in a command"><span class="description">Adds arguments required for using a specified index in a command</span><pre>configureIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configurePrepare" title="configurePrepare :: Adds options to allow automatically prepare the index"><span class="description">Adds options to allow automatically prepare the index</span><pre>configurePrepare()</pre></a></li>
+<li class="method protected "><a href="#method_execute" title="execute :: Start a classifier server"><span class="description">Start a classifier server</span><pre>execute()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getCachedIndex" title="getCachedIndex :: Get an CachedIndex based off a index name and the Cache instance"><span class="description">Get an CachedIndex based off a index name and the Cache instance</span><pre>getCachedIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getClassifier" title="getClassifier :: Returns a classifier based of the commands input and the specified index (if exists)"><span class="description">Returns a classifier based of the commands input and the specified index (if exists)</span><pre>getClassifier()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getConfig" title="getConfig :: Returns the config which is a combination of the default and the global"><span class="description">Returns the config which is a combination of the default and the global</span><pre>getConfig()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getContainer" title="getContainer :: Return the dependency injection container fetching it off the app if it doesn't exist"><span class="description">Return the dependency injection container fetching it off the app if it doesn't exist</span><pre>getContainer()</pre></a></li>
-<li class="method protected "><a href="#method_test" title="test :: Classifies a data source against a classifier and outputs results"><span class="description">Classifies a data source against a classifier and outputs results</span><pre>test()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -77,14 +82,16 @@
                     <ul>
 <li class="property protected inherited"><a href="#property_cache" title="$cache :: Holds the CacheCache\Cache instance"><span class="description"></span><pre>$cache</pre></a></li>
 <li class="property protected inherited"><a href="#property_classifier" title="$classifier :: Holds the classifier instance for caching"><span class="description"></span><pre>$classifier</pre></a></li>
+<li class="property protected "><a href="#property_classifiers" title="$classifiers :: Holds classifier instances"><span class="description"></span><pre>$classifiers</pre></a></li>
 <li class="property protected inherited"><a href="#property_config" title="$config :: Holds the config from the config.json files"><span class="description"></span><pre>$config</pre></a></li>
 <li class="property protected inherited"><a href="#property_container" title="$container :: Holds the container instance for caching"><span class="description"></span><pre>$container</pre></a></li>
+<li class="property protected "><a href="#property_indexes" title="$indexes :: Holds index instances"><span class="description"></span><pre>$indexes</pre></a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="span8">
-<a id="\Camspiers\StatisticalClassifier\Console\Command\Test\TestCommand"></a><ul class="breadcrumb">
+<a id="\Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -99,10 +106,10 @@
 <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
 </li>
 <li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html">Test</a>
+<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Server.html">Server</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.TestCommand.html">TestCommand</a>
+<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html">StartCommand</a>
 </li>
 </ul>
 <div class="element class">
@@ -121,6 +128,23 @@
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_serve"></a><div class="element clickable method public method_serve" data-toggle="collapse" data-target=".method_serve .collapse">
+<h2>Serve a request</h2>
+<pre>serve(\React\Http\Request $request, \React\Http\Response $response) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>\React\Http\Request</code><p>The request object</p></div>
+<div class="subelement argument">
+<h4>$response</h4>
+<code>\React\Http\Response</code><p>The response object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
 <a id="method_setCache"></a><div class="element clickable method public method_setCache" data-toggle="collapse" data-target=".method_setCache .collapse">
 <h2>Allow for cache to be stored on command for setter injection</h2>
 <pre>setCache(\CacheCache\Cache $cache) </pre>
@@ -135,6 +159,33 @@
 <div class="subelement argument">
 <h4>$cache</h4>
 <code>\CacheCache\Cache</code><p>The cache to store</p></div>
+</div></div>
+</div>
+<a id="method_classify"></a><div class="element clickable method protected method_classify" data-toggle="collapse" data-target=".method_classify .collapse">
+<h2>Respond to a classify request</h2>
+<pre>classify(\React\Http\Request $request, \React\Http\Response $response) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$request</h4>
+<code>\React\Http\Request</code><p>The request object</p></div>
+<div class="subelement argument">
+<h4>$response</h4>
+<code>\React\Http\Response</code><p>The response object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
+<a id="method_configure"></a><div class="element clickable method protected method_configure" data-toggle="collapse" data-target=".method_configure .collapse">
+<h2>Configure the commands options</h2>
+<pre>configure() : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_configureClassifier"></a><div class="element clickable method protected method_configureClassifier" data-toggle="collapse" data-target=".method_configureClassifier .collapse">
@@ -180,6 +231,23 @@
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">\Camspiers\StatisticalClassifier\Console\Command\Command</a></code>This command to allow chaining</div>
+</div></div>
+</div>
+<a id="method_execute"></a><div class="element clickable method protected method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
+<h2>Start a classifier server</h2>
+<pre>execute(\Symfony\Component\Console\Input\InputInterface $input, \Symfony\Component\Console\Output\OutputInterface $output) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>\Symfony\Component\Console\Input\InputInterface</code><p>The input object</p></div>
+<div class="subelement argument">
+<h4>$output</h4>
+<code>\Symfony\Component\Console\Output\OutputInterface</code><p>The output object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_getCachedIndex"></a><div class="element clickable method protected method_getCachedIndex" data-toggle="collapse" data-target=".method_getCachedIndex .collapse">
@@ -253,26 +321,6 @@
 <code>\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface</code>The container</div>
 </div></div>
 </div>
-<a id="method_test"></a><div class="element clickable method protected method_test" data-toggle="collapse" data-target=".method_test .collapse">
-<h2>Classifies a data source against a classifier and outputs results</h2>
-<pre>test(\Symfony\Component\Console\Output\OutputInterface $output, \Camspiers\StatisticalClassifier\Classifier\ClassifierInterface $classifier, \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface $data) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$output</h4>
-<code>\Symfony\Component\Console\Output\OutputInterface</code><p>Output object</p></div>
-<div class="subelement argument">
-<h4>$classifier</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></code><p>The classifier to use</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</a></code><p>The data source</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
-</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_cache"> </a><div class="element clickable property protected property_cache" data-toggle="collapse" data-target=".property_cache .collapse">
@@ -299,6 +347,12 @@
 </tr></table>
 </div></div>
 </div>
+<a id="property_classifiers"> </a><div class="element clickable property protected property_classifiers" data-toggle="collapse" data-target=".property_classifiers .collapse">
+<h2></h2>
+<pre>$classifiers : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="property_config"> </a><div class="element clickable property protected property_config" data-toggle="collapse" data-target=".property_config .collapse">
 <h2></h2>
 <pre>$config : array</pre>
@@ -322,6 +376,12 @@
 <td>\Camspiers\StatisticalClassifier\Console\Command\Command::$$container</td>
 </tr></table>
 </div></div>
+</div>
+<a id="property_indexes"> </a><div class="element clickable property protected property_indexes" data-toggle="collapse" data-target=".property_indexes .collapse">
+<h2></h2>
+<pre>$indexes : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 </div>
 </div>
