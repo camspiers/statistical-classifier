@@ -19,11 +19,11 @@ use Porter as PorterStemmer;
  */
 class Porter implements NormalizerInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function normalize(array $tokens)
     {
-        $new = PorterStemmer::Stem(array(
-            'hello'
-        ));
         return array_map(
             function ($token) {
                 return PorterStemmer::Stem(strtolower($token));
