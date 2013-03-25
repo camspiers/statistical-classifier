@@ -47,6 +47,6 @@ class ClassifyCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        echo $this->getClassifier($input)->classify($input->getArgument('document')), PHP_EOL;
+        $output->writeLn($this->getClassifier($input)->classify($input->getArgument('document')));
     }
 }

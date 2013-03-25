@@ -62,5 +62,6 @@ class DocumentCommand extends Command
         if ($input->getOption('prepare')) {
             $this->getClassifier($input, $index)->prepareIndex();
         }
+        $output->writeLn("Document added to index");
     }
 }

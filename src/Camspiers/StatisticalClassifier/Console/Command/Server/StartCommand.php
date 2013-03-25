@@ -16,6 +16,7 @@ use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\Console\Command\Command;
 use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 
 use React\EventLoop;
 use React\Socket;
@@ -134,22 +135,14 @@ class StartCommand extends Command
 
         if (isset($query['index'])) {
 
-            $classifierType = isset($query['classifier']) ? $query['classifier'] : 'classifier.naive_bayes';
+            $classifier = $this->getClassifierByType(isset($query['classifier']) ? $query['classifier'] : 'classifier.naive_bayes');
 
-            if (isset($this->classifiers[$classifierType])) {
-                $classifier = $this->classifiers[$classifierType];
-            } else {
-                $this->classifiers[$classifierType] = $classifier = $this->getContainer()->get($classifierType);
-            }
-
-            if (!isset($this->indexes[$query['index']]) || (isset($query['fresh']) && $query['fresh'])) {
-                $this->indexes[$query['index']] = new Index\CachedIndex(
+            $classifier->setIndex(
+                $this->getIndex(
                     $query['index'],
-                    $this->container->get('cache')
-                );
-            }
-
-            $classifier->setIndex($this->indexes[$query['index']]);
+                    isset($query['fresh'])
+                )
+            );
 
             $response->writeHead(
                 200,
@@ -192,5 +185,30 @@ class StartCommand extends Command
 
         }
 
+    }
+    /**
+     * Get a classifier from the container using a service name
+     * @param  string $classifierType The service name
+     * @return ClassifierInterface    The classifier
+     */
+    protected function getClassifierByType($classifierType)
+    {
+        if (!isset($this->classifiers[$classifierType])) {
+            $this->classifiers[$classifierType] = $this->getContainer()->get($classifierType);
+        }
+        return $this->classifiers[$classifierType];
+    }
+    /**
+     * Get a cached index by name
+     * @param  string $name  The index name
+     * @param  boolean $fresh Whether or not to get a fresh one even if it exists
+     * @return Index\CachedIndex The index
+     */
+    protected function getIndex($name, $fresh = false)
+    {   
+        if (!isset($this->indexes[$name]) || $fresh) {
+            $this->indexes[$name] = $this->getCachedIndex($name);
+        }
+        return $this->indexes[$name];
     }
 }

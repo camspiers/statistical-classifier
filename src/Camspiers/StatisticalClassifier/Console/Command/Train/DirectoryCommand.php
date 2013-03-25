@@ -14,8 +14,6 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\Command;
-
 use Camspiers\StatisticalClassifier\DataSource\Grouped;
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 
@@ -59,10 +57,10 @@ class DirectoryCommand extends Command
     {
         $index = $this->getCachedIndex($input->getArgument('index'));
         $index->setDataSource(
-            new Grouped(
+            $grouped = new Grouped(
                 array(
                     $index->getDataSource(),
-                    new Directory(
+                    $directory = new Directory(
                         $input->getArgument('directory'),
                         $input->getOption('include')
                     )
@@ -73,5 +71,10 @@ class DirectoryCommand extends Command
         if ($input->getOption('prepare')) {
             $this->getClassifier($input, $index)->prepareIndex();
         }
+        $this->updateSummary(
+            $output,
+            $directory,
+            $grouped
+        );
     }
 }
