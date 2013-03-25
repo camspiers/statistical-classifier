@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">199</span></a></li>
+                <span class="label label-info">137</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -55,7 +55,10 @@
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
-                    <ul><li class="method public inherited"><a href="#method_setCache" title="setCache :: Allow for cache to be stored on command for setter injection"><span class="description">Allow for cache to be stored on command for setter injection</span><pre>setCache()</pre></a></li></ul>
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Creates the command injecting the json pretty service"><span class="description">Creates the command injecting the json pretty service</span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#method_setCache" title="setCache :: Allow for cache to be stored on command for setter injection"><span class="description">Allow for cache to be stored on command for setter injection</span><pre>setCache()</pre></a></li>
+</ul>
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
@@ -84,6 +87,7 @@
 <li class="property protected inherited"><a href="#property_classifier" title="$classifier :: Holds the classifier instance for caching"><span class="description"></span><pre>$classifier</pre></a></li>
 <li class="property protected inherited"><a href="#property_config" title="$config :: Holds the config from the config.json files"><span class="description"></span><pre>$config</pre></a></li>
 <li class="property protected inherited"><a href="#property_container" title="$container :: Holds the container instance for caching"><span class="description"></span><pre>$container</pre></a></li>
+<li class="property protected "><a href="#property_jsonPretty" title="$jsonPretty :: The json pretty service"><span class="description"></span><pre>$jsonPretty</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -126,6 +130,18 @@
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Creates the command injecting the json pretty service</h2>
+<pre>__construct(\Camspiers\JsonPretty\JsonPretty $jsonPretty) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$jsonPretty</h4>
+<code>\Camspiers\JsonPretty\JsonPretty</code><p>The json pretty service</p></div>
+</div></div>
+</div>
 <a id="method_setCache"></a><div class="element clickable method public method_setCache" data-toggle="collapse" data-target=".method_setCache .collapse">
 <h2>Allow for cache to be stored on command for setter injection</h2>
 <pre>setCache(\CacheCache\Cache $cache) </pre>
@@ -435,6 +451,12 @@
 </table>
 </div></div>
 </div>
+<a id="property_jsonPretty"> </a><div class="element clickable property protected property_jsonPretty" data-toggle="collapse" data-target=".property_jsonPretty .collapse">
+<h2></h2>
+<pre>$jsonPretty : \Camspiers\JsonPretty\JsonPretty</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 </div>
 </div>
 </div>
@@ -442,7 +464,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-22T23:03:18+13:00.<br></footer></div>
+            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
 </div>
 </body>
 </html>
