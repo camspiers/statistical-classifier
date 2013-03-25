@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">199</span></a></li>
+                <span class="label label-info">137</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -70,8 +70,10 @@
 <li class="method protected "><a href="#method_execute" title="execute :: Start a classifier server"><span class="description">Start a classifier server</span><pre>execute()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getCachedIndex" title="getCachedIndex :: Get an CachedIndex based off a index name and the Cache instance"><span class="description">Get an CachedIndex based off a index name and the Cache instance</span><pre>getCachedIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getClassifier" title="getClassifier :: Returns a classifier based of the commands input and the specified index (if exists)"><span class="description">Returns a classifier based of the commands input and the specified index (if exists)</span><pre>getClassifier()</pre></a></li>
+<li class="method protected "><a href="#method_getClassifierByType" title="getClassifierByType :: Get a classifier from the container using a service name"><span class="description">Get a classifier from the container using a service name</span><pre>getClassifierByType()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getConfig" title="getConfig :: Returns the config which is a combination of the default and the global"><span class="description">Returns the config which is a combination of the default and the global</span><pre>getConfig()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getContainer" title="getContainer :: Return the dependency injection container fetching it off the app if it doesn't exist"><span class="description">Return the dependency injection container fetching it off the app if it doesn't exist</span><pre>getContainer()</pre></a></li>
+<li class="method protected "><a href="#method_getIndex" title="getIndex :: Get a cached index by name"><span class="description">Get a cached index by name</span><pre>getIndex()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -291,6 +293,21 @@
 <code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></code>The built classifier</div>
 </div></div>
 </div>
+<a id="method_getClassifierByType"></a><div class="element clickable method protected method_getClassifierByType" data-toggle="collapse" data-target=".method_getClassifierByType .collapse">
+<h2>Get a classifier from the container using a service name</h2>
+<pre>getClassifierByType(string $classifierType) : <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$classifierType</h4>
+<code>string</code><p>The service name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></code>The classifier</div>
+</div></div>
+</div>
 <a id="method_getConfig"></a><div class="element clickable method protected method_getConfig" data-toggle="collapse" data-target=".method_getConfig .collapse">
 <h2>Returns the config which is a combination of the default and the global</h2>
 <pre>getConfig() : array</pre>
@@ -319,6 +336,24 @@
 <h3>Returns</h3>
 <div class="subelement response">
 <code>\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface</code>The container</div>
+</div></div>
+</div>
+<a id="method_getIndex"></a><div class="element clickable method protected method_getIndex" data-toggle="collapse" data-target=".method_getIndex .collapse">
+<h2>Get a cached index by name</h2>
+<pre>getIndex(string $name, boolean $fresh) : <a href="../classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html">\Camspiers\StatisticalClassifier\Index\CachedIndex</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The index name</p></div>
+<div class="subelement argument">
+<h4>$fresh</h4>
+<code>boolean</code><p>Whether or not to get a fresh one even if it exists</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html">\Camspiers\StatisticalClassifier\Index\CachedIndex</a></code>The index</div>
 </div></div>
 </div>
 <h3>
@@ -390,7 +425,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-22T23:03:18+13:00.<br></footer></div>
+            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
 </div>
 </body>
 </html>

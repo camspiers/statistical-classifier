@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">199</span></a></li>
+                <span class="label label-info">137</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -56,28 +56,16 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_addCategory" title="addCategory :: "><span class="description">addCategory()
-        </span><pre>addCategory()</pre></a></li>
-<li class="method public "><a href="#method_addDocument" title="addDocument :: "><span class="description">addDocument()
-        </span><pre>addDocument()</pre></a></li>
-<li class="method public "><a href="#method_getCategories" title="getCategories :: "><span class="description">getCategories()
-        </span><pre>getCategories()</pre></a></li>
-<li class="method public "><a href="#method_getData" title="getData :: "><span class="description">getData()
-        </span><pre>getData()</pre></a></li>
-<li class="method public "><a href="#method_getDocumentCountByCategory" title="getDocumentCountByCategory :: "><span class="description">getDocumentCountByCategory()
-        </span><pre>getDocumentCountByCategory()</pre></a></li>
-<li class="method public "><a href="#method_hasCategory" title="hasCategory :: "><span class="description">hasCategory()
-        </span><pre>hasCategory()</pre></a></li>
-<li class="method public "><a href="#method_read" title="read :: "><span class="description">read()
-        </span><pre>read()</pre></a></li>
-<li class="method public "><a href="#method_serialize" title="serialize :: "><span class="description">serialize()
-        </span><pre>serialize()</pre></a></li>
-<li class="method public "><a href="#method_unserialize" title="unserialize :: "><span class="description">unserialize()
-        </span><pre>unserialize()</pre></a></li>
-<li class="method public "><a href="#method_write" title="write :: "><span class="description">write()
-        </span><pre>write()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Creates the data array"><span class="description">Creates the data array</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_addCategory" title="addCategory :: Adds a category to the data"><span class="description">Adds a category to the data</span><pre>addCategory()</pre></a></li>
+<li class="method public "><a href="#method_addDocument" title="addDocument :: Adds a document by category to the data"><span class="description">Adds a document by category to the data</span><pre>addDocument()</pre></a></li>
+<li class="method public "><a href="#method_getCategories" title="getCategories :: Returns the categories of the data"><span class="description">Returns the categories of the data</span><pre>getCategories()</pre></a></li>
+<li class="method public "><a href="#method_getData" title="getData :: Get the data"><span class="description">Get the data</span><pre>getData()</pre></a></li>
+<li class="method public "><a href="#method_hasCategory" title="hasCategory :: Returnnes whether or not the data has a category"><span class="description">Returnnes whether or not the data has a category</span><pre>hasCategory()</pre></a></li>
+<li class="method public "><a href="#method_read" title="read :: Read the data source"><span class="description">Read the data source</span><pre>read()</pre></a></li>
+<li class="method public "><a href="#method_serialize" title="serialize :: Serialize the class"><span class="description">Serialize the class</span><pre>serialize()</pre></a></li>
+<li class="method public "><a href="#method_unserialize" title="unserialize :: Restore the serialized class"><span class="description">Restore the serialized class</span><pre>unserialize()</pre></a></li>
+<li class="method public "><a href="#method_write" title="write :: Write the data source if possible"><span class="description">Write the data source if possible</span><pre>write()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -85,7 +73,7 @@
                     <ul></ul>
 </li>
 <li class="nav-header protected">» Protected
-                    <ul><li class="property protected "><a href="#property_data" title="$data :: "><span class="description"></span><pre>$data</pre></a></li></ul>
+                    <ul><li class="property protected "><a href="#property_data" title="$data :: An array to hold the sources data"><span class="description"></span><pre>$data</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -122,114 +110,139 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
-<pre>__construct($data) </pre>
+<h2>Creates the data array</h2>
+<pre>__construct(array $data) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$data</h4></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>The initial data</p></div>
 </div></div>
 </div>
 <a id="method_addCategory"></a><div class="element clickable method public method_addCategory" data-toggle="collapse" data-target=".method_addCategory .collapse">
-<h2>addCategory()
-        </h2>
-<pre>addCategory($category) </pre>
+<h2>Adds a category to the data</h2>
+<pre>addCategory(string $category) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$category</h4></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>The category to add</p></div>
 </div></div>
 </div>
 <a id="method_addDocument"></a><div class="element clickable method public method_addDocument" data-toggle="collapse" data-target=".method_addDocument .collapse">
-<h2>addDocument()
-        </h2>
-<pre>addDocument($category, $document) </pre>
+<h2>Adds a document by category to the data</h2>
+<pre>addDocument(string $category, string $document) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$category</h4></div>
-<div class="subelement argument"><h4>$document</h4></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>The category of the document</p></div>
+<div class="subelement argument">
+<h4>$document</h4>
+<code>string</code><p>The document</p></div>
 </div></div>
 </div>
 <a id="method_getCategories"></a><div class="element clickable method public method_getCategories" data-toggle="collapse" data-target=".method_getCategories .collapse">
-<h2>getCategories()
-        </h2>
-<pre>getCategories() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_getData"></a><div class="element clickable method public method_getData" data-toggle="collapse" data-target=".method_getData .collapse">
-<h2>getData()
-        </h2>
-<pre>getData() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_getDocumentCountByCategory"></a><div class="element clickable method public method_getDocumentCountByCategory" data-toggle="collapse" data-target=".method_getDocumentCountByCategory .collapse">
-<h2>getDocumentCountByCategory()
-        </h2>
-<pre>getDocumentCountByCategory($category) </pre>
+<h2>Returns the categories of the data</h2>
+<pre>getCategories() : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$category</h4></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The categories</div>
+</div></div>
+</div>
+<a id="method_getData"></a><div class="element clickable method public method_getData" data-toggle="collapse" data-target=".method_getData .collapse">
+<h2>Get the data</h2>
+<pre>getData() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The data</div>
 </div></div>
 </div>
 <a id="method_hasCategory"></a><div class="element clickable method public method_hasCategory" data-toggle="collapse" data-target=".method_hasCategory .collapse">
-<h2>hasCategory()
-        </h2>
-<pre>hasCategory($category) </pre>
+<h2>Returnnes whether or not the data has a category</h2>
+<pre>hasCategory(string $category) : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$category</h4></div>
+<div class="subelement argument">
+<h4>$category</h4>
+<code>string</code><p>The category to check</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>[description]</div>
 </div></div>
 </div>
 <a id="method_read"></a><div class="element clickable method public method_read" data-toggle="collapse" data-target=".method_read .collapse">
-<h2>read()
-        </h2>
-<pre>read() </pre>
+<h2>Read the data source</h2>
+<pre>read() : array</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The data</div>
+</div></div>
 </div>
 <a id="method_serialize"></a><div class="element clickable method public method_serialize" data-toggle="collapse" data-target=".method_serialize .collapse">
-<h2>serialize()
-        </h2>
-<pre>serialize() </pre>
+<h2>Serialize the class</h2>
+<pre>serialize() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The serialized data</div>
+</div></div>
 </div>
 <a id="method_unserialize"></a><div class="element clickable method public method_unserialize" data-toggle="collapse" data-target=".method_unserialize .collapse">
-<h2>unserialize()
-        </h2>
-<pre>unserialize($data) </pre>
+<h2>Restore the serialized class</h2>
+<pre>unserialize(string $data) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$data</h4></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>string</code><p>The serialized data</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_write"></a><div class="element clickable method public method_write" data-toggle="collapse" data-target=".method_write .collapse">
-<h2>write()
-        </h2>
-<pre>write() </pre>
+<h2>Write the data source if possible</h2>
+<pre>write() : null</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_data"> </a><div class="element clickable property protected property_data" data-toggle="collapse" data-target=".property_data .collapse">
 <h2></h2>
-<pre>$data </pre>
+<pre>$data : array</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Should be in the form:
+array(
+    'category' => array(
+        'Some document'
+    )
+)</p></div></div></div>
 </div>
 </div>
 </div>
@@ -238,7 +251,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-22T23:03:18+13:00.<br></footer></div>
+            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
 </div>
 </body>
 </html>
