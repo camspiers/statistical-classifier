@@ -17,9 +17,21 @@ namespace Camspiers\StatisticalClassifier\DataSource;
  */
 class Directory extends DataArray
 {
+    /**
+     * The directory to find the documents and categories in
+     * @var string
+     */
     private $directory;
+    /**
+     * An array of directories to get documents from
+     * @var array
+     */
     private $include;
-
+    /**
+     * Creates the object from a directory path and an optional array of included directories
+     * @param string $directory The path to the directory
+     * @param array  $include   An array of included directories
+     */
     public function __construct($directory, array $include = null)
     {
         if (!file_exists($directory)) {
@@ -27,9 +39,10 @@ class Directory extends DataArray
         }
         $this->directory = realpath($directory);
         $this->include = $include;
-        parent::__construct($this->read());
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function read()
     {
         $data = array();
@@ -55,7 +68,9 @@ class Directory extends DataArray
 
         return $data;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function write()
     {
         foreach ($this->data as $category => $documents) {

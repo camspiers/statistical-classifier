@@ -17,14 +17,22 @@ namespace Camspiers\StatisticalClassifier\DataSource;
  */
 class Json extends DataArray
 {
+    /**
+     * The filename of the json file
+     * @var string
+     */
     private $filename;
-
+    /**
+     * Creates the object from the filename
+     * @param string $filename The filename of the json file
+     */
     public function __construct($filename)
     {
         $this->filename = $filename;
-        parent::__construct($this->read());
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function read()
     {
         if (file_exists($this->filename)) {
@@ -36,7 +44,9 @@ class Json extends DataArray
 
         return array();
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function write()
     {
         file_put_contents($this->filename, json_encode($this->data));

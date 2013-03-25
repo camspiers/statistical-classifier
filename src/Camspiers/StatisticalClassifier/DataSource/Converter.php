@@ -17,15 +17,30 @@ namespace Camspiers\StatisticalClassifier\DataSource;
  */
 class Converter
 {
+    /**
+     * The source to convert from
+     * @var DataSourceInterface
+     */
     private $from;
+    /**
+     * The source to convert to
+     * @var DataSourceInterface
+     */
     private $to;
-
+    /**
+     * Creates the converter using to data sources
+     * @param DataSourceInterface $from The source to convert from
+     * @param DataSourceInterface $to   Teh source to convert to
+     */
     public function __construct(DataSourceInterface $from, DataSourceInterface $to)
     {
         $this->from = $from;
         $this->to = $to;
     }
-
+    /**
+     * run the conversion
+     * @return null
+     */
     public function run()
     {
         $data = $this->from->read();

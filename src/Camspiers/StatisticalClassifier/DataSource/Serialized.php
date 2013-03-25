@@ -17,23 +17,22 @@ namespace Camspiers\StatisticalClassifier\DataSource;
  */
 class Serialized extends DataArray
 {
+    /**
+     * The filename to read and write to
+     * @var string
+     */
     private $filename;
-
+    /**
+     * Creates the data source using the filename
+     * @param string $filename The filename to use
+     */
     public function __construct($filename)
     {
         $this->filename = $filename;
-        parent::__construct();
     }
-
-    public function getData()
-    {
-        if (!is_array($this->data) || array() === $this->data) {
-            $this->data = $this->read();
-        }
-
-        return $this->data;
-    }
-
+    /**
+     * @{inheritdoc}
+     */
     public function read()
     {
         if (file_exists($this->filename)) {
@@ -45,7 +44,9 @@ class Serialized extends DataArray
 
         return array();
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function write()
     {
         file_put_contents($this->filename, serialize($this->data));

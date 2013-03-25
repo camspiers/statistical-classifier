@@ -17,16 +17,34 @@ namespace Camspiers\StatisticalClassifier\DataSource;
  */
 class Grouped extends DataArray
 {
+    /**
+     * The data sources to use
+     * @var array
+     */
     protected $dataSources = array();
-
+    /**
+     * Create the object passing in the datasources as an array
+     * @param array $dataSources The data sources
+     */
     public function __construct($dataSources = null)
     {
         if (is_array($dataSources)) {
-            $this->dataSources = $dataSources;
+            foreach ($dataSources as $dataSource) {
+                $this->addDataSource($dataSource);
+            }
         }
-        parent::__construct($this->read());
     }
-
+    /**
+     * Add a data source to the array
+     * @param DataSourceInterface $dataSource The data source
+     */
+    public function addDataSource(DataSourceInterface $dataSource)
+    {
+        $this->dataSources[] = $dataSource;
+    }
+    /**
+     * @{inheritdoc}
+     */
     public function read()
     {
         $groupedData = array();
@@ -35,9 +53,5 @@ class Grouped extends DataArray
         }
 
         return $groupedData;
-    }
-
-    public function write()
-    {
     }
 }

@@ -11,22 +11,44 @@
 
 namespace Camspiers\StatisticalClassifier\DataSource;
 
-use PDO as BasePDO;
+use PDO;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class PDOQuery
+class PDOQuery extends DataArray
 {
+    /**
+     * The pdo connection object
+     * @var PDO
+     */
     private $pdo;
+    /**
+     * The category of the query
+     * @var string
+     */
     private $category;
+    /**
+     * The query to run
+     * @var string
+     */
     private $query;
+    /**
+     * The column to use for the document
+     * @var string
+     */
     private $documentColumn;
-
+    /**
+     * Creates the data source with the query details
+     * @param string $category       Category of the query
+     * @param PDO    $pdo            The PDO connection object
+     * @param string $query          The query to run
+     * @param string $documentColumn The column of the document
+     */
     public function __construct(
         $category,
-        BasePDO $pdo,
+        PDO $pdo,
         $query,
         $documentColumn
     ) {
@@ -35,21 +57,20 @@ class PDOQuery
         $this->query = $query;
         $this->documentColumn = $documentColumn;
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function read()
     {
         $query = $this->pdo->query($this->query);
-        $query->setFetchMode(BasePDO::FETCH_ASSOC);
-        $data = array();
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $documents = array();
         while ($row = $query->fetch()) {
-            $data[] = $row[$this->documentColumn];
+            $documents[] = $row[$this->documentColumn];
         }
 
-        return $data;
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
+        return array(
+            $this->category => $documents
+        );
     }
 }

@@ -22,6 +22,9 @@ use Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig;
  */
 class JsonConfigLoader extends FileLoader
 {
+    /**
+     * @{inheritdoc}
+     */
     public function load($resource, $type = null)
     {
         $configFiles = $this->locator->locate($resource, null, false);
@@ -39,7 +42,9 @@ class JsonConfigLoader extends FileLoader
             $configs
         );
     }
-
+    /**
+     * @{inheritdoc}
+     */
     public function supports($resource, $type = null)
     {
         return is_string($resource) && 'json' === pathinfo(

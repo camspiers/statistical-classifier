@@ -15,10 +15,9 @@ use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
 use Camspiers\StatisticalClassifier\DataSource\Grouped;
-use Camspiers\StatisticalClassifier\DataSource\PDO;
 use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
 
-use PDO as BasePDO;
+use PDO;
 
 /**
  * @author Cam Spiers <camspiers@gmail.com>
@@ -82,19 +81,15 @@ class PDOCommand extends Command
             $grouped = new Grouped(
                 array(
                     $index->getDataSource(),
-                    $pdo = new PDO(
-                        array(
-                            new PDOQuery(
-                                $input->getArgument('category'),
-                                new BasePDO(
-                                    $input->getArgument('dsn'),
-                                    $input->getArgument('username'),
-                                    $input->getArgument('password')
-                                ),
-                                $input->getArgument('query'),
-                                $input->getArgument('column')
-                            )
-                        )
+                    new PDOQuery(
+                        $input->getArgument('category'),
+                        new PDO(
+                            $input->getArgument('dsn'),
+                            $input->getArgument('username'),
+                            $input->getArgument('password')
+                        ),
+                        $input->getArgument('query'),
+                        $input->getArgument('column')
                     )
                 )
             )
