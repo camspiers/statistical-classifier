@@ -23,7 +23,7 @@ use PDO as BasePDO;
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class PDOCommand extends TestCommand
+class PDOCommand extends Command
 {
     /**
      * Configure the commands options

@@ -13,7 +13,7 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Test;
 
 use Symfony\Component\Console\Output;
 
-use Camspiers\StatisticalClassifier\Console\Command\Command;
+use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
 use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 
@@ -21,7 +21,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-abstract class TestCommand extends Command
+abstract class Command extends BaseCommand
 {
     /**
      * Classifies a data source against a classifier and outputs results

@@ -20,7 +20,7 @@ use Camspiers\StatisticalClassifier\DataSource\Directory;
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class DirectoryCommand extends TestCommand
+class DirectoryCommand extends Command
 {
     /**
      * Configure the commands options
