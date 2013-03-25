@@ -21,7 +21,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
  * @author Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class Command extends BaseCommand
+abstract class Command extends BaseCommand
 {
     protected function updateSummary(
         Output\OutputInterface $output,
