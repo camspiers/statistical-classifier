@@ -128,7 +128,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getConsole_Command_Config_CreateService()
     {
-        return $this->services['console.command.config.create'] = new \Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand();
+        return $this->services['console.command.config.create'] = new \Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand($this->get('json_pretty'));
     }
 
     /**
@@ -373,6 +373,19 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getIndex_IndexService()
     {
         throw new RuntimeException('You have requested a synthetic service ("index.index"). The DIC does not know how to construct this service.');
+    }
+
+    /**
+     * Gets the 'json_pretty' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Camspiers\JsonPretty\JsonPretty A Camspiers\JsonPretty\JsonPretty instance.
+     */
+    protected function getJsonPrettyService()
+    {
+        return $this->services['json_pretty'] = new \Camspiers\JsonPretty\JsonPretty();
     }
 
     /**
@@ -1112,6 +1125,7 @@ class StatisticalClassifierServiceContainer extends Container
             'logger.stream.class' => 'Monolog\\Handler\\StreamHandler',
             'logger.stream.stream' => 'logs/classifier.log',
             'logger.stream.level' => 100,
+            'json_pretty.class' => 'Camspiers\\JsonPretty\\JsonPretty',
         );
     }
 }

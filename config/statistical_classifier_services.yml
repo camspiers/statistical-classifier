@@ -39,6 +39,8 @@ parameters:
     logger.stream.stream: logs/classifier.log
     logger.stream.level: 100
 
+    json_pretty.class: Camspiers\JsonPretty\JsonPretty
+
 services:
     # Tokenizers
     tokenizer.word:
@@ -153,6 +155,7 @@ services:
 
     console.command.config.create:
         class: %console.command.config.create.class%
+        arguments: [ @json_pretty ]
         tags:
             - { name: console.command }
 
@@ -183,3 +186,6 @@ services:
         arguments:
             - %logger.stream.stream%
             - %logger.stream.level%
+
+    json_pretty:
+        class: %json_pretty.class%

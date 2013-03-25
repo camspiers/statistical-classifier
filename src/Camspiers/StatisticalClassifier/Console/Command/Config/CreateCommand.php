@@ -26,6 +26,20 @@ use RuntimeException;
 class CreateCommand extends Command
 {
     /**
+     * The json pretty service
+     * @var JsonPretty
+     */
+    protected $jsonPretty;
+    /**
+     * Creates the command injecting the json pretty service
+     * @param JsonPretty $jsonPretty The json pretty service
+     */
+    public function __construct(JsonPretty $jsonPretty)
+    {
+        $this->jsonPretty = $jsonPretty;
+        parent::__construct();
+    }
+    /**
      * Configure the commands options
      * @return null
      */
@@ -59,11 +73,9 @@ class CreateCommand extends Command
             throw new RuntimeException('Config file already exists, please run config:open to edit');
         }
 
-        $jsonPretty = new JsonPretty();
-
         file_put_contents(
             $filename,
-            $jsonPretty->prettify(
+            $this->jsonPretty->prettify(
                 array(
                     'require' => array(),
                     'extensions' => array(),

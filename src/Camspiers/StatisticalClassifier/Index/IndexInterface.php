@@ -42,7 +42,7 @@ interface IndexInterface
     /**
      * Return a partition if it exists
      * @param  string $partitionName The name of the partitiion
-     * @return mixed                 The partition data
+     * @return mixed  The partition data
      */
     public function getPartition($partitionName);
     /**

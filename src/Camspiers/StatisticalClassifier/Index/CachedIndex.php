@@ -32,8 +32,8 @@ class CachedIndex extends Index
     private $cache;
     /**
      * Create the CachedIndex using the indexname, cache and datasource
-     * @param string $indexName  The name of the index
-     * @param Cache  $cache      The cache to use
+     * @param string              $indexName  The name of the index
+     * @param Cache               $cache      The cache to use
      * @param DataSourceInterface $dataSource The place to get the data from
      */
     public function __construct(
@@ -48,7 +48,7 @@ class CachedIndex extends Index
     }
     /**
      * Set this index to prepared an preserve it if true
-     * 
+     *
      * This is an status variable indicating that the nessacary processing
      * has occured on the index
      * @param boolean $prepared The prepared status

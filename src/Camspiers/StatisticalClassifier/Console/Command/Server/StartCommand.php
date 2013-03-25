@@ -190,20 +190,21 @@ class StartCommand extends Command
     }
     /**
      * Get a classifier from the container using a service name
-     * @param  string $classifierType The service name
-     * @return ClassifierInterface    The classifier
+     * @param  string              $classifierType The service name
+     * @return ClassifierInterface The classifier
      */
     protected function getClassifierByType($classifierType)
     {
         if (!isset($this->classifiers[$classifierType])) {
             $this->classifiers[$classifierType] = $this->getContainer()->get($classifierType);
         }
+
         return $this->classifiers[$classifierType];
     }
     /**
      * Get a cached index by name
-     * @param  string $name  The index name
-     * @param  boolean $fresh Whether or not to get a fresh one even if it exists
+     * @param  string            $name  The index name
+     * @param  boolean           $fresh Whether or not to get a fresh one even if it exists
      * @return Index\CachedIndex The index
      */
     protected function getIndex($name, $fresh = false)
@@ -211,6 +212,7 @@ class StartCommand extends Command
         if (!isset($this->indexes[$name]) || $fresh) {
             $this->indexes[$name] = $this->getCachedIndex($name);
         }
+
         return $this->indexes[$name];
     }
 }
