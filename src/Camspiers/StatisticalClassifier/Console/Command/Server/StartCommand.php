@@ -135,7 +135,9 @@ class StartCommand extends Command
 
         if (isset($query['index'])) {
 
-            $classifier = $this->getClassifierByType(isset($query['classifier']) ? $query['classifier'] : 'classifier.naive_bayes');
+            $classifierType = isset($query['classifier']) ? $query['classifier'] : 'classifier.naive_bayes';
+
+            $classifier = $this->getClassifierByType($classifierType);
 
             $classifier->setIndex(
                 $this->getIndex(
@@ -205,7 +207,7 @@ class StartCommand extends Command
      * @return Index\CachedIndex The index
      */
     protected function getIndex($name, $fresh = false)
-    {   
+    {
         if (!isset($this->indexes[$name]) || $fresh) {
             $this->indexes[$name] = $this->getCachedIndex($name);
         }
