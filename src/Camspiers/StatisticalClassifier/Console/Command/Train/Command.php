@@ -23,6 +23,13 @@ use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
  */
 abstract class Command extends BaseCommand
 {
+    /**
+     * Outputs a summary of what has changes in the index
+     * @param  Output\OutputInterface $output  The output object
+     * @param  DataSourceInterface    $changes The data source with changes
+     * @param  DataSourceInterface    $current The grouped data source
+     * @return null
+     */
     protected function updateSummary(
         Output\OutputInterface $output,
         DataSourceInterface $changes,
