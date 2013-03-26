@@ -41,7 +41,7 @@ abstract class Command extends BaseCommand
         $documentsTotal = count($current->getData(), COUNT_RECURSIVE) - $categoriesTotal;
         $output->writeLn(
             array(
-                "Added $changesCategoriesTotal documents from $changesDocumentsTotal categories",
+                "Added $changesDocumentsTotal documents from $changesCategoriesTotal categories",
                 "Index now contains $documentsTotal documents in $categoriesTotal categories"
             )
         );

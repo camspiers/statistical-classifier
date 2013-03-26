@@ -48,14 +48,14 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function getCategories()
     {
-        return array_keys($this->data);
+        return array_keys($this->getData());
     }
     /**
      * @{inheritdoc}
      */
     public function hasCategory($category)
     {
-        return array_key_exists($category, $this->data);
+        return array_key_exists($category, $this->getData());
     }
     /**
      * @{inheritdoc}
@@ -111,7 +111,7 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function serialize()
     {
-        return serialize($this->data);
+        return serialize($this->getData());
     }
     /**
      * Restore the serialized class
