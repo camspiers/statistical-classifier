@@ -12,8 +12,7 @@ abstract class TransformTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->index = new Index();
-        $this->index->setDataSource(
+        $this->index = new Index(
             new DataArray(
                 array(
                     'spam' => array(

@@ -100,6 +100,13 @@ class GenericClassifier implements ClassifierInterface
     /**
      * {@inheritdoc}
      */
+    public function getTransforms()
+    {
+        return $this->transforms;
+    }
+    /**
+     * {@inheritdoc}
+     */
     public function addTransform(TransformInterface $transform)
     {
         $this->transforms[] = $transform;
@@ -142,6 +149,13 @@ class GenericClassifier implements ClassifierInterface
     public function setIndex(IndexInterface $index)
     {
         $this->index = $index;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getIndex()
+    {
+        return $this->index;
     }
     /**
      * {@inheritdoc}
