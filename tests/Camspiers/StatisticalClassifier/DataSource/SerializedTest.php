@@ -7,17 +7,11 @@ namespace Camspiers\StatisticalClassifier\DataSource;
 class SerializedTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var Serialized
-     */
-    protected $object;
-
-    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $this->object = new Serialized;
     }
 
     /**

@@ -47,15 +47,25 @@ interface ClassifierInterface
      */
     public function setIndex(IndexInterface $index);
     /**
+     * Get the index
+     * @return IndexInterface The index
+     */
+    public function getIndex();
+    /**
      * Add a transform to be applied to the source data to achieve classification
      * @param  TransformInterface $transform The transform to add
      * @return null
      */
     public function addTransform(TransformInterface $transform);
     /**
-     * Set an array of transform to be applied to the source data to achieve classification
+     * Set an array of transforms to be applied to the source data to achieve classification
      * @param  array $transforms The transforms to add
      * @return null
      */
     public function setTransforms(array $transforms);
+    /**
+     * Get an array of transforms
+     * @return array The transforms
+     */
+    public function getTransforms();
 }

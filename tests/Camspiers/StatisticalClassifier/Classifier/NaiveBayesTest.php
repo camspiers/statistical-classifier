@@ -7,17 +7,11 @@ namespace Camspiers\StatisticalClassifier\Classifier;
 class NaiveBayesTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var NaiveBayes
-     */
-    protected $object;
-
-    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $this->object = new NaiveBayes;
     }
 
     /**
@@ -26,5 +20,13 @@ class NaiveBayesTest extends \PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
+    }
+
+    public function testClassify()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+          'This test has not been implemented yet.'
+        );
     }
 }

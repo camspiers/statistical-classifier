@@ -7,17 +7,11 @@ namespace Camspiers\StatisticalClassifier\Normalizer;
 class LowercaseTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var Lowercase
-     */
-    protected $object;
-
-    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $this->object = new Lowercase;
     }
 
     /**

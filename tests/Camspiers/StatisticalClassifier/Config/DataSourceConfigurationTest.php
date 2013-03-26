@@ -7,17 +7,11 @@ namespace Camspiers\StatisticalClassifier\Config;
 class DataSourceConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var DataSourceConfiguration
-     */
-    protected $object;
-
-    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $this->object = new DataSourceConfiguration;
     }
 
     /**

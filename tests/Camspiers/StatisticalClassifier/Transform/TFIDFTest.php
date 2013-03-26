@@ -7,17 +7,11 @@ namespace Camspiers\StatisticalClassifier\Transform;
 class TFIDFTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var TFIDF
-     */
-    protected $object;
-
-    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
-        $this->object = new TFIDF;
     }
 
     /**
