@@ -5,13 +5,15 @@ chdir(dirname(__DIR__));
 
 require_once 'src/bootstrap.php';
 
-$c = new StatisticalClassifierServiceContainer;
+use Camspiers\StatisticalClassifier\Config\Config;
 
-if (!$c->has('console.application')) {
-	unlink('config/StatisticalClassifierServiceContainer.php');
+$container = new StatisticalClassifierServiceContainer;
+
+if (!$container->has('console.application')) {
+	unlink(Config::getConfigParameter('container_dir') . '/StatisticalClassifierServiceContainer.php');
 	echo 'There appears to be a problem with your container. The service \'console.application\' must exist.', PHP_EOL;
 	echo 'The current container has been deleted, please make the required modifications and re-run the classifier', PHP_EOL;
 	exit(1);
 }
 
-$c->get('console.application')->setContainer($c)->run();
+$container->get('console.application')->setContainer($container)->run();

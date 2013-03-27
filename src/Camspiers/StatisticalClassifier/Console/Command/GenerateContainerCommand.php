@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
 use Camspiers\DependencyInjection\SharedContainerFactory;
-use Camspiers\StatisticalClassifier\DependencyInjection;
+use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 /**
@@ -42,8 +42,7 @@ class GenerateContainerCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-
-        $config = $this->getConfig();
+        $config = Config::getConfig();
 
         if (isset($config['require']) && is_array($config['require'])) {
             foreach ($config['require'] as $file) {
@@ -76,7 +75,7 @@ class GenerateContainerCommand extends Command
                 $config['basepath'] . $config['services']
             ),
             'StatisticalClassifierServiceContainer',
-            'config/'
+            $config['basepath'] . $config['container_dir']
         );
 
         SharedContainerFactory::clearExtensions();

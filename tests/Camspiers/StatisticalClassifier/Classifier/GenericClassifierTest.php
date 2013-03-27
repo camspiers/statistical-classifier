@@ -48,6 +48,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
     public function testGetTransforms()
     {
         $this->assertEquals(array(), $this->classifier->getTransforms());
+
         return $this->classifier;
     }
     /**
@@ -62,6 +63,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
             )
         );
         $this->assertEquals(array($transform), $classifier->getTransforms());
+
         return $classifier;
     }
 
@@ -74,6 +76,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
             'spam',
             $classifier->classify('Some spam document')
         );
+
         return $classifier;
     }
 
@@ -88,6 +91,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(
             $classifier->is('ham', 'Some ham document')
         );
+
         return $classifier;
     }
 
@@ -115,6 +119,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
             )
         );
         $this->assertEquals($ts, $classifier->getTransforms());
+
         return $classifier;
     }
     /**
@@ -129,6 +134,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
     public function testGetIndex()
     {
         $this->assertEquals($this->index, $this->classifier->getIndex());
+
         return $this->classifier;
     }
     /**
@@ -138,6 +144,7 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
     {
         $classifier->setIndex($index = new Index);
         $this->assertEquals($index, $classifier->getIndex());
+
         return array($classifier, $index);
     }
     /**
@@ -162,6 +169,7 @@ class TestClassificationRule implements ClassificationRuleInterface
                 }
             }
         }
+
         return false;
     }
 }

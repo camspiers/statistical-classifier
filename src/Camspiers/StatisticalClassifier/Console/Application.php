@@ -48,7 +48,7 @@ class Application extends BaseApplication
      */
     public function getContainer()
     {
-        if (null == $this->container) {
+        if (null === $this->container) {
             $this->container = new StatisticalClassifierServiceContainer();
         }
 

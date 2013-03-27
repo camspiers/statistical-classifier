@@ -13,12 +13,10 @@ namespace Camspiers\StatisticalClassifier\Console\Command;
 
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input;
-use Symfony\Component\Config\FileLocator;
 
 use CacheCache\Cache;
 
 use Camspiers\StatisticalClassifier\Index;
-use Camspiers\StatisticalClassifier\Loader\JsonConfigLoader;
 use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 
 /**
@@ -121,7 +119,7 @@ abstract class Command extends BaseCommand
      */
     protected function getContainer()
     {
-        if (null == $this->container) {
+        if (null === $this->container) {
             $this->container = $this->getApplication()->getContainer();
         }
 
@@ -137,7 +135,7 @@ abstract class Command extends BaseCommand
     {
         if (null === $this->classifier) {
             $container = $this->getContainer();
-            if (null == $index) {
+            if (null === $index) {
                 $index = $this->getCachedIndex(
                     $input->getArgument('index')
                 );
@@ -150,26 +148,5 @@ abstract class Command extends BaseCommand
         }
 
         return $this->classifier;
-    }
-    /**
-     * Returns the config which is a combination of the default and the global
-     * @return array The configuration
-     */
-    protected function getConfig()
-    {
-        if (null == $this->config) {
-            $loader = new JsonConfigLoader(
-                new FileLocator(
-                    array(
-                        'config',
-                        $_SERVER['HOME'] . '/.classifier',
-                        '/usr/local/.classifier'
-                    )
-                )
-            );
-            $this->config = $loader->load('config.json');
-        }
-
-        return $this->config;
     }
 }

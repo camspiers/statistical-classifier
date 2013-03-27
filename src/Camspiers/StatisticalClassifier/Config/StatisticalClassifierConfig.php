@@ -32,6 +32,16 @@ class StatisticalClassifierConfig implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('basepath')->end()
+                ->scalarNode('container_dir')
+                    ->beforeNormalization()
+                        ->always()
+                        ->then(
+                            function ($value) {
+                                return rtrim($value, '/');
+                            }
+                        )
+                    ->end()
+                ->end()
                 ->scalarNode('services')->end()
                 ->arrayNode('require')
                     ->defaultValue(array())
