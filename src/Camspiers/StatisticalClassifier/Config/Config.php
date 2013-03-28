@@ -17,7 +17,7 @@ use Camspiers\StatisticalClassifier\Loader\JsonConfigLoader;
 use RuntimeException;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class Config
@@ -48,7 +48,7 @@ class Config
 
         return self::$config;
     }
-    public static function getConfigParameter($parameter)
+    public static function getConfigOption($parameter)
     {
         $config = self::getConfig();
         if (array_key_exists($parameter, $config)) {
