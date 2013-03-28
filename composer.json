@@ -10,7 +10,7 @@
         "email": "camspiers@gmail.com"
     }],
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=5.3.3",
         "maximebf/cachecache": "~1.0",
         "symfony/console": "~2.1",
         "symfony/dependency-injection": "~2.1",
