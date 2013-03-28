@@ -21,7 +21,7 @@ use RuntimeException;
 
 /**
  * A generic classifier which can be used to built a classifier given a number of injected components
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class GenericClassifier implements ClassifierInterface
@@ -113,7 +113,7 @@ class GenericClassifier implements ClassifierInterface
     }
     /**
      * Apply the transforms to the index
-     * @return [type] [description]
+     * @return null
      */
     protected function applyTransforms()
     {

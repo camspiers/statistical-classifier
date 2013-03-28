@@ -16,11 +16,12 @@ use Symfony\Component\Console\Input;
 
 use CacheCache\Cache;
 
-use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\Index\CachedIndex;
+use Camspiers\StatisticalClassifier\Index\IndexInterface;
 use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 abstract class Command extends BaseCommand
@@ -32,7 +33,7 @@ abstract class Command extends BaseCommand
     protected $config;
     /**
      * Holds the CacheCache\Cache instance
-     * @var CacheCache\Cache
+     * @var Cache
      */
     protected $cache;
     /**
@@ -103,12 +104,12 @@ abstract class Command extends BaseCommand
     }
     /**
      * Get an CachedIndex based off a index name and the Cache instance
-     * @param  string            $name The name of the index
-     * @return Index\CachedIndex The cached index
+     * @param  string $name The name of the index
+     * @return CachedIndex The cached index
      */
     protected function getCachedIndex($name)
     {
-        return new Index\CachedIndex(
+        return new CachedIndex(
             $name,
             $this->cache
         );
@@ -128,10 +129,10 @@ abstract class Command extends BaseCommand
     /**
      * Returns a classifier based of the commands input and the specified index (if exists)
      * @param  Input\InputInterface $input The commands input
-     * @param  Index\IndexInterface $index Optional index to use in the classifier
+     * @param  IndexInterface       $index Optional index to use in the classifier
      * @return ClassifierInterface  The built classifier
      */
-    protected function getClassifier(Input\InputInterface $input, Index\Index $index = null)
+    protected function getClassifier(Input\InputInterface $input, IndexInterface $index = null)
     {
         if (null === $this->classifier) {
             $container = $this->getContainer();

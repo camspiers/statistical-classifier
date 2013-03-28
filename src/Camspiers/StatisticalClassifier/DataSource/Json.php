@@ -12,7 +12,7 @@
 namespace Camspiers\StatisticalClassifier\DataSource;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class Json extends DataArray

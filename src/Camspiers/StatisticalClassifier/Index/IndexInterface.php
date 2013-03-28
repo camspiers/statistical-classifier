@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\Index;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 interface IndexInterface

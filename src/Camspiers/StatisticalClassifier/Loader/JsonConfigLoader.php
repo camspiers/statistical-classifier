@@ -17,7 +17,7 @@ use Symfony\Component\Config\Loader\FileLoader;
 use Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class JsonConfigLoader extends FileLoader

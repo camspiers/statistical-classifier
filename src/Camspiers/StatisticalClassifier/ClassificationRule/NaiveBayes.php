@@ -16,7 +16,7 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
 /**
  * The classification rule for the NaiveBayes classifier
  *
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class NaiveBayes implements ClassificationRuleInterface

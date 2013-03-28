@@ -15,7 +15,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use CacheCache\Cache;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class CachedIndex extends Index
@@ -26,8 +26,8 @@ class CachedIndex extends Index
      */
     private $indexName;
     /**
-     * An instance of CacheCache\Cache
-     * @var Cachee
+     * An instance of Cache
+     * @var Cache
      */
     private $cache;
     /**

@@ -20,7 +20,7 @@ use Camspiers\JsonPretty\JsonPretty;
 use RuntimeException;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class CreateCommand extends Command

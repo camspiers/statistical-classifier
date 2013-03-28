@@ -17,7 +17,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use RuntimeException;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class Index implements IndexInterface

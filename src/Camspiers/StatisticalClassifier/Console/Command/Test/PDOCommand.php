@@ -19,7 +19,7 @@ use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
 use PDO;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class PDOCommand extends Command

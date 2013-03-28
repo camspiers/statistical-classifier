@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\Normalizer;
 use RuntimeException;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class Grouped implements NormalizerInterface

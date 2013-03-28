@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\Transform;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class IDF implements TransformInterface
@@ -44,12 +44,12 @@ class IDF implements TransformInterface
             foreach ($documents as $documentIndex => $document) {
                 foreach ($document as $token => $count) {
                     $transform
-                        [$category]
-                        [$documentIndex]
-                        [$token] = $count * log(
-                            $documentCount / $tokenAppreanceCount[$token],
-                            10
-                        );
+                    [$category]
+                    [$documentIndex]
+                    [$token] = $count * log(
+                        $documentCount / $tokenAppreanceCount[$token],
+                        10
+                    );
                 }
             }
         }

@@ -19,7 +19,7 @@ use Camspiers\StatisticalClassifier\Console\Command\Command;
 use RuntimeException;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class RemoveCommand extends Command

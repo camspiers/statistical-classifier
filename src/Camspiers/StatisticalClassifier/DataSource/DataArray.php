@@ -15,7 +15,7 @@ use RuntimeException;
 use Serializable;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class DataArray implements DataSourceInterface, Serializable

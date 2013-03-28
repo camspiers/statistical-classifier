@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\Transform;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class Complement implements TransformInterface
@@ -31,48 +31,46 @@ class Complement implements TransformInterface
     public function apply(IndexInterface $index)
     {
         $data = $index->getPartition($this->dataPartitionName);
-        $tokensByCategory = $index->getPartition(TBC::PARTITION_NAME);
-        $documentCount = $index->getPartition(DC::PARTITION_NAME);
-        $documentTokenCounts = $index->getPartition(DocumentTokenCounts::PARTITION_NAME);
-        $categories = array_keys($tokensByCategory);
-        $transform = array();
-        $numeratorCache = array();
+        $tokByCat = $index->getPartition(TBC::PARTITION_NAME);
+        $docCount = $index->getPartition(DC::PARTITION_NAME);
+        $docTokenCounts = $index->getPartition(DocumentTokenCounts::PARTITION_NAME);
+        $cats = array_keys($tokByCat);
+        $trans = array();
 
-        $tokensByCategorySums = array();
+        $tokByCatSums = array();
 
-        foreach ($tokensByCategory as $category => $tokens) {
-            $tokensByCategorySums[$category] = array_sum($tokens);
+        foreach ($tokByCat as $cat => $tokens) {
+            $tokByCatSums[$cat] = array_sum($tokens);
         }
 
         $documentCounts = array();
 
-        foreach ($data as $category => $documents) {
-            $documentCounts[$category] = count($documents);
+        foreach ($data as $cat => $documents) {
+            $documentCounts[$cat] = count($documents);
         }
 
-        foreach ($tokensByCategory as $category => $tokens) {
+        foreach ($tokByCat as $cat => $tokens) {
 
-            $transform[$category] = array();
-            $categoriesSelection = array_diff($categories, array($category));
+            $trans[$cat] = array();
+            $categoriesSelection = array_diff($cats, array($cat));
 
-            $docsInOtherCategories = $documentCount - $documentCounts[$category];
+            $docsInOtherCats = $docCount - $documentCounts[$cat];
 
-            foreach ($tokens as $token => $count) {
-                $transform[$category][$token] = $docsInOtherCategories;
-                foreach ($categoriesSelection as $selectedCategory) {
-                    if (array_key_exists($token, $tokensByCategory[$selectedCategory])) {
-                        $transform[$category][$token] += $tokensByCategory[$selectedCategory][$token];
+            foreach (array_keys($tokens) as $token) {
+                $trans[$cat][$token] = $docsInOtherCats;
+                foreach ($categoriesSelection as $currCat) {
+                    if (array_key_exists($token, $tokByCat[$currCat])) {
+                        $trans[$cat][$token] += $tokByCat[$currCat][$token];
                     }
                 }
-
-                foreach ($categoriesSelection as $selectedCategory) {
-                    $transform[$category][$token] = $transform[$category][$token] / ($tokensByCategorySums[$selectedCategory] + $documentTokenCounts[$selectedCategory]);
+                foreach ($categoriesSelection as $currCat) {
+                    $trans[$cat][$token] = $trans[$cat][$token] / ($tokByCatSums[$currCat] + $docTokenCounts[$currCat]);
                 }
 
             }
 
         }
 
-        $index->setPartition(self::PARTITION_NAME, $transform);
+        $index->setPartition(self::PARTITION_NAME, $trans);
     }
 }

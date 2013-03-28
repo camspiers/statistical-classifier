@@ -23,7 +23,7 @@ use React\Socket;
 use React\Http;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class StartCommand extends Command

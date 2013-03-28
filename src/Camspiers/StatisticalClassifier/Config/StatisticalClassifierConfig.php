@@ -15,7 +15,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class StatisticalClassifierConfig implements ConfigurationInterface
@@ -31,32 +31,32 @@ class StatisticalClassifierConfig implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('basepath')->end()
-                ->scalarNode('container_dir')
-                    ->beforeNormalization()
-                        ->always()
-                        ->then(
-                            function ($value) {
-                                return rtrim($value, '/');
-                            }
-                        )
-                    ->end()
-                ->end()
-                ->scalarNode('services')->end()
-                ->arrayNode('require')
-                    ->defaultValue(array())
-                    ->prototype('scalar')->end()
-                ->end()
-                ->arrayNode('extensions')
-                    ->defaultValue(array())
-                    ->prototype('scalar')->end()
-                ->end()
-                ->arrayNode('compiler_passes')
-                    ->defaultValue(array())
-                    ->prototype('scalar')->end()
-                ->end()
-                ->variableNode('parameters')
-                ->end()
+            ->scalarNode('basepath')->end()
+            ->scalarNode('container_dir')
+            ->beforeNormalization()
+            ->always()
+            ->then(
+                function ($value) {
+                    return rtrim($value, '/');
+                }
+            )
+            ->end()
+            ->end()
+            ->scalarNode('services')->end()
+            ->arrayNode('require')
+            ->defaultValue(array())
+            ->prototype('scalar')->end()
+            ->end()
+            ->arrayNode('extensions')
+            ->defaultValue(array())
+            ->prototype('scalar')->end()
+            ->end()
+            ->arrayNode('compiler_passes')
+            ->defaultValue(array())
+            ->prototype('scalar')->end()
+            ->end()
+            ->variableNode('parameters')
+            ->end()
             ->end();
 
         return $treeBuilder;

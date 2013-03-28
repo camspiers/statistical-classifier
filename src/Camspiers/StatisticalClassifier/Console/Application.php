@@ -15,7 +15,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class Application extends BaseApplication
@@ -35,6 +35,7 @@ class Application extends BaseApplication
     /**
      * Allows the setting of a container on the appliaction
      * @param ContainerInterface $container The container to set
+     * @return $this
      */
     public function setContainer(ContainerInterface $container)
     {

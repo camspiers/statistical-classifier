@@ -20,7 +20,7 @@ use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
 use PDO;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class PDOCommand extends Command
@@ -81,7 +81,7 @@ class PDOCommand extends Command
             $grouped = new Grouped(
                 array(
                     $index->getDataSource(),
-                    new PDOQuery(
+                    $pdo = new PDOQuery(
                         $input->getArgument('category'),
                         new PDO(
                             $input->getArgument('dsn'),

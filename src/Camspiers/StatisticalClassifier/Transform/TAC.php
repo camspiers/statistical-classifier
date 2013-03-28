@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\Transform;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class TAC implements TransformInterface
@@ -32,8 +32,8 @@ class TAC implements TransformInterface
     {
         $data = $index->getPartition($this->dataPartitionName);
         $transform = array();
-        foreach ($data as $category => $documents) {
-            foreach ($documents as $documentIndex => $document) {
+        foreach ($data as $documents) {
+            foreach ($documents as $document) {
                 foreach ($document as $token => $count) {
                     if ($count > 0) {
                         if (!array_key_exists($token, $transform)) {

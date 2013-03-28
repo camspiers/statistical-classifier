@@ -18,7 +18,7 @@ use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 abstract class Command extends BaseCommand

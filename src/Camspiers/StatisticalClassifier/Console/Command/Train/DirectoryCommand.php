@@ -18,7 +18,7 @@ use Camspiers\StatisticalClassifier\DataSource\Grouped;
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class DirectoryCommand extends Command

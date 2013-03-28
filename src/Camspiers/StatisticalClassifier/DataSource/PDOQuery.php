@@ -14,7 +14,7 @@ namespace Camspiers\StatisticalClassifier\DataSource;
 use PDO;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class PDOQuery extends DataArray

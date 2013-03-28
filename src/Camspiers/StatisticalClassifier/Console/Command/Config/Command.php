@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input;
 use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 abstract class Command extends BaseCommand

@@ -19,7 +19,7 @@ use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Console\Command\Command;
 
 /**
- * @author Cam Spiers <camspiers@gmail.com>
+ * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
 class GenerateContainerCommand extends Command
