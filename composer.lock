@@ -1,5 +1,5 @@
 {
-    "hash": "db95f8e171ce96de7d9530d1ede0df7b",
+    "hash": "f5957bb51411adffc1be2a3ca9e55682",
     "packages": [
         {
             "name": "camspiers/json-pretty",
@@ -70,44 +70,6 @@
             ],
             "description": "Porter Stemmer created by Richard Heyes",
             "time": "2013-02-06 21:39:08"
-        },
-        {
-            "name": "camspiers/shared-dependency-injection",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/camspiers/shared-dependency-injection.git",
-                "reference": "0.1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/camspiers/shared-dependency-injection/zipball/0.1.0",
-                "reference": "0.1.0",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/config": ">=2.1,<3.0",
-                "symfony/dependency-injection": ">=2.1,<3.0",
-                "symfony/yaml": ">=2.1,<3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=3.7,<4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Camspiers\\DependencyInjection": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Cam Spiers",
-                    "email": "camspiers@gmail.com"
-                }
-            ],
-            "description": "Shared Dependency Injection",
-            "time": "2013-02-28 01:48:02"
         },
         {
             "name": "evenement/evenement",

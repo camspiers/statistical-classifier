@@ -11,12 +11,15 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command;
 
-use Symfony\Component\Console\Input;
-use Symfony\Component\Console\Output;
-
-use Camspiers\DependencyInjection\SharedContainerFactory;
 use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Console\Command\Command;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Console\Input;
+use Symfony\Component\Console\Output;
+use RuntimeException;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -38,49 +41,87 @@ class GenerateContainerCommand extends Command
      * Generate the container
      * @param  Input\InputInterface   $input  The commands input
      * @param  Output\OutputInterface $output The commands output
+     * @throws RuntimeException
      * @return null
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $config = Config::getConfig();
+        $servicesFile = $config['basepath'] . $config['services'];
 
+        if (!file_exists($servicesFile)) {
+            throw new RuntimeException("Services file '$servicesFile' doesn't exist");
+        }
+        if (!file_exists($config['basepath'] . $config['container_dir'])) {
+            throw new RuntimeException('Dump location does not exist');
+        }
+
+        $this->includeFiles($config);
+
+        $container = new ContainerBuilder();
+
+        $this->addExtensions($container, $config);
+
+        $this->addCompilerPasses($container, $config);
+
+        $loader = new YamlFileLoader(
+            $container,
+            new FileLocator(dirname($servicesFile))
+        );
+
+        $loader->load(basename($servicesFile));
+
+        if (isset($config['parameters'])) {
+            $container->getParameterBag()->add($config['parameters']);
+        }
+
+        $container->compile();
+
+        $dumper = new PhpDumper($container);
+
+        file_put_contents(
+            realpath($config['basepath'] . $config['container_dir']) . "/StatisticalClassifierServiceContainer.php",
+            $dumper->dump(
+                array(
+                    'class' => 'StatisticalClassifierServiceContainer'
+                )
+            )
+        );
+
+        $output->writeLn('Container generated');
+    }
+
+    protected function includeFiles($config)
+    {
         if (isset($config['require']) && is_array($config['require'])) {
             foreach ($config['require'] as $file) {
                 if (file_exists($file)) {
-                    include_once $file;
+                    require_once $file;
                 } else {
-                    include_once $config['basepath'] . $file;
+                    require_once $config['basepath'] . $file;
                 }
             }
         }
+    }
 
+    protected function addExtensions(ContainerBuilder $container, $config)
+    {
         if (isset($config['extensions']) && is_array($config['extensions'])) {
             foreach ($config['extensions'] as $extension) {
-                SharedContainerFactory::addExtension(
+                $container->registerExtension(
                     new $extension
                 );
             }
         }
+    }
+    protected function addCompilerPasses(ContainerBuilder $container, $config)
+    {
         if (isset($config['compiler_passes']) && is_array($config['compiler_passes'])) {
             foreach ($config['compiler_passes'] as $compilerPass) {
-                SharedContainerFactory::addCompilerPass(
+                $container->addCompilerPass(
                     new $compilerPass
                 );
             }
         }
-
-        SharedContainerFactory::dumpContainer(
-            SharedContainerFactory::createContainer(
-                isset($config['parameters']) ? $config['parameters'] : array(),
-                $config['basepath'] . $config['services']
-            ),
-            'StatisticalClassifierServiceContainer',
-            $config['basepath'] . $config['container_dir']
-        );
-
-        SharedContainerFactory::clearExtensions();
-        SharedContainerFactory::clearCompilerPasses();
-
-        $output->writeLn('Container generated');
     }
 }

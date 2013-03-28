@@ -18,7 +18,6 @@
         "symfony/config": "~2.1",
         "symfony/finder": "~2.1",
         "camspiers/porter-stemmer": "~1.0",
-        "camspiers/shared-dependency-injection": "~0.1",
         "camspiers/json-pretty": "~0.1",
         "psr/log": "~1.0",
         "monolog/monolog": "~1.4",
