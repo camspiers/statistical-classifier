@@ -23,17 +23,15 @@ class DataSourceConfiguration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        // $rootNode = $treeBuilder->root('datasource');
+        $rootNode = $treeBuilder->root('datasource');
 
-        // $rootNode
-        //     ->children()
-        //         ->arrayNode('categories')
-        //             ->prototype('array')
-        //             ->children()
-        //                 ->scalarNode()->end()
-        //             ->end()
-        //         ->end()
-        //     ->end();
+        $rootNode
+            ->prototype('array')
+            ->children()
+                ->scalarNode('category')->isRequired()->end()
+                ->scalarNode('document')->isRequired()->end()
+            ->end();
+
         return $treeBuilder;
     }
 }

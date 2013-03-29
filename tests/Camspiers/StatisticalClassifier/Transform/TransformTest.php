@@ -15,13 +15,21 @@ abstract class TransformTest extends PHPUnit_Framework_TestCase
         $this->index = new Index(
             new DataArray(
                 array(
-                    'spam' => array(
-                        'Some spam document',
-                        'Another spam document'
+                    array(
+                        'category' => 'spam',
+                        'document' => 'Some spam document'
                     ),
-                    'ham' => array(
-                        'Some ham document',
-                        'Another ham document'
+                    array(
+                        'category' => 'spam',
+                        'document' => 'Another spam document'
+                    ),
+                    array(
+                        'category' => 'ham',
+                        'document' => 'Some ham document'
+                    ),
+                    array(
+                        'category' => 'ham',
+                        'document' => 'Another ham document'
                     )
                 )
             )

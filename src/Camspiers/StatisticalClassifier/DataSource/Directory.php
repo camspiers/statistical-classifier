@@ -57,11 +57,10 @@ class Directory extends DataArray
             }
             foreach ($files as $filename) {
                 if (is_file($filename)) {
-                    $dirname = basename(dirname($filename));
-                    if (!isset($data[$dirname])) {
-                        $data[$dirname] = array();
-                    }
-                    $data[$dirname][] = file_get_contents($filename);
+                    $data[] = array(
+                        'category' => basename(dirname($filename)),
+                        'document' => file_get_contents($filename)
+                    );
                 }
             }
         }

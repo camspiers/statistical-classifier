@@ -33,19 +33,18 @@ class TCBD implements TransformInterface
 
     public function apply(IndexInterface $index)
     {
-        $data = $index->getDataSource()->getData();
         $transform = array();
-        foreach ($data as $category => $documents) {
-            $transform[$category] = array();
-            foreach ($documents as $document) {
-                $transform[$category][] = array_count_values(
-                    $this->normalizer->normalize(
-                        $this->tokenizer->tokenize(
-                            $document
-                        )
-                    )
-                );
+        foreach ($index->getDataSource()->getData() as $document) {
+            if (!isset($transform[$document['category']])) {
+                $transform[$document['category']] = array();
             }
+            $transform[$document['category']][] = array_count_values(
+                $this->normalizer->normalize(
+                    $this->tokenizer->tokenize(
+                        $document['document']
+                    )
+                )
+            );
         }
         $index->setPartition(self::PARTITION_NAME, $transform);
     }

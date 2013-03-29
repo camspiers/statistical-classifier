@@ -33,6 +33,12 @@ interface DataSourceInterface
      */
     public function getData();
     /**
+     * Set data to the data source
+     * @param array $data
+     * @return null
+     */
+    public function setData(array $data);
+    /**
      * Returns the categories of the data
      * @return array The categories
      */
@@ -43,11 +49,6 @@ interface DataSourceInterface
      * @return boolean [description]
      */
     public function hasCategory($category);
-    /**
-     * Adds a category to the data
-     * @param string $category The category to add
-     */
-    public function addCategory($category);
     /**
      * Adds a document by category to the data
      * @param string $category The category of the document

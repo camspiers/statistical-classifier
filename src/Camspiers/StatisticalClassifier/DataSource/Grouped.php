@@ -49,7 +49,7 @@ class Grouped extends DataArray
     {
         $groupedData = array();
         foreach ($this->dataSources as $dataSource) {
-            $groupedData = array_merge_recursive($groupedData, $dataSource->getData());
+            $groupedData = array_merge($groupedData, $dataSource->getData());
         }
 
         return $groupedData;

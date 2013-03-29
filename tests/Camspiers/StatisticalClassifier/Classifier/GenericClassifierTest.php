@@ -31,11 +31,13 @@ class GenericClassifierTest extends \PHPUnit_Framework_TestCase
             $this->index = new Index(
                 new DataArray(
                     array(
-                        'spam' => array(
-                            'Some spam document'
+                        array(
+                            'category' => 'spam',
+                            'document' => 'Some spam document'
                         ),
-                        'ham' => array(
-                            'Some ham document'
+                        array(
+                            'category' => 'ham',
+                            'document' => 'Some ham document'
                         )
                     )
                 )
@@ -162,11 +164,9 @@ class TestClassificationRule implements ClassificationRuleInterface
 {
     public function classify(IndexInterface $index, $document)
     {
-        foreach ($index->getPartition('end') as $category => $documents) {
-            foreach ($documents as $doc) {
-                if ($document == $doc) {
-                    return $category;
-                }
+        foreach ($index->getPartition('end') as $testDocument) {
+            if ($document == $testDocument['document']) {
+                return $testDocument['category'];
             }
         }
 
@@ -187,19 +187,17 @@ class TestTransform implements TransformInterface
 
     public function apply(IndexInterface $index)
     {
-        $data = $index->getDataSource()->getData();
-        foreach ($data as $category => $documents) {
-            foreach ($documents as $documentIndex => $document) {
-                $data[$category][$documentIndex] = $this->n->normalize(
-                    $this->t->tokenize(
-                        $document
-                    )
-                );
-            }
+        $docuemnts = $index->getDataSource()->getData();
+        foreach ($docuemnts as &$document) {
+            $document['document'] = $this->n->normalize(
+                $this->t->tokenize(
+                    $document['document']
+                )
+            );
         }
         $index->setPartition(
             'end',
-            $data
+            $docuemnts
         );
     }
 }

@@ -26,7 +26,16 @@ class IndexTest extends PHPUnit_Framework_TestCase
     public function testData()
     {
         $this->assertTrue($this->index->getDataSource() instanceof DataSourceInterface);
-        $this->index->setDataSource(new DataArray($data = array('test')));
+        $this->index->setDataSource(
+            new DataArray(
+                $data = array(
+                    array(
+                        'category' => 'test',
+                        'document' => 'test'
+                    )
+                )
+            )
+        );
         $this->assertEquals($data, $this->index->getDataSource()->getData());
     }
 

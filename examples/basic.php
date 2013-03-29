@@ -11,11 +11,21 @@ $c->set(
     new Index(
         $source = new DataArray(
             array(
-                'spam' => array(
-                    'Some spam document'
+                array(
+                    'category' => 'spam',
+                    'document' => 'Some spam document'
                 ),
-                'ham' => array(
-                    'Some ham document'
+                array(
+                    'category' => 'spam',
+                    'document' => 'Another spam document'
+                ),
+                array(
+                    'category' => 'ham',
+                    'document' => 'Some ham document'
+                ),
+                array(
+                    'category' => 'ham',
+                    'document' => 'Another ham document'
                 )
             )
         )

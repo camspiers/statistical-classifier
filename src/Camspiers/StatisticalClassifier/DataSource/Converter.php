@@ -43,14 +43,7 @@ class Converter
      */
     public function run()
     {
-        $data = $this->from->read();
-
-        foreach ($data as $category => $documents) {
-            foreach ($documents as $document) {
-                $this->to->addDocument($category, $document);
-            }
-        }
-
+        $this->to->setData($this->from->getData());
         $this->to->write();
     }
 }

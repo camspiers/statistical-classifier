@@ -66,11 +66,12 @@ class PDOQuery extends DataArray
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $documents = array();
         while ($row = $query->fetch()) {
-            $documents[] = $row[$this->documentColumn];
+            $documents[] = array(
+                'category' => $this->category,
+                'document' => $row[$this->documentColumn]
+            );
         }
 
-        return array(
-            $this->category => $documents
-        );
+        return $documents;
     }
 }

@@ -11,8 +11,10 @@
 
 namespace Camspiers\StatisticalClassifier\DataSource;
 
+use Camspiers\StatisticalClassifier\Config\DataSourceConfiguration;
 use RuntimeException;
 use Serializable;
+use Symfony\Component\Config\Definition\Processor;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -33,6 +35,9 @@ class DataArray implements DataSourceInterface, Serializable
      */
     protected $data = array();
 
+    protected $config;
+    protected $processor;
+
     /**
      * Creates the data array
      * @param array $data The initial data
@@ -40,7 +45,7 @@ class DataArray implements DataSourceInterface, Serializable
     public function __construct(array $data = null)
     {
         if (is_array($data)) {
-            $this->data = $data;
+            $this->setData($data);
         }
     }
     /**
@@ -55,30 +60,22 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function hasCategory($category)
     {
-        return array_key_exists($category, $this->getData());
-    }
-    /**
-     * @{inheritdoc}
-     */
-    public function addCategory($category)
-    {
-        $this->data[$category] = array();
+        foreach ($this->getData() as $document) {
+            if ($document['category'] === $category) {
+                return true;
+            }
+        }
+        return false;
     }
     /**
      * @{inheritdoc}
      */
     public function addDocument($category, $document)
     {
-        if (!$this->hasCategory($category)) {
-            $this->addCategory($category);
-        }
-        if (!in_array($document, $this->data[$category])) {
-            $this->data[$category][] = $document;
-
-            return true;
-        } else {
-            return false;
-        }
+        $this->data[] = array(
+            'category' => $category,
+            'document' => $document
+        );
     }
     /**
      * @{inheritdoc}
@@ -93,11 +90,24 @@ class DataArray implements DataSourceInterface, Serializable
     public function getData()
     {
         if (!is_array($this->data) || count($this->data) == 0) {
-            $this->data = $this->read();
+            $this->setData($this->read());
         }
 
         return $this->data;
     }
+    /**
+     * @{inheritdoc}
+     */
+    public function setData(array $data)
+    {
+        $this->data = $this->getProcessor()->processConfiguration(
+            $this->getConfig(),
+            array(
+                $data
+            )
+        );
+    }
+
     /**
      * @{inheritdoc}
      */
@@ -121,5 +131,31 @@ class DataArray implements DataSourceInterface, Serializable
     public function unserialize($data)
     {
         $this->data = unserialize($data);
+    }
+
+    public function setConfig(DataSourceConfiguration $config)
+    {
+        $this->config = $config;
+    }
+
+    public function getConfig()
+    {
+        if (null === $this->config) {
+            $this->setConfig(new DataSourceConfiguration());
+        }
+        return $this->config;
+    }
+
+    public function setProcessor(Processor $processor)
+    {
+        $this->processor = $processor;
+    }
+
+    public function getProcessor()
+    {
+        if (null === $this->processor) {
+            $this->setProcessor(new Processor());
+        }
+        return $this->processor;
     }
 }

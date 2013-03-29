@@ -23,11 +23,6 @@ class DC implements TransformInterface
 
     public function apply(IndexInterface $index)
     {
-        $count = 0;
-        $data = $index->getDataSource()->getData();
-        foreach ($data as $documents) {
-            $count += count($documents);
-        }
-        $index->setPartition(self::PARTITION_NAME, $count);
+        $index->setPartition(self::PARTITION_NAME, count($index->getDataSource()->getData()));
     }
 }
