@@ -35,7 +35,13 @@ class GenerateContainerCommand extends Command
     {
         $this
             ->setName('generate-container')
-            ->setDescription('Generate container');
+            ->setDescription('Generate container')
+            ->addOption(
+                'services',
+                's',
+                Input\InputOption::VALUE_OPTIONAL,
+                'Use the specified services file to generate the container'
+            );
     }
     /**
      * Generate the container
@@ -47,7 +53,10 @@ class GenerateContainerCommand extends Command
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $config = Config::getConfig();
-        $servicesFile = $config['basepath'] . $config['services'];
+        $servicesFile = $input->getOption('services');
+        if (!$servicesFile) {
+            $servicesFile = $config['basepath'] . $config['services'];
+        }
 
         if (!file_exists($servicesFile)) {
             throw new RuntimeException("Services file '$servicesFile' doesn't exist");
