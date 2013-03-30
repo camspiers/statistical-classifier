@@ -13,6 +13,7 @@ namespace Camspiers\StatisticalClassifier\Console;
 
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Camspiers\StatisticalClassifier\Config\Config;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -50,7 +51,7 @@ class Application extends BaseApplication
     public function getContainer()
     {
         if (null === $this->container) {
-            $this->container = new StatisticalClassifierServiceContainer();
+            $this->container = Config::getOption('container_class');
         }
 
         return $this->container;

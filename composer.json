@@ -27,8 +27,8 @@
         "phpunit/phpunit": "~3.7"
     },
     "autoload": {
-        "psr-0": {"Camspiers": "src/"},
-        "classmap": [ "config/" ]
+        "psr-0": {"Camspiers\\StatisticalClassifier": "src/"},
+        "classmap": ["src/Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php"]
     },
     "bin": ["bin/classifier"],
     "extra": {

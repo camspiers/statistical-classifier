@@ -1,7 +1,7 @@
 {
-    "basepath": "",
-    "services": "config/services.yml",
-    "container_dir": "config/",
+    "services_path": "%CLASSIFIER_PATH%/config/services.yml",
+    "container_dir": "%CLASSIFIER_PATH%/src/Camspiers/StatisticalClassifier",
+    "container_class": "StatisticalClassifierServiceContainer",
     "extensions": [
         "Camspiers\\StatisticalClassifier\\DependencyInjection\\StatisticalClassifierExtension"
     ],

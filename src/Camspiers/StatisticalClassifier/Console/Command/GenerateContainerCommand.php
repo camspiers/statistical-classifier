@@ -53,15 +53,18 @@ class GenerateContainerCommand extends Command
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $config = Config::getConfig();
+
         $servicesFile = $input->getOption('services');
+
         if (!$servicesFile) {
-            $servicesFile = $config['basepath'] . $config['services'];
+            $servicesFile = $config['services_path'];
         }
 
         if (!file_exists($servicesFile)) {
             throw new RuntimeException("Services file '$servicesFile' doesn't exist");
         }
-        if (!file_exists($config['basepath'] . $config['container_dir'])) {
+
+        if (!file_exists($config['container_dir'])) {
             throw new RuntimeException('Dump location does not exist');
         }
 
@@ -89,10 +92,10 @@ class GenerateContainerCommand extends Command
         $dumper = new PhpDumper($container);
 
         file_put_contents(
-            realpath($config['basepath'] . $config['container_dir']) . "/StatisticalClassifierServiceContainer.php",
+            realpath($config['container_dir']) . '/' . Config::getPathFromClass($config['container_class']) . '.php',
             $dumper->dump(
                 array(
-                    'class' => 'StatisticalClassifierServiceContainer'
+                    'class' => $config['container_class']
                 )
             )
         );

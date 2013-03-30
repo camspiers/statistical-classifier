@@ -29,6 +29,7 @@ class Config
     private static $config;
     /**
      * Returns the config which is a combination of the default and the global
+     * @internal param array $paths
      * @return array The configuration
      */
     public static function getConfig()
@@ -37,7 +38,7 @@ class Config
             $loader = new JsonConfigLoader(
                 new FileLocator(
                     array(
-                        'config',
+                        CLASSIFIER_PATH . '/config',
                         $_SERVER['HOME'] . '/.classifier',
                         '/usr/local/.classifier'
                     )
@@ -48,13 +49,37 @@ class Config
 
         return self::$config;
     }
-    public static function getConfigOption($parameter)
+    /**
+     * @param $option
+     * @throws \RuntimeException
+     * @internal param string $parameter
+     * @return mixed
+     */
+    public static function getOption($option)
     {
         $config = self::getConfig();
-        if (array_key_exists($parameter, $config)) {
-            return $config[$parameter];
+        if (array_key_exists($option, $config)) {
+            return $config[$option];
         } else {
-            throw new RuntimeException("Config parameter '$parameter' doesn't exist");
+            throw new RuntimeException("Config option '$option' doesn't exist");
         }
+    }
+    public static function getOptionPath($option)
+    {
+        return self::getPath(self::getOption($option));
+    }
+
+    public static function getPath($path)
+    {
+        if ('/' === $path[0]) {
+            return $path;
+        } else {
+            return CLASSIFIER_PATH . rtrim($path, '/');
+        }
+    }
+
+    public static function getPathFromClass($class)
+    {
+        return str_replace('\\', DIRECTORY_SEPARATOR, $class);
     }
 }
