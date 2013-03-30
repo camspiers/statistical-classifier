@@ -65,7 +65,7 @@ class GenerateContainerCommand extends Command
         }
 
         if (!file_exists($config['container_dir'])) {
-            throw new RuntimeException('Dump location does not exist');
+            throw new RuntimeException("Dump location '{$config['container_dir']}' does not exist");
         }
 
         $this->includeFiles($config);
