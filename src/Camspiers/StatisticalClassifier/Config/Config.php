@@ -36,10 +36,10 @@ class Config
     {
         if (null === self::$config) {
             $configs = array();
-            $configs[] = CLASSIFIER_PATH . '/config';
             if (realpath(CLASSIFIER_PATH . '/config') !== realpath(__DIR__ . '/../../../../config')) {
                 $configs[] = __DIR__ . '/../../../../config';
             }
+            $configs[] = CLASSIFIER_PATH . '/config';
             $configs[] = $_SERVER['HOME'] . '/.classifier';
             $configs[] = '/usr/local/.classifier';
             $loader = new JsonConfigLoader(
