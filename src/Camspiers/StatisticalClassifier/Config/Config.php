@@ -35,13 +35,16 @@ class Config
     public static function getConfig()
     {
         if (null === self::$config) {
+            $configs = array();
+            $configs[] = CLASSIFIER_PATH . '/config';
+            if (realpath(CLASSIFIER_PATH . '/config') !== realpath(__DIR__ . '/../../../../config')) {
+                $configs[] = __DIR__ . '/../../../../config';
+            }
+            $configs[] = $_SERVER['HOME'] . '/.classifier';
+            $configs[] = '/usr/local/.classifier';
             $loader = new JsonConfigLoader(
                 new FileLocator(
-                    array(
-                        CLASSIFIER_PATH . '/config',
-                        $_SERVER['HOME'] . '/.classifier',
-                        '/usr/local/.classifier'
-                    )
+                    $configs
                 )
             );
             self::$config = $loader->load('config.json');

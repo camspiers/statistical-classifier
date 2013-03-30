@@ -10,7 +10,7 @@ $loader = false;
 foreach ($files as $file) {
     if (file_exists($file)) {
         $loader = require_once $file;
-        define('CLASSIFIER_PATH', dirname(dirname($file)));
+        define('CLASSIFIER_PATH', dirname(dirname(realpath($file))));
         break;
     }
 }
