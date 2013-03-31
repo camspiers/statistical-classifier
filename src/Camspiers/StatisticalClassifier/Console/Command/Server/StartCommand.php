@@ -92,6 +92,8 @@ class StartCommand extends Command
 
         $loop->run();
 
+        $output->writeln('Server started');
+
     }
     /**
      * Serve a request
