@@ -40,6 +40,7 @@ class PrepareCommand extends Command
      * Prepare a specified index
      * @param  Input\InputInterface   $input  The input object
      * @param  Output\OutputInterface $output The output object
+     * @throws \RuntimeException
      * @return null
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)

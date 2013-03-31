@@ -27,6 +27,7 @@ class Grouped implements NormalizerInterface
     /**
      * Create the normalizer using an array or normalizers as input
      * @param array $normalizers [description]
+     * @throws \RuntimeException
      */
     public function __construct(array $normalizers = array())
     {
