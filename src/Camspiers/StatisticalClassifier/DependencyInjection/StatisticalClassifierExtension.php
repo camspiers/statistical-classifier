@@ -11,6 +11,7 @@
 
 namespace Camspiers\StatisticalClassifier\DependencyInjection;
 
+use Camspiers\StatisticalClassifier\Config\Config;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
@@ -32,5 +33,6 @@ class StatisticalClassifierExtension extends BaseExtension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../../../config'));
         $loader->load($this->getAlias() . '_services.yml');
+        $container->setParameter('classifier_path', Config::getClassifierPath());
     }
 }

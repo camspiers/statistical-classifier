@@ -58,7 +58,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getCache_BackendService()
     {
-        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => './indexes/', 'file_extension' => '.idx'));
+        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => '/Users/cameron/Sites/statistical-classifier/indexes/', 'file_extension' => '.idx'));
     }
 
     /**
@@ -418,7 +418,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getLogger_StreamService()
     {
-        return $this->services['logger.stream'] = new \Monolog\Handler\StreamHandler('logs/classifier.log', 100);
+        return $this->services['logger.stream'] = new \Monolog\Handler\StreamHandler('/Users/cameron/Sites/statistical-classifier/logs/classifier.log', 100);
     }
 
     /**
@@ -1096,7 +1096,7 @@ class StatisticalClassifierServiceContainer extends Container
                 542 => 'zero',
             ),
             'cache.backend.options' => array(
-                'dir' => './indexes/',
+                'dir' => '/Users/cameron/Sites/statistical-classifier/indexes/',
                 'file_extension' => '.idx',
             ),
             'classifier_namespace' => 'Camspiers\\StatisticalClassifier',
@@ -1126,9 +1126,10 @@ class StatisticalClassifierServiceContainer extends Container
             'cache.backend.class' => 'CacheCache\\Backends\\File',
             'logger.class' => 'Monolog\\Logger',
             'logger.stream.class' => 'Monolog\\Handler\\StreamHandler',
-            'logger.stream.stream' => 'logs/classifier.log',
+            'logger.stream.stream' => '/Users/cameron/Sites/statistical-classifier/logs/classifier.log',
             'logger.stream.level' => 100,
             'json_pretty.class' => 'Camspiers\\JsonPretty\\JsonPretty',
+            'classifier_path' => '/Users/cameron/Sites/statistical-classifier',
         );
     }
 }

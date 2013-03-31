@@ -3,7 +3,7 @@ imports:
 
 parameters:
     cache.backend.options:
-        dir: ./indexes/
+        dir: %classifier_path%/indexes/
         file_extension: .idx
 
     classifier_namespace: Camspiers\StatisticalClassifier
@@ -36,7 +36,7 @@ parameters:
 
     logger.class: Monolog\Logger
     logger.stream.class: Monolog\Handler\StreamHandler
-    logger.stream.stream: logs/classifier.log
+    logger.stream.stream: %classifier_path%/logs/classifier.log
     logger.stream.level: 100
 
     json_pretty.class: Camspiers\JsonPretty\JsonPretty

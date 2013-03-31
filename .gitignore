@@ -1,3 +1,4 @@
 vendor
 .settings
 .idea
+src/Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php
