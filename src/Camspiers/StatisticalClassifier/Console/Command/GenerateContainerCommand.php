@@ -92,7 +92,7 @@ class GenerateContainerCommand extends Command
         $dumper = new PhpDumper($container);
 
         file_put_contents(
-            realpath($config['container_dir']) . '/' . Config::getPathFromClass($config['container_class']) . '.php',
+            realpath($config['container_dir']) . "/{$config['container_class']}.php",
             $dumper->dump(
                 array(
                     'class' => $config['container_class']

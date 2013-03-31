@@ -10,7 +10,7 @@ $loader = false;
 foreach ($files as $file) {
     if (file_exists($file)) {
         $loader = require_once $file;
-        define('CLASSIFIER_PATH', dirname(dirname(realpath($file))));
+        Camspiers\StatisticalClassifier\Config\Config::setClassifierPath(dirname(dirname(realpath($file))));
         break;
     }
 }
@@ -24,8 +24,6 @@ use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-
-
 
 if (!file_exists(Config::getOptionPath('container_dir') . '/' . Config::getOptionPath('container_class') . '.php')) {
     $command = new GenerateContainerCommand();

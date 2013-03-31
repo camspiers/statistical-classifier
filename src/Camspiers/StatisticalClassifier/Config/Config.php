@@ -28,6 +28,10 @@ class Config
      */
     private static $config;
     /**
+     * @var string
+     */
+    private static $classifierPath;
+    /**
      * Returns the config which is a combination of the default and the global
      * @internal param array $paths
      * @return array The configuration
@@ -36,10 +40,11 @@ class Config
     {
         if (null === self::$config) {
             $configs = array();
-            if (realpath(CLASSIFIER_PATH . '/config') !== realpath(__DIR__ . '/../../../../config')) {
+            $classifierPath = self::getClassifierPath();
+            if (realpath($classifierPath . '/config') !== realpath(__DIR__ . '/../../../../config')) {
                 $configs[] = __DIR__ . '/../../../../config';
             }
-            $configs[] = CLASSIFIER_PATH . '/config';
+            $configs[] = $classifierPath . '/config';
             $configs[] = $_SERVER['HOME'] . '/.classifier';
             $configs[] = '/usr/local/.classifier';
             $loader = new JsonConfigLoader(
@@ -67,22 +72,42 @@ class Config
             throw new RuntimeException("Config option '$option' doesn't exist");
         }
     }
+    /**
+     * @param $value
+     * @return void
+     */
+    public static function setClassifierPath($value)
+    {
+        self::$classifierPath = $value;
+    }
+    /**
+     * @return mixed
+     */
+    public static function getClassifierPath()
+    {
+        if (null === self::$classifierPath) {
+            throw new RuntimeException('Classifier path has to be set before use');
+        }
+        return self::$classifierPath;
+    }
+    /**
+     * @param $option
+     * @return string
+     */
     public static function getOptionPath($option)
     {
         return self::getPath(self::getOption($option));
     }
-
+    /**
+     * @param $path
+     * @return string
+     */
     public static function getPath($path)
     {
         if ('/' === $path[0]) {
             return $path;
         } else {
-            return CLASSIFIER_PATH . rtrim($path, '/');
+            return self::getClassifierPath() . rtrim($path, '/');
         }
-    }
-
-    public static function getPathFromClass($class)
-    {
-        return str_replace('\\', DIRECTORY_SEPARATOR, $class);
     }
 }
