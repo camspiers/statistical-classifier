@@ -110,7 +110,7 @@ class GenerateContainerCommand extends Command
                 if (file_exists($file)) {
                     require_once $file;
                 } else {
-                    require_once $config['basepath'] . $file;
+                    require_once Config::getClassifierPath() . '/' . $file;
                 }
             }
         }

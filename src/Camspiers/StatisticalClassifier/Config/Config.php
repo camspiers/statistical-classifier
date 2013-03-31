@@ -81,6 +81,7 @@ class Config
         self::$classifierPath = $value;
     }
     /**
+     * @throws \RuntimeException
      * @return mixed
      */
     public static function getClassifierPath()
