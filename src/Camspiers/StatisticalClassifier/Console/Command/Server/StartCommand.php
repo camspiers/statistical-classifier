@@ -111,6 +111,13 @@ class StartCommand extends Command
                     $response
                 );
                 break;
+            case '/train':
+            case '/train/':
+                $this->train(
+                    $request,
+                    $response
+                );
+                break;
             default:
                 $response->writeHead(404, array('Content-Type' => 'text/plain'));
                 $response->end('Not found');
@@ -170,6 +177,72 @@ class StartCommand extends Command
                             json_encode(
                                 array(
                                     'category' => $classifier->classify($document)
+                                )
+                            )
+                        );
+                    }
+                );
+
+            }
+
+        } else {
+
+            $response->writeHead(400, array('Content-Type' => 'text/plain'));
+            $response->end('Bad request an index must be specified');
+
+        }
+
+    }
+    /**
+     * Train an index with a document
+     * @param Http\Request  $request
+     * @param Http\Response $response
+     */
+    protected function train(
+        Http\Request $request,
+        Http\Response $response
+    ) {
+
+        $query = $request->getQuery();
+
+        if (isset($query['index']) && isset($query['category'])) {
+
+            $index = $this->getIndex(
+                $query['index'],
+                isset($query['fresh'])
+            );
+
+            $response->writeHead(
+                200,
+                array(
+                    'Content-Type' => 'application/json'
+                )
+            );
+
+            if (isset($query['document'])) {
+
+                $index->getDataSource()->addDocument($query['category'], $query['document']);
+
+                $response->end(
+                    json_encode(
+                        array(
+                            'success' => true
+                        )
+                    )
+                );
+
+            } else {
+
+                $request->on(
+                    'data',
+                    function ($document) use ($response, $query, $index) {
+
+                        $index->getDataSource()->addDocument($query['category'], $document);
+
+                        $response->end(
+                            json_encode(
+                                array(
+                                    'success' => true
                                 )
                             )
                         );
