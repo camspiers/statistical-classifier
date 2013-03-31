@@ -11,8 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\Transform\TransformInterface;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
+use Camspiers\StatisticalClassifier\Transform\TransformInterface;
 
 /**
  * Provides an interface for classifier.

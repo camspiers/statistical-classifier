@@ -11,10 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Loader;
 
+use Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\Loader\FileLoader;
-
-use Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

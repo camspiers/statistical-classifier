@@ -11,11 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 
-use Symfony\Component\Console\Output;
-
 use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
-
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
+use Symfony\Component\Console\Output;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

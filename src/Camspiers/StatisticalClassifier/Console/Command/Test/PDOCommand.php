@@ -11,12 +11,10 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Test;
 
+use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
+use PDO;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
-
-use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
-
-use PDO;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

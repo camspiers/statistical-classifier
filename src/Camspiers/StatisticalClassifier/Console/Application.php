@@ -11,9 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Console;
 
+use Camspiers\StatisticalClassifier\Config\Config;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Camspiers\StatisticalClassifier\Config\Config;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

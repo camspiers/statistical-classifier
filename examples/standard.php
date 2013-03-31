@@ -29,7 +29,7 @@ $c->set(
     )
 );
 
-$nb = $c->get('classifier.naive_bayes');
+$nb = $c->get('classifier.complement_naive_bayes');
 
 $testSource = new Directory(
     __DIR__ . '/../resources/20news-bydate/20news-bydate-test',

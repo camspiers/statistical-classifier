@@ -11,9 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\Index;
 
-use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
-
+use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use RuntimeException;
 
 /**

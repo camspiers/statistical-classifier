@@ -11,16 +11,14 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Server;
 
-use Symfony\Component\Console\Input;
-use Symfony\Component\Console\Output;
-
+use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 use Camspiers\StatisticalClassifier\Console\Command\Command;
 use Camspiers\StatisticalClassifier\Index;
-use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
-
 use React\EventLoop;
-use React\Socket;
 use React\Http;
+use React\Socket;
+use Symfony\Component\Console\Input;
+use Symfony\Component\Console\Output;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -135,7 +133,7 @@ class StartCommand extends Command
 
         if (isset($query['index'])) {
 
-            $classifierType = isset($query['classifier']) ? $query['classifier'] : 'classifier.naive_bayes';
+            $classifierType = isset($query['classifier']) ? $query['classifier'] : 'classifier.complement_naive_bayes';
 
             $classifier = $this->getClassifierByType($classifierType);
 

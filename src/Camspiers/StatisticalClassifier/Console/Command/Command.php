@@ -11,14 +11,12 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command;
 
-use Symfony\Component\Console\Command\Command as BaseCommand;
-use Symfony\Component\Console\Input;
-
 use CacheCache\Cache;
-
+use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
 use Camspiers\StatisticalClassifier\Index\CachedIndex;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
-use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
+use Symfony\Component\Console\Command\Command as BaseCommand;
+use Symfony\Component\Console\Input;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -58,7 +56,7 @@ abstract class Command extends BaseCommand
                 'c',
                 Input\InputOption::VALUE_OPTIONAL,
                 'Name of classifier',
-                'classifier.naive_bayes'
+                'classifier.complement_naive_bayes'
             );
 
         return $this;

@@ -11,13 +11,11 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Config;
 
+use Camspiers\JsonPretty\JsonPretty;
+use Camspiers\StatisticalClassifier\Console\Command\Config\Command;
+use RuntimeException;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
-
-use Camspiers\StatisticalClassifier\Console\Command\Config\Command;
-use Camspiers\JsonPretty\JsonPretty;
-
-use RuntimeException;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

@@ -11,9 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Config;
 
-use Symfony\Component\Console\Input;
-
 use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
+use Symfony\Component\Console\Input;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

@@ -19,7 +19,7 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class NaiveBayes implements ClassificationRuleInterface
+class ComplementNaiveBayes implements ClassificationRuleInterface
 {
     /**
      * The name of the location of the data in the index

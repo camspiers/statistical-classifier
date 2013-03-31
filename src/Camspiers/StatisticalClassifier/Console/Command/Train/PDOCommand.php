@@ -11,13 +11,11 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 
-use Symfony\Component\Console\Input;
-use Symfony\Component\Console\Output;
-
 use Camspiers\StatisticalClassifier\DataSource\Grouped;
 use Camspiers\StatisticalClassifier\DataSource\PDOQuery;
-
 use PDO;
+use Symfony\Component\Console\Input;
+use Symfony\Component\Console\Output;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

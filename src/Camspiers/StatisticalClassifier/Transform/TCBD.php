@@ -11,9 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Transform;
 
-use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
-use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
+use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
+use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

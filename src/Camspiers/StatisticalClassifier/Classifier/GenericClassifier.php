@@ -11,12 +11,11 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
-use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
-use Camspiers\StatisticalClassifier\Transform\TransformInterface;
 use Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
-
+use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
+use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
+use Camspiers\StatisticalClassifier\Transform\TransformInterface;
 use RuntimeException;
 
 /**

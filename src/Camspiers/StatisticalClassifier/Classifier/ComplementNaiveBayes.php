@@ -11,11 +11,11 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
-use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
-use Camspiers\StatisticalClassifier\Transform;
 use Camspiers\StatisticalClassifier\ClassificationRule;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
+use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
+use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
+use Camspiers\StatisticalClassifier\Transform;
 
 /**
  * An implementation of a Naive Bayes classifier.
@@ -24,7 +24,7 @@ use Camspiers\StatisticalClassifier\Index\IndexInterface;
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class NaiveBayes extends GenericClassifier
+class ComplementNaiveBayes extends GenericClassifier
 {
     /**
      * Create the Naive Bayes Classifier
@@ -39,7 +39,7 @@ class NaiveBayes extends GenericClassifier
     ) {
         parent::__construct(
             $index,
-            new ClassificationRule\NaiveBayes(
+            new ClassificationRule\ComplementNaiveBayes(
                 Transform\Weight::PARTITION_NAME
             ),
             $tokenizer,

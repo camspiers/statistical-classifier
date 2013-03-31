@@ -11,10 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Test;
 
+use Camspiers\StatisticalClassifier\DataSource\Directory;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
-
-use Camspiers\StatisticalClassifier\DataSource\Directory;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

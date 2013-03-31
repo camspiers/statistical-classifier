@@ -13,8 +13,8 @@ namespace Camspiers\StatisticalClassifier\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

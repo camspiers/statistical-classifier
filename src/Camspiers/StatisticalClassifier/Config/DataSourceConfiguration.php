@@ -11,8 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\Config;
 
-use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

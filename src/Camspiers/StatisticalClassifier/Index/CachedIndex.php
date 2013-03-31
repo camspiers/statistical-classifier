@@ -11,8 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\Index;
 
-use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use CacheCache\Cache;
+use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

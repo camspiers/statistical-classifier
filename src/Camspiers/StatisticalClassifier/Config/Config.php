@@ -11,10 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Config;
 
-use Symfony\Component\Config\FileLocator;
 use Camspiers\StatisticalClassifier\Loader\JsonConfigLoader;
-
 use RuntimeException;
+use Symfony\Component\Config\FileLocator;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

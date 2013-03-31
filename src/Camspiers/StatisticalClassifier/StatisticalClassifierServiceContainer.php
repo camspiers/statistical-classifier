@@ -1,21 +1,18 @@
 <?php
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\DependencyInjection\Exception\InactiveScopeException;
-use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Symfony\Component\DependencyInjection\Exception\LogicException;
-use Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\Parameter;
-use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
-
 /**
  * StatisticalClassifierServiceContainer
  *
  * This class has been auto-generated
  * by the Symfony Dependency Injection Component.
  */
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Symfony\Component\DependencyInjection\Exception\LogicException;
+use Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
+
 class StatisticalClassifierServiceContainer extends Container
 {
     /**
@@ -62,16 +59,16 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'classifier.naive_bayes' service.
+     * Gets the 'classifier.complement_naive_bayes' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Classifier\NaiveBayes A Camspiers\StatisticalClassifier\Classifier\NaiveBayes instance.
+     * @return Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes A Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes instance.
      */
-    protected function getClassifier_NaiveBayesService()
+    protected function getClassifier_ComplementNaiveBayesService()
     {
-        return $this->services['classifier.naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\NaiveBayes($this->get('index.index'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'));
+        return $this->services['classifier.complement_naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes($this->get('index.index'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'));
     }
 
     /**
@@ -1106,7 +1103,7 @@ class StatisticalClassifierServiceContainer extends Container
             'normalizer.stopword.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Stopword',
             'normalizer.grouped.class' => 'Camspiers\\StatisticalClassifier\\Normalizer\\Grouped',
             'converter.converter.class' => 'Camspiers\\StatisticalClassifier\\DataSource\\Converter',
-            'classifier.naive_bayes.class' => 'Camspiers\\StatisticalClassifier\\Classifier\\NaiveBayes',
+            'classifier.complement_naive_bayes.class' => 'Camspiers\\StatisticalClassifier\\Classifier\\ComplementNaiveBayes',
             'console.application.class' => 'Camspiers\\StatisticalClassifier\\Console\\Application',
             'console.command.index.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand',
             'console.command.index.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand',

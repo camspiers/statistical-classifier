@@ -11,12 +11,10 @@
 
 namespace Camspiers\StatisticalClassifier\Console\Command\Index;
 
+use Camspiers\StatisticalClassifier\Console\Command\Command;
+use RuntimeException;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
-
-use Camspiers\StatisticalClassifier\Console\Command\Command;
-
-use RuntimeException;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

@@ -33,4 +33,4 @@ $c->set(
 );
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL;
+echo $c->get('classifier.complement_naive_bayes')->classify("Some ham document"), PHP_EOL;

@@ -13,13 +13,13 @@ namespace Camspiers\StatisticalClassifier\Console\Command;
 
 use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Console\Command\Command;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+use RuntimeException;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
-use RuntimeException;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
