@@ -21,6 +21,7 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
+<li><a href="namespaces/global.html"><i class="icon-th"></i> global</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">137</span></a></li>
+                <span class="label label-info">156</span></a></li>
 <li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -56,6 +57,7 @@
 <li class="nav-header">Navigation</li>
 <li><a href="#bootstrap.php"><i class="icon-file"></i>bootstrap.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/Config/Config.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/Config.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Config/StatisticalClassifierConfig.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/StatisticalClassifierConfig.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Console/Application.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Application.php</a></li>
@@ -93,6 +95,7 @@
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Lowercase.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Lowercase.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Porter.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Porter.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Stopword.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Stopword.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Tokenizer/Word.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Tokenizer/Word.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/Complement.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/Complement.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/DC.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/DC.php</a></li>
@@ -137,6 +140,7 @@
 <div class="package-contents"></div>
 <div class="package-contents"></div>
 <div class="package-contents"></div>
+<div class="package-contents"></div>
 <div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php" id="Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php"></a><h3>
 <i class="icon-file"></i>Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php<small style="float: right;padding-right: 10px;">6</small>
@@ -150,41 +154,40 @@
 <tbody>
 <tr class="error">
 <td>error</td>
-<td>77</td>
+<td>76</td>
 <td>Argument $category is missing from the Docblock of is()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>77</td>
+<td>76</td>
 <td>Argument $document is missing from the Docblock of is()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>88</td>
+<td>87</td>
 <td>Argument $transforms is missing from the Docblock of setTransforms()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>100</td>
+<td>106</td>
 <td>Argument $transform is missing from the Docblock of addTransform()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>139</td>
+<td>145</td>
 <td>Argument $index is missing from the Docblock of setIndex()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>146</td>
+<td>159</td>
 <td>Argument $document is missing from the Docblock of classify()</td>
 </tr>
 </tbody>
 </table></div>
 </div>
-<div class="package-contents"></div>
 <div class="package-contents">
-<a name="Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php" id="Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php<small style="float: right;padding-right: 10px;">2</small>
+<a name="Camspiers/StatisticalClassifier/Config/Config.php" id="Camspiers/StatisticalClassifier/Config/Config.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/Config.php<small style="float: right;padding-right: 10px;">7</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -195,15 +198,57 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>17</td>
-<td>No short description for class \Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</td>
+<td>18</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Config\Config</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>29</td>
+<td>No short description for property $classifierPath</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>23</td>
-<td>No DocBlock was found for method getConfigTreeBuilder()</td>
+<td>59</td>
+<td>No short description for method getOption()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>74</td>
+<td>No short description for method setClassifierPath()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>82</td>
+<td>No short description for method getClassifierPath()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>93</td>
+<td>No short description for method getOptionPath()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>101</td>
+<td>No short description for method getPath()</td>
 </tr>
 </tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php" id="Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</td>
+</tr></tbody>
 </table></div>
 </div>
 <div class="package-contents">
@@ -235,7 +280,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>17</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Application</td>
 </tr></tbody>
 </table></div>
@@ -252,14 +297,14 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>19</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</td>
 </tr></tbody>
 </table></div>
 </div>
 <div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Console/Command/Command.php" id="Camspiers/StatisticalClassifier/Console/Command/Command.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Command.php<small style="float: right;padding-right: 10px;">2</small>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Command.php<small style="float: right;padding-right: 10px;">1</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -267,18 +312,11 @@
 <th>Line</th>
 <th>Description</th>
 </tr></thead>
-<tbody>
-<tr class="critical">
+<tbody><tr class="critical">
 <td>critical</td>
-<td>24</td>
+<td>21</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Command</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>130</td>
-<td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $index in getClassifier()</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table></div>
 </div>
 <div class="package-contents">
@@ -294,17 +332,17 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>18</td>
+<td>17</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Config\Command</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>24</td>
+<td>23</td>
 <td>No DocBlock was found for method configureGlobal()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>36</td>
+<td>35</td>
 <td>No DocBlock was found for method getConfigFilename()</td>
 </tr>
 </tbody>
@@ -322,7 +360,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>22</td>
+<td>20</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand</td>
 </tr></tbody>
 </table></div>
@@ -339,7 +377,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand</td>
 </tr></tbody>
 </table></div>
@@ -356,14 +394,14 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand</td>
 </tr></tbody>
 </table></div>
 </div>
 <div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Console/Command/GenerateContainerCommand.php" id="Camspiers/StatisticalClassifier/Console/Command/GenerateContainerCommand.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/GenerateContainerCommand.php<small style="float: right;padding-right: 10px;">1</small>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/GenerateContainerCommand.php<small style="float: right;padding-right: 10px;">4</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -371,11 +409,28 @@
 <th>Line</th>
 <th>Description</th>
 </tr></thead>
-<tbody><tr class="critical">
+<tbody>
+<tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>24</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand</td>
-</tr></tbody>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>106</td>
+<td>No DocBlock was found for method includeFiles()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>119</td>
+<td>No DocBlock was found for method addExtensions()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>129</td>
+<td>No DocBlock was found for method addCompilerPasses()</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <div class="package-contents">
@@ -390,7 +445,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</td>
 </tr></tbody>
 </table></div>
@@ -407,7 +462,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</td>
 </tr></tbody>
 </table></div>
@@ -424,7 +479,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</td>
 </tr></tbody>
 </table></div>
@@ -441,7 +496,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>25</td>
+<td>23</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand</td>
 </tr></tbody>
 </table></div>
@@ -458,7 +513,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>20</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Test\Command</td>
 </tr></tbody>
 </table></div>
@@ -475,7 +530,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>19</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand</td>
 </tr></tbody>
 </table></div>
@@ -492,7 +547,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</td>
 </tr></tbody>
 </table></div>
@@ -509,7 +564,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>20</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\Command</td>
 </tr></tbody>
 </table></div>
@@ -526,7 +581,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>20</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</td>
 </tr></tbody>
 </table></div>
@@ -543,7 +598,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>19</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</td>
 </tr></tbody>
 </table></div>
@@ -560,7 +615,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>22</td>
+<td>20</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</td>
 </tr></tbody>
 </table></div>
@@ -584,7 +639,7 @@
 </div>
 <div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/DataSource/DataArray.php" id="Camspiers/StatisticalClassifier/DataSource/DataArray.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/DataArray.php<small style="float: right;padding-right: 10px;">8</small>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/DataArray.php<small style="float: right;padding-right: 10px;">14</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -595,43 +650,73 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>17</td>
+<td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\DataSource\DataArray</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>49</td>
+<td>38</td>
+<td>No DocBlock was found for property $config</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>39</td>
+<td>No DocBlock was found for property $processor</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
 <td>No DocBlock was found for method getCategories()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>56</td>
+<td>61</td>
 <td>No DocBlock was found for method hasCategory()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>63</td>
-<td>No DocBlock was found for method addCategory()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>70</td>
+<td>73</td>
 <td>No DocBlock was found for method addDocument()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>86</td>
+<td>83</td>
 <td>No DocBlock was found for method read()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>93</td>
+<td>90</td>
 <td>No DocBlock was found for method getData()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>104</td>
+<td>101</td>
+<td>No DocBlock was found for method setData()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>114</td>
 <td>No DocBlock was found for method write()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>136</td>
+<td>No DocBlock was found for method setConfig()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>141</td>
+<td>No DocBlock was found for method getConfig()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>149</td>
+<td>No DocBlock was found for method setProcessor()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>154</td>
+<td>No DocBlock was found for method getProcessor()</td>
 </tr>
 </tbody>
 </table></div>
@@ -660,7 +745,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>74</td>
+<td>73</td>
 <td>No DocBlock was found for method write()</td>
 </tr>
 </tbody>
@@ -836,47 +921,47 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>19</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Index\Index</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>52</td>
+<td>51</td>
 <td>No DocBlock was found for method isPrepared()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>59</td>
+<td>58</td>
 <td>No DocBlock was found for method setPrepared()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>66</td>
+<td>65</td>
 <td>No DocBlock was found for method setDataSource()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>73</td>
+<td>72</td>
 <td>No DocBlock was found for method getDataSource()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>80</td>
+<td>79</td>
 <td>No DocBlock was found for method getPartition()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>91</td>
+<td>90</td>
 <td>No DocBlock was found for method setPartition()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>98</td>
+<td>97</td>
 <td>No DocBlock was found for method removePartition()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>107</td>
+<td>106</td>
 <td>No DocBlock was found for method getPartitions()</td>
 </tr>
 </tbody>
@@ -896,17 +981,17 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>19</td>
+<td>18</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Loader\JsonConfigLoader</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>28</td>
+<td>27</td>
 <td>No DocBlock was found for method load()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>48</td>
+<td>47</td>
 <td>No DocBlock was found for method supports()</td>
 </tr>
 </tbody>
@@ -930,7 +1015,7 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>51</td>
+<td>52</td>
 <td>No DocBlock was found for method normalize()</td>
 </tr>
 </tbody>
@@ -1005,6 +1090,45 @@
 <td>error</td>
 <td>33</td>
 <td>Argument $tokens is missing from the Docblock of normalize()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php" id="Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>502</td>
+<td>Argument $name is missing from the Docblock of getParameter()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>516</td>
+<td>Argument $name is missing from the Docblock of hasParameter()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>526</td>
+<td>Argument $name is missing from the Docblock of setParameter()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>526</td>
+<td>Argument $value is missing from the Docblock of setParameter()</td>
 </tr>
 </tbody>
 </table></div>
@@ -1538,7 +1662,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
+            generated on 2013-03-31T21:47:50+13:00.<br></footer></div>
 </div>
 </body>
 </html>

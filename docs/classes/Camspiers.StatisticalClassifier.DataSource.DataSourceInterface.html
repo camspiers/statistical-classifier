@@ -21,6 +21,7 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">137</span></a></li>
+                <span class="label label-info">156</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -55,12 +56,12 @@
 <ul class="side-nav nav nav-list"><li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_addCategory" title="addCategory :: Adds a category to the data"><span class="description">Adds a category to the data</span><pre>addCategory()</pre></a></li>
 <li class="method public "><a href="#method_addDocument" title="addDocument :: Adds a document by category to the data"><span class="description">Adds a document by category to the data</span><pre>addDocument()</pre></a></li>
 <li class="method public "><a href="#method_getCategories" title="getCategories :: Returns the categories of the data"><span class="description">Returns the categories of the data</span><pre>getCategories()</pre></a></li>
 <li class="method public "><a href="#method_getData" title="getData :: Get the data"><span class="description">Get the data</span><pre>getData()</pre></a></li>
 <li class="method public "><a href="#method_hasCategory" title="hasCategory :: Returnnes whether or not the data has a category"><span class="description">Returnnes whether or not the data has a category</span><pre>hasCategory()</pre></a></li>
 <li class="method public "><a href="#method_read" title="read :: Read the data source"><span class="description">Read the data source</span><pre>read()</pre></a></li>
+<li class="method public "><a href="#method_setData" title="setData :: Set data to the data source"><span class="description">Set data to the data source</span><pre>setData()</pre></a></li>
 <li class="method public "><a href="#method_write" title="write :: Write the data source if possible"><span class="description">Write the data source if possible</span><pre>write()</pre></a></li>
 </ul>
 </li></ul>
@@ -97,18 +98,6 @@
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method_addCategory"></a><div class="element clickable method public method_addCategory" data-toggle="collapse" data-target=".method_addCategory .collapse">
-<h2>Adds a category to the data</h2>
-<pre>addCategory(string $category) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$category</h4>
-<code>string</code><p>The category to add</p></div>
-</div></div>
-</div>
 <a id="method_addDocument"></a><div class="element clickable method public method_addDocument" data-toggle="collapse" data-target=".method_addDocument .collapse">
 <h2>Adds a document by category to the data</h2>
 <pre>addDocument(string $category, string $document) </pre>
@@ -172,6 +161,21 @@
 <code>array</code>The data</div>
 </div></div>
 </div>
+<a id="method_setData"></a><div class="element clickable method public method_setData" data-toggle="collapse" data-target=".method_setData .collapse">
+<h2>Set data to the data source</h2>
+<pre>setData(array $data) : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
 <a id="method_write"></a><div class="element clickable method public method_write" data-toggle="collapse" data-target=".method_write .collapse">
 <h2>Write the data source if possible</h2>
 <pre>write() : null</pre>
@@ -189,7 +193,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
+            generated on 2013-03-31T21:47:50+13:00.<br></footer></div>
 </div>
 </body>
 </html>

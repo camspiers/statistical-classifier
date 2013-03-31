@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\Transform\DocumentTokenSums</title>
+<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\ClassificationRule\ComplementNaiveBayes</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,10 +57,8 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_apply" title="apply :: "><span class="description">apply()
-        </span><pre>apply()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Create the classification rule"><span class="description">Create the classification rule</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_classify" title="classify :: Classifies a document against an index"><span class="description">Classifies a document against an index</span><pre>classify()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -68,16 +66,12 @@
                     <ul></ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_dataPartitionName" title="$dataPartitionName :: "><span class="description"></span><pre>$dataPartitionName</pre></a></li></ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-constant"></i> Constants
-                    <ul><li class="constant  "><a href="#constant_PARTITION_NAME" title="PARTITION_NAME :: "><span class="description">PARTITION_NAME</span><pre>PARTITION_NAME</pre></a></li></ul>
+                    <ul><li class="property private "><a href="#property_dataPartitionName" title="$dataPartitionName :: The name of the location of the data in the index"><span class="description"></span><pre>$dataPartitionName</pre></a></li></ul>
 </li>
 </ul>
 </div>
 <div class="span8">
-<a id="\Camspiers\StatisticalClassifier\Transform\DocumentTokenSums"></a><ul class="breadcrumb">
+<a id="\Camspiers\StatisticalClassifier\ClassificationRule\ComplementNaiveBayes"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -86,14 +80,14 @@
 <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
 </li>
 <li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Transform.html">Transform</a>
+<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.ClassificationRule.html">ClassificationRule</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenSums.html">DocumentTokenSums</a>
+<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ComplementNaiveBayes.html">ComplementNaiveBayes</a>
 </li>
 </ul>
 <div class="element class">
-<p class="short_description"></p>
+<p class="short_description">The classification rule for the NaiveBayes classifier</p>
 <div class="details">
 <div class="long_description"></div>
 <table class="table table-bordered">
@@ -109,25 +103,33 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
-<pre>__construct($dataPartitionName) </pre>
+<h2>Create the classification rule</h2>
+<pre>__construct(string $dataPartitionName) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$dataPartitionName</h4></div>
+<div class="subelement argument">
+<h4>$dataPartitionName</h4>
+<code>string</code><p>The name of the location of the data in the index</p></div>
 </div></div>
 </div>
-<a id="method_apply"></a><div class="element clickable method public method_apply" data-toggle="collapse" data-target=".method_apply .collapse">
-<h2>apply()
-        </h2>
-<pre>apply(\Camspiers\StatisticalClassifier\Index\IndexInterface $index) </pre>
+<a id="method_classify"></a><div class="element clickable method public method_classify" data-toggle="collapse" data-target=".method_classify .collapse">
+<h2>Classifies a document against an index</h2>
+<pre>classify(\Camspiers\StatisticalClassifier\Index\IndexInterface $index, string $document) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$index</h4></div>
+<div class="subelement argument">
+<h4>$index</h4>
+<code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code><p>The Index to classify against</p></div>
+<div class="subelement argument">
+<h4>$document</h4>
+<code>string</code><p>The document to classify</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The category of the document</div>
 </div></div>
 </div>
 <h3>
@@ -135,14 +137,6 @@
 <a id="property_dataPartitionName"> </a><div class="element clickable property private property_dataPartitionName" data-toggle="collapse" data-target=".property_dataPartitionName .collapse">
 <h2></h2>
 <pre>$dataPartitionName </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<h3>
-<i class="icon-custom icon-constant"></i> Constants</h3>
-<a id="constant_PARTITION_NAME"> </a><div class="element clickable constant  constant_PARTITION_NAME" data-toggle="collapse" data-target=".constant_PARTITION_NAME .collapse">
-<h2>PARTITION_NAME</h2>
-<pre>PARTITION_NAME </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>

@@ -21,6 +21,7 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">137</span></a></li>
+                <span class="label label-info">156</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -57,10 +58,12 @@
                     <ul>
 <li class="method public "><a href="#method_addTransform" title="addTransform :: Add a transform to be applied to the source data to achieve classification"><span class="description">Add a transform to be applied to the source data to achieve classification</span><pre>addTransform()</pre></a></li>
 <li class="method public "><a href="#method_classify" title="classify :: Classify the document and return its category"><span class="description">Classify the document and return its category</span><pre>classify()</pre></a></li>
+<li class="method public "><a href="#method_getIndex" title="getIndex :: Get the index"><span class="description">Get the index</span><pre>getIndex()</pre></a></li>
+<li class="method public "><a href="#method_getTransforms" title="getTransforms :: Get an array of transforms"><span class="description">Get an array of transforms</span><pre>getTransforms()</pre></a></li>
 <li class="method public "><a href="#method_is" title="is :: Returns whether or not the document is of the category"><span class="description">Returns whether or not the document is of the category</span><pre>is()</pre></a></li>
 <li class="method public "><a href="#method_prepareIndex" title="prepareIndex :: Builds the index from the data source by applying transforms to the data source"><span class="description">Builds the index from the data source by applying transforms to the data source</span><pre>prepareIndex()</pre></a></li>
 <li class="method public "><a href="#method_setIndex" title="setIndex :: Set the index"><span class="description">Set the index</span><pre>setIndex()</pre></a></li>
-<li class="method public "><a href="#method_setTransforms" title="setTransforms :: Set an array of transform to be applied to the source data to achieve classification"><span class="description">Set an array of transform to be applied to the source data to achieve classification</span><pre>setTransforms()</pre></a></li>
+<li class="method public "><a href="#method_setTransforms" title="setTransforms :: Set an array of transforms to be applied to the source data to achieve classification"><span class="description">Set an array of transforms to be applied to the source data to achieve classification</span><pre>setTransforms()</pre></a></li>
 </ul>
 </li></ul>
 </div>
@@ -125,6 +128,28 @@
 <code>string</code>The category of the document</div>
 </div></div>
 </div>
+<a id="method_getIndex"></a><div class="element clickable method public method_getIndex" data-toggle="collapse" data-target=".method_getIndex .collapse">
+<h2>Get the index</h2>
+<pre>getIndex() : <a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code>The index</div>
+</div></div>
+</div>
+<a id="method_getTransforms"></a><div class="element clickable method public method_getTransforms" data-toggle="collapse" data-target=".method_getTransforms .collapse">
+<h2>Get an array of transforms</h2>
+<pre>getTransforms() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The transforms</div>
+</div></div>
+</div>
 <a id="method_is"></a><div class="element clickable method public method_is" data-toggle="collapse" data-target=".method_is .collapse">
 <h2>Returns whether or not the document is of the category</h2>
 <pre>is(string $category, string $document) : boolean</pre>
@@ -166,7 +191,7 @@
 </div></div>
 </div>
 <a id="method_setTransforms"></a><div class="element clickable method public method_setTransforms" data-toggle="collapse" data-target=".method_setTransforms .collapse">
-<h2>Set an array of transform to be applied to the source data to achieve classification</h2>
+<h2>Set an array of transforms to be applied to the source data to achieve classification</h2>
 <pre>setTransforms(array $transforms) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -186,7 +211,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
+            generated on 2013-03-31T21:47:50+13:00.<br></footer></div>
 </div>
 </body>
 </html>

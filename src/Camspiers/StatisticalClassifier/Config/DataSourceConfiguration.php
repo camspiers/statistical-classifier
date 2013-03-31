@@ -20,6 +20,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class DataSourceConfiguration implements ConfigurationInterface
 {
+    /**
+     * Returns a specification for data sources
+     * @return TreeBuilder
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();

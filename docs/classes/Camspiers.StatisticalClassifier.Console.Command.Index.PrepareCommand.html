@@ -21,6 +21,7 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">137</span></a></li>
+                <span class="label label-info">156</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -66,7 +67,6 @@
 <li class="method protected "><a href="#method_execute" title="execute :: Prepare a specified index"><span class="description">Prepare a specified index</span><pre>execute()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getCachedIndex" title="getCachedIndex :: Get an CachedIndex based off a index name and the Cache instance"><span class="description">Get an CachedIndex based off a index name and the Cache instance</span><pre>getCachedIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getClassifier" title="getClassifier :: Returns a classifier based of the commands input and the specified index (if exists)"><span class="description">Returns a classifier based of the commands input and the specified index (if exists)</span><pre>getClassifier()</pre></a></li>
-<li class="method protected inherited"><a href="#method_getConfig" title="getConfig :: Returns the config which is a combination of the default and the global"><span class="description">Returns the config which is a combination of the default and the global</span><pre>getConfig()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getContainer" title="getContainer :: Return the dependency injection container fetching it off the app if it doesn't exist"><span class="description">Return the dependency injection container fetching it off the app if it doesn't exist</span><pre>getContainer()</pre></a></li>
 </ul>
 </li>
@@ -206,6 +206,11 @@
 <div class="subelement argument">
 <h4>$output</h4>
 <code>\Symfony\Component\Console\Output\OutputInterface</code><p>The output object</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.runtimeexception.php">\RuntimeException</a></code></th>
+<td></td>
+</tr></table>
 <h3>Returns</h3>
 <div class="subelement response"><code>null</code></div>
 </div></div>
@@ -231,7 +236,7 @@
 </div>
 <a id="method_getClassifier"></a><div class="element clickable method protected method_getClassifier" data-toggle="collapse" data-target=".method_getClassifier .collapse">
 <h2>Returns a classifier based of the commands input and the specified index (if exists)</h2>
-<pre>getClassifier(\Symfony\Component\Console\Input\InputInterface $input, \Camspiers\StatisticalClassifier\Index\Index $index) : <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></pre>
+<pre>getClassifier(\Symfony\Component\Console\Input\InputInterface $input, \Camspiers\StatisticalClassifier\Index\IndexInterface $index) : <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -249,21 +254,6 @@
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></code>The built classifier</div>
-</div></div>
-</div>
-<a id="method_getConfig"></a><div class="element clickable method protected method_getConfig" data-toggle="collapse" data-target=".method_getConfig .collapse">
-<h2>Returns the config which is a combination of the default and the global</h2>
-<pre>getConfig() : array</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Camspiers\StatisticalClassifier\Console\Command\Command::getConfig()</td>
-</tr></table>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>The configuration</div>
 </div></div>
 </div>
 <a id="method_getContainer"></a><div class="element clickable method protected method_getContainer" data-toggle="collapse" data-target=".method_getContainer .collapse">
@@ -285,7 +275,7 @@
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_cache"> </a><div class="element clickable property protected property_cache" data-toggle="collapse" data-target=".property_cache .collapse">
 <h2></h2>
-<pre>$cache : \Camspiers\StatisticalClassifier\Console\Command\CacheCache\Cache</pre>
+<pre>$cache : \CacheCache\Cache</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -338,7 +328,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
+            generated on 2013-03-31T21:47:50+13:00.<br></footer></div>
 </div>
 </body>
 </html>
