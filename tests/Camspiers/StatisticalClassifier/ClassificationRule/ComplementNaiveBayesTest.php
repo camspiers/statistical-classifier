@@ -4,14 +4,14 @@ namespace Camspiers\StatisticalClassifier\ClassificationRule;
 
 use Camspiers\StatisticalClassifier\Index\Index;
 
-class NaiveBayesTest extends \PHPUnit_Framework_TestCase
+class ComplementNaiveBayesTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var Index
      */
     protected $index;
     /**
-     * @var NaiveBayes
+     * @var ComplementNaiveBayes
      */
     protected $rule;
 
@@ -22,11 +22,11 @@ class NaiveBayesTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->index = new Index;
-        $this->rule = new NaiveBayes('test');
+        $this->rule = new ComplementNaiveBayes('test');
     }
 
     /**
-     * @covers Camspiers\StatisticalClassifier\ClassificationRule\NaiveBayes::classify
+     * @covers Camspiers\StatisticalClassifier\ClassificationRule\ComplementNaiveBayes::classify
      */
     public function testClassify()
     {
