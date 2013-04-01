@@ -55,17 +55,18 @@ class GenerateContainerCommand extends Command
         $config = Config::getConfig();
 
         $servicesFile = $input->getOption('services');
+        $containerDir = Config::getOptionPath('container_dir');
 
         if (!$servicesFile) {
-            $servicesFile = $config['services_path'];
+            $servicesFile = Config::getOptionPath('services_path');
         }
 
         if (!file_exists($servicesFile)) {
             throw new RuntimeException("Services file '$servicesFile' doesn't exist");
         }
 
-        if (!file_exists($config['container_dir'])) {
-            throw new RuntimeException("Dump location '{$config['container_dir']}' does not exist");
+        if (!file_exists($containerDir)) {
+            throw new RuntimeException("Dump location '$containerDir' does not exist");
         }
 
         $this->includeFiles($config);
@@ -92,7 +93,7 @@ class GenerateContainerCommand extends Command
         $dumper = new PhpDumper($container);
 
         file_put_contents(
-            realpath($config['container_dir']) . "/{$config['container_class']}.php",
+            $containerDir . "/{$config['container_class']}.php",
             $dumper->dump(
                 array(
                     'class' => $config['container_class']
