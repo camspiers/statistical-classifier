@@ -34,5 +34,8 @@
         "branch-alias": {
             "dev-master": "0.4.x-dev"
         }
+    },
+    "scripts": {
+        "post-autoload-dump": "bin/classifier generate-container"
     }
 }

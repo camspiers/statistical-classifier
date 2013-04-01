@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * Use the bootstrap to ensure all environment based configs and autoloader are ready
+ */
 require_once __DIR__ . '/../src/bootstrap.php';
 
 use Camspiers\StatisticalClassifier\Config\Config;
@@ -8,6 +11,9 @@ use Camspiers\StatisticalClassifier\Config\Config;
 $containerClass = Config::getOption('container_class');
 $container = new $containerClass;
 
+/**
+ * If the container in use doesn't have console.application then there is a big problem
+ */
 if (!$container->has('console.application')) {
     unlink(Config::getOptionPath('container_dir') . "/$containerClass.php");
 	echo 'There appears to be a problem with your container. The service \'console.application\' must exist.', PHP_EOL;
@@ -15,4 +21,7 @@ if (!$container->has('console.application')) {
 	exit(1);
 }
 
+/**
+ * Everything appears in order, run the application
+ */
 $container->get('console.application')->setContainer($container)->run();
