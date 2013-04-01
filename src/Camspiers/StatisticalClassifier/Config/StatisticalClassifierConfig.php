@@ -29,8 +29,18 @@ class StatisticalClassifierConfig implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('config');
 
-        $replaceCPath = function ($path) {
-            return str_replace('%CLASSIFIER_PATH%', Config::getClassifierPath(), $path);
+        $replacePaths = function ($path) {
+            return str_replace(
+                array(
+                    '%CLASSIFIER_PATH%',
+                    '%RUN_PATH%'
+                ),
+                array(
+                    Config::getClassifierPath(),
+                    Config::getRunPath()
+                ),
+                $path
+            );
         };
 
         $rootNode
@@ -43,13 +53,13 @@ class StatisticalClassifierConfig implements ConfigurationInterface
                     return rtrim($value, '/');
                 }
             )
-            ->then($replaceCPath)
+            ->then($replacePaths)
             ->end()
             ->end()
             ->scalarNode('services_path')
             ->beforeNormalization()
             ->always()
-            ->then($replaceCPath)
+            ->then($replacePaths)
             ->end()
             ->end()
             ->scalarNode('container_class')->end()

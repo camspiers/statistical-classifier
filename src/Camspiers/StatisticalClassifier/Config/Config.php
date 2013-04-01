@@ -31,6 +31,10 @@ class Config
      */
     private static $classifierPath;
     /**
+     * @var string
+     */
+    private static $runPath;
+    /**
      * Returns the config which is a combination of the default and the global
      * @internal param array $paths
      * @return array The configuration
@@ -40,8 +44,9 @@ class Config
         if (null === self::$config) {
             $configs = array();
             $classifierPath = self::getClassifierPath();
-            if (realpath($classifierPath . '/config') !== realpath(__DIR__ . '/../../../../config')) {
-                $configs[] = __DIR__ . '/../../../../config';
+            $runPath = self::getRunPath();
+            if (realpath($classifierPath) !== realpath($runPath)) {
+                $configs[] = $runPath . '/config';
             }
             $configs[] = $classifierPath . '/config';
             $configs[] = $_SERVER['HOME'] . '/.classifier';
@@ -89,6 +94,25 @@ class Config
             throw new RuntimeException('Classifier path has to be set before use');
         }
         return self::$classifierPath;
+    }
+    /**
+     * @param $runPath
+     * @return void
+     */
+    public static function setRunPath($runPath)
+    {
+        self::$runPath = $runPath;
+    }
+    /**
+     * @return mixed
+     * @throws \RuntimeException
+     */
+    public static function getRunPath()
+    {
+        if (null === self::$runPath) {
+            throw new RuntimeException('Run path has to be set before use');
+        }
+        return self::$runPath;
     }
     /**
      * @param $option

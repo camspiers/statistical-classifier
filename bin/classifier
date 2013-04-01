@@ -6,9 +6,6 @@ require_once __DIR__ . '/../src/bootstrap.php';
 use Camspiers\StatisticalClassifier\Config\Config;
 
 $containerClass = Config::getOption('container_class');
-
-require_once Config::getOptionPath('container_dir') . "/$containerClass.php";
-
 $container = new $containerClass;
 
 if (!$container->has('console.application')) {

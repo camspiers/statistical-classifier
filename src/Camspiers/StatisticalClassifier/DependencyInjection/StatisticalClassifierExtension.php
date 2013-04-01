@@ -34,5 +34,6 @@ class StatisticalClassifierExtension extends BaseExtension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../../../config'));
         $loader->load($this->getAlias() . '_services.yml');
         $container->setParameter('classifier_path', Config::getClassifierPath());
+        $container->setParameter('run_path', Config::getRunPath());
     }
 }
