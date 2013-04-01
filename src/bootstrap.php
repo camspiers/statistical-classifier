@@ -25,7 +25,7 @@ use Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 
-if (!file_exists(Config::getOptionPath('container_dir') . '/' . Config::getOptionPath('container_class') . '.php')) {
+if (!file_exists(Config::getOptionPath('container_dir') . '/' . Config::getOption('container_class') . '.php')) {
     $command = new GenerateContainerCommand();
     $command->run(
         new ArrayInput(array()),
