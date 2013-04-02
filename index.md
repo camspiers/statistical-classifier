@@ -35,7 +35,7 @@ Classifiers are also used in automatically categorizing site content (pages, art
 ## For your PHP application
 
 ```bash
-$ composer requre camspiers/statistical-classifier:~0.3
+$ composer requre camspiers/statistical-classifier:~0.4
 ```
 
 ## For command-line use
@@ -128,7 +128,7 @@ $c->set(
 );
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->get('classifier.naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
+echo $c->get('classifier.complement_naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
 ```
 
 ## From command-line
@@ -147,7 +147,7 @@ Arguments:
  document              The document to train on
 
 Options:
- --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
  --prepare (-p)        Prepare the index after training
 ```
 
@@ -169,7 +169,7 @@ Arguments:
 
 Options:
  --include (-i)        The categories from the directory to include (multiple values allowed)
- --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
  --prepare (-p)        Prepare the index after training
 
 ```
@@ -197,7 +197,7 @@ Arguments:
  password              The password to use
 
 Options:
- --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
  --prepare (-p)        Prepare the index after training
 ```
 
@@ -266,7 +266,7 @@ Arguments:
  document              The document to classify
 
 Options:
- --classifier (-c)     Name of classifier (default: "classifier.naive_bayes")
+ --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
 ```
 
 #### Example

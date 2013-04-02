@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\DataSource\Serialized</title>
+<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\DataSource\MysqliQuery</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,7 +57,7 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Creates the data source using the filename"><span class="description">Creates the data source using the filename</span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#method___construct" title="__construct :: Creates the data array"><span class="description">Creates the data array</span><pre>__construct()</pre></a></li>
 <li class="method public inherited"><a href="#method_addDocument" title="addDocument :: Adds a document by category to the data"><span class="description">Adds a document by category to the data</span><pre>addDocument()</pre></a></li>
 <li class="method public inherited"><a href="#method_getCategories" title="getCategories :: Returns the categories of the data"><span class="description">Returns the categories of the data</span><pre>getCategories()</pre></a></li>
 <li class="method public inherited"><a href="#method_getConfig" title="getConfig :: "><span class="description">getConfig()
@@ -66,7 +66,7 @@
 <li class="method public inherited"><a href="#method_getProcessor" title="getProcessor :: "><span class="description">getProcessor()
         </span><pre>getProcessor()</pre></a></li>
 <li class="method public inherited"><a href="#method_hasCategory" title="hasCategory :: Returnnes whether or not the data has a category"><span class="description">Returnnes whether or not the data has a category</span><pre>hasCategory()</pre></a></li>
-<li class="method public "><a href="#method_read" title="read :: Read the data source"><span class="description">Read the data source</span><pre>read()</pre></a></li>
+<li class="method public inherited"><a href="#method_read" title="read :: Read the data source"><span class="description">Read the data source</span><pre>read()</pre></a></li>
 <li class="method public inherited"><a href="#method_serialize" title="serialize :: Serialize the class"><span class="description">Serialize the class</span><pre>serialize()</pre></a></li>
 <li class="method public inherited"><a href="#method_setConfig" title="setConfig :: "><span class="description">setConfig()
         </span><pre>setConfig()</pre></a></li>
@@ -74,7 +74,7 @@
 <li class="method public inherited"><a href="#method_setProcessor" title="setProcessor :: "><span class="description">setProcessor()
         </span><pre>setProcessor()</pre></a></li>
 <li class="method public inherited"><a href="#method_unserialize" title="unserialize :: Restore the serialized class"><span class="description">Restore the serialized class</span><pre>unserialize()</pre></a></li>
-<li class="method public "><a href="#method_write" title="write :: Write the data source if possible"><span class="description">Write the data source if possible</span><pre>write()</pre></a></li>
+<li class="method public inherited"><a href="#method_write" title="write :: Write the data source if possible"><span class="description">Write the data source if possible</span><pre>write()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -88,13 +88,10 @@
 <li class="property protected inherited"><a href="#property_processor" title="$processor :: "><span class="description"></span><pre>$processor</pre></a></li>
 </ul>
 </li>
-<li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_filename" title="$filename :: The filename to read and write to"><span class="description"></span><pre>$filename</pre></a></li></ul>
-</li>
 </ul>
 </div>
 <div class="span8">
-<a id="\Camspiers\StatisticalClassifier\DataSource\Serialized"></a><ul class="breadcrumb">
+<a id="\Camspiers\StatisticalClassifier\DataSource\MysqliQuery"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -106,7 +103,7 @@
 <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.DataSource.html">DataSource</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Serialized.html">Serialized</a>
+<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.DataSource.MysqliQuery.html">MysqliQuery</a>
 </li>
 </ul>
 <div class="element class">
@@ -126,15 +123,19 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Creates the data source using the filename</h2>
-<pre>__construct(string $filename) </pre>
-<div class="labels"></div>
+<h2>Creates the data array</h2>
+<pre>__construct(array $data) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::__construct()</td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$filename</h4>
-<code>string</code><p>The filename to use</p></div>
+<h4>$data</h4>
+<code>array</code><p>The initial data</p></div>
 </div></div>
 </div>
 <a id="method_addDocument"></a><div class="element clickable method public method_addDocument" data-toggle="collapse" data-target=".method_addDocument .collapse">
@@ -234,9 +235,13 @@
 <a id="method_read"></a><div class="element clickable method public method_read" data-toggle="collapse" data-target=".method_read .collapse">
 <h2>Read the data source</h2>
 <pre>read() : array</pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::read()</td>
+</tr></table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>The data</div>
@@ -327,9 +332,13 @@
 <a id="method_write"></a><div class="element clickable method public method_write" data-toggle="collapse" data-target=".method_write .collapse">
 <h2>Write the data source if possible</h2>
 <pre>write() : null</pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::write()</td>
+</tr></table>
 <h3>Returns</h3>
 <div class="subelement response"><code>null</code></div>
 </div></div>
@@ -376,12 +385,6 @@ array(
 <td>\Camspiers\StatisticalClassifier\DataSource\DataArray::$$processor</td>
 </tr></table>
 </div></div>
-</div>
-<a id="property_filename"> </a><div class="element clickable property private property_filename" data-toggle="collapse" data-target=".property_filename .collapse">
-<h2></h2>
-<pre>$filename : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 </div>
 </div>

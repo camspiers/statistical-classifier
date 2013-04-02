@@ -21,6 +21,7 @@
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
+<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -31,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">137</span></a></li>
+                <span class="label label-info">161</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -57,13 +58,21 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Creates the object from a directory path and an optional array of included directories"><span class="description">Creates the object from a directory path and an optional array of included directories</span><pre>__construct()</pre></a></li>
-<li class="method public inherited"><a href="#method_addCategory" title="addCategory :: Adds a category to the data"><span class="description">Adds a category to the data</span><pre>addCategory()</pre></a></li>
 <li class="method public inherited"><a href="#method_addDocument" title="addDocument :: Adds a document by category to the data"><span class="description">Adds a document by category to the data</span><pre>addDocument()</pre></a></li>
 <li class="method public inherited"><a href="#method_getCategories" title="getCategories :: Returns the categories of the data"><span class="description">Returns the categories of the data</span><pre>getCategories()</pre></a></li>
+<li class="method public inherited"><a href="#method_getConfig" title="getConfig :: "><span class="description">getConfig()
+        </span><pre>getConfig()</pre></a></li>
 <li class="method public inherited"><a href="#method_getData" title="getData :: Get the data"><span class="description">Get the data</span><pre>getData()</pre></a></li>
+<li class="method public inherited"><a href="#method_getProcessor" title="getProcessor :: "><span class="description">getProcessor()
+        </span><pre>getProcessor()</pre></a></li>
 <li class="method public inherited"><a href="#method_hasCategory" title="hasCategory :: Returnnes whether or not the data has a category"><span class="description">Returnnes whether or not the data has a category</span><pre>hasCategory()</pre></a></li>
 <li class="method public "><a href="#method_read" title="read :: Read the data source"><span class="description">Read the data source</span><pre>read()</pre></a></li>
 <li class="method public inherited"><a href="#method_serialize" title="serialize :: Serialize the class"><span class="description">Serialize the class</span><pre>serialize()</pre></a></li>
+<li class="method public inherited"><a href="#method_setConfig" title="setConfig :: "><span class="description">setConfig()
+        </span><pre>setConfig()</pre></a></li>
+<li class="method public inherited"><a href="#method_setData" title="setData :: Set data to the data source"><span class="description">Set data to the data source</span><pre>setData()</pre></a></li>
+<li class="method public inherited"><a href="#method_setProcessor" title="setProcessor :: "><span class="description">setProcessor()
+        </span><pre>setProcessor()</pre></a></li>
 <li class="method public inherited"><a href="#method_unserialize" title="unserialize :: Restore the serialized class"><span class="description">Restore the serialized class</span><pre>unserialize()</pre></a></li>
 <li class="method public "><a href="#method_write" title="write :: Write the data source if possible"><span class="description">Write the data source if possible</span><pre>write()</pre></a></li>
 </ul>
@@ -73,7 +82,11 @@
                     <ul></ul>
 </li>
 <li class="nav-header protected">» Protected
-                    <ul><li class="property protected inherited"><a href="#property_data" title="$data :: An array to hold the sources data"><span class="description"></span><pre>$data</pre></a></li></ul>
+                    <ul>
+<li class="property protected inherited"><a href="#property_config" title="$config :: "><span class="description"></span><pre>$config</pre></a></li>
+<li class="property protected inherited"><a href="#property_data" title="$data :: An array to hold the sources data"><span class="description"></span><pre>$data</pre></a></li>
+<li class="property protected inherited"><a href="#property_processor" title="$processor :: "><span class="description"></span><pre>$processor</pre></a></li>
+</ul>
 </li>
 <li class="nav-header private">» Private
                     <ul>
@@ -130,22 +143,6 @@
 <code>array</code><p>An array of included directories</p></div>
 </div></div>
 </div>
-<a id="method_addCategory"></a><div class="element clickable method public method_addCategory" data-toggle="collapse" data-target=".method_addCategory .collapse">
-<h2>Adds a category to the data</h2>
-<pre>addCategory(string $category) </pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::addCategory()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$category</h4>
-<code>string</code><p>The category to add</p></div>
-</div></div>
-</div>
 <a id="method_addDocument"></a><div class="element clickable method public method_addDocument" data-toggle="collapse" data-target=".method_addDocument .collapse">
 <h2>Adds a document by category to the data</h2>
 <pre>addDocument(string $category, string $document) </pre>
@@ -180,6 +177,19 @@
 <code>array</code>The categories</div>
 </div></div>
 </div>
+<a id="method_getConfig"></a><div class="element clickable method public method_getConfig" data-toggle="collapse" data-target=".method_getConfig .collapse">
+<h2>getConfig()
+        </h2>
+<pre>getConfig() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::getConfig()</td>
+</tr></table>
+</div></div>
+</div>
 <a id="method_getData"></a><div class="element clickable method public method_getData" data-toggle="collapse" data-target=".method_getData .collapse">
 <h2>Get the data</h2>
 <pre>getData() : array</pre>
@@ -193,6 +203,19 @@
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>The data</div>
+</div></div>
+</div>
+<a id="method_getProcessor"></a><div class="element clickable method public method_getProcessor" data-toggle="collapse" data-target=".method_getProcessor .collapse">
+<h2>getProcessor()
+        </h2>
+<pre>getProcessor() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::getProcessor()</td>
+</tr></table>
 </div></div>
 </div>
 <a id="method_hasCategory"></a><div class="element clickable method public method_hasCategory" data-toggle="collapse" data-target=".method_hasCategory .collapse">
@@ -240,6 +263,55 @@
 <code>string</code>The serialized data</div>
 </div></div>
 </div>
+<a id="method_setConfig"></a><div class="element clickable method public method_setConfig" data-toggle="collapse" data-target=".method_setConfig .collapse">
+<h2>setConfig()
+        </h2>
+<pre>setConfig(\Camspiers\StatisticalClassifier\Config\DataSourceConfiguration $config) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::setConfig()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$config</h4></div>
+</div></div>
+</div>
+<a id="method_setData"></a><div class="element clickable method public method_setData" data-toggle="collapse" data-target=".method_setData .collapse">
+<h2>Set data to the data source</h2>
+<pre>setData(array $data) : null</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::setData()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
+</div></div>
+</div>
+<a id="method_setProcessor"></a><div class="element clickable method public method_setProcessor" data-toggle="collapse" data-target=".method_setProcessor .collapse">
+<h2>setProcessor()
+        </h2>
+<pre>setProcessor(\Symfony\Component\Config\Definition\Processor $processor) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::setProcessor()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$processor</h4></div>
+</div></div>
+</div>
 <a id="method_unserialize"></a><div class="element clickable method public method_unserialize" data-toggle="collapse" data-target=".method_unserialize .collapse">
 <h2>Restore the serialized class</h2>
 <pre>unserialize(string $data) : null</pre>
@@ -270,6 +342,18 @@
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_config"> </a><div class="element clickable property protected property_config" data-toggle="collapse" data-target=".property_config .collapse">
+<h2></h2>
+<pre>$config </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::$$config</td>
+</tr></table>
+</div></div>
+</div>
 <a id="property_data"> </a><div class="element clickable property protected property_data" data-toggle="collapse" data-target=".property_data .collapse">
 <h2></h2>
 <pre>$data : array</pre>
@@ -284,6 +368,18 @@ array(
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Camspiers\StatisticalClassifier\DataSource\DataArray::$$data</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_processor"> </a><div class="element clickable property protected property_processor" data-toggle="collapse" data-target=".property_processor .collapse">
+<h2></h2>
+<pre>$processor </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Camspiers\StatisticalClassifier\DataSource\DataArray::$$processor</td>
 </tr></table>
 </div></div>
 </div>
@@ -306,7 +402,7 @@ array(
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-25T23:02:23+13:00.<br></footer></div>
+            generated on 2013-04-02T12:58:53+13:00.<br></footer></div>
 </div>
 </body>
 </html>
