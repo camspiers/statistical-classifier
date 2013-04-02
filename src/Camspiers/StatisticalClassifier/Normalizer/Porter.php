@@ -11,6 +11,7 @@
 
 namespace Camspiers\StatisticalClassifier\Normalizer;
 
+use Camspiers\StatisticalClassifier\Config\Config;
 use Porter as PorterStemmer;
 
 /**

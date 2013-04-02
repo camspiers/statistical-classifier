@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project version="2.0.0a12" title="PHP Statistical Classifier">
-  <file path="bootstrap.php" hash="13adfc966064a02025285525932aa757" package="Statistical Classifier">
-    <include line="12" type="Require Once" package="Statistical Classifier">
+  <file path="bootstrap.php" hash="90218b96e470432348fccf0d71525fbe" package="Statistical Classifier">
+    <include line="22" type="Require Once" package="Statistical Classifier">
       <name/>
+    </include>
+    <include line="61" type="Require Once" package="Statistical Classifier">
+      <name/>
+      <docblock line="58">
+        <description>Require the container</description>
+        <long-description></long-description>
+      </docblock>
     </include>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file bootstrap.php</error>
@@ -30,7 +37,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>classify</full_name>
         <docblock line="25">
           <description>Classifies a document against an index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="param" description="The Index to classify against" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -43,12 +50,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
         <argument line="31">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -69,16 +76,16 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <full_name>\Camspiers\StatisticalClassifier\ClassificationRule\ComplementNaiveBayes</full_name>
       <docblock line="16">
         <description>The classification rule for the NaiveBayes classifier</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="27" namespace="Camspiers\StatisticalClassifier\ClassificationRule" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
         <docblock line="24">
           <description>The name of the location of the data in the index</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\ClassificationRule" line="32" package="Statistical Classifier">
@@ -86,14 +93,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="28">
           <description>Create the classification rule</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="28" name="param" description="The name of the location of the data in the index" type="string" variable="$dataPartitionName">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
         <argument line="32">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -102,7 +109,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>classify</full_name>
         <docblock line="36">
           <description>Classifies a document against an index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="36" name="param" description="The Index to classify against" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -115,12 +122,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="42">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
         <argument line="42">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -148,7 +155,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>is</full_name>
         <docblock line="26">
           <description>Returns whether or not the document is of the category</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="26" name="param" description="The category in question" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
@@ -161,12 +168,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="32">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="32">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -175,7 +182,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>classify</full_name>
         <docblock line="33">
           <description>Classify the document and return its category</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="33" name="param" description="The document to classify" type="string" variable="$document">
             <type by_reference="false">string</type>
           </tag>
@@ -185,7 +192,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="38">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -194,7 +201,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>prepareIndex</full_name>
         <docblock line="39">
           <description>Builds the index from the data source by applying transforms to the data source</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="39" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -205,14 +212,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setIndex</full_name>
         <docblock line="44">
           <description>Set the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="44" name="param" description="The index to set" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
         </docblock>
         <argument line="48">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -221,7 +228,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getIndex</full_name>
         <docblock line="49">
           <description>Get the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="49" name="return" description="The index" type="\Camspiers\StatisticalClassifier\Index\IndexInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -232,7 +239,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>addTransform</full_name>
         <docblock line="54">
           <description>Add a transform to be applied to the source data to achieve classification</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="54" name="param" description="The transform to add" type="\Camspiers\StatisticalClassifier\Transform\TransformInterface" variable="$transform">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Transform\TransformInterface</type>
           </tag>
@@ -242,7 +249,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="59">
           <name>$transform</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Transform\TransformInterface</type>
         </argument>
       </method>
@@ -251,7 +258,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setTransforms</full_name>
         <docblock line="60">
           <description>Set an array of transforms to be applied to the source data to achieve classification</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="60" name="param" description="The transforms to add" type="array" variable="$transforms">
             <type by_reference="false">array</type>
           </tag>
@@ -261,7 +268,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="65">
           <name>$transforms</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -270,7 +277,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getTransforms</full_name>
         <docblock line="66">
           <description>Get an array of transforms</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="66" name="return" description="The transforms" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -301,7 +308,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="29">
           <description>Create the Naive Bayes Classifier</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="29" name="param" description="An index to modify with transforms" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -314,17 +321,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="36">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
         <argument line="37">
           <name>$tokenizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
         </argument>
         <argument line="38">
           <name>$normalizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
         </argument>
       </method>
@@ -345,16 +352,16 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <full_name>\Camspiers\StatisticalClassifier\Classifier\GenericClassifier</full_name>
       <docblock line="21">
         <description>A generic classifier which can be used to built a classifier given a number of injected components</description>
-        <long-description></long-description>
+        <long-description/>
         <tag line="21" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="21" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="protected" line="32" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
         <name>$tokenizer</name>
-        <default></default>
+        <default/>
         <docblock line="28">
           <description>Tokenizer (the way of breaking up documents)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="28" name="var" description="" type="\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
           </tag>
@@ -362,10 +369,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="protected" line="37" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
         <name>$normalizer</name>
-        <default></default>
+        <default/>
         <docblock line="33">
           <description>Take tokenized data and make it consistent or stem it</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="33" name="var" description="" type="\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
           </tag>
@@ -373,10 +380,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="protected" line="42" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
         <name>$classificationRule</name>
-        <default></default>
+        <default/>
         <docblock line="38">
           <description>The rule to use to classify a document</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="38" name="var" description="" type="\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</type>
           </tag>
@@ -384,10 +391,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="protected" line="47" namespace="Camspiers\StatisticalClassifier\Classifier" package="Statistical Classifier">
         <name>$index</name>
-        <default></default>
+        <default/>
         <docblock line="43">
           <description>The index to apply the transforms to</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="43" name="var" description="" type="\Camspiers\StatisticalClassifier\Index\IndexInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -398,7 +405,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <default>array()</default>
         <docblock line="48">
           <description>An array of Transforms implementing TransformInterface</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="48" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -409,7 +416,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="53">
           <description>Create the classifying using the numerous components passed in</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="53" name="param" description="An index to modify with transforms" type="\Camspiers\StatisticalClassifier\Index\IndexInterface" variable="$index">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -428,22 +435,22 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="62">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
         <argument line="63">
           <name>$classificationRule</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</type>
         </argument>
         <argument line="64">
           <name>$tokenizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
         </argument>
         <argument line="65">
           <name>$normalizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
         </argument>
         <argument line="66">
@@ -457,16 +464,16 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>is</full_name>
         <docblock line="76">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="79">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="79">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -475,11 +482,11 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setTransforms</full_name>
         <docblock line="87">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="90">
           <name>$transforms</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -488,7 +495,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getTransforms</full_name>
         <docblock line="99">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="109" package="Statistical Classifier">
@@ -496,11 +503,11 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>addTransform</full_name>
         <docblock line="106">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="109">
           <name>$transform</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Transform\TransformInterface</type>
         </argument>
       </method>
@@ -509,7 +516,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>applyTransforms</full_name>
         <docblock line="113">
           <description>Apply the transforms to the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="113" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -520,7 +527,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>prepareIndex</full_name>
         <docblock line="125">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Classifier" line="137" package="Statistical Classifier">
@@ -528,7 +535,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>preparedIndex</full_name>
         <docblock line="133">
           <description>Return an index which has been prepared for classification</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="133" name="return" description="" type="\Camspiers\StatisticalClassifier\Index\IndexInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
           </tag>
@@ -539,11 +546,11 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setIndex</full_name>
         <docblock line="145">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="148">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -552,7 +559,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getIndex</full_name>
         <docblock line="152">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Classifier" line="162" package="Statistical Classifier">
@@ -560,11 +567,11 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>classify</full_name>
         <docblock line="159">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="162">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -578,7 +585,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <error line="159" code="50015">Argument $document is missing from the Docblock of classify()</error>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Config/Config.php" hash="63e37d0a551b758d70b432c7cdf452bc" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Config/Config.php" hash="ada3cddb88ffd8a2162166d8c5514664" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -618,99 +625,141 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="38" package="Statistical Classifier">
+      <property final="false" static="true" visibility="private" line="36" namespace="Camspiers\StatisticalClassifier\Config" package="Statistical Classifier">
+        <name>$runPath</name>
+        <default></default>
+        <docblock line="33">
+          <description></description>
+          <long-description></long-description>
+          <tag line="33" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="42" package="Statistical Classifier">
         <name>getConfig</name>
         <full_name>getConfig</full_name>
-        <docblock line="33">
+        <docblock line="37">
           <description>Returns the config which is a combination of the default and the global</description>
           <long-description></long-description>
-          <tag line="33" name="internal" description="param array $paths"/>
-          <tag line="33" name="return" description="The configuration" type="array">
+          <tag line="37" name="internal" description="param array $paths"/>
+          <tag line="37" name="return" description="The configuration" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="65" package="Statistical Classifier">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="70" package="Statistical Classifier">
         <name>getOption</name>
         <full_name>getOption</full_name>
-        <docblock line="59">
+        <docblock line="64">
           <description></description>
           <long-description></long-description>
-          <tag line="59" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$option"/>
-          <tag line="59" name="throws" description="" type="\RuntimeException">
+          <tag line="64" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$option"/>
+          <tag line="64" name="throws" description="" type="\RuntimeException">
             <type by_reference="false">\RuntimeException</type>
           </tag>
-          <tag line="59" name="internal" description="param string $parameter"/>
-          <tag line="59" name="return" description="" type="mixed">
+          <tag line="64" name="internal" description="param string $parameter"/>
+          <tag line="64" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="65">
+        <argument line="70">
           <name>$option</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="78" package="Statistical Classifier">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="83" package="Statistical Classifier">
         <name>setClassifierPath</name>
         <full_name>setClassifierPath</full_name>
-        <docblock line="74">
+        <docblock line="79">
           <description></description>
           <long-description></long-description>
-          <tag line="74" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$value"/>
-          <tag line="74" name="return" description="" type="void">
+          <tag line="79" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$value"/>
+          <tag line="79" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
-        <argument line="78">
+        <argument line="83">
           <name>$value</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="86" package="Statistical Classifier">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="91" package="Statistical Classifier">
         <name>getClassifierPath</name>
         <full_name>getClassifierPath</full_name>
-        <docblock line="82">
+        <docblock line="87">
           <description></description>
           <long-description></long-description>
-          <tag line="82" name="throws" description="" type="\RuntimeException">
+          <tag line="87" name="throws" description="" type="\RuntimeException">
             <type by_reference="false">\RuntimeException</type>
           </tag>
-          <tag line="82" name="return" description="" type="mixed">
+          <tag line="87" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="97" package="Statistical Classifier">
-        <name>getOptionPath</name>
-        <full_name>getOptionPath</full_name>
-        <docblock line="93">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="102" package="Statistical Classifier">
+        <name>setRunPath</name>
+        <full_name>setRunPath</full_name>
+        <docblock line="98">
           <description></description>
           <long-description></long-description>
-          <tag line="93" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$option"/>
-          <tag line="93" name="return" description="" type="string">
+          <tag line="98" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$runPath"/>
+          <tag line="98" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="102">
+          <name>$runPath</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="110" package="Statistical Classifier">
+        <name>getRunPath</name>
+        <full_name>getRunPath</full_name>
+        <docblock line="106">
+          <description></description>
+          <long-description></long-description>
+          <tag line="106" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="106" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="121" package="Statistical Classifier">
+        <name>getOptionPath</name>
+        <full_name>getOptionPath</full_name>
+        <docblock line="117">
+          <description></description>
+          <long-description></long-description>
+          <tag line="117" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$option"/>
+          <tag line="117" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="97">
+        <argument line="121">
           <name>$option</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="105" package="Statistical Classifier">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Camspiers\StatisticalClassifier\Config" line="129" package="Statistical Classifier">
         <name>getPath</name>
         <full_name>getPath</full_name>
-        <docblock line="101">
+        <docblock line="125">
           <description></description>
           <long-description></long-description>
-          <tag line="101" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$path"/>
-          <tag line="101" name="return" description="" type="string">
+          <tag line="125" name="param" description="" type="\Camspiers\StatisticalClassifier\Config\" variable="$path"/>
+          <tag line="125" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="105">
+        <argument line="129">
           <name>$path</name>
           <default></default>
           <type/>
@@ -720,11 +769,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
     <parse_markers>
       <critical line="18" code="50005">No short description for class \Camspiers\StatisticalClassifier\Config\Config</critical>
       <critical line="29" code="50019">No short description for property $classifierPath</critical>
-      <error line="59" code="50012">No short description for method getOption()</error>
-      <error line="74" code="50012">No short description for method setClassifierPath()</error>
-      <error line="82" code="50012">No short description for method getClassifierPath()</error>
-      <error line="93" code="50012">No short description for method getOptionPath()</error>
-      <error line="101" code="50012">No short description for method getPath()</error>
+      <critical line="33" code="50019">No short description for property $runPath</critical>
+      <error line="64" code="50012">No short description for method getOption()</error>
+      <error line="79" code="50012">No short description for method setClassifierPath()</error>
+      <error line="87" code="50012">No short description for method getClassifierPath()</error>
+      <error line="98" code="50012">No short description for method setRunPath()</error>
+      <error line="106" code="50012">No short description for method getRunPath()</error>
+      <error line="117" code="50012">No short description for method getOptionPath()</error>
+      <error line="125" code="50012">No short description for method getPath()</error>
     </parse_markers>
   </file>
   <file path="Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php" hash="49103791584760e4bf1b9b289b3cc82a" package="Statistical Classifier">
@@ -741,8 +793,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DataSourceConfiguration</name>
       <full_name>\Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</full_name>
       <docblock line="17">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="17" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -751,7 +803,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getConfigTreeBuilder</full_name>
         <docblock line="23">
           <description>Returns a specification for data sources</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="23" name="return" description="" type="\Symfony\Component\Config\Definition\Builder\TreeBuilder">
             <type by_reference="false">\Symfony\Component\Config\Definition\Builder\TreeBuilder</type>
           </tag>
@@ -762,7 +814,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Config/StatisticalClassifierConfig.php" hash="79fe496e98d5a80567880fb05fb40981" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Config/StatisticalClassifierConfig.php" hash="ff1aacf24cdca3b022cffff48ff38df3" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -797,7 +849,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Config\StatisticalClassifierConfig</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Console/Application.php" hash="7871ec9c80327e2a20dd3d0e056d177a" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Console/Application.php" hash="1952bda3e68a6f4f4f1eaba06b3085c9" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -882,8 +934,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>ClassifyCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -892,7 +944,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="24">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -903,7 +955,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="41">
           <description>Classify a document against an index and an optionally specified classifier</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="41" name="param" description="The commands input" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -916,12 +968,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="47">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="47">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -943,17 +995,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Command</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Command</full_name>
       <docblock line="21">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="21" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="21" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="protected" line="31" namespace="Camspiers\StatisticalClassifier\Console\Command" package="Statistical Classifier">
         <name>$config</name>
-        <default></default>
+        <default/>
         <docblock line="27">
           <description>Holds the config from the config.json files</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -961,10 +1013,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="protected" line="36" namespace="Camspiers\StatisticalClassifier\Console\Command" package="Statistical Classifier">
         <name>$cache</name>
-        <default></default>
+        <default/>
         <docblock line="32">
           <description>Holds the CacheCache\Cache instance</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="32" name="var" description="" type="\CacheCache\Cache">
             <type by_reference="false">\CacheCache\Cache</type>
           </tag>
@@ -972,10 +1024,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="protected" line="41" namespace="Camspiers\StatisticalClassifier\Console\Command" package="Statistical Classifier">
         <name>$container</name>
-        <default></default>
+        <default/>
         <docblock line="37">
           <description>Holds the container instance for caching</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="37" name="var" description="" type="\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface</type>
           </tag>
@@ -983,10 +1035,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="protected" line="46" namespace="Camspiers\StatisticalClassifier\Console\Command" package="Statistical Classifier">
         <name>$classifier</name>
-        <default></default>
+        <default/>
         <docblock line="42">
           <description>Holds the classifier instance for caching</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="42" name="var" description="" type="\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</type>
           </tag>
@@ -997,7 +1049,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configureClassifier</full_name>
         <docblock line="47">
           <description>Adds options nessacary for calling getClassifier in a command</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="47" name="return" description="This command to allow chaining" type="\Camspiers\StatisticalClassifier\Console\Command\Command">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Console\Command\Command</type>
           </tag>
@@ -1008,7 +1060,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configureIndex</full_name>
         <docblock line="64">
           <description>Adds arguments required for using a specified index in a command</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="64" name="return" description="This command to allow chaining" type="\Camspiers\StatisticalClassifier\Console\Command\Command">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Console\Command\Command</type>
           </tag>
@@ -1019,7 +1071,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configurePrepare</full_name>
         <docblock line="79">
           <description>Adds options to allow automatically prepare the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="79" name="return" description="This command to allow chaining" type="\Camspiers\StatisticalClassifier\Console\Command\Command">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Console\Command\Command</type>
           </tag>
@@ -1030,14 +1082,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setCache</full_name>
         <docblock line="95">
           <description>Allow for cache to be stored on command for setter injection</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="95" name="param" description="The cache to store" type="\CacheCache\Cache" variable="$cache">
             <type by_reference="false">\CacheCache\Cache</type>
           </tag>
         </docblock>
         <argument line="99">
           <name>$cache</name>
-          <default></default>
+          <default/>
           <type>\CacheCache\Cache</type>
         </argument>
       </method>
@@ -1046,7 +1098,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getCachedIndex</full_name>
         <docblock line="103">
           <description>Get an CachedIndex based off a index name and the Cache instance</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="103" name="param" description="The name of the index" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
@@ -1056,7 +1108,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="108">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -1065,7 +1117,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getContainer</full_name>
         <docblock line="115">
           <description>Return the dependency injection container fetching it off the app if it doesn't exist</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="115" name="return" description="The container" type="\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Console\Command\Symfony\Component\DependencyInjection\ContainerInterface</type>
           </tag>
@@ -1076,7 +1128,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getClassifier</full_name>
         <docblock line="127">
           <description>Returns a classifier based of the commands input and the specified index (if exists)</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="127" name="param" description="The commands input" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1089,7 +1141,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="133">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="133">
@@ -1116,8 +1168,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Command</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Config\Command</full_name>
       <docblock line="17">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="17" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1130,7 +1182,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getConfigFilename</full_name>
         <argument line="35">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
       </method>
@@ -1154,17 +1206,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>CreateCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand</full_name>
       <docblock line="20">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="20" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="20" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="protected" line="30" namespace="Camspiers\StatisticalClassifier\Console\Command\Config" package="Statistical Classifier">
         <name>$jsonPretty</name>
-        <default></default>
+        <default/>
         <docblock line="26">
           <description>The json pretty service</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="26" name="var" description="" type="\Camspiers\JsonPretty\JsonPretty">
             <type by_reference="false">\Camspiers\JsonPretty\JsonPretty</type>
           </tag>
@@ -1175,14 +1227,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="31">
           <description>Creates the command injecting the json pretty service</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="31" name="param" description="The json pretty service" type="\Camspiers\JsonPretty\JsonPretty" variable="$jsonPretty">
             <type by_reference="false">\Camspiers\JsonPretty\JsonPretty</type>
           </tag>
         </docblock>
         <argument line="35">
           <name>$jsonPretty</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\JsonPretty\JsonPretty</type>
         </argument>
       </method>
@@ -1191,7 +1243,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="40">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="40" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1202,7 +1254,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="51">
           <description>Create the index using the specified name</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="51" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1218,12 +1270,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="58">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="58">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1245,8 +1297,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>OpenCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1255,7 +1307,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1266,7 +1318,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="36">
           <description>Create the index using the specified name</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="36" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1282,12 +1334,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="43">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="43">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1309,8 +1361,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>RemoveCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1319,7 +1371,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1330,7 +1382,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="36">
           <description>Create the index using the specified name</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="36" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1346,12 +1398,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="43">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="43">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1360,7 +1412,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Console/Command/GenerateContainerCommand.php" hash="6baff1cbab44d575496566c41602a694" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Console/Command/GenerateContainerCommand.php" hash="6fa54684a3ac847e46697fe2dcda4427" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -1368,10 +1420,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
 &lt;p&gt;For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.&lt;/p&gt;</long-description>
     </docblock>
-    <include line="111" type="Require Once" package="Statistical Classifier">
+    <include line="112" type="Require Once" package="Statistical Classifier">
       <name/>
     </include>
-    <include line="113" type="Require Once" package="Statistical Classifier">
+    <include line="114" type="Require Once" package="Statistical Classifier">
       <name/>
     </include>
     <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Console\Command" line="28" package="Statistical Classifier">
@@ -1425,38 +1477,38 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="106" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="107" package="Statistical Classifier">
         <name>includeFiles</name>
         <full_name>includeFiles</full_name>
-        <argument line="106">
+        <argument line="107">
           <name>$config</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="119" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="120" package="Statistical Classifier">
         <name>addExtensions</name>
         <full_name>addExtensions</full_name>
-        <argument line="119">
+        <argument line="120">
           <name>$container</name>
           <default></default>
           <type>\Symfony\Component\DependencyInjection\ContainerBuilder</type>
         </argument>
-        <argument line="119">
+        <argument line="120">
           <name>$config</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="129" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command" line="130" package="Statistical Classifier">
         <name>addCompilerPasses</name>
         <full_name>addCompilerPasses</full_name>
-        <argument line="129">
+        <argument line="130">
           <name>$container</name>
           <default></default>
           <type>\Symfony\Component\DependencyInjection\ContainerBuilder</type>
         </argument>
-        <argument line="129">
+        <argument line="130">
           <name>$config</name>
           <default></default>
           <type/>
@@ -1465,9 +1517,9 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
     </class>
     <parse_markers>
       <critical line="24" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand</critical>
-      <error line="106" code="50010">No DocBlock was found for method includeFiles()</error>
-      <error line="119" code="50010">No DocBlock was found for method addExtensions()</error>
-      <error line="129" code="50010">No DocBlock was found for method addCompilerPasses()</error>
+      <error line="107" code="50010">No DocBlock was found for method includeFiles()</error>
+      <error line="120" code="50010">No DocBlock was found for method addExtensions()</error>
+      <error line="130" code="50010">No DocBlock was found for method addCompilerPasses()</error>
     </parse_markers>
   </file>
   <file path="Camspiers/StatisticalClassifier/Console/Command/Index/CreateCommand.php" hash="d51b5673e5346a78d4d57d8176d95980" package="Statistical Classifier">
@@ -1483,8 +1535,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>CreateCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1493,7 +1545,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1504,7 +1556,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="36">
           <description>Create the index using the specified name</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="36" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1520,12 +1572,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="43">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="43">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1547,8 +1599,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>PrepareCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1557,7 +1609,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1568,7 +1620,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="37">
           <description>Prepare a specified index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="37" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1584,12 +1636,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="44">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="44">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1611,8 +1663,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>RemoveCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1621,7 +1673,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1632,7 +1684,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="36">
           <description>Remove a specified index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="36" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1648,12 +1700,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="43">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="43">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1662,7 +1714,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Console/Command/Server/StartCommand.php" hash="fb20984ef7068e81251644ee814263af" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Console/Command/Server/StartCommand.php" hash="b93f9a98e3b92ae56e937ec04dede0f5" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -1740,101 +1792,125 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="102" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="104" package="Statistical Classifier">
         <name>serve</name>
         <full_name>serve</full_name>
-        <docblock line="96">
+        <docblock line="98">
           <description>Serve a request</description>
           <long-description></long-description>
-          <tag line="96" name="param" description="The request object" type="\React\Http\Request" variable="$request">
+          <tag line="98" name="param" description="The request object" type="\React\Http\Request" variable="$request">
             <type by_reference="false">\React\Http\Request</type>
           </tag>
-          <tag line="96" name="param" description="The response object" type="\React\Http\Response" variable="$response">
+          <tag line="98" name="param" description="The response object" type="\React\Http\Response" variable="$response">
             <type by_reference="false">\React\Http\Response</type>
           </tag>
-          <tag line="96" name="return" description="" type="null">
+          <tag line="98" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="103">
+        <argument line="105">
           <name>$request</name>
           <default></default>
           <type>\React\Http\Request</type>
         </argument>
-        <argument line="104">
+        <argument line="106">
           <name>$response</name>
           <default></default>
           <type>\React\Http\Response</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="127" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="136" package="Statistical Classifier">
         <name>classify</name>
         <full_name>classify</full_name>
-        <docblock line="121">
+        <docblock line="130">
           <description>Respond to a classify request</description>
           <long-description></long-description>
-          <tag line="121" name="param" description="The request object" type="\React\Http\Request" variable="$request">
+          <tag line="130" name="param" description="The request object" type="\React\Http\Request" variable="$request">
             <type by_reference="false">\React\Http\Request</type>
           </tag>
-          <tag line="121" name="param" description="The response object" type="\React\Http\Response" variable="$response">
+          <tag line="130" name="param" description="The response object" type="\React\Http\Response" variable="$response">
             <type by_reference="false">\React\Http\Response</type>
           </tag>
-          <tag line="121" name="return" description="" type="null">
+          <tag line="130" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="128">
+        <argument line="137">
           <name>$request</name>
           <default></default>
           <type>\React\Http\Request</type>
         </argument>
-        <argument line="129">
+        <argument line="138">
           <name>$response</name>
           <default></default>
           <type>\React\Http\Response</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="194" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="203" package="Statistical Classifier">
+        <name>train</name>
+        <full_name>train</full_name>
+        <docblock line="198">
+          <description>Train an index with a document</description>
+          <long-description></long-description>
+          <tag line="198" name="param" description="" type="\React\Http\Request" variable="$request">
+            <type by_reference="false">\React\Http\Request</type>
+          </tag>
+          <tag line="198" name="param" description="" type="\React\Http\Response" variable="$response">
+            <type by_reference="false">\React\Http\Response</type>
+          </tag>
+        </docblock>
+        <argument line="204">
+          <name>$request</name>
+          <default></default>
+          <type>\React\Http\Request</type>
+        </argument>
+        <argument line="205">
+          <name>$response</name>
+          <default></default>
+          <type>\React\Http\Response</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="269" package="Statistical Classifier">
         <name>getClassifierByType</name>
         <full_name>getClassifierByType</full_name>
-        <docblock line="189">
+        <docblock line="264">
           <description>Get a classifier from the container using a service name</description>
           <long-description></long-description>
-          <tag line="189" name="param" description="The service name" type="string" variable="$classifierType">
+          <tag line="264" name="param" description="The service name" type="string" variable="$classifierType">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="189" name="return" description="The classifier" type="\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface">
+          <tag line="264" name="return" description="The classifier" type="\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</type>
           </tag>
         </docblock>
-        <argument line="194">
+        <argument line="269">
           <name>$classifierType</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="208" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Camspiers\StatisticalClassifier\Console\Command\Server" line="283" package="Statistical Classifier">
         <name>getIndex</name>
         <full_name>getIndex</full_name>
-        <docblock line="202">
+        <docblock line="277">
           <description>Get a cached index by name</description>
           <long-description></long-description>
-          <tag line="202" name="param" description="The index name" type="string" variable="$name">
+          <tag line="277" name="param" description="The index name" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="202" name="param" description="Whether or not to get a fresh one even if it exists" type="boolean" variable="$fresh">
+          <tag line="277" name="param" description="Whether or not to get a fresh one even if it exists" type="boolean" variable="$fresh">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="202" name="return" description="The index" type="\Camspiers\StatisticalClassifier\Index\CachedIndex">
+          <tag line="277" name="return" description="The index" type="\Camspiers\StatisticalClassifier\Index\CachedIndex">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Index\CachedIndex</type>
           </tag>
         </docblock>
-        <argument line="208">
+        <argument line="283">
           <name>$name</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="208">
+        <argument line="283">
           <name>$fresh</name>
           <default>false</default>
           <type/>
@@ -1858,8 +1934,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Command</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Test\Command</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1868,7 +1944,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>test</full_name>
         <docblock line="25">
           <description>Classifies a data source against a classifier and outputs results</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="param" description="Output object" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
             <type by_reference="false">\Symfony\Component\Console\Output\OutputInterface</type>
           </tag>
@@ -1884,17 +1960,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="33">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
         <argument line="34">
           <name>$classifier</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</type>
         </argument>
         <argument line="35">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
       </method>
@@ -1916,8 +1992,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DirectoryCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1926,7 +2002,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="24">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1937,7 +2013,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="48">
           <description>Test a directory data source</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="48" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1950,12 +2026,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="54">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="54">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -1977,8 +2053,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>PDOCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1987,7 +2063,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1998,7 +2074,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="66">
           <description>Test a PDO data source</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="66" name="param" description="The input object" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -2011,12 +2087,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="72">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="72">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -2038,8 +2114,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Command</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\Command</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2048,7 +2124,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>updateSummary</full_name>
         <docblock line="24">
           <description>Outputs a summary of what has changes in the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="param" description="The output object" type="\Symfony\Component\Console\Output\OutputInterface" variable="$output">
             <type by_reference="false">\Symfony\Component\Console\Output\OutputInterface</type>
           </tag>
@@ -2064,17 +2140,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="32">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
         <argument line="33">
           <name>$changes</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
         <argument line="34">
           <name>$current</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
       </method>
@@ -2096,8 +2172,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DirectoryCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2106,7 +2182,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="25">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -2117,7 +2193,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="49">
           <description>Train a classifier with a Directory datasource</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="49" name="param" description="The commands input" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -2130,12 +2206,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="55">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="55">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -2157,8 +2233,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DocumentCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2167,7 +2243,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="24">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -2178,7 +2254,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="47">
           <description>Train a classifier with a single document</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="47" name="param" description="The commands input" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -2191,12 +2267,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="53">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="53">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -2218,8 +2294,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>PDOCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</full_name>
       <docblock line="20">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="20" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="20" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2228,7 +2304,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="26">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="26" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -2239,7 +2315,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>execute</full_name>
         <docblock line="69">
           <description>Train a classifier with a PDO datasource</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="69" name="param" description="The commands input" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -2252,12 +2328,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="75">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="75">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -2279,17 +2355,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Converter</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\Converter</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$from</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>The source to convert from</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
@@ -2297,10 +2373,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="29" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$to</name>
-        <default></default>
+        <default/>
         <docblock line="25">
           <description>The source to convert to</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="var" description="" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
@@ -2311,7 +2387,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="30">
           <description>Creates the converter using to data sources</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="30" name="param" description="The source to convert from" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface" variable="$from">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
@@ -2321,12 +2397,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="35">
           <name>$from</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
         <argument line="35">
           <name>$to</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
       </method>
@@ -2335,7 +2411,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>run</full_name>
         <docblock line="40">
           <description>run the conversion</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="40" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -2361,8 +2437,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DataArray</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\DataArray</full_name>
       <docblock line="19">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="19" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2384,18 +2460,18 @@ array(
       </property>
       <property final="false" static="false" visibility="protected" line="38" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$config</name>
-        <default></default>
+        <default/>
       </property>
       <property final="false" static="false" visibility="protected" line="39" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$processor</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DataSource" line="45" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <docblock line="41">
           <description>Creates the data array</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="41" name="param" description="The initial data" type="array" variable="$data">
             <type by_reference="false">array</type>
           </tag>
@@ -2415,7 +2491,7 @@ array(
         <full_name>hasCategory</full_name>
         <argument line="61">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2424,12 +2500,12 @@ array(
         <full_name>addDocument</full_name>
         <argument line="73">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="73">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2446,7 +2522,7 @@ array(
         <full_name>setData</full_name>
         <argument line="101">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -2459,7 +2535,7 @@ array(
         <full_name>serialize</full_name>
         <docblock line="118">
           <description>Serialize the class</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="118" name="return" description="The serialized data" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2470,7 +2546,7 @@ array(
         <full_name>unserialize</full_name>
         <docblock line="126">
           <description>Restore the serialized class</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="126" name="param" description="The serialized data" type="string" variable="$data">
             <type by_reference="false">string</type>
           </tag>
@@ -2480,7 +2556,7 @@ array(
         </docblock>
         <argument line="131">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2489,7 +2565,7 @@ array(
         <full_name>setConfig</full_name>
         <argument line="136">
           <name>$config</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</type>
         </argument>
       </method>
@@ -2502,7 +2578,7 @@ array(
         <full_name>setProcessor</full_name>
         <argument line="149">
           <name>$processor</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Config\Definition\Processor</type>
         </argument>
       </method>
@@ -2540,8 +2616,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DataSourceInterface</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2550,7 +2626,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>write</full_name>
         <docblock line="20">
           <description>Write the data source if possible</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -2561,7 +2637,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>read</full_name>
         <docblock line="25">
           <description>Read the data source</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="return" description="The data" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2572,7 +2648,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getData</full_name>
         <docblock line="30">
           <description>Get the data</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="30" name="return" description="The data" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2583,7 +2659,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setData</full_name>
         <docblock line="35">
           <description>Set data to the data source</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="35" name="param" description="" type="array" variable="$data">
             <type by_reference="false">array</type>
           </tag>
@@ -2593,7 +2669,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="40">
           <name>$data</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -2602,7 +2678,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getCategories</full_name>
         <docblock line="41">
           <description>Returns the categories of the data</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="41" name="return" description="The categories" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2613,7 +2689,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>hasCategory</full_name>
         <docblock line="46">
           <description>Returnnes whether or not the data has a category</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="46" name="param" description="The category to check" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
@@ -2623,7 +2699,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="51">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2632,7 +2708,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>addDocument</full_name>
         <docblock line="52">
           <description>Adds a document by category to the data</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="52" name="param" description="The category of the document" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
@@ -2642,12 +2718,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="57">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="57">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2666,17 +2742,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Directory</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\Directory</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$directory</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>The directory to find the documents and categories in</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2684,10 +2760,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="29" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$include</name>
-        <default></default>
+        <default/>
         <docblock line="25">
           <description>An array of directories to get documents from</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2698,7 +2774,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="30">
           <description>Creates the object from a directory path and an optional array of included directories</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="30" name="param" description="The path to the directory" type="string" variable="$directory">
             <type by_reference="false">string</type>
           </tag>
@@ -2708,7 +2784,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="35">
           <name>$directory</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="35">
@@ -2745,8 +2821,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Grouped</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\Grouped</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -2755,7 +2831,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <default>array()</default>
         <docblock line="20">
           <description>The data sources to use</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -2766,7 +2842,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="25">
           <description>Create the object passing in the datasources as an array</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="param" description="The data sources" type="array" variable="$dataSources">
             <type by_reference="false">array</type>
           </tag>
@@ -2782,14 +2858,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>addDataSource</full_name>
         <docblock line="37">
           <description>Add a data source to the array</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="37" name="param" description="The data source" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface" variable="$dataSource">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
         </docblock>
         <argument line="41">
           <name>$dataSource</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
       </method>
@@ -2816,17 +2892,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Json</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\Json</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$filename</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>The filename of the json file</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2837,14 +2913,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="25">
           <description>Creates the object from the filename</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="param" description="The filename of the json file" type="string" variable="$filename">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
         <argument line="29">
           <name>$filename</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2863,6 +2939,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <error line="50" code="50010">No DocBlock was found for method write()</error>
     </parse_markers>
   </file>
+  <file path="Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php" hash="bbf9b5648dd84f219261927d02f8997e" package="Statistical Classifier">
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DataSource" line="8" package="Statistical Classifier">
+      <extends>\Camspiers\StatisticalClassifier\DataSource\DataArray</extends>
+      <name>MysqliQuery</name>
+      <full_name>\Camspiers\StatisticalClassifier\DataSource\MysqliQuery</full_name>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php</error>
+      <error line="8" code="50000">No DocBlock was found for \Camspiers\StatisticalClassifier\DataSource\MysqliQuery</error>
+    </parse_markers>
+  </file>
   <file path="Camspiers/StatisticalClassifier/DataSource/PDOQuery.php" hash="b1b788783794b83e0998a402f687cdfb" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
@@ -2876,17 +2963,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>PDOQuery</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\PDOQuery</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="26" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$pdo</name>
-        <default></default>
+        <default/>
         <docblock line="22">
           <description>The pdo connection object</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="22" name="var" description="" type="\PDO">
             <type by_reference="false">\PDO</type>
           </tag>
@@ -2894,10 +2981,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="31" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$category</name>
-        <default></default>
+        <default/>
         <docblock line="27">
           <description>The category of the query</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2905,10 +2992,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="36" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$query</name>
-        <default></default>
+        <default/>
         <docblock line="32">
           <description>The query to run</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="32" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2916,10 +3003,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="41" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$documentColumn</name>
-        <default></default>
+        <default/>
         <docblock line="37">
           <description>The column to use for the document</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="37" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -2930,7 +3017,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="42">
           <description>Creates the data source with the query details</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="42" name="param" description="Category of the query" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
@@ -2946,22 +3033,22 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="50">
           <name>$category</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="51">
           <name>$pdo</name>
-          <default></default>
+          <default/>
           <type>\PDO</type>
         </argument>
         <argument line="52">
           <name>$query</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="53">
           <name>$documentColumn</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -2988,17 +3075,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Serialized</name>
       <full_name>\Camspiers\StatisticalClassifier\DataSource\Serialized</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\DataSource" package="Statistical Classifier">
         <name>$filename</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>The filename to read and write to</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -3009,14 +3096,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="25">
           <description>Creates the data source using the filename</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="param" description="The filename to use" type="string" variable="$filename">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
         <argument line="29">
           <name>$filename</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3049,8 +3136,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>CommandCompilerPass</name>
       <full_name>\Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3059,7 +3146,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>process</full_name>
         <docblock line="24">
           <description>Finds services tagged with console.command and adds them to the console application</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="param" description="The container with the relevant definitions" type="\Symfony\Component\DependencyInjection\ContainerBuilder" variable="$container">
             <type by_reference="false">\Symfony\Component\DependencyInjection\ContainerBuilder</type>
           </tag>
@@ -3069,7 +3156,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="29">
           <name>$container</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\DependencyInjection\ContainerBuilder</type>
         </argument>
       </method>
@@ -3078,7 +3165,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="18" code="50005">No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\CommandCompilerPass</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/DependencyInjection/StatisticalClassifierExtension.php" hash="05e55b710ec21c81e92c1d3f7b75cb9e" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/DependencyInjection/StatisticalClassifierExtension.php" hash="068014f345f696bbfb6a8bd323d2004e" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -3086,38 +3173,38 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
 &lt;p&gt;For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.&lt;/p&gt;</long-description>
     </docblock>
-    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="23" package="Statistical Classifier">
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="24" package="Statistical Classifier">
       <extends>\Symfony\Component\DependencyInjection\Extension\Extension</extends>
       <name>StatisticalClassifierExtension</name>
       <full_name>\Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</full_name>
-      <docblock line="19">
+      <docblock line="20">
         <description></description>
         <long-description></long-description>
-        <tag line="19" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
-        <tag line="19" name="package" description="Statistical Classifier"/>
+        <tag line="20" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="20" name="package" description="Statistical Classifier"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="31" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\DependencyInjection" line="32" package="Statistical Classifier">
         <name>load</name>
         <full_name>load</full_name>
-        <docblock line="25">
+        <docblock line="26">
           <description>Loads the packages services from a yaml file</description>
           <long-description></long-description>
-          <tag line="25" name="param" description="The config the extension is loaded with" type="array" variable="$config">
+          <tag line="26" name="param" description="The config the extension is loaded with" type="array" variable="$config">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="25" name="param" description="The container to add the services to" type="\Symfony\Component\DependencyInjection\ContainerBuilder" variable="$container">
+          <tag line="26" name="param" description="The container to add the services to" type="\Symfony\Component\DependencyInjection\ContainerBuilder" variable="$container">
             <type by_reference="false">\Symfony\Component\DependencyInjection\ContainerBuilder</type>
           </tag>
-          <tag line="25" name="return" description="" type="null">
+          <tag line="26" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="31">
+        <argument line="32">
           <name>$config</name>
           <default></default>
           <type>array</type>
         </argument>
-        <argument line="31">
+        <argument line="32">
           <name>$container</name>
           <default></default>
           <type>\Symfony\Component\DependencyInjection\ContainerBuilder</type>
@@ -3125,7 +3212,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </method>
     </class>
     <parse_markers>
-      <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</critical>
+      <critical line="20" code="50005">No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</critical>
     </parse_markers>
   </file>
   <file path="Camspiers/StatisticalClassifier/Index/CachedIndex.php" hash="0bc13fec37e06462e9c409cdb7e02b37" package="Statistical Classifier">
@@ -3141,17 +3228,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>CachedIndex</name>
       <full_name>\Camspiers\StatisticalClassifier\Index\CachedIndex</full_name>
       <docblock line="17">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="17" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="private" line="27" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
         <name>$indexName</name>
-        <default></default>
+        <default/>
         <docblock line="23">
           <description>The name of the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="23" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -3159,10 +3246,10 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </property>
       <property final="false" static="false" visibility="private" line="32" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
         <name>$cache</name>
-        <default></default>
+        <default/>
         <docblock line="28">
           <description>An instance of Cache</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="28" name="var" description="" type="\CacheCache\Cache">
             <type by_reference="false">\CacheCache\Cache</type>
           </tag>
@@ -3173,7 +3260,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="33">
           <description>Create the CachedIndex using the indexname, cache and datasource</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="33" name="param" description="The name of the index" type="string" variable="$indexName">
             <type by_reference="false">string</type>
           </tag>
@@ -3186,12 +3273,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="40">
           <name>$indexName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="41">
           <name>$cache</name>
-          <default></default>
+          <default/>
           <type>\CacheCache\Cache</type>
         </argument>
         <argument line="42">
@@ -3213,7 +3300,7 @@ has occured on the index&lt;/p&gt;</long-description>
         </docblock>
         <argument line="56">
           <name>$prepared</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3222,7 +3309,7 @@ has occured on the index&lt;/p&gt;</long-description>
         <full_name>preserve</full_name>
         <docblock line="63">
           <description>Save the index to the cache</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="63" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -3233,7 +3320,7 @@ has occured on the index&lt;/p&gt;</long-description>
         <full_name>restore</full_name>
         <docblock line="78">
           <description>Restore the index from the cache</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="78" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -3258,8 +3345,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Index</name>
       <full_name>\Camspiers\StatisticalClassifier\Index\Index</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3269,7 +3356,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <docblock line="24">
           <description>This is an status variable indicating that the nessacary processing
 has occured on the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="var" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -3277,10 +3364,10 @@ has occured on the index</description>
       </property>
       <property final="false" static="false" visibility="protected" line="34" namespace="Camspiers\StatisticalClassifier\Index" package="Statistical Classifier">
         <name>$dataSource</name>
-        <default></default>
+        <default/>
         <docblock line="30">
           <description>Contains the data from which to build the index from</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="30" name="var" description="" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
@@ -3291,7 +3378,7 @@ has occured on the index</description>
         <default>array()</default>
         <docblock line="35">
           <description>Holds various data by key</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="35" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -3302,7 +3389,7 @@ has occured on the index</description>
         <full_name>__construct</full_name>
         <docblock line="40">
           <description>Create the Index using a data source</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="40" name="param" description="The data source" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface" variable="$dataSource">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
@@ -3322,7 +3409,7 @@ has occured on the index</description>
         <full_name>setPrepared</full_name>
         <argument line="58">
           <name>$prepared</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3331,7 +3418,7 @@ has occured on the index</description>
         <full_name>setDataSource</full_name>
         <argument line="65">
           <name>$dataSource</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
       </method>
@@ -3344,7 +3431,7 @@ has occured on the index</description>
         <full_name>getPartition</full_name>
         <argument line="79">
           <name>$partitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3353,12 +3440,12 @@ has occured on the index</description>
         <full_name>setPartition</full_name>
         <argument line="90">
           <name>$partitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="90">
           <name>$partition</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3367,7 +3454,7 @@ has occured on the index</description>
         <full_name>removePartition</full_name>
         <argument line="97">
           <name>$partitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3400,8 +3487,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>IndexInterface</name>
       <full_name>\Camspiers\StatisticalClassifier\Index\IndexInterface</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3410,7 +3497,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>isPrepared</full_name>
         <docblock line="22">
           <description>Returns whether or not the index is prepared</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="22" name="return" description="The prepared status" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
@@ -3421,14 +3508,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setPrepared</full_name>
         <docblock line="27">
           <description>Set the index to prepared</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="param" description="The prepared status" type="boolean" variable="$prepared">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
         <argument line="31">
           <name>$prepared</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3437,14 +3524,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setDataSource</full_name>
         <docblock line="32">
           <description>Set a data source for the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="32" name="param" description="The data source" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface" variable="$dataSource">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
           </tag>
         </docblock>
         <argument line="36">
           <name>$dataSource</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
         </argument>
       </method>
@@ -3453,7 +3540,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getDataSource</full_name>
         <docblock line="37">
           <description>Get the datasource if one exists</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="37" name="return" description="The data source" type="\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface|null">
             <type by_reference="false">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</type>
             <type by_reference="false">null</type>
@@ -3465,7 +3552,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getPartition</full_name>
         <docblock line="42">
           <description>Return a partition if it exists</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="42" name="param" description="The name of the partitiion" type="string" variable="$partitionName">
             <type by_reference="false">string</type>
           </tag>
@@ -3475,7 +3562,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="47">
           <name>$partitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3484,7 +3571,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>setPartition</full_name>
         <docblock line="48">
           <description>Set a partition to the index</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="48" name="param" description="The name of the partitiion" type="string" variable="$partitionName">
             <type by_reference="false">string</type>
           </tag>
@@ -3497,12 +3584,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="54">
           <name>$partitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="54">
           <name>$partition</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3511,7 +3598,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>removePartition</full_name>
         <docblock line="55">
           <description>Removes a partition if it exists</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="55" name="param" description="The name of the partition" type="string" variable="$partitionName">
             <type by_reference="false">string</type>
           </tag>
@@ -3521,7 +3608,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="60">
           <name>$partitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -3530,7 +3617,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>getPartitions</full_name>
         <docblock line="61">
           <description>Return all partitions names</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="61" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -3551,8 +3638,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>JsonConfigLoader</name>
       <full_name>\Camspiers\StatisticalClassifier\Loader\JsonConfigLoader</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3561,7 +3648,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>load</full_name>
         <argument line="27">
           <name>$resource</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="27">
@@ -3575,7 +3662,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>supports</full_name>
         <argument line="47">
           <name>$resource</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="47">
@@ -3605,8 +3692,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Grouped</name>
       <full_name>\Camspiers\StatisticalClassifier\Normalizer\Grouped</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3615,7 +3702,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <default>array()</default>
         <docblock line="22">
           <description>An array of normalizers to run</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="22" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -3626,7 +3713,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="27">
           <description>Create the normalizer using an array or normalizers as input</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="param" description="[description]" type="array" variable="$normalizers">
             <type by_reference="false">array</type>
           </tag>
@@ -3645,14 +3732,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>addNormalizer</full_name>
         <docblock line="41">
           <description>Add a normalizer to the group</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="41" name="param" description="The normalizer" type="\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface" variable="$normalizer">
             <type by_reference="false">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
           </tag>
         </docblock>
         <argument line="45">
           <name>$normalizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
         </argument>
       </method>
@@ -3661,7 +3748,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>normalize</full_name>
         <argument line="52">
           <name>$tokens</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -3685,8 +3772,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Lowercase</name>
       <full_name>\Camspiers\StatisticalClassifier\Normalizer\Lowercase</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3695,11 +3782,11 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>normalize</full_name>
         <docblock line="20">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="23">
           <name>$tokens</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -3721,8 +3808,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>NormalizerInterface</name>
       <full_name>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -3741,13 +3828,13 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="27">
           <name>$tokens</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
     </interface>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Normalizer/Porter.php" hash="5099b3cb0a23bc115a9f26eab8b3c180" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Normalizer/Porter.php" hash="4cc4557aff58ebd663eeeda92cfa31af" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -3755,25 +3842,25 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
 &lt;p&gt;For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.&lt;/p&gt;</long-description>
     </docblock>
-    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Normalizer" line="20" package="Statistical Classifier">
+    <class final="false" abstract="false" namespace="Camspiers\StatisticalClassifier\Normalizer" line="21" package="Statistical Classifier">
       <extends/>
       <implements>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</implements>
       <name>Porter</name>
       <full_name>\Camspiers\StatisticalClassifier\Normalizer\Porter</full_name>
-      <docblock line="16">
+      <docblock line="17">
         <description></description>
         <long-description></long-description>
-        <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
-        <tag line="16" name="package" description="Statistical Classifier"/>
+        <tag line="17" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
+        <tag line="17" name="package" description="Statistical Classifier"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="25" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Normalizer" line="26" package="Statistical Classifier">
         <name>normalize</name>
         <full_name>normalize</full_name>
-        <docblock line="22">
+        <docblock line="23">
           <description>{@inheritdoc}</description>
           <long-description></long-description>
         </docblock>
-        <argument line="25">
+        <argument line="26">
           <name>$tokens</name>
           <default></default>
           <type>array</type>
@@ -3781,8 +3868,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </method>
     </class>
     <parse_markers>
-      <critical line="16" code="50005">No short description for class \Camspiers\StatisticalClassifier\Normalizer\Porter</critical>
-      <error line="22" code="50015">Argument $tokens is missing from the Docblock of normalize()</error>
+      <critical line="17" code="50005">No short description for class \Camspiers\StatisticalClassifier\Normalizer\Porter</critical>
+      <error line="23" code="50015">Argument $tokens is missing from the Docblock of normalize()</error>
     </parse_markers>
   </file>
   <file path="Camspiers/StatisticalClassifier/Normalizer/Stopword.php" hash="0ef0a10be85ff4313440c23550ee45a5" package="Statistical Classifier">
@@ -3799,17 +3886,17 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Stopword</name>
       <full_name>\Camspiers\StatisticalClassifier\Normalizer\Stopword</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
       <property final="false" static="false" visibility="protected" line="24" namespace="Camspiers\StatisticalClassifier\Normalizer" package="Statistical Classifier">
         <name>$stopwords</name>
-        <default></default>
+        <default/>
         <docblock line="20">
           <description>An array of words to filter</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -3820,14 +3907,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="25">
           <description>Create the normalizer from an array of stopwords</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="25" name="param" description="The array of stopwords" type="array" variable="$stopwords">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
         <argument line="29">
           <name>$stopwords</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -3836,11 +3923,11 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>normalize</full_name>
         <docblock line="33">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="36">
           <name>$tokens</name>
-          <default></default>
+          <default/>
           <type>array</type>
         </argument>
       </method>
@@ -3850,7 +3937,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <error line="33" code="50015">Argument $tokens is missing from the Docblock of normalize()</error>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php" hash="5f016fec6633ff43019bbd1d9b77a5fc" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php" hash="852d68aeeb9b429f489a9518d4b1b2d9" package="Statistical Classifier">
     <class final="false" abstract="false" namespace="global" line="19" package="Statistical Classifier">
       <extends>\Symfony\Component\DependencyInjection\Container</extends>
       <name>StatisticalClassifierServiceContainer</name>
@@ -4324,8 +4411,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TokenizerInterface</name>
       <full_name>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4334,7 +4421,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>tokenize</full_name>
         <docblock line="20">
           <description>Split document into tokens</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="20" name="param" description="The document to split" type="string" variable="$document">
             <type by_reference="false">string</type>
           </tag>
@@ -4344,7 +4431,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="25">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4364,8 +4451,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Word</name>
       <full_name>\Camspiers\StatisticalClassifier\Tokenizer\Word</full_name>
       <docblock line="14">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="14" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="14" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4374,7 +4461,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>tokenize</full_name>
         <argument line="23">
           <name>$document</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4398,8 +4485,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Complement</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\Complement</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4410,14 +4497,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4426,7 +4513,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4452,8 +4539,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DC</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\DC</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4467,7 +4554,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="24">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4491,8 +4578,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DL</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\DL</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4503,14 +4590,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4519,7 +4606,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4545,8 +4632,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DocumentTokenCounts</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\DocumentTokenCounts</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4557,14 +4644,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4573,7 +4660,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4599,8 +4686,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>DocumentTokenSums</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\DocumentTokenSums</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4611,14 +4698,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4627,7 +4714,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4653,8 +4740,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>IDF</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\IDF</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4665,32 +4752,32 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <property final="false" static="false" visibility="private" line="25" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$documentCountPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <property final="false" static="false" visibility="private" line="26" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$tokenAppreanceCountPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="28" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="29">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="30">
           <name>$documentCountPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="31">
           <name>$tokenAppreanceCountPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4699,7 +4786,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="38">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4727,8 +4814,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Prune</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\Prune</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4750,7 +4837,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4776,8 +4863,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TAC</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\TAC</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4788,14 +4875,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4804,7 +4891,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4830,8 +4917,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TBC</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\TBC</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4842,14 +4929,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4858,7 +4945,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4884,8 +4971,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TCBD</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\TCBD</full_name>
       <docblock line="18">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="18" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="18" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4899,12 +4986,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <argument line="27">
           <name>$tokenizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</type>
         </argument>
         <argument line="28">
           <name>$normalizer</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</type>
         </argument>
       </method>
@@ -4913,7 +5000,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="34">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4938,8 +5025,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TF</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\TF</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -4950,14 +5037,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4966,7 +5053,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -4992,8 +5079,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TFIDF</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\TFIDF</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -5004,32 +5091,32 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <property final="false" static="false" visibility="private" line="25" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$documentCountPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <property final="false" static="false" visibility="private" line="26" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$tokenAppreanceCountPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="28" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="29">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="30">
           <name>$documentCountPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="31">
           <name>$tokenAppreanceCountPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -5038,7 +5125,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="38">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -5073,8 +5160,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>TransformInterface</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\TransformInterface</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -5083,7 +5170,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="22">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -5106,8 +5193,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>Weight</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\Weight</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -5118,14 +5205,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -5134,7 +5221,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>
@@ -5160,8 +5247,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>WeightNormalization</name>
       <full_name>\Camspiers\StatisticalClassifier\Transform\WeightNormalization</full_name>
       <docblock line="16">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="16" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="16" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -5172,14 +5259,14 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       </constant>
       <property final="false" static="false" visibility="private" line="24" namespace="Camspiers\StatisticalClassifier\Transform" package="Statistical Classifier">
         <name>$dataPartitionName</name>
-        <default></default>
+        <default/>
       </property>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Camspiers\StatisticalClassifier\Transform" line="26" package="Statistical Classifier">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <argument line="26">
           <name>$dataPartitionName</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -5188,7 +5275,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>apply</full_name>
         <argument line="31">
           <name>$index</name>
-          <default></default>
+          <default/>
           <type>\Camspiers\StatisticalClassifier\Index\IndexInterface</type>
         </argument>
       </method>

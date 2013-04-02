@@ -32,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">156</span></a></li>
+                <span class="label label-info">161</span></a></li>
 <li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -84,6 +84,7 @@
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Directory.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Directory.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Grouped.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Grouped.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Json.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Json.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/PDOQuery.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/PDOQuery.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Serialized.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Serialized.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DependencyInjection/CommandCompilerPass.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DependencyInjection/CommandCompilerPass.php</a></li>
@@ -187,7 +188,7 @@
 </div>
 <div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Config/Config.php" id="Camspiers/StatisticalClassifier/Config/Config.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/Config.php<small style="float: right;padding-right: 10px;">7</small>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/Config.php<small style="float: right;padding-right: 10px;">10</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -206,29 +207,44 @@
 <td>29</td>
 <td>No short description for property $classifierPath</td>
 </tr>
+<tr class="critical">
+<td>critical</td>
+<td>33</td>
+<td>No short description for property $runPath</td>
+</tr>
 <tr class="error">
 <td>error</td>
-<td>59</td>
+<td>64</td>
 <td>No short description for method getOption()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>74</td>
+<td>79</td>
 <td>No short description for method setClassifierPath()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>82</td>
+<td>87</td>
 <td>No short description for method getClassifierPath()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>93</td>
+<td>98</td>
+<td>No short description for method setRunPath()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>106</td>
+<td>No short description for method getRunPath()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>117</td>
 <td>No short description for method getOptionPath()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>101</td>
+<td>125</td>
 <td>No short description for method getPath()</td>
 </tr>
 </tbody>
@@ -417,17 +433,17 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>106</td>
+<td>107</td>
 <td>No DocBlock was found for method includeFiles()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>119</td>
+<td>120</td>
 <td>No DocBlock was found for method addExtensions()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>129</td>
+<td>130</td>
 <td>No DocBlock was found for method addCompilerPasses()</td>
 </tr>
 </tbody>
@@ -805,6 +821,30 @@
 </table></div>
 </div>
 <div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php" id="Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>8</td>
+<td>No DocBlock was found for \Camspiers\StatisticalClassifier\DataSource\MysqliQuery</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/DataSource/PDOQuery.php" id="Camspiers/StatisticalClassifier/DataSource/PDOQuery.php"></a><h3>
 <i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/PDOQuery.php<small style="float: right;padding-right: 10px;">2</small>
 </h3>
@@ -886,7 +926,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>19</td>
+<td>20</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\DependencyInjection\StatisticalClassifierExtension</td>
 </tr></tbody>
 </table></div>
@@ -1059,12 +1099,12 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>16</td>
+<td>17</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Normalizer\Porter</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>22</td>
+<td>23</td>
 <td>Argument $tokens is missing from the Docblock of normalize()</td>
 </tr>
 </tbody>
@@ -1662,7 +1702,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-31T21:47:50+13:00.<br></footer></div>
+            generated on 2013-04-02T12:58:53+13:00.<br></footer></div>
 </div>
 </body>
 </html>
