@@ -2,22 +2,9 @@
 
 require_once __DIR__ . '/../src/bootstrap.php';
 
-$container = new StatisticalClassifierServiceContainer;
+use Camspiers\StatisticalClassifier\DataSource;
 
-use Camspiers\StatisticalClassifier\DataSource\Serialized;
-use Camspiers\StatisticalClassifier\DataSource\Directory;
-
-// $container->set(
-//     'converter.from',
-//     new Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-train')
-// );
-// $container->set(
-//     'converter.to',
-//     new Serialized(__DIR__ . '/../resources/20news-bydate-train.cache')
-// );
-// $container->set(
-//     'converter.to',
-//     new Serialized(__DIR__ . '/test.cache')
-// );
-
-$container->get('converter.converter')->run();
+(new DataSource\Converter(
+    new DataSource\Directory(__DIR__ . '/../resources/20news-bydate/20news-bydate-train'),
+    new DataSource\Json(__DIR__ . '/../resources/converted.json')
+))->run();
