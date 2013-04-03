@@ -13,8 +13,10 @@ namespace Camspiers\StatisticalClassifier\Classifier;
 
 use Camspiers\StatisticalClassifier\ClassificationRule;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
+use Camspiers\StatisticalClassifier\Normalizer\Lowercase;
 use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
 use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
+use Camspiers\StatisticalClassifier\Tokenizer\Word;
 use Camspiers\StatisticalClassifier\Transform;
 
 /**
@@ -34,9 +36,11 @@ class ComplementNaiveBayes extends GenericClassifier
      */
     public function __construct(
         IndexInterface $index,
-        TokenizerInterface $tokenizer,
-        NormalizerInterface $normalizer
+        TokenizerInterface $tokenizer = null,
+        NormalizerInterface $normalizer = null
     ) {
+        $tokenizer = $tokenizer ?: new Word();
+        $normalizer = $normalizer ?: new Lowercase();
         parent::__construct(
             $index,
             new ClassificationRule\ComplementNaiveBayes(

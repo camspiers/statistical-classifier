@@ -23,7 +23,7 @@ class Lowercase implements NormalizerInterface
     public function normalize(array $tokens)
     {
         return array_map(
-            'strtolower',
+            'mb_strtolower',
             $tokens
         );
     }

@@ -61,7 +61,7 @@ $ composer install -d statistical-classifier
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
-$c = new Classifier\NaiveBayes(
+$c = new Classifier\ComplementNaiveBayes(
     new Index\Index(
         new DataSource\DataArray(
             array(

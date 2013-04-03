@@ -2,7 +2,7 @@
 
 ini_set('memory_limit', '6G');
 
-require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/bootstrap.php';
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 use Camspiers\StatisticalClassifier\Index\CachedIndex;
@@ -36,19 +36,19 @@ $testSource = new Directory(
     $cats
 );
 
-$data = $testSource->getData();
-
+$documents = $testSource->getData();
 $stats = array();
-$fails = array();
 
-foreach ($data as $category => $documents) {
-    $stats[$category] = 0;
-    foreach ($documents as $document) {
-        if (($classifiedAs = $nb->classify($document)) == $category) {
-            $stats[$category]++;
-        } else {
-            $fails[] = array($category, $classifiedAs, $document);
-        }
+foreach ($documents as $document) {
+    if (!isset($stats[$document['category']])) {
+        $stats[$document['category']] = array(0, 0);
     }
-    echo $category, ': ', ($stats[$category] / count($documents)), PHP_EOL;
+    if ($nb->classify($document['document']) == $document['category']) {
+        $stats[$document['category']][0]++;
+    }
+    $stats[$document['category']][1]++;
+}
+
+foreach ($stats as $category => $data) {
+    echo $category, ': ', ($data[0] / $data[1]), PHP_EOL;
 }
