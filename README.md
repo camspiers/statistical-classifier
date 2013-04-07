@@ -44,19 +44,17 @@ $ composer requre camspiers/statistical-classifier:~0.4
 ```bash
 $ composer create-project camspiers/statistical-classifier .
 $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
-```
+``
 
-## Manual (not recommended)
+## SVM Support
 
-```bash
-$ curl -LO https://github.com/camspiers/statistical-classifier/archive/master.zip
-$ unzip master.zip -d statistical-classifier
-$ composer install -d statistical-classifier
-```
+For SVM Support both libsvm and php-svm are required. For installation intructions refer to [php-svm](https://github.com/ianbarber/php-svm).
 
 # Usage
 
 ## Without Symfony Dependency Injection
+
+### Non-cached Naive Bayes
 
 ```php
 <?php
@@ -64,39 +62,98 @@ $ composer install -d statistical-classifier
 use Camspiers\StatisticalClassifier;
 $c = new Classifier\ComplementNaiveBayes(
     new Index\Index(
-        new DataSource\DataArray(
-            array(
+        $source = new DataSource\DataArray()
+    )
+);
+$source->addDocument('spam', 'Some spam document');
+$source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Some ham document');
+$source->addDocument('ham', 'Another ham document');
+$c->is('ham', 'Some ham document'); // true
+echo $c->classify('Some ham document'), PHP_EOL; // ham
+```
+
+### Non-cached SVM
+
+```php
+<?php
+// Ensure composer autoloader is required
+use Camspiers\StatisticalClassifier;
+$c = new Classifier\SVM(
+    new Index\Index(
+        $source = new DataSource\DataArray()
+    )
+);
+$source->addDocument('spam', 'Some spam document');
+$source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Some ham document');
+$source->addDocument('ham', 'Another ham document');
+$c->is('ham', 'Some ham document'); // true
+echo $c->classify('Some ham document'), PHP_EOL; // ham
+```
+
+### Cached Naive Bayes
+
+```php
+<?php
+// Ensure composer autoloader is required
+use Camspiers\StatisticalClassifier;
+$c = new Classifier\ComplementNaiveBayes(
+    new Index\CachedIndex(
+        'mycachename',
+        new CacheCache\Cache(
+            new CacheCache\Backends\File(
                 array(
-                    'category' => 'spam',
-                    'document' => 'Some spam document'
-                ),
-                array(
-                    'category' => 'spam',
-                    'document' => 'Another spam document'
-                ),
-                array(
-                    'category' => 'ham',
-                    'document' => 'Some ham document'
-                ),
-                array(
-                    'category' => 'ham',
-                    'document' => 'Another ham document'
+                    'dir' => __DIR__
                 )
             )
         )
-    ),
-    new Tokenizer\Word(),
-    new Normalizer\Lowercase()
+        $source = new DataSource\DataArray()
+    )
 );
+$source->addDocument('spam', 'Some spam document');
+$source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Some ham document');
+$source->addDocument('ham', 'Another ham document');
+$c->is('ham', 'Some ham document'); // true
+echo $c->classify('Some ham document'), PHP_EOL; // ham
+```
+
+### Cached SVM
+
+```php
+<?php
+// Ensure composer autoloader is required
+use Camspiers\StatisticalClassifier;
+$c = new Classifier\SVM(
+    new Index\SVMCachedIndex(
+        __DIR__ . '/model.svm',
+        'mycachename',
+        new CacheCache\Cache(
+            new CacheCache\Backends\File(
+                array(
+                    'dir' => __DIR__
+                )
+            )
+        )
+        $source = new DataSource\DataArray()
+    )
+);
+$source->addDocument('spam', 'Some spam document');
+$source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Some ham document');
+$source->addDocument('ham', 'Another ham document');
 $c->is('ham', 'Some ham document'); // true
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ## With Symfony Dependency Injection
 
+### Naive Bayes
+
 ```php
 <?php
-// Ensure composer autoloader is required
+// ensure bootstrap is loaded
 $c = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
@@ -105,31 +162,39 @@ use Camspiers\StatisticalClassifier\Index\Index;
 $c->set(
     'index.index',
     new Index(
-        $source = new DataArray(
-            array(
-                array(
-                    'category' => 'spam',
-                    'document' => 'Some spam document'
-                ),
-                array(
-                    'category' => 'spam',
-                    'document' => 'Another spam document'
-                ),
-                array(
-                    'category' => 'ham',
-                    'document' => 'Some ham document'
-                ),
-                array(
-                    'category' => 'ham',
-                    'document' => 'Another ham document'
-                )
-            )
-        )
+        $source = new DataArray()
     )
 );
+$source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
 echo $c->get('classifier.complement_naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
+```
+
+### SVM Cached
+
+```php
+<?php
+// ensure bootstrap is loaded
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
+use Camspiers\StatisticalClassifier\Index\SVMCachedIndex;
+
+$c->set(
+    'index.index',
+    new SVMCachedIndex(
+        __DIR__ . '/model.svm',
+        'svm',
+        $c->get('cache'),
+        $source = new DataArray()
+    )
+);
+
+$source->addDocument('spam', 'Some spam document');
+$source->addDocument('spam', 'Another spam document');
+$source->addDocument('ham', 'Some ham document');
+$source->addDocument('ham', 'Another ham document');
+echo $c->get('classifier.svm')->classify("Some ham document"), PHP_EOL; //ham
 ```
 
 ## From command-line
