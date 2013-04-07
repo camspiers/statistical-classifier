@@ -27,15 +27,23 @@ class DataArray implements DataSourceInterface, Serializable
      *
      * Should be in the form:
      * array(
-     *     'category' => array(
-     *         'Some document'
+     *     array(
+     *         'category' => 'somecategory',
+     *         'document' => 'Some document'
      *     )
      * )
      * @var array
      */
     protected $data = array();
-
+    /**
+     * Holds the config class that setData needs to conforms to
+     * @var
+     */
     protected $config;
+    /**
+     * Processes the data with the config
+     * @var
+     */
     protected $processor;
 
     /**
@@ -132,12 +140,17 @@ class DataArray implements DataSourceInterface, Serializable
     {
         $this->data = unserialize($data);
     }
-
+    /**
+     * @param DataSourceConfiguration $config
+     */
     public function setConfig(DataSourceConfiguration $config)
     {
         $this->config = $config;
     }
-
+    /**
+     * Return the config for the data
+     * @return mixed
+     */
     public function getConfig()
     {
         if (null === $this->config) {
@@ -146,11 +159,18 @@ class DataArray implements DataSourceInterface, Serializable
         return $this->config;
     }
 
+    /**
+     * Sets the processor for the config
+     * @param Processor $processor
+     */
     public function setProcessor(Processor $processor)
     {
         $this->processor = $processor;
     }
-
+    /**
+     * Gets the processor
+     * @return mixed
+     */
     public function getProcessor()
     {
         if (null === $this->processor) {

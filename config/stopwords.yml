@@ -1,5 +1,6 @@
 parameters:
     stopwords:
+        - a
         - a's
         - able
         - about

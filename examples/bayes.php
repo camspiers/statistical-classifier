@@ -14,8 +14,17 @@ $cats = array(
     'comp.graphics',
     'rec.motorcycles',
     'sci.crypt',
-    'soc.religion.christian'
+    'soc.religion.christian',
+    'talk.religion.misc'
 );
+
+//bayes
+//alt.atheism: 0.81504702194357
+//comp.graphics: 0.88688946015424
+//rec.motorcycles: 0.98743718592965
+//sci.crypt: 0.93939393939394
+//soc.religion.christian: 0.90954773869347
+//talk.religion.misc: 0.70517928286853
 
 $c->set(
     'index.index',
@@ -23,8 +32,10 @@ $c->set(
         '20news-bydate',
         $c->get('cache'),
         new Directory(
-            __DIR__ . '/../resources/20news-bydate/20news-bydate-train',
-            $cats
+            array(
+                'directory' => __DIR__ . '/../resources/20news-bydate/20news-bydate-train',
+                'include' => $cats
+            )
         )
     )
 );
@@ -32,8 +43,10 @@ $c->set(
 $nb = $c->get('classifier.complement_naive_bayes');
 
 $testSource = new Directory(
-    __DIR__ . '/../resources/20news-bydate/20news-bydate-test',
-    $cats
+    array(
+        'directory' => __DIR__ . '/../resources/20news-bydate/20news-bydate-test',
+        'include' => $cats
+    )
 );
 
 $documents = $testSource->getData();

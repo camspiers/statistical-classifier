@@ -11,6 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\DataSource;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
@@ -18,27 +21,64 @@ namespace Camspiers\StatisticalClassifier\DataSource;
 class Directory extends DataArray
 {
     /**
-     * The directory to find the documents and categories in
-     * @var string
+     * Used for docs in category folder
      */
-    private $directory;
+    const MODE_DIRECTORY_AS_CATEGORY = 0;
     /**
-     * An array of directories to get documents from
+     * Used for docs named be category
+     */
+    const MODE_DOCUMENT_AS_CATEGORY = 1;
+    /**
+     * Stores the configuration options
      * @var array
      */
-    private $include;
+    protected $options;
     /**
-     * Creates the object from a directory path and an optional array of included directories
-     * @param string $directory The path to the directory
-     * @param array  $include   An array of included directories
+     * Creates the object from an array of options
+     * @param array $options
      */
-    public function __construct($directory, array $include = null)
+    public function __construct(array $options = array())
     {
-        if (!file_exists($directory)) {
-            mkdir($directory);
-        }
-        $this->directory = realpath($directory);
-        $this->include = $include;
+        $resolver = new OptionsResolver();
+        $this->setDefaultOptions($resolver);
+        $this->options = $resolver->resolve($options);
+    }
+    /**
+     * Sets the configuration for the options resolver
+     * @param OptionsResolverInterface $resolver
+     */
+    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setRequired(
+            array(
+                'directory'
+            )
+        );
+
+        $resolver->setDefaults(
+            array(
+                'mode' => self::MODE_DIRECTORY_AS_CATEGORY,
+                'include' => array(),
+                'limit' => null
+            )
+        );
+
+        $resolver->setAllowedValues(
+            array(
+                'mode' => array(
+                    self::MODE_DOCUMENT_AS_CATEGORY,
+                    self::MODE_DIRECTORY_AS_CATEGORY
+                )
+            )
+        );
+
+        $resolver->setAllowedTypes(
+            array(
+                'directory' => 'string',
+                'mode' => 'int',
+                'include' => 'array'
+            )
+        );
     }
     /**
      * @{inheritdoc}
@@ -46,19 +86,39 @@ class Directory extends DataArray
     public function read()
     {
         $data = array();
-        if (file_exists($this->directory)) {
-            if (is_array($this->include) && count($this->include) !== 0) {
+        if (file_exists($this->options['directory'])) {
+            $pattern = $this->options['mode'] == self::MODE_DIRECTORY_AS_CATEGORY ? '/*' : '';
+            if (is_array($this->options['include']) && count($this->options['include']) !== 0) {
                 $files = array();
-                foreach ($this->include as $include) {
-                    $files = array_merge($files, glob("$this->directory/$include/*", GLOB_NOSORT));
+                foreach ($this->options['include'] as $include) {
+                    $files = array_merge(
+                        $files,
+                        array_slice(
+                            glob(
+                                "{$this->options['directory']}/{$include}{$pattern}",
+                                GLOB_NOSORT
+                            ),
+                            0,
+                            $this->options['limit']
+                        )
+                    );
                 }
             } else {
-                $files = glob($this->directory . '/*/*', GLOB_NOSORT);
+                $files = array_slice(
+                    glob("{$this->options['directory']}{$pattern}/*", GLOB_NOSORT),
+                    0,
+                    $this->options['limit']
+                );
             }
             foreach ($files as $filename) {
                 if (is_file($filename)) {
+                    if ($this->options['mode'] === self::MODE_DIRECTORY_AS_CATEGORY) {
+                        $categoryPath = dirname($filename);
+                    } else {
+                        $categoryPath = $filename;
+                    }
                     $data[] = array(
-                        'category' => basename(dirname($filename)),
+                        'category' => basename($categoryPath),
                         'document' => file_get_contents($filename)
                     );
                 }
@@ -73,12 +133,12 @@ class Directory extends DataArray
     public function write()
     {
         foreach ($this->data as $category => $documents) {
-            if (!file_exists($this->directory . '/' . $category)) {
-                mkdir($this->directory . '/' . $category);
+            if (!file_exists($this->options['directory'] . '/' . $category)) {
+                mkdir($this->options['directory'] . '/' . $category);
             }
             foreach ($documents as $document) {
                 file_put_contents(
-                    $this->directory . '/' . $category . '/' . md5($document),
+                    $this->options['directory'] . '/' . $category . '/' . md5($document),
                     $document
                 );
             }

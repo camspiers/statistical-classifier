@@ -38,9 +38,6 @@ class DL implements TransformInterface
                     $denominator += $count * $count;
                 }
                 $denominator = sqrt($denominator);
-                // if ($denominator == 0) {
-                //     continue;
-                // }
                 foreach ($document as $token => $count) {
                     $transform
                     [$category]

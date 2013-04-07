@@ -6,6 +6,13 @@ parameters:
         dir: %classifier_path%/indexes/
         file_extension: .idx
 
+    svm.class: SVM
+    svm.options:
+      %svm.kernel_type%: %svm.kernel_type.linear%
+
+    svm.kernel_type: 102
+    svm.kernel_type.linear: 0
+
     classifier_namespace: Camspiers\StatisticalClassifier
 
     tokenizer.word.class: %classifier_namespace%\Tokenizer\Word
@@ -15,6 +22,7 @@ parameters:
     normalizer.grouped.class: %classifier_namespace%\Normalizer\Grouped
     converter.converter.class: %classifier_namespace%\DataSource\Converter
     classifier.complement_naive_bayes.class: %classifier_namespace%\Classifier\ComplementNaiveBayes
+    classifier.svm.class: %classifier_namespace%\Classifier\SVM
     console.application.class: %classifier_namespace%\Console\Application
     console.command.index.create.class: %classifier_namespace%\Console\Command\Index\CreateCommand
     console.command.index.remove.class: %classifier_namespace%\Console\Command\Index\RemoveCommand
@@ -58,11 +66,11 @@ services:
     normalizer.stopword_lowercase:
         class: %normalizer.grouped.class%
         arguments:
-            - [ @normalizer.stopword, @normalizer.lowercase ]
+            - [ @normalizer.lowercase, @normalizer.stopword ]
     normalizer.stopword_lowercase_porter:
         class: %normalizer.grouped.class%
         arguments:
-            - [ @normalizer.stopword, @normalizer.lowercase, @normalizer.porter  ]
+            - [ @normalizer.stopword_lowercase, @normalizer.porter  ]
 
     # Converter
     converter.converter:
@@ -83,6 +91,20 @@ services:
             - @index.index
             - @tokenizer.word
             - @normalizer.stopword_lowercase
+
+    classifier.svm:
+        class: %classifier.svm.class%
+        arguments:
+            - @index.index
+            - @tokenizer.word
+            - @normalizer.stopword_lowercase
+            - @svm
+
+    # SVM
+    svm:
+      class: %svm.class%
+      calls:
+        - [ setOptions, [ %svm.options% ] ]
 
     # Indexes
     index.index:

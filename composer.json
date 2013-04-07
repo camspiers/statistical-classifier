@@ -17,6 +17,7 @@
         "symfony/yaml": "~2.2",
         "symfony/config": "~2.2",
         "symfony/finder": "~2.2",
+        "symfony/options-resolver": "~2.2",
         "camspiers/porter-stemmer": "~1.0",
         "camspiers/json-pretty": "~0.1",
         "psr/log": "~1.0",
