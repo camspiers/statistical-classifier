@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Camspiers\StatisticalClassifier\Transform;
 
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
-use Camspiers\StatisticalClassifier\Transform\DocumentTokenSums;
 
 /**
  * Class SVM

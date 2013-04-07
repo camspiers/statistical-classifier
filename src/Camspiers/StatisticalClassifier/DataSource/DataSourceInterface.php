@@ -34,7 +34,7 @@ interface DataSourceInterface
     public function getData();
     /**
      * Set data to the data source
-     * @param array $data
+     * @param  array $data
      * @return null
      */
     public function setData(array $data);

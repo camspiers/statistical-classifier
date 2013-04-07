@@ -73,6 +73,7 @@ class DataArray implements DataSourceInterface, Serializable
                 return true;
             }
         }
+
         return false;
     }
     /**
@@ -156,6 +157,7 @@ class DataArray implements DataSourceInterface, Serializable
         if (null === $this->config) {
             $this->setConfig(new DataSourceConfiguration());
         }
+
         return $this->config;
     }
 
@@ -176,6 +178,7 @@ class DataArray implements DataSourceInterface, Serializable
         if (null === $this->processor) {
             $this->setProcessor(new Processor());
         }
+
         return $this->processor;
     }
 }

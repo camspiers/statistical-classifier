@@ -13,7 +13,6 @@ namespace Camspiers\StatisticalClassifier\ClassificationRule;
 
 use Camspiers\StatisticalClassifier\Transform\SVM as TransformSVM;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
-use SVM as BaseSVM;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>

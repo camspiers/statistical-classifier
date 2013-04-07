@@ -102,7 +102,7 @@ abstract class Command extends BaseCommand
     }
     /**
      * Get an CachedIndex based off a index name and the Cache instance
-     * @param  string $name The name of the index
+     * @param  string      $name The name of the index
      * @return CachedIndex The cached index
      */
     protected function getCachedIndex($name)

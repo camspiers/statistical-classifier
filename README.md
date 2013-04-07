@@ -12,6 +12,7 @@ PHP Statistical Classifier is written entirely in PHP, with a focus on reuse and
 
 Important Features:
 
+* Complement Naive Bayes Classifier & SVM (libsvm) Classifier
 * Highly customizable
 * Multiple ways of using the library (PHP, command-line, HTTP server)
 * Support for use from non-PHP programming languages (through command-line or HTTP server)

@@ -25,8 +25,8 @@ interface ClassifierInterface
 {
     /**
      * Returns whether or not the document is of the category
-     * @param  string $category The category in question
-     * @param  string $document The document to check
+     * @param  string  $category The category in question
+     * @param  string  $document The document to check
      * @return boolean Whether or not the document is in the category
      */
     public function is($category, $document);

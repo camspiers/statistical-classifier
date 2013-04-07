@@ -93,6 +93,7 @@ class Config
         if (null === self::$classifierPath) {
             throw new RuntimeException('Classifier path has to be set before use');
         }
+
         return self::$classifierPath;
     }
     /**
@@ -112,6 +113,7 @@ class Config
         if (null === self::$runPath) {
             throw new RuntimeException('Run path has to be set before use');
         }
+
         return self::$runPath;
     }
     /**
