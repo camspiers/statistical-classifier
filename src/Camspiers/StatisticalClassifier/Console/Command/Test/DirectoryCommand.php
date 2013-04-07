@@ -57,8 +57,10 @@ class DirectoryCommand extends Command
             $output,
             $this->getClassifier($input),
             new Directory(
-                $input->getArgument('directory'),
-                $input->getOption('include')
+                array(
+                    'directory' => $input->getArgument('directory'),
+                    'include' => $input->getOption('include')
+                )
             )
         );
     }

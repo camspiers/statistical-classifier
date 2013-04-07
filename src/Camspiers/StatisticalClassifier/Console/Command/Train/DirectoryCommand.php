@@ -60,8 +60,10 @@ class DirectoryCommand extends Command
                 array(
                     $index->getDataSource(),
                     $directory = new Directory(
-                        $input->getArgument('directory'),
-                        $input->getOption('include')
+                        array(
+                            'directory' => $input->getArgument('directory'),
+                            'include' => $input->getOption('include')
+                        )
                     )
                 )
             )
