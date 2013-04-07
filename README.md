@@ -44,7 +44,7 @@ $ composer requre camspiers/statistical-classifier:~0.4
 ```bash
 $ composer create-project camspiers/statistical-classifier .
 $ ln -s $PWD/bin/classifier /usr/local/bin/classifier
-``
+```
 
 ## SVM Support
 
