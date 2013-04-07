@@ -1,7 +1,7 @@
 {
     "name": "camspiers/statistical-classifier",
-    "description": "A PHP implementation of a Naive Bayes statistical classifier, including a structure for building other classifier, multiple data sources and multiple caching backends",
-    "keywords": ["classifier", "naive", "bayes", "statistical", "tokenizer", "normalizer", "porter", "stemmer", "cache", "command-line"],
+    "description": "A PHP implementation of Complement Naive Bayes and SVM statistical classifiers, including a structure for building other classifier, multiple data sources and multiple caching backends",
+    "keywords": ["classifier", "svm", "naive", "bayes", "statistical", "tokenizer", "normalizer", "porter", "stemmer", "cache", "command-line"],
     "homepage": "http://php-classifier.com/",
     "type": "library",
     "license": "MIT",
