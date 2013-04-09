@@ -13,8 +13,10 @@ namespace Camspiers\StatisticalClassifier\Console\Command;
 
 use CacheCache\Cache;
 use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
+use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Index\CachedIndex;
 use Camspiers\StatisticalClassifier\Index\IndexInterface;
+use Camspiers\StatisticalClassifier\Index\SVMCachedIndex;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input;
 
@@ -56,7 +58,7 @@ abstract class Command extends BaseCommand
                 'c',
                 Input\InputOption::VALUE_OPTIONAL,
                 'Name of classifier',
-                'classifier.complement_naive_bayes'
+                'complement_naive_bayes'
             );
 
         return $this;
@@ -113,6 +115,19 @@ abstract class Command extends BaseCommand
         );
     }
     /**
+     * Get a SVMCachedIndex based of an index name and the Cache instance
+     * @param $name
+     * @return SVMCachedIndex
+     */
+    protected function getSVMCachedIndex($name)
+    {
+        return new SVMCachedIndex(
+            Config::getClassifierPath() . "/indexes/$name.svm",
+            $name,
+            $this->cache
+        );
+    }
+    /**
      * Return the dependency injection container fetching it off the app if it doesn't exist
      * @return Symfony\Component\DependencyInjection\ContainerInterface The container
      */
@@ -130,20 +145,29 @@ abstract class Command extends BaseCommand
      * @param  IndexInterface       $index Optional index to use in the classifier
      * @return ClassifierInterface  The built classifier
      */
-    protected function getClassifier(Input\InputInterface $input, IndexInterface $index = null)
+    protected function getClassifier(Input\InputInterface $input)
     {
         if (null === $this->classifier) {
             $container = $this->getContainer();
-            if (null === $index) {
-                $index = $this->getCachedIndex(
-                    $input->getArgument('index')
+            $classifier = 'classifier.' . $input->getOption('classifier');
+            if ($container->has($classifier)) {
+                if ($classifier == 'classifier.svm') {
+                    $index = $this->getSVMCachedIndex(
+                        $input->getArgument('index')
+                    );
+                } else {
+                    $index = $this->getCachedIndex(
+                        $input->getArgument('index')
+                    );
+                }
+                $container->set(
+                    'index.index',
+                    $index
                 );
+                $this->classifier = $container->get($classifier);
+            } else {
+                throw new \RuntimeException("Classifier '$classifier' doesn't exist");
             }
-            $container->set(
-                'index.index',
-                $index
-            );
-            $this->classifier = $container->get($input->getOption('classifier'));
         }
 
         return $this->classifier;

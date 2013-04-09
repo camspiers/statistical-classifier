@@ -21,6 +21,7 @@
         "camspiers/porter-stemmer": "~1.0",
         "camspiers/json-pretty": "~0.1",
         "psr/log": "~1.0",
+        "bin": ["bin/classifier"],
         "monolog/monolog": "~1.4",
         "react/http": "~0.2"
     },
@@ -30,7 +31,6 @@
     "autoload": {
         "psr-0": {"Camspiers\\StatisticalClassifier": "src/"}
     },
-    "bin": ["bin/classifier"],
     "extra": {
         "branch-alias": {
             "dev-master": "0.5.x-dev"

@@ -51,7 +51,8 @@ class Application extends BaseApplication
     public function getContainer()
     {
         if (null === $this->container) {
-            $this->container = Config::getOption('container_class');
+            $containerClass = Config::getOption('container_class');
+            $this->container = new $containerClass;
         }
 
         return $this->container;

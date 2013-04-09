@@ -54,7 +54,8 @@ class DirectoryCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $index = $this->getCachedIndex($input->getArgument('index'));
+        $classifier = $this->getClassifier($input);
+        $index = $classifier->getIndex();
         $index->setDataSource(
             $grouped = new Grouped(
                 array(
@@ -68,9 +69,10 @@ class DirectoryCommand extends Command
                 )
             )
         );
-        $index->preserve();
         if ($input->getOption('prepare')) {
-            $this->getClassifier($input, $index)->prepareIndex();
+            $classifier->prepareIndex();
+        } else {
+            $index->preserve();
         }
         $this->updateSummary(
             $output,

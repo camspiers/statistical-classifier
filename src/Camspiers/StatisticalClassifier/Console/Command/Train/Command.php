@@ -33,13 +33,13 @@ abstract class Command extends BaseCommand
         DataSourceInterface $changes,
         DataSourceInterface $current
     ) {
-        $changesCategoriesTotal = count($changes->getCategories());
-        $changesDocumentsTotal = count($changes->getData(), COUNT_RECURSIVE) - $changesCategoriesTotal;
+        $changesCatTotal = count($changes->getCategories());
+        $changesDocTotal = count($changes->getData());
         $categoriesTotal = count($current->getCategories());
-        $documentsTotal = count($current->getData(), COUNT_RECURSIVE) - $categoriesTotal;
+        $documentsTotal = count($current->getData());
         $output->writeLn(
             array(
-                "Added $changesDocumentsTotal documents from $changesCategoriesTotal categories",
+                "Added $changesDocTotal documents from $changesCatTotal categories",
                 "Index now contains $documentsTotal documents in $categoriesTotal categories"
             )
         );

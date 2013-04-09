@@ -36,6 +36,10 @@ class DataArray implements DataSourceInterface, Serializable
      */
     protected $data = array();
     /**
+     * @var array
+     */
+    protected $categories = array();
+    /**
      * Holds the config class that setData needs to conforms to
      * @var
      */
@@ -61,20 +65,14 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function getCategories()
     {
-        return array_keys($this->getData());
+        return $this->categories;
     }
     /**
      * @{inheritdoc}
      */
     public function hasCategory($category)
     {
-        foreach ($this->getData() as $document) {
-            if ($document['category'] === $category) {
-                return true;
-            }
-        }
-
-        return false;
+        return in_array($category, $this->categories);
     }
     /**
      * @{inheritdoc}
@@ -115,6 +113,11 @@ class DataArray implements DataSourceInterface, Serializable
                 $data
             )
         );
+        foreach ($this->data as $document) {
+            if (!in_array($document['category'], $this->categories)) {
+                $this->categories[] = $document['category'];
+            }
+        }
     }
 
     /**
