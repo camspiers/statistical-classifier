@@ -20,7 +20,7 @@ class StopwordTest extends \PHPUnit_Framework_TestCase
     {
         $this->stopword = null;
     }
-    
+
     public function testNormalize()
     {
         $this->assertEquals(

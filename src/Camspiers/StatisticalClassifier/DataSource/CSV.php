@@ -170,7 +170,7 @@ class CSV extends DataArray
      * @return array
      * @throws \RuntimeException
      */
-    public function checkColumns($columns)
+    protected function checkColumns($columns)
     {
         $neededColumns = $this->options['document_columns'];
         $neededColumns[] = $this->options['category_column'];
