@@ -24,10 +24,6 @@ class ComplementNaiveBayesTest extends \PHPUnit_Framework_TestCase
         $this->index = new Index;
         $this->rule = new ComplementNaiveBayes('test');
     }
-
-    /**
-     * @covers Camspiers\StatisticalClassifier\ClassificationRule\ComplementNaiveBayes::classify
-     */
     public function testClassify()
     {
         $this->index->setPartition(

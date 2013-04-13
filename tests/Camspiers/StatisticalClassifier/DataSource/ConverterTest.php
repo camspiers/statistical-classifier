@@ -7,9 +7,6 @@ namespace Camspiers\StatisticalClassifier\DataSource;
  */
 class ConverterTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\Converter::run
-     */
     public function testRun()
     {
         $data = array(

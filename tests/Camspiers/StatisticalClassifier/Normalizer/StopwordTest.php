@@ -20,10 +20,7 @@ class StopwordTest extends \PHPUnit_Framework_TestCase
     {
         $this->stopword = null;
     }
-
-    /**
-     * @covers Camspiers\StatisticalClassifier\Normalizer\Stopword::normalize
-     */
+    
     public function testNormalize()
     {
         $this->assertEquals(

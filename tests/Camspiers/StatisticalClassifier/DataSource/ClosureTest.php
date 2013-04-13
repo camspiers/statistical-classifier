@@ -45,9 +45,6 @@ class ClosureTest extends \PHPUnit_Framework_TestCase
         $this->object = null;
     }
 
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\Closure::read
-     */
     public function testRead()
     {
         $this->assertEquals(

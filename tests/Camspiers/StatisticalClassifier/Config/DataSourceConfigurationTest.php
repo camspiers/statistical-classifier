@@ -23,9 +23,6 @@ class DataSourceConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->config = null;
     }
 
-    /**
-     * @covers Camspiers\StatisticalClassifier\Config\DataSourceConfiguration::getConfigTreeBuilder
-     */
     public function testGetConfigTreeBuilder()
     {
         $result = $this->processor->processConfiguration(

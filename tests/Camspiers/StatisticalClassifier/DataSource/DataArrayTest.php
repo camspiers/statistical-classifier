@@ -33,9 +33,7 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::getCategories
-     */
+
     public function testGetCategories()
     {
         $this->assertEquals(
@@ -47,9 +45,6 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::hasCategory
-     */
     public function testHasCategory()
     {
         $this->assertTrue($this->object->hasCategory('test'));
@@ -57,9 +52,6 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->object->hasCategory('test3'));
     }
 
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::addDocument
-     */
     public function testAddDocument()
     {
         $this->object->addDocument('test', 'Another');
@@ -81,9 +73,7 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
             $this->object->getData()
         );
     }
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::getData
-     */
+
     public function testGetData()
     {
         $this->assertEquals(
@@ -95,16 +85,12 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException        RuntimeException
      * @expectedExceptionMessage This data source cannot be written
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::write
      */
     public function testWrite()
     {
         $this->object->write();
     }
 
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::serialize
-     */
     public function testSerialize()
     {
         $this->assertEquals(
@@ -116,7 +102,6 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends testSerialize
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::unserialize
      */
     public function testUnserialize($data)
     {
