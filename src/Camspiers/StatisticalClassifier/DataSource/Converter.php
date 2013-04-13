@@ -21,21 +21,21 @@ class Converter
      * The source to convert from
      * @var DataSourceInterface
      */
-    private $from;
+    private $convertFrom;
     /**
      * The source to convert to
      * @var DataSourceInterface
      */
-    private $to;
+    private $convertTo;
     /**
      * Creates the converter using to data sources
-     * @param DataSourceInterface $from The source to convert from
-     * @param DataSourceInterface $to   Teh source to convert to
+     * @param DataSourceInterface $convertFrom
+     * @param DataSourceInterface $convertTo
      */
-    public function __construct(DataSourceInterface $from, DataSourceInterface $to)
+    public function __construct(DataSourceInterface $convertFrom, DataSourceInterface $convertTo)
     {
-        $this->from = $from;
-        $this->to = $to;
+        $this->convertFrom = $convertFrom;
+        $this->convertTo = $convertTo;
     }
     /**
      * run the conversion
@@ -43,7 +43,7 @@ class Converter
      */
     public function run()
     {
-        $this->to->setData($this->from->getData());
-        $this->to->write();
+        $this->convertTo->setData($this->convertFrom->getData());
+        $this->convertTo->write();
     }
 }

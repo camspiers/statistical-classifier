@@ -33,6 +33,6 @@ class Closure extends DataArray
      */
     public function read()
     {
-        return $this->closure();
+        return $this->closure->__invoke();
     }
 }
