@@ -21,13 +21,13 @@
         "camspiers/porter-stemmer": "~1.0",
         "camspiers/json-pretty": "~0.1",
         "psr/log": "~1.0",
-        "bin": ["bin/classifier"],
         "monolog/monolog": "~1.4",
         "react/http": "~0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7"
     },
+    "bin": ["bin/classifier"],
     "autoload": {
         "psr-0": {"Camspiers\\StatisticalClassifier": "src/"}
     },
