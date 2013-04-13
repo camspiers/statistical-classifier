@@ -7,126 +7,123 @@ namespace Camspiers\StatisticalClassifier\DataSource;
 class DataArrayTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @var
+     */
+    protected $object;
+    /**
+     * @var
+     */
+    protected $data;
+    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp()
     {
+        $this->object = new DataArray(
+            $this->data = array(
+                array(
+                    'category' => 'test',
+                    'document' => 'Test'
+                ),
+                array(
+                    'category' => 'test2',
+                    'document' => 'Test'
+                )
+            )
+        );
     }
-
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-    }
-
     /**
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::getCategories
-     * @todo   Implement testGetCategories().
      */
     public function testGetCategories()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            array(
+                'test',
+                'test2'
+            ),
+            $this->object->getCategories()
         );
     }
 
     /**
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::hasCategory
-     * @todo   Implement testHasCategory().
      */
     public function testHasCategory()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::addCategory
-     * @todo   Implement testAddCategory().
-     */
-    public function testAddCategory()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertTrue($this->object->hasCategory('test'));
+        $this->assertTrue($this->object->hasCategory('test2'));
+        $this->assertFalse($this->object->hasCategory('test3'));
     }
 
     /**
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::addDocument
-     * @todo   Implement testAddDocument().
      */
     public function testAddDocument()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->object->addDocument('test', 'Another');
+        $this->assertEquals(
+            array(
+                array(
+                    'document' => 'Test',
+                    'category' => 'test'
+                ),
+                array(
+                    'document' => 'Test',
+                    'category' => 'test2'
+                ),
+                array(
+                    'document' => 'Another',
+                    'category' => 'test'
+                )
+            ),
+            $this->object->getData()
         );
     }
-
-    /**
-     * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::read
-     * @todo   Implement testRead().
-     */
-    public function testRead()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
     /**
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::getData
-     * @todo   Implement testGetData().
      */
     public function testGetData()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            $this->data,
+            $this->object->getData()
         );
     }
 
     /**
+     * @expectedException        RuntimeException
+     * @expectedExceptionMessage This data source cannot be written
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::write
-     * @todo   Implement testWrite().
      */
     public function testWrite()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->object->write();
     }
 
     /**
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::serialize
-     * @todo   Implement testSerialize().
      */
     public function testSerialize()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            serialize($this->data),
+            $serialize = $this->object->serialize()
         );
+        return $serialize;
     }
 
     /**
+     * @depends testSerialize
      * @covers Camspiers\StatisticalClassifier\DataSource\DataArray::unserialize
-     * @todo   Implement testUnserialize().
      */
-    public function testUnserialize()
+    public function testUnserialize($data)
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->object->unserialize($data);
+        $this->assertEquals(
+            $this->data,
+            $this->object->getData()
         );
     }
 }

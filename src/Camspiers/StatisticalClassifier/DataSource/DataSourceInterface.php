@@ -23,11 +23,6 @@ interface DataSourceInterface
      */
     public function write();
     /**
-     * Read the data source
-     * @return array The data
-     */
-    public function read();
-    /**
      * Get the data
      * @return array The data
      */

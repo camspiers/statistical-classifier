@@ -87,7 +87,7 @@ class DataArray implements DataSourceInterface, Serializable
     /**
      * @{inheritdoc}
      */
-    public function read()
+    protected function read()
     {
         return $this->data;
     }
@@ -163,12 +163,11 @@ class DataArray implements DataSourceInterface, Serializable
 
         return $this->config;
     }
-
     /**
      * Sets the processor for the config
      * @param Processor $processor
      */
-    public function setProcessor(Processor $processor)
+    protected function setProcessor(Processor $processor)
     {
         $this->processor = $processor;
     }
@@ -176,7 +175,7 @@ class DataArray implements DataSourceInterface, Serializable
      * Gets the processor
      * @return mixed
      */
-    public function getProcessor()
+    protected function getProcessor()
     {
         if (null === $this->processor) {
             $this->setProcessor(new Processor());
