@@ -1,4 +1,5 @@
 <?php
+
 namespace Camspiers\StatisticalClassifier\DataSource;
 
 /**
@@ -7,30 +8,35 @@ namespace Camspiers\StatisticalClassifier\DataSource;
 class ConverterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp()
-    {
-    }
-
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-    }
-
-    /**
      * @covers Camspiers\StatisticalClassifier\DataSource\Converter::run
-     * @todo   Implement testRun().
      */
     public function testRun()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $data = array(
+            array(
+                'document' => 'Test',
+                'category' => 'Test'
+            )
         );
+
+        $convertTo = $this->getMock(
+            __NAMESPACE__ . '\\DataSourceInterface'
+        );
+
+        $convertTo->expects($this->once())
+            ->method('setData')
+            ->with($this->equalTo($data));
+
+        $convertTo->expects($this->once())
+            ->method('write');
+
+        $converter = new Converter(
+            new DataArray(
+                $data
+            ),
+            $convertTo
+        );
+
+        $converter->run();
     }
 }
