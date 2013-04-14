@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \StatisticalClassifierServiceContainer</title>
+<title>PHP Classifier » \StatisticalClassifierServiceContainer</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,13 +15,16 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHP Statistical Classifier</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHP Classifier</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
 <li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Camspiers.html"><i class="icon-folder-open"></i> Camspiers</a></li>
+<li><a href="../packages/Statistical%20Classifier.html"><i class="icon-folder-open"></i> Statistical Classifier</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,7 +35,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">161</span></a></li>
+                <span class="label label-info">183</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -69,6 +72,7 @@
 <li class="method protected "><a href="#method_getCacheService" title="getCacheService :: Gets the 'cache' service."><span class="description">Gets the 'cache' service.</span><pre>getCacheService()</pre></a></li>
 <li class="method protected "><a href="#method_getCache_BackendService" title="getCache_BackendService :: Gets the 'cache.backend' service."><span class="description">Gets the 'cache.backend' service.</span><pre>getCache_BackendService()</pre></a></li>
 <li class="method protected "><a href="#method_getClassifier_ComplementNaiveBayesService" title="getClassifier_ComplementNaiveBayesService :: Gets the 'classifier.complement_naive_bayes' service."><span class="description">Gets the 'classifier.complement_naive_bayes' service.</span><pre>getClassifier_ComplementNaiveBayesService()</pre></a></li>
+<li class="method protected "><a href="#method_getClassifier_SvmService" title="getClassifier_SvmService :: Gets the 'classifier.svm' service."><span class="description">Gets the 'classifier.svm' service.</span><pre>getClassifier_SvmService()</pre></a></li>
 <li class="method protected "><a href="#method_getConsole_ApplicationService" title="getConsole_ApplicationService :: Gets the 'console.application' service."><span class="description">Gets the 'console.application' service.</span><pre>getConsole_ApplicationService()</pre></a></li>
 <li class="method protected "><a href="#method_getConsole_Command_ClassifyService" title="getConsole_Command_ClassifyService :: Gets the 'console.command.classify' service."><span class="description">Gets the 'console.command.classify' service.</span><pre>getConsole_Command_ClassifyService()</pre></a></li>
 <li class="method protected "><a href="#method_getConsole_Command_Config_CreateService" title="getConsole_Command_Config_CreateService :: Gets the 'console.command.config.create' service."><span class="description">Gets the 'console.command.config.create' service.</span><pre>getConsole_Command_Config_CreateService()</pre></a></li>
@@ -97,6 +101,7 @@
 <li class="method protected "><a href="#method_getNormalizer_StopwordLowercasePorterService" title="getNormalizer_StopwordLowercasePorterService :: Gets the 'normalizer.stopword_lowercase_porter' service."><span class="description">Gets the 'normalizer.stopword_lowercase_porter' service.</span><pre>getNormalizer_StopwordLowercasePorterService()</pre></a></li>
 <li class="method protected "><a href="#method_getNormalizer_StopwordLowercaseService" title="getNormalizer_StopwordLowercaseService :: Gets the 'normalizer.stopword_lowercase' service."><span class="description">Gets the 'normalizer.stopword_lowercase' service.</span><pre>getNormalizer_StopwordLowercaseService()</pre></a></li>
 <li class="method protected "><a href="#method_getNormalizer_StopwordService" title="getNormalizer_StopwordService :: Gets the 'normalizer.stopword' service."><span class="description">Gets the 'normalizer.stopword' service.</span><pre>getNormalizer_StopwordService()</pre></a></li>
+<li class="method protected "><a href="#method_getSvmService" title="getSvmService :: Gets the 'svm' service."><span class="description">Gets the 'svm' service.</span><pre>getSvmService()</pre></a></li>
 <li class="method protected "><a href="#method_getTokenizer_WordService" title="getTokenizer_WordService :: Gets the 'tokenizer.word' service."><span class="description">Gets the 'tokenizer.word' service.</span><pre>getTokenizer_WordService()</pre></a></li>
 </ul>
 </li>
@@ -196,6 +201,18 @@ This method always returns the same instance of the service.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html">\Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes</a></code>A Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes instance.</div>
+</div></div>
+</div>
+<a id="method_getClassifier_SvmService"></a><div class="element clickable method protected method_getClassifier_SvmService" data-toggle="collapse" data-target=".method_getClassifier_SvmService .collapse">
+<h2>Gets the 'classifier.svm' service.</h2>
+<pre>getClassifier_SvmService() : <a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">\Camspiers\StatisticalClassifier\Classifier\SVM</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">\Camspiers\StatisticalClassifier\Classifier\SVM</a></code>A Camspiers\StatisticalClassifier\Classifier\SVM instance.</div>
 </div></div>
 </div>
 <a id="method_getConsole_ApplicationService"></a><div class="element clickable method protected method_getConsole_ApplicationService" data-toggle="collapse" data-target=".method_getConsole_ApplicationService .collapse">
@@ -539,6 +556,18 @@ This method always returns the same instance of the service.</p></div>
 <code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">\Camspiers\StatisticalClassifier\Normalizer\Stopword</a></code>A Camspiers\StatisticalClassifier\Normalizer\Stopword instance.</div>
 </div></div>
 </div>
+<a id="method_getSvmService"></a><div class="element clickable method protected method_getSvmService" data-toggle="collapse" data-target=".method_getSvmService .collapse">
+<h2>Gets the 'svm' service.</h2>
+<pre>getSvmService() : \SVM</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\SVM</code>A SVM instance.</div>
+</div></div>
+</div>
 <a id="method_getTokenizer_WordService"></a><div class="element clickable method protected method_getTokenizer_WordService" data-toggle="collapse" data-target=".method_getTokenizer_WordService .collapse">
 <h2>Gets the 'tokenizer.word' service.</h2>
 <pre>getTokenizer_WordService() : <a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html">\Camspiers\StatisticalClassifier\Tokenizer\Word</a></pre>
@@ -558,7 +587,7 @@ This method always returns the same instance of the service.</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-02T12:58:53+13:00.<br></footer></div>
+            generated on 2013-04-14T18:12:52+12:00.<br></footer></div>
 </div>
 </body>
 </html>
