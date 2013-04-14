@@ -123,6 +123,8 @@ class Compiler
         $this->addFile($phar, new \SplFileInfo(__DIR__.'/../../../LICENSE'), false);
 
         unset($phar);
+
+        file_put_contents('classifier.phar.version', trim($this->version));
     }
 
     private function addFile($phar, $file)
