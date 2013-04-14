@@ -125,22 +125,16 @@ class Compiler
         unset($phar);
     }
 
-    private function addFile($phar, $file, $strip = true)
+    private function addFile($phar, $file)
     {
         $path = str_replace(dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR, '', $file->getRealPath());
-        echo $path, PHP_EOL;
 
-        $content = file_get_contents($file);
-        if ($strip) {
-            $content = $this->stripWhitespace($content);
-        } elseif ('LICENSE' === basename($file)) {
-            $content = "\n".$content."\n";
-        }
-
+        $content = php_strip_whitespace($file);
         $content = str_replace('~package_version~', $this->version, $content);
         $content = str_replace(realpath(__DIR__ . '/../../../'), '.', $content);
 
         $phar->addFromString($path, $content);
+        $phar[$path]->compress(\Phar::GZ);
     }
 
     private function addClassifierBin($phar)

@@ -90,9 +90,9 @@ class StartCommand extends Command
             $input->getOption('host')
         );
 
-        $loop->run();
+        $output->writeln('Server started at ' . $input->getOption('host') . ':' . $input->getOption('port'));
 
-        $output->writeln('Server started');
+        $loop->run();
 
     }
     /**
