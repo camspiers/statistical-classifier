@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cd statistical-classifier
+git fetch --all
+git reset --hard origin/master
+phpdoc -d src/ -t ../docs/ --title="PHP Classifier" --defaultpackagename="Statistical Classifier"

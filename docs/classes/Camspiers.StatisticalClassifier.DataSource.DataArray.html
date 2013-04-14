@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier » \Camspiers\StatisticalClassifier\DataSource\DataArray</title>
+<title>PHP Classifier » \Camspiers\StatisticalClassifier\DataSource\DataArray</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -15,13 +15,15 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHP Statistical Classifier</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHP Classifier</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
-<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Camspiers.html"><i class="icon-folder-open"></i> Camspiers</a></li>
+<li><a href="../packages/Statistical%20Classifier.html"><i class="icon-folder-open"></i> Statistical Classifier</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">161</span></a></li>
+                <span class="label label-info">178</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -60,21 +62,23 @@
 <li class="method public "><a href="#method___construct" title="__construct :: Creates the data array"><span class="description">Creates the data array</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#method_addDocument" title="addDocument :: Adds a document by category to the data"><span class="description">Adds a document by category to the data</span><pre>addDocument()</pre></a></li>
 <li class="method public "><a href="#method_getCategories" title="getCategories :: Returns the categories of the data"><span class="description">Returns the categories of the data</span><pre>getCategories()</pre></a></li>
-<li class="method public "><a href="#method_getConfig" title="getConfig :: "><span class="description">getConfig()
-        </span><pre>getConfig()</pre></a></li>
+<li class="method public "><a href="#method_getConfig" title="getConfig :: Return the config for the data"><span class="description">Return the config for the data</span><pre>getConfig()</pre></a></li>
 <li class="method public "><a href="#method_getData" title="getData :: Get the data"><span class="description">Get the data</span><pre>getData()</pre></a></li>
-<li class="method public "><a href="#method_getProcessor" title="getProcessor :: "><span class="description">getProcessor()
-        </span><pre>getProcessor()</pre></a></li>
 <li class="method public "><a href="#method_hasCategory" title="hasCategory :: Returnnes whether or not the data has a category"><span class="description">Returnnes whether or not the data has a category</span><pre>hasCategory()</pre></a></li>
-<li class="method public "><a href="#method_read" title="read :: Read the data source"><span class="description">Read the data source</span><pre>read()</pre></a></li>
 <li class="method public "><a href="#method_serialize" title="serialize :: Serialize the class"><span class="description">Serialize the class</span><pre>serialize()</pre></a></li>
 <li class="method public "><a href="#method_setConfig" title="setConfig :: "><span class="description">setConfig()
         </span><pre>setConfig()</pre></a></li>
 <li class="method public "><a href="#method_setData" title="setData :: Set data to the data source"><span class="description">Set data to the data source</span><pre>setData()</pre></a></li>
-<li class="method public "><a href="#method_setProcessor" title="setProcessor :: "><span class="description">setProcessor()
-        </span><pre>setProcessor()</pre></a></li>
 <li class="method public "><a href="#method_unserialize" title="unserialize :: Restore the serialized class"><span class="description">Restore the serialized class</span><pre>unserialize()</pre></a></li>
 <li class="method public "><a href="#method_write" title="write :: Write the data source if possible"><span class="description">Write the data source if possible</span><pre>write()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_getProcessor" title="getProcessor :: Gets the processor"><span class="description">Gets the processor</span><pre>getProcessor()</pre></a></li>
+<li class="method protected "><a href="#method_read" title="read :: "><span class="description">read()
+        </span><pre>read()</pre></a></li>
+<li class="method protected "><a href="#method_setProcessor" title="setProcessor :: Sets the processor for the config"><span class="description">Sets the processor for the config</span><pre>setProcessor()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -83,9 +87,10 @@
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected "><a href="#property_config" title="$config :: "><span class="description"></span><pre>$config</pre></a></li>
+<li class="property protected "><a href="#property_categories" title="$categories :: "><span class="description"></span><pre>$categories</pre></a></li>
+<li class="property protected "><a href="#property_config" title="$config :: Holds the config class that setData needs to conforms to"><span class="description"></span><pre>$config</pre></a></li>
 <li class="property protected "><a href="#property_data" title="$data :: An array to hold the sources data"><span class="description"></span><pre>$data</pre></a></li>
-<li class="property protected "><a href="#property_processor" title="$processor :: "><span class="description"></span><pre>$processor</pre></a></li>
+<li class="property protected "><a href="#property_processor" title="$processor :: Processes the data with the config"><span class="description"></span><pre>$processor</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -161,11 +166,14 @@
 </div></div>
 </div>
 <a id="method_getConfig"></a><div class="element clickable method public method_getConfig" data-toggle="collapse" data-target=".method_getConfig .collapse">
-<h2>getConfig()
-        </h2>
-<pre>getConfig() </pre>
+<h2>Return the config for the data</h2>
+<pre>getConfig() : mixed</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
 </div>
 <a id="method_getData"></a><div class="element clickable method public method_getData" data-toggle="collapse" data-target=".method_getData .collapse">
 <h2>Get the data</h2>
@@ -177,13 +185,6 @@
 <div class="subelement response">
 <code>array</code>The data</div>
 </div></div>
-</div>
-<a id="method_getProcessor"></a><div class="element clickable method public method_getProcessor" data-toggle="collapse" data-target=".method_getProcessor .collapse">
-<h2>getProcessor()
-        </h2>
-<pre>getProcessor() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_hasCategory"></a><div class="element clickable method public method_hasCategory" data-toggle="collapse" data-target=".method_hasCategory .collapse">
 <h2>Returnnes whether or not the data has a category</h2>
@@ -198,17 +199,6 @@
 <h3>Returns</h3>
 <div class="subelement response">
 <code>boolean</code>[description]</div>
-</div></div>
-</div>
-<a id="method_read"></a><div class="element clickable method public method_read" data-toggle="collapse" data-target=".method_read .collapse">
-<h2>Read the data source</h2>
-<pre>read() : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>The data</div>
 </div></div>
 </div>
 <a id="method_serialize"></a><div class="element clickable method public method_serialize" data-toggle="collapse" data-target=".method_serialize .collapse">
@@ -230,7 +220,10 @@
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$config</h4></div>
+<div class="subelement argument">
+<h4>$config</h4>
+<code><a href="../classes/Camspiers.StatisticalClassifier.Config.DataSourceConfiguration.html">\Camspiers\StatisticalClassifier\Config\DataSourceConfiguration</a></code>
+</div>
 </div></div>
 </div>
 <a id="method_setData"></a><div class="element clickable method public method_setData" data-toggle="collapse" data-target=".method_setData .collapse">
@@ -246,17 +239,6 @@
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>null</code></div>
-</div></div>
-</div>
-<a id="method_setProcessor"></a><div class="element clickable method public method_setProcessor" data-toggle="collapse" data-target=".method_setProcessor .collapse">
-<h2>setProcessor()
-        </h2>
-<pre>setProcessor(\Symfony\Component\Config\Definition\Processor $processor) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$processor</h4></div>
 </div></div>
 </div>
 <a id="method_unserialize"></a><div class="element clickable method public method_unserialize" data-toggle="collapse" data-target=".method_unserialize .collapse">
@@ -283,11 +265,47 @@
 <div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
+<a id="method_getProcessor"></a><div class="element clickable method protected method_getProcessor" data-toggle="collapse" data-target=".method_getProcessor .collapse">
+<h2>Gets the processor</h2>
+<pre>getProcessor() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_read"></a><div class="element clickable method protected method_read" data-toggle="collapse" data-target=".method_read .collapse">
+<h2>read()
+        </h2>
+<pre>read() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_setProcessor"></a><div class="element clickable method protected method_setProcessor" data-toggle="collapse" data-target=".method_setProcessor .collapse">
+<h2>Sets the processor for the config</h2>
+<pre>setProcessor(\Symfony\Component\Config\Definition\Processor $processor) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$processor</h4>
+<code>\Symfony\Component\Config\Definition\Processor</code>
+</div>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_categories"> </a><div class="element clickable property protected property_categories" data-toggle="collapse" data-target=".property_categories .collapse">
+<h2></h2>
+<pre>$categories : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="property_config"> </a><div class="element clickable property protected property_config" data-toggle="collapse" data-target=".property_config .collapse">
 <h2></h2>
-<pre>$config </pre>
+<pre>$config : </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -297,14 +315,15 @@
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"><p>Should be in the form:
 array(
-    'category' => array(
-        'Some document'
+    array(
+        'category' => 'somecategory',
+        'document' => 'Some document'
     )
 )</p></div></div></div>
 </div>
 <a id="property_processor"> </a><div class="element clickable property protected property_processor" data-toggle="collapse" data-target=".property_processor .collapse">
 <h2></h2>
-<pre>$processor </pre>
+<pre>$processor : </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -315,7 +334,7 @@ array(
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-02T12:58:53+13:00.<br></footer></div>
+            generated on 2013-04-14T12:21:12+12:00.<br></footer></div>
 </div>
 </body>
 </html>

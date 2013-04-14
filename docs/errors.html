@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Statistical Classifier</title>
+<title>PHP Classifier</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="css/template.css" rel="stylesheet" media="all">
@@ -15,13 +15,15 @@
 <body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">PHP Statistical Classifier</a><div class="nav-collapse"><ul class="nav">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">PHP Classifier</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Namespaces</a></li>
 <li><a href="namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
-<li><a href="namespaces/global.html"><i class="icon-th"></i> global</a></li>
+<li><a>Packages</a></li>
+<li><a href="packages/Camspiers.html"><i class="icon-folder-open"></i> Camspiers</a></li>
+<li><a href="packages/Statistical%20Classifier.html"><i class="icon-folder-open"></i> Statistical Classifier</a></li>
 </ul>
 </li>
 <li class="dropdown" id="charts-menu">
@@ -32,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">161</span></a></li>
+                <span class="label label-info">178</span></a></li>
 <li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -56,7 +58,10 @@
 </div></li>
 <li class="nav-header">Navigation</li>
 <li><a href="#bootstrap.php"><i class="icon-file"></i>bootstrap.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/ClassificationRule/SVM.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/ClassificationRule/SVM.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Classifier/GenericClassifier.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/Classifier/SVM.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Classifier/SVM.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/Compiler.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Compiler.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Config/Config.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/Config.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/DataSourceConfiguration.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Config/StatisticalClassifierConfig.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/StatisticalClassifierConfig.php</a></li>
@@ -79,24 +84,25 @@
 <li><a href="#Camspiers/StatisticalClassifier/Console/Command/Train/DirectoryCommand.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Train/DirectoryCommand.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Console/Command/Train/DocumentCommand.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Train/DocumentCommand.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Console/Command/Train/PDOCommand.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Train/PDOCommand.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/DataSource/Closure.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Closure.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Converter.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Converter.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/DataSource/CSV.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/CSV.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/DataArray.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/DataArray.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Directory.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Directory.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Grouped.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Grouped.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Json.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Json.php</a></li>
-<li><a href="#Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/PDOQuery.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/PDOQuery.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DataSource/Serialized.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Serialized.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DependencyInjection/CommandCompilerPass.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DependencyInjection/CommandCompilerPass.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/DependencyInjection/StatisticalClassifierExtension.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/DependencyInjection/StatisticalClassifierExtension.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Index/CachedIndex.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Index/CachedIndex.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Index/Index.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Index/Index.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/Index/SVMCachedIndex.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Index/SVMCachedIndex.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Loader/JsonConfigLoader.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Loader/JsonConfigLoader.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Grouped.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Grouped.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Lowercase.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Lowercase.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Porter.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Porter.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Normalizer/Stopword.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Normalizer/Stopword.php</a></li>
-<li><a href="#Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Tokenizer/Word.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Tokenizer/Word.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/Complement.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/Complement.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/DC.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/DC.php</a></li>
@@ -105,6 +111,7 @@
 <li><a href="#Camspiers/StatisticalClassifier/Transform/DocumentTokenSums.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/DocumentTokenSums.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/IDF.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/IDF.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/Prune.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/Prune.php</a></li>
+<li><a href="#Camspiers/StatisticalClassifier/Transform/SVM.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/SVM.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/TAC.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/TAC.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/TBC.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/TBC.php</a></li>
 <li><a href="#Camspiers/StatisticalClassifier/Transform/TCBD.php"><i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/TCBD.php</a></li>
@@ -140,6 +147,23 @@
 </div>
 <div class="package-contents"></div>
 <div class="package-contents"></div>
+<div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/ClassificationRule/SVM.php" id="Camspiers/StatisticalClassifier/ClassificationRule/SVM.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/ClassificationRule/SVM.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\ClassificationRule\SVM</td>
+</tr></tbody>
+</table></div>
+</div>
 <div class="package-contents"></div>
 <div class="package-contents"></div>
 <div class="package-contents">
@@ -187,6 +211,69 @@
 </table></div>
 </div>
 <div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/Classifier/SVM.php" id="Camspiers/StatisticalClassifier/Classifier/SVM.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Classifier/SVM.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>22</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Classifier\SVM</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No short description for method __construct()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/Compiler.php" id="Camspiers/StatisticalClassifier/Compiler.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Compiler.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>20</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\Compiler</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>26</td>
+<td>No short description for property $version</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>128</td>
+<td>No DocBlock was found for method addFile()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>146</td>
+<td>No DocBlock was found for method addClassifierBin()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>187</td>
+<td>No DocBlock was found for method getStub()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Config/Config.php" id="Camspiers/StatisticalClassifier/Config/Config.php"></a><h3>
 <i class="icon-file"></i>Camspiers/StatisticalClassifier/Config/Config.php<small style="float: right;padding-right: 10px;">10</small>
 </h3>
@@ -229,22 +316,22 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>98</td>
+<td>99</td>
 <td>No short description for method setRunPath()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>106</td>
+<td>107</td>
 <td>No short description for method getRunPath()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>117</td>
+<td>119</td>
 <td>No short description for method getOptionPath()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>125</td>
+<td>127</td>
 <td>No short description for method getPath()</td>
 </tr>
 </tbody>
@@ -320,7 +407,7 @@
 </div>
 <div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Console/Command/Command.php" id="Camspiers/StatisticalClassifier/Console/Command/Command.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Command.php<small style="float: right;padding-right: 10px;">1</small>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Console/Command/Command.php<small style="float: right;padding-right: 10px;">2</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -328,11 +415,18 @@
 <th>Line</th>
 <th>Description</th>
 </tr></thead>
-<tbody><tr class="critical">
+<tbody>
+<tr class="critical">
 <td>critical</td>
-<td>21</td>
+<td>23</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Command</td>
-</tr></tbody>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>142</td>
+<td>Parameter $index could not be found in getClassifier()</td>
+</tr>
+</tbody>
 </table></div>
 </div>
 <div class="package-contents">
@@ -614,7 +708,7 @@
 </tr></thead>
 <tbody><tr class="critical">
 <td>critical</td>
-<td>18</td>
+<td>17</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</td>
 </tr></tbody>
 </table></div>
@@ -637,6 +731,45 @@
 </table></div>
 </div>
 <div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/DataSource/Closure.php" id="Camspiers/StatisticalClassifier/DataSource/Closure.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Closure.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Closure</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>20</td>
+<td>No short description for property $closure</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No short description for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $closure in __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>34</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/DataSource/Converter.php" id="Camspiers/StatisticalClassifier/DataSource/Converter.php"></a><h3>
 <i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/Converter.php<small style="float: right;padding-right: 10px;">1</small>
 </h3>
@@ -654,8 +787,52 @@
 </table></div>
 </div>
 <div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/DataSource/CSV.php" id="Camspiers/StatisticalClassifier/DataSource/CSV.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/CSV.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \Camspiers\StatisticalClassifier\DataSource\CSV</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>88</td>
+<td>No DocBlock was found for method read()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>140</td>
+<td>No short description for method readColumns()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>168</td>
+<td>No short description for method checkColumns()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>183</td>
+<td>No short description for method readLine()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>200</td>
+<td>No DocBlock was found for method write()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/DataSource/DataArray.php" id="Camspiers/StatisticalClassifier/DataSource/DataArray.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/DataArray.php<small style="float: right;padding-right: 10px;">14</small>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/DataArray.php<small style="float: right;padding-right: 10px;">10</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -669,70 +846,50 @@
 <td>19</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\DataSource\DataArray</td>
 </tr>
-<tr class="error">
-<td>error</td>
+<tr class="critical">
+<td>critical</td>
 <td>38</td>
-<td>No DocBlock was found for property $config</td>
+<td>No short description for property $categories</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>39</td>
-<td>No DocBlock was found for property $processor</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>54</td>
+<td>66</td>
 <td>No DocBlock was found for method getCategories()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>61</td>
+<td>73</td>
 <td>No DocBlock was found for method hasCategory()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>73</td>
+<td>80</td>
 <td>No DocBlock was found for method addDocument()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>83</td>
+<td>90</td>
 <td>No DocBlock was found for method read()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>90</td>
+<td>97</td>
 <td>No DocBlock was found for method getData()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>101</td>
+<td>108</td>
 <td>No DocBlock was found for method setData()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>114</td>
+<td>126</td>
 <td>No DocBlock was found for method write()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>136</td>
-<td>No DocBlock was found for method setConfig()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>141</td>
-<td>No DocBlock was found for method getConfig()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>149</td>
-<td>No DocBlock was found for method setProcessor()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>154</td>
-<td>No DocBlock was found for method getProcessor()</td>
+<td>147</td>
+<td>No short description for method setConfig()</td>
 </tr>
 </tbody>
 </table></div>
@@ -751,17 +908,17 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>14</td>
+<td>17</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\DataSource\Directory</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>46</td>
+<td>86</td>
 <td>No DocBlock was found for method read()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>73</td>
+<td>133</td>
 <td>No DocBlock was found for method write()</td>
 </tr>
 </tbody>
@@ -816,30 +973,6 @@
 <td>error</td>
 <td>50</td>
 <td>No DocBlock was found for method write()</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="package-contents">
-<a name="Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php" id="Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php<small style="float: right;padding-right: 10px;">2</small>
-</h3>
-<div><table class="table markers table-bordered">
-<thead><tr>
-<th>Type</th>
-<th>Line</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="error">
-<td>error</td>
-<td>0</td>
-<td>No page-level DocBlock was found in file Camspiers/StatisticalClassifier/DataSource/MySQLiQuery.php</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>8</td>
-<td>No DocBlock was found for \Camspiers\StatisticalClassifier\DataSource\MysqliQuery</td>
 </tr>
 </tbody>
 </table></div>
@@ -1009,6 +1142,35 @@
 </div>
 <div class="package-contents"></div>
 <div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/Index/SVMCachedIndex.php" id="Camspiers/StatisticalClassifier/Index/SVMCachedIndex.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Index/SVMCachedIndex.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file Camspiers/StatisticalClassifier/Index/SVMCachedIndex.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>8</td>
+<td>No DocBlock was found for \Camspiers\StatisticalClassifier\Index\SVMCachedIndex</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>10</td>
+<td>No short description for method __construct()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
 <a name="Camspiers/StatisticalClassifier/Loader/JsonConfigLoader.php" id="Camspiers/StatisticalClassifier/Loader/JsonConfigLoader.php"></a><h3>
 <i class="icon-file"></i>Camspiers/StatisticalClassifier/Loader/JsonConfigLoader.php<small style="float: right;padding-right: 10px;">3</small>
 </h3>
@@ -1099,12 +1261,12 @@
 <tbody>
 <tr class="critical">
 <td>critical</td>
-<td>17</td>
+<td>16</td>
 <td>No short description for class \Camspiers\StatisticalClassifier\Normalizer\Porter</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>23</td>
+<td>22</td>
 <td>Argument $tokens is missing from the Docblock of normalize()</td>
 </tr>
 </tbody>
@@ -1130,45 +1292,6 @@
 <td>error</td>
 <td>33</td>
 <td>Argument $tokens is missing from the Docblock of normalize()</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div class="package-contents">
-<a name="Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php" id="Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php"></a><h3>
-<i class="icon-file"></i>Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php<small style="float: right;padding-right: 10px;">5</small>
-</h3>
-<div><table class="table markers table-bordered">
-<thead><tr>
-<th>Type</th>
-<th>Line</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="error">
-<td>error</td>
-<td>0</td>
-<td>No page-level DocBlock was found in file Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>502</td>
-<td>Argument $name is missing from the Docblock of getParameter()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>516</td>
-<td>Argument $name is missing from the Docblock of hasParameter()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>526</td>
-<td>Argument $name is missing from the Docblock of setParameter()</td>
-</tr>
-<tr class="error">
-<td>error</td>
-<td>526</td>
-<td>Argument $value is missing from the Docblock of setParameter()</td>
 </tr>
 </tbody>
 </table></div>
@@ -1432,6 +1555,45 @@
 <td>error</td>
 <td>31</td>
 <td>No DocBlock was found for method apply()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="Camspiers/StatisticalClassifier/Transform/SVM.php" id="Camspiers/StatisticalClassifier/Transform/SVM.php"></a><h3>
+<i class="icon-file"></i>Camspiers/StatisticalClassifier/Transform/SVM.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file Camspiers/StatisticalClassifier/Transform/SVM.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>25</td>
+<td>No short description for property $svm</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>29</td>
+<td>No short description for property $dataPartitionName</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No short description for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>42</td>
+<td>No short description for method apply()</td>
 </tr>
 </tbody>
 </table></div>
@@ -1702,7 +1864,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-02T12:58:53+13:00.<br></footer></div>
+            generated on 2013-04-14T12:21:12+12:00.<br></footer></div>
 </div>
 </body>
 </html>
