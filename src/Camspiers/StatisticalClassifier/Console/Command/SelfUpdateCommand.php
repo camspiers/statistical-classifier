@@ -42,7 +42,7 @@ class SelfUpdateCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $url = "http://php-classifier/classifier.phar";
+        $url = "http://php-classifier.com/classifier.phar";
         $version = $this->getApplication()->getVersion();
 
         if ($version === '~package_version~') {
