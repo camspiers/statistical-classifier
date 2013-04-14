@@ -1,4 +1,5 @@
-vendor
-.settings
-.idea
-src/Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php
+/classifier.phar
+/vendor
+/.settings
+/.idea
+/src/Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php
