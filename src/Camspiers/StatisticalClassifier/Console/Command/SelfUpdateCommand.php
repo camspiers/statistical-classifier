@@ -43,7 +43,7 @@ class SelfUpdateCommand extends Command
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
         $url = "http://php-classifier.com/classifier.phar";
-        $version = $this->getApplication()->getVersion();
+        $version = trim($this->getApplication()->getVersion());
 
         if ($version === '~package_version~') {
             throw new \RuntimeException("This command is only available for compiled phar files which you can obtain at $url");
@@ -55,7 +55,7 @@ class SelfUpdateCommand extends Command
             throw new \RuntimeException(sprintf('Could not fetch latest version. Please try again later.'));
         }
 
-        if ($version !== $latest) {
+        if ($version !== trim($latest)) {
 
             $output->writeln(
                 sprintf(
