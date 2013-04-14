@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>PHP Classifier » \Camspiers\StatisticalClassifier\Console\Command\Test\Command</title>
+<title>PHP Classifier » \Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -63,14 +63,16 @@
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
+<li class="method protected "><a href="#method_configure" title="configure :: Configure the commands options"><span class="description">Configure the commands options</span><pre>configure()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configureClassifier" title="configureClassifier :: Adds options nessacary for calling getClassifier in a command"><span class="description">Adds options nessacary for calling getClassifier in a command</span><pre>configureClassifier()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configureIndex" title="configureIndex :: Adds arguments required for using a specified index in a command"><span class="description">Adds arguments required for using a specified index in a command</span><pre>configureIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_configurePrepare" title="configurePrepare :: Adds options to allow automatically prepare the index"><span class="description">Adds options to allow automatically prepare the index</span><pre>configurePrepare()</pre></a></li>
+<li class="method protected "><a href="#method_execute" title="execute :: "><span class="description">execute()
+        </span><pre>execute()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getCachedIndex" title="getCachedIndex :: Get an CachedIndex based off a index name and the Cache instance"><span class="description">Get an CachedIndex based off a index name and the Cache instance</span><pre>getCachedIndex()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getClassifier" title="getClassifier :: Returns a classifier based of the commands input and the specified index (if exists)"><span class="description">Returns a classifier based of the commands input and the specified index (if exists)</span><pre>getClassifier()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getContainer" title="getContainer :: Return the dependency injection container fetching it off the app if it doesn't exist"><span class="description">Return the dependency injection container fetching it off the app if it doesn't exist</span><pre>getContainer()</pre></a></li>
 <li class="method protected inherited"><a href="#method_getSVMCachedIndex" title="getSVMCachedIndex :: Get a SVMCachedIndex based of an index name and the Cache instance"><span class="description">Get a SVMCachedIndex based of an index name and the Cache instance</span><pre>getSVMCachedIndex()</pre></a></li>
-<li class="method protected "><a href="#method_test" title="test :: Classifies a data source against a classifier and outputs results"><span class="description">Classifies a data source against a classifier and outputs results</span><pre>test()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -88,7 +90,7 @@
 </ul>
 </div>
 <div class="span8">
-<a id="\Camspiers\StatisticalClassifier\Console\Command\Test\Command"></a><ul class="breadcrumb">
+<a id="\Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
@@ -102,11 +104,8 @@
 <li>
 <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
 </li>
-<li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html">Test</a>
-</li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.Command.html">Command</a>
+<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html">SelfUpdateCommand</a>
 </li>
 </ul>
 <div class="element class">
@@ -139,6 +138,16 @@
 <div class="subelement argument">
 <h4>$cache</h4>
 <code>\CacheCache\Cache</code><p>The cache to store</p></div>
+</div></div>
+</div>
+<a id="method_configure"></a><div class="element clickable method protected method_configure" data-toggle="collapse" data-target=".method_configure .collapse">
+<h2>Configure the commands options</h2>
+<pre>configure() : null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_configureClassifier"></a><div class="element clickable method protected method_configureClassifier" data-toggle="collapse" data-target=".method_configureClassifier .collapse">
@@ -184,6 +193,33 @@
 <h3>Returns</h3>
 <div class="subelement response">
 <code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">\Camspiers\StatisticalClassifier\Console\Command\Command</a></code>This command to allow chaining</div>
+</div></div>
+</div>
+<a id="method_execute"></a><div class="element clickable method protected method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
+<h2>execute()
+        </h2>
+<pre>execute(\Symfony\Component\Console\Input\InputInterface $input, \Symfony\Component\Console\Output\OutputInterface $output) : int | null | void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>\Symfony\Component\Console\Input\InputInterface</code>
+</div>
+<div class="subelement argument">
+<h4>$output</h4>
+<code>\Symfony\Component\Console\Output\OutputInterface</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.runtimeexception.php">\RuntimeException</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code><code>null</code><code>void</code>
+</div>
 </div></div>
 </div>
 <a id="method_getCachedIndex"></a><div class="element clickable method protected method_getCachedIndex" data-toggle="collapse" data-target=".method_getCachedIndex .collapse">
@@ -253,26 +289,6 @@
 <div class="subelement argument"><h4>$name</h4></div>
 <h3>Returns</h3>
 <div class="subelement response"><code><a href="../classes/Camspiers.StatisticalClassifier.Index.SVMCachedIndex.html">\Camspiers\StatisticalClassifier\Index\SVMCachedIndex</a></code></div>
-</div></div>
-</div>
-<a id="method_test"></a><div class="element clickable method protected method_test" data-toggle="collapse" data-target=".method_test .collapse">
-<h2>Classifies a data source against a classifier and outputs results</h2>
-<pre>test(\Symfony\Component\Console\Output\OutputInterface $output, \Camspiers\StatisticalClassifier\Classifier\ClassifierInterface $classifier, \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface $data) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$output</h4>
-<code>\Symfony\Component\Console\Output\OutputInterface</code><p>Output object</p></div>
-<div class="subelement argument">
-<h4>$classifier</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a></code><p>The classifier to use</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html">\Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</a></code><p>The data source</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <h3>
