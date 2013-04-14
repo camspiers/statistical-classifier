@@ -59,7 +59,7 @@ class SelfUpdateCommand extends Command
 
             $output->writeln(
                 sprintf(
-                    'Updating from <info>%s</info> to <info>%s</info>.',
+                    'Updating from <info>%s</info> to <info>%s</info>',
                     $version,
                     $latest
                 )
@@ -78,6 +78,9 @@ class SelfUpdateCommand extends Command
             if (false === @rename($tmpFile, $_SERVER['argv'][0])) {
                 throw new \RuntimeException(sprintf('Could not deploy new file to "%s".', $_SERVER['argv'][0]));
             }
+
+            $output->writeln('Classifier updated.');
+
         } else {
             $output->writeln('You are already using the latest version.');
         }
