@@ -41,7 +41,7 @@ $ composer requre camspiers/statistical-classifier:~0.5
 
 ## For command-line use
 
-Download the `[classifier.phar](http://php-classifier.com/classifier.phar)` executable.
+Download the [`classifier.phar`](http://php-classifier.com/classifier.phar) executable.
 
 To stay up to date run
 
