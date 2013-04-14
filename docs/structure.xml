@@ -1916,7 +1916,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Console/Command/SelfUpdateCommand.php" hash="7c399d36bab8c33af43292d9f0ddb554" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Console/Command/SelfUpdateCommand.php" hash="d1f63c321388191e89ebb25e0f385bb5" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -1929,8 +1929,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>SelfUpdateCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand</full_name>
       <docblock line="21">
-        <description/>
-        <long-description/>
+        <description></description>
+        <long-description></long-description>
         <tag line="21" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="21" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1939,7 +1939,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="27">
           <description>Configure the commands options</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="27" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1949,8 +1949,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <name>execute</name>
         <full_name>execute</full_name>
         <docblock line="37">
-          <description/>
-          <long-description/>
+          <description></description>
+          <long-description></long-description>
           <tag line="37" name="param" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1968,12 +1968,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="43">
           <name>$input</name>
-          <default/>
+          <default></default>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="43">
           <name>$output</name>
-          <default/>
+          <default></default>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
@@ -4528,7 +4528,7 @@ by the Symfony Dependency Injection Component.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="21">
           <description>Constructor.</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="46" package="Statistical Classifier">
@@ -4944,11 +4944,11 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>getParameter</full_name>
         <docblock line="546">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="549">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4957,11 +4957,11 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>hasParameter</full_name>
         <docblock line="560">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="563">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4970,16 +4970,16 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>setParameter</full_name>
         <docblock line="570">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="573">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="573">
           <name>$value</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4988,7 +4988,7 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>getParameterBag</full_name>
         <docblock line="578">
           <description>{@inheritDoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="594" package="Statistical Classifier">
@@ -4996,7 +4996,7 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>getDefaultParameters</full_name>
         <docblock line="589">
           <description>Gets the default parameters.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="589" name="return" description="An array of the default parameters" type="array">
             <type by_reference="false">array</type>
           </tag>
