@@ -24,6 +24,8 @@ parameters:
     classifier.complement_naive_bayes.class: %classifier_namespace%\Classifier\ComplementNaiveBayes
     classifier.svm.class: %classifier_namespace%\Classifier\SVM
     console.application.class: %classifier_namespace%\Console\Application
+    console.application.name: PHP Classifier
+    console.application.version: ~package_version~
     console.command.index.create.class: %classifier_namespace%\Console\Command\Index\CreateCommand
     console.command.index.remove.class: %classifier_namespace%\Console\Command\Index\RemoveCommand
     console.command.index.prepare.class: %classifier_namespace%\Console\Command\Index\PrepareCommand
@@ -124,6 +126,9 @@ services:
     # Console
     console.application:
         class: %console.application.class%
+        arguments:
+          - %console.application.name%
+          - %console.application.version%
 
     console.command.index.create:
         class: %console.command.index.create.class%

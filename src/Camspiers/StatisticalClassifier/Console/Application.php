@@ -27,13 +27,6 @@ class Application extends BaseApplication
      */
     protected $container;
     /**
-     * Creates the application, setting the name and version
-     */
-    public function __construct()
-    {
-        parent::__construct('Statistical Classifier', '0.5.0');
-    }
-    /**
      * Allows the setting of a container on the appliaction
      * @param ContainerInterface $container The container to set
      * @return $this

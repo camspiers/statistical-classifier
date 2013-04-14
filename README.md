@@ -1,14 +1,14 @@
-# PHP Statistical Classifier
+# PHP Classifier
 
 [![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
 
-NOTE: PHP Statistical Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
+NOTE: PHP Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
 
 # What is it?
 
 > In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
 
-PHP Statistical Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
+PHP Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
 
 Important Features:
 
