@@ -4480,7 +4480,7 @@ by the Symfony Dependency Injection Component.&lt;/p&gt;</long-description>
         <full_name>__construct</full_name>
         <docblock line="21">
           <description>Constructor.</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="46" package="Statistical Classifier">
@@ -4884,11 +4884,11 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>getParameter</full_name>
         <docblock line="532">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="535">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4897,11 +4897,11 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>hasParameter</full_name>
         <docblock line="546">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="549">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4910,16 +4910,16 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>setParameter</full_name>
         <docblock line="556">
           <description>{@inheritdoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
         <argument line="559">
           <name>$name</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="559">
           <name>$value</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -4928,7 +4928,7 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>getParameterBag</full_name>
         <docblock line="564">
           <description>{@inheritDoc}</description>
-          <long-description></long-description>
+          <long-description/>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="580" package="Statistical Classifier">
@@ -4936,7 +4936,7 @@ This method always returns the same instance of the service.&lt;/p&gt;</long-des
         <full_name>getDefaultParameters</full_name>
         <docblock line="575">
           <description>Gets the default parameters.</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="575" name="return" description="An array of the default parameters" type="array">
             <type by_reference="false">array</type>
           </tag>
