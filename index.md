@@ -8,7 +8,7 @@ NOTE: PHP Classifier uses [semantic versioning](http://semver.org/), it is curre
 
 > In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
 
-PHP Statistical Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
+PHP Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
 
 Important Features:
 
@@ -41,10 +41,11 @@ $ composer requre camspiers/statistical-classifier:~0.5
 
 ## For command-line use
 
-```bash
-$ composer create-project camspiers/statistical-classifier .
-$ ln -s $PWD/bin/classifier /usr/local/bin/classifier
-```
+Download the `[classifier.phar](http://php-classifier.com/classifier.phar)` executable.
+
+To stay up to date run
+
+    $ php classifier.phar self-update
 
 ## SVM Support
 
@@ -450,55 +451,3 @@ This library uses Symfony's dependancy injection component. A [container extensi
 # Internals
 
 ## [View class diagram](docs/graph_class.html)
-
-## Classifiers
-
-* Generic Classifier
-* Naive Bayes Classifier
-
-## Data Sources
-
-* DataArray
-* Directory
-* Json
-* PDO
-* PDOQuery
-* Serialized
-
-## Index
-
-* Index
-* CachedIndex
-
-## Normalizers
-
-* Lowercase
-* Porter
-* Stopword
-
-## Tokenizers
-
-* Word
-
-## Tranforms
-
-* Complement
-* DC
-* DL
-* DocumentTokenCounts
-* DocumentTokenSums
-* IDF
-* Prune
-* TAC
-* TBC
-* TCBD
-* TF
-* TFIDF
-* TFThreaded
-* TransformInterface
-* Weight
-* WeightNormalization
-
-## Classification Rules
-
-* NaiveBayes
