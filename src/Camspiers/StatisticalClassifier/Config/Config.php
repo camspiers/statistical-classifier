@@ -130,7 +130,7 @@ class Config
      */
     public static function getPath($path)
     {
-        if ('/' === $path[0]) {
+        if ('/' === $path[0] || substr($path, 0, 7) == 'phar://') {
             return $path;
         } else {
             return self::getClassifierPath() . rtrim($path, '/');
