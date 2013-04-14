@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-phpdoc -d src/ -t docs/ --title="PHP Statistical Classifier" --defaultpackagename="Statistical Classifier"
-if [ -e $1 ]; then
-	cp -R docs/ $1
-fi
