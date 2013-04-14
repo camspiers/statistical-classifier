@@ -40,6 +40,7 @@ parameters:
     console.command.config.create.class: %classifier_namespace%\Console\Command\Config\CreateCommand
     console.command.config.remove.class: %classifier_namespace%\Console\Command\Config\RemoveCommand
     console.command.config.open.class: %classifier_namespace%\Console\Command\Config\OpenCommand
+    console.command.self_update.class: %classifier_namespace%\Console\Command\SelfUpdateCommand
 
     cache.class: CacheCache\Cache
     cache.backend.class: CacheCache\Backends\File
@@ -198,6 +199,11 @@ services:
 
     console.command.generate_container:
         class: %console.command.generate_container.class%
+        tags:
+            - { name: console.command }
+
+    console.command.self_update:
+        class: %console.command.self_update.class%
         tags:
             - { name: console.command }
 
