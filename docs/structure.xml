@@ -1916,7 +1916,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <critical line="19" code="50005">No short description for class \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</critical>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Console/Command/SelfUpdateCommand.php" hash="fcf238072aa79aa3017d90c4cbbaf07f" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Console/Command/SelfUpdateCommand.php" hash="95b6dc9def98bc57f1698fb9edac51d9" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
