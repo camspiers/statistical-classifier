@@ -41,10 +41,11 @@ $ composer requre camspiers/statistical-classifier:~0.5
 
 ## For command-line use
 
-```bash
-$ composer create-project camspiers/statistical-classifier .
-$ ln -s $PWD/bin/classifier /usr/local/bin/classifier
-```
+Download the `[classifier.phar](http://php-classifier.com/classifier.phar)` executable.
+
+To stay up to date run
+
+    $ php classifier.phar self-update
 
 ## SVM Support
 
