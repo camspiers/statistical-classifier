@@ -1,3 +1,5 @@
+/indexes/
+/logs/
 /classifier.phar
 /vendor
 /.settings
