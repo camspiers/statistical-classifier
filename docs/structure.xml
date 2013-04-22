@@ -700,7 +700,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <error line="28" code="50012">No short description for method __construct()</error>
     </parse_markers>
   </file>
-  <file path="Camspiers/StatisticalClassifier/Compiler.php" hash="de57df029867e55e3f5e1ec757dbcecb" package="Statistical Classifier">
+  <file path="Camspiers/StatisticalClassifier/Compiler.php" hash="9871ae5b024e7a9d6aff65f88683edc6" package="Statistical Classifier">
     <docblock line="3">
       <description>This file is part of the Statistical Classifier package.</description>
       <long-description>&lt;p&gt;(c) Cam Spiers &lt;a href="&amp;#109;&amp;#x61;i&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;"&gt;&amp;#x63;&amp;#97;&amp;#x6d;&amp;#x73;&amp;#112;&amp;#x69;e&amp;#114;&amp;#x73;&amp;#64;&amp;#103;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#109;&lt;/a&gt;&lt;/p&gt;
@@ -746,30 +746,30 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="Camspiers\StatisticalClassifier" line="128" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Camspiers\StatisticalClassifier" line="130" package="Statistical Classifier">
         <name>addFile</name>
         <full_name>addFile</full_name>
-        <argument line="128">
+        <argument line="130">
           <name>$phar</name>
           <default/>
           <type/>
         </argument>
-        <argument line="128">
+        <argument line="130">
           <name>$file</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="Camspiers\StatisticalClassifier" line="142" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Camspiers\StatisticalClassifier" line="144" package="Statistical Classifier">
         <name>addClassifierBin</name>
         <full_name>addClassifierBin</full_name>
-        <argument line="142">
+        <argument line="144">
           <name>$phar</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="Camspiers\StatisticalClassifier" line="149" package="Statistical Classifier">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="Camspiers\StatisticalClassifier" line="151" package="Statistical Classifier">
         <name>getStub</name>
         <full_name>getStub</full_name>
       </method>
@@ -777,9 +777,9 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
     <parse_markers>
       <critical line="20" code="50005">No short description for class \Camspiers\StatisticalClassifier\Compiler</critical>
       <critical line="26" code="50019">No short description for property $version</critical>
-      <error line="128" code="50010">No DocBlock was found for method addFile()</error>
-      <error line="142" code="50010">No DocBlock was found for method addClassifierBin()</error>
-      <error line="149" code="50010">No DocBlock was found for method getStub()</error>
+      <error line="130" code="50010">No DocBlock was found for method addFile()</error>
+      <error line="144" code="50010">No DocBlock was found for method addClassifierBin()</error>
+      <error line="151" code="50010">No DocBlock was found for method getStub()</error>
     </parse_markers>
   </file>
   <file path="Camspiers/StatisticalClassifier/Config/Config.php" hash="3dea5d334aa2fa9a23fc7128d56bf445" package="Statistical Classifier">
@@ -1929,8 +1929,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
       <name>SelfUpdateCommand</name>
       <full_name>\Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand</full_name>
       <docblock line="21">
-        <description></description>
-        <long-description></long-description>
+        <description/>
+        <long-description/>
         <tag line="21" name="author" description="Cam Spiers &lt;camspiers@gmail.com&gt;"/>
         <tag line="21" name="package" description="Statistical Classifier"/>
       </docblock>
@@ -1939,7 +1939,7 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <full_name>configure</full_name>
         <docblock line="27">
           <description>Configure the commands options</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="27" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
@@ -1949,8 +1949,8 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         <name>execute</name>
         <full_name>execute</full_name>
         <docblock line="37">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="37" name="param" description="" type="\Symfony\Component\Console\Input\InputInterface" variable="$input">
             <type by_reference="false">\Symfony\Component\Console\Input\InputInterface</type>
           </tag>
@@ -1968,12 +1968,12 @@ file that was distributed with this source code.&lt;/p&gt;</long-description>
         </docblock>
         <argument line="43">
           <name>$input</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Input\InputInterface</type>
         </argument>
         <argument line="43">
           <name>$output</name>
-          <default></default>
+          <default/>
           <type>\Symfony\Component\Console\Output\OutputInterface</type>
         </argument>
       </method>
