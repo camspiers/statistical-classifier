@@ -11,15 +11,18 @@
         stopOnFailure="false"
         syntaxCheck="false"
         bootstrap="tests/bootstrap.php"
->
-  <testsuites>
-    <testsuite name="Statistical Classifier">
-      <directory>./tests</directory>
-    </testsuite>
-  </testsuites>
-  <filter>
-    <whitelist addUncoveredFilesFromWhitelist="true">
-      <directory suffix=".php">src</directory>
-    </whitelist>
-  </filter>
+        >
+    <testsuites>
+        <testsuite name="Statistical Classifier">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <file>src/Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
