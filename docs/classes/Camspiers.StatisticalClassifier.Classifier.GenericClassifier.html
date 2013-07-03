@@ -1,318 +1,723 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-<meta charset="utf-8">
-<title>PHP Classifier » \Camspiers\StatisticalClassifier\Classifier\GenericClassifier</title>
-<meta name="author" content="Mike van Riel">
-<meta name="description" content="">
-<link href="../css/template.css" rel="stylesheet" media="all">
-<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
-<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; \Camspiers\StatisticalClassifier\Classifier\GenericClassifier
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/template.js" type="text/javascript"></script>
+    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
 </head>
 <body>
+
 <div class="navbar navbar-fixed-top">
-<div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHP Classifier</a><div class="nav-collapse"><ul class="nav">
-<li class="dropdown">
-<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a>Namespaces</a></li>
-<li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
-<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
-<li><a>Packages</a></li>
-<li><a href="../packages/Camspiers.html"><i class="icon-folder-open"></i> Camspiers</a></li>
-<li><a href="../packages/Statistical%20Classifier.html"><i class="icon-folder-open"></i> Statistical Classifier</a></li>
-</ul>
-</li>
-<li class="dropdown" id="charts-menu">
-<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
-</li>
-<li class="dropdown" id="reports-menu">
-<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">185</span></a></li>
-<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
-<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">0</span></a></li>
-</ul>
-</li>
-</ul></div>
-</div></div>
-<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span> </a>
+            <a class="brand" href="../index.html">PHP Classifier</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                                                </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graph_class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
+                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
+                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="go_to_top">
+        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+    </div>
 </div>
+
 <div id="___" class="container">
-<noscript><div class="alert alert-warning">
-                            Javascript is disabled; several features are only available
-                            if Javascript is enabled.
-                        </div></noscript>
-<div class="row">
-<div class="span4">
-<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
-</div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
-<i class="icon-custom icon-method"></i> Methods
+    <noscript>
+        <div class="alert alert-warning">
+            Javascript is disabled; several features are only available if Javascript is enabled.
+        </div>
+    </noscript>
+
+        
+    <div class="row">
+        <div class="span4">
+            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+            </div>
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">
+                    <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Create the classifying using the numerous components passed in"><span class="description">Create the classifying using the numerous components passed in</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_addTransform" title="addTransform :: Add a transform to be applied to the source data to achieve classification"><span class="description">Add a transform to be applied to the source data to achieve classification</span><pre>addTransform()</pre></a></li>
-<li class="method public "><a href="#method_classify" title="classify :: Classify the document and return its category"><span class="description">Classify the document and return its category</span><pre>classify()</pre></a></li>
-<li class="method public "><a href="#method_getIndex" title="getIndex :: Get the index"><span class="description">Get the index</span><pre>getIndex()</pre></a></li>
-<li class="method public "><a href="#method_getTransforms" title="getTransforms :: Get an array of transforms"><span class="description">Get an array of transforms</span><pre>getTransforms()</pre></a></li>
-<li class="method public "><a href="#method_is" title="is :: Returns whether or not the document is of the category"><span class="description">Returns whether or not the document is of the category</span><pre>is()</pre></a></li>
-<li class="method public "><a href="#method_prepareIndex" title="prepareIndex :: Builds the index from the data source by applying transforms to the data source"><span class="description">Builds the index from the data source by applying transforms to the data source</span><pre>prepareIndex()</pre></a></li>
-<li class="method public "><a href="#method_setIndex" title="setIndex :: Set the index"><span class="description">Set the index</span><pre>setIndex()</pre></a></li>
-<li class="method public "><a href="#method_setTransforms" title="setTransforms :: Set an array of transforms to be applied to the source data to achieve classification"><span class="description">Set an array of transforms to be applied to the source data to achieve classification</span><pre>setTransforms()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header protected">» Protected
+                                                                                <li class="method public">
+                                <a href="#method___construct" title="__construct :: Create the classifying using the numerous components passed in">
+                                    <span class="description">Create the classifying using the numerous components passed in</span><pre>__construct</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_is" title="is :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>is</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_setTransforms" title="setTransforms :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>setTransforms</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getTransforms" title="getTransforms :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>getTransforms</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_addTransform" title="addTransform :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>addTransform</pre>
+                                </a>
+                            </li>
+                                                                                                                                                                <li class="method public">
+                                <a href="#method_prepareIndex" title="prepareIndex :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>prepareIndex</pre>
+                                </a>
+                            </li>
+                                                                                                                                                                <li class="method public">
+                                <a href="#method_setIndex" title="setIndex :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>setIndex</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getIndex" title="getIndex :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>getIndex</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_classify" title="classify :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>classify</pre>
+                                </a>
+                            </li>
+                                                                        </ul>
+                </li>
+                <li class="nav-header protected">» Protected
                     <ul>
-<li class="method protected "><a href="#method_applyTransforms" title="applyTransforms :: Apply the transforms to the index"><span class="description">Apply the transforms to the index</span><pre>applyTransforms()</pre></a></li>
-<li class="method protected "><a href="#method_preparedIndex" title="preparedIndex :: Return an index which has been prepared for classification"><span class="description">Return an index which has been prepared for classification</span><pre>preparedIndex()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-property"></i> Properties
-                    <ul></ul>
-</li>
-<li class="nav-header protected">» Protected
+                                                                                                                                                                                                                                                                                                                                                        <li class="method protected">
+                                    <a href="#method_applyTransforms" title="applyTransforms :: Apply the transforms to the index">
+                                        <span class="description">Apply the transforms to the index</span><pre>applyTransforms</pre>
+                                    </a>
+                                </li>
+                                                                                                                                                                    <li class="method protected">
+                                    <a href="#method_preparedIndex" title="preparedIndex :: Return an index which has been prepared for classification">
+                                        <span class="description">Return an index which has been prepared for classification</span><pre>preparedIndex</pre>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                                                    </ul>
+                </li>
+                <li class="nav-header private">» Private
                     <ul>
-<li class="property protected "><a href="#property_classificationRule" title="$classificationRule :: The rule to use to classify a document"><span class="description"></span><pre>$classificationRule</pre></a></li>
-<li class="property protected "><a href="#property_index" title="$index :: The index to apply the transforms to"><span class="description"></span><pre>$index</pre></a></li>
-<li class="property protected "><a href="#property_normalizer" title="$normalizer :: Take tokenized data and make it consistent or stem it"><span class="description"></span><pre>$normalizer</pre></a></li>
-<li class="property protected "><a href="#property_tokenizer" title="$tokenizer :: Tokenizer (the way of breaking up documents)"><span class="description"></span><pre>$tokenizer</pre></a></li>
-<li class="property protected "><a href="#property_transforms" title="$transforms :: An array of Transforms implementing TransformInterface"><span class="description"></span><pre>$transforms</pre></a></li>
-</ul>
-</li>
-</ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+                </li>
+                <li class="nav-header">
+                    <i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+                                            </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>GenericClassifier</h1>
+                <small style="display: block; text-align: right">
+                                                                Implements <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">\Camspiers\StatisticalClassifier\Classifier\ClassifierInterface</a>
+                                    </small>
+                <p class="short_description">A generic classifier which can be used to built a classifier given a number of injected components</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        author
+                                                                            </th>
+                                    <td>Cam Spiers &lt;camspiers@gmail.com&gt;</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>Statistical Classifier</td>
+                                </tr>
+                                                                                                                            </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                            <a id="method___construct"></a>
+                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Create the classifying using the numerous components passed in</h2>
+                            <pre>__construct(\Camspiers\StatisticalClassifier\Index\IndexInterface $index, \Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface $classificationRule, \Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface $tokenizer, \Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface $normalizer, array $transforms = null) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<div class="span8">
-<a id="\Camspiers\StatisticalClassifier\Classifier\GenericClassifier"></a><ul class="breadcrumb">
-<li>
-<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
-</li>
-<li><a href="../namespaces/Camspiers.html">Camspiers</a></li>
-<li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-</li>
-<li>
-<span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Classifier.html">Classifier</a>
-</li>
-<li class="active">
-<span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Classifier.GenericClassifier.html">GenericClassifier</a>
-</li>
-</ul>
-<div class="element class">
-<p class="short_description">A generic classifier which can be used to built a classifier given a number of injected components</p>
-<div class="details">
-<div class="long_description"></div>
-<table class="table table-bordered">
-<tr>
-<th>author</th>
-<td><a href="mailto:camspiers@gmail.com">Cam Spiers</a></td>
-</tr>
-<tr>
-<th>package</th>
-<td><a href="../packages/Statistical%20Classifier.html">Statistical Classifier</a></td>
-</tr>
-</table>
-<h3>
-<i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Create the classifying using the numerous components passed in</h2>
-<pre>__construct(\Camspiers\StatisticalClassifier\Index\IndexInterface $index, \Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface $classificationRule, \Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface $tokenizer, \Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface $normalizer, array $transforms) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$index</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code><p>An index to modify with transforms</p></div>
-<div class="subelement argument">
-<h4>$classificationRule</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html">\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</a></code><p>The rule to classify the document with</p></div>
-<div class="subelement argument">
-<h4>$tokenizer</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</a></code><p>The tokenizer to break up the documents</p></div>
-<div class="subelement argument">
-<h4>$normalizer</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</a></code><p>The normaizer to make tokens consistent</p></div>
-<div class="subelement argument">
-<h4>$transforms</h4>
-<code>array</code><p>Ann array of transforms to modify the index</p></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$index</h4>
+                                                <code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code><p><p>An index to modify with transforms</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$classificationRule</h4>
+                                                <code><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html">\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</a></code><p><p>The rule to classify the document with</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tokenizer</h4>
+                                                <code><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</a></code><p><p>The tokenizer to break up the documents</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$normalizer</h4>
+                                                <code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</a></code><p><p>The normaizer to make tokens consistent</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$transforms</h4>
+                                                <code>array</code><p><p>Ann array of transforms to modify the index</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_is"></a>
+                        <div class="element clickable method public method_is" data-toggle="collapse" data-target=".method_is .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>is($category, $document) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_addTransform"></a><div class="element clickable method public method_addTransform" data-toggle="collapse" data-target=".method_addTransform .collapse">
-<h2>Add a transform to be applied to the source data to achieve classification</h2>
-<pre>addTransform(\Camspiers\StatisticalClassifier\Transform\TransformInterface $transform) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$transform</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Transform.TransformInterface.html">\Camspiers\StatisticalClassifier\Transform\TransformInterface</a></code><p>The transform to add</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$category</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$document</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setTransforms"></a>
+                        <div class="element clickable method public method_setTransforms" data-toggle="collapse" data-target=".method_setTransforms .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>setTransforms($transforms) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_classify"></a><div class="element clickable method public method_classify" data-toggle="collapse" data-target=".method_classify .collapse">
-<h2>Classify the document and return its category</h2>
-<pre>classify(string $document) : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$document</h4>
-<code>string</code><p>The document to classify</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>string</code>The category of the document</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$transforms</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTransforms"></a>
+                        <div class="element clickable method public method_getTransforms" data-toggle="collapse" data-target=".method_getTransforms .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>getTransforms() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getIndex"></a><div class="element clickable method public method_getIndex" data-toggle="collapse" data-target=".method_getIndex .collapse">
-<h2>Get the index</h2>
-<pre>getIndex() : <a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code>The index</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_addTransform"></a>
+                        <div class="element clickable method public method_addTransform" data-toggle="collapse" data-target=".method_addTransform .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>addTransform($transform) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getTransforms"></a><div class="element clickable method public method_getTransforms" data-toggle="collapse" data-target=".method_getTransforms .collapse">
-<h2>Get an array of transforms</h2>
-<pre>getTransforms() : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>The transforms</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$transform</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_applyTransforms"></a>
+                        <div class="element clickable method protected method_applyTransforms" data-toggle="collapse" data-target=".method_applyTransforms .collapse">
+                            <h2>Apply the transforms to the index</h2>
+                            <pre>applyTransforms() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_is"></a><div class="element clickable method public method_is" data-toggle="collapse" data-target=".method_is .collapse">
-<h2>Returns whether or not the document is of the category</h2>
-<pre>is(string $category, string $document) : boolean</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$category</h4>
-<code>string</code><p>The category in question</p></div>
-<div class="subelement argument">
-<h4>$document</h4>
-<code>string</code><p>The document to check</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>boolean</code>Whether or not the document is in the category</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_prepareIndex"></a>
+                        <div class="element clickable method public method_prepareIndex" data-toggle="collapse" data-target=".method_prepareIndex .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>prepareIndex() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_prepareIndex"></a><div class="element clickable method public method_prepareIndex" data-toggle="collapse" data-target=".method_prepareIndex .collapse">
-<h2>Builds the index from the data source by applying transforms to the data source</h2>
-<pre>prepareIndex() : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_preparedIndex"></a>
+                        <div class="element clickable method protected method_preparedIndex" data-toggle="collapse" data-target=".method_preparedIndex .collapse">
+                            <h2>Return an index which has been prepared for classification</h2>
+                            <pre>preparedIndex() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_setIndex"></a><div class="element clickable method public method_setIndex" data-toggle="collapse" data-target=".method_setIndex .collapse">
-<h2>Set the index</h2>
-<pre>setIndex(\Camspiers\StatisticalClassifier\Index\IndexInterface $index) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$index</h4>
-<code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code><p>The index to set</p></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setIndex"></a>
+                        <div class="element clickable method public method_setIndex" data-toggle="collapse" data-target=".method_setIndex .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>setIndex($index) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_setTransforms"></a><div class="element clickable method public method_setTransforms" data-toggle="collapse" data-target=".method_setTransforms .collapse">
-<h2>Set an array of transforms to be applied to the source data to achieve classification</h2>
-<pre>setTransforms(array $transforms) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$transforms</h4>
-<code>array</code><p>The transforms to add</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$index</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getIndex"></a>
+                        <div class="element clickable method public method_getIndex" data-toggle="collapse" data-target=".method_getIndex .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>getIndex() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_applyTransforms"></a><div class="element clickable method protected method_applyTransforms" data-toggle="collapse" data-target=".method_applyTransforms .collapse">
-<h2>Apply the transforms to the index</h2>
-<pre>applyTransforms() : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_classify"></a>
+                        <div class="element clickable method public method_classify" data-toggle="collapse" data-target=".method_classify .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>classify($document) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_preparedIndex"></a><div class="element clickable method protected method_preparedIndex" data-toggle="collapse" data-target=".method_preparedIndex .collapse">
-<h2>Return an index which has been prepared for classification</h2>
-<pre>preparedIndex() : <a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></code></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$document</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                    
+                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_tokenizer"> </a>
+                            <div class="element clickable property protected property_tokenizer" data-toggle="collapse" data-target=".property_tokenizer .collapse">
+                                <h2>Tokenizer (the way of breaking up documents)</h2>
+                                <pre>tokenizer</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
 </div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_classificationRule"> </a><div class="element clickable property protected property_classificationRule" data-toggle="collapse" data-target=".property_classificationRule .collapse">
-<h2></h2>
-<pre>$classificationRule : <a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html">\Camspiers\StatisticalClassifier\ClassificationRule\ClassificationRuleInterface</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_normalizer"> </a>
+                            <div class="element clickable property protected property_normalizer" data-toggle="collapse" data-target=".property_normalizer .collapse">
+                                <h2>Take tokenized data and make it consistent or stem it</h2>
+                                <pre>normalizer</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
 </div>
-<a id="property_index"> </a><div class="element clickable property protected property_index" data-toggle="collapse" data-target=".property_index .collapse">
-<h2></h2>
-<pre>$index : <a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">\Camspiers\StatisticalClassifier\Index\IndexInterface</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_classificationRule"> </a>
+                            <div class="element clickable property protected property_classificationRule" data-toggle="collapse" data-target=".property_classificationRule .collapse">
+                                <h2>The rule to use to classify a document</h2>
+                                <pre>classificationRule</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
 </div>
-<a id="property_normalizer"> </a><div class="element clickable property protected property_normalizer" data-toggle="collapse" data-target=".property_normalizer .collapse">
-<h2></h2>
-<pre>$normalizer : <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_index"> </a>
+                            <div class="element clickable property protected property_index" data-toggle="collapse" data-target=".property_index .collapse">
+                                <h2>The index to apply the transforms to</h2>
+                                <pre>index</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
 </div>
-<a id="property_tokenizer"> </a><div class="element clickable property protected property_tokenizer" data-toggle="collapse" data-target=".property_tokenizer .collapse">
-<h2></h2>
-<pre>$tokenizer : <a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html">\Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_transforms"> </a>
+                            <div class="element clickable property protected property_transforms" data-toggle="collapse" data-target=".property_transforms .collapse">
+                                <h2>An array of Transforms implementing TransformInterface</h2>
+                                <pre>transforms</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
 </div>
-<a id="property_transforms"> </a><div class="element clickable property protected property_transforms" data-toggle="collapse" data-target=".property_transforms .collapse">
-<h2></h2>
-<pre>$transforms : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\Camspiers\StatisticalClassifier\Classifier\GenericClassifier"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Classifier.html">Classifier</a>
+    </li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Classifier.GenericClassifier.html">GenericClassifier</a></li>
+            </ul>
+        </div>
+    </div>
+
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="row"><footer class="span12">
-            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-22T13:33:19+12:00.<br></footer></div>
-</div>
+
+<footer class="span12">
+    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+    generated on Wed, 03 Jul 2013 23:16:36 +0000.<br/>
+</footer>
 </body>
 </html>

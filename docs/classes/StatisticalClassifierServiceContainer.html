@@ -1,606 +1,1518 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-<meta charset="utf-8">
-<title>PHP Classifier » \StatisticalClassifierServiceContainer</title>
-<meta name="author" content="Mike van Riel">
-<meta name="description" content="">
-<link href="../css/template.css" rel="stylesheet" media="all">
-<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
-<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; \StatisticalClassifierServiceContainer
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/template.js" type="text/javascript"></script>
+    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
 </head>
 <body>
+
 <div class="navbar navbar-fixed-top">
-<div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHP Classifier</a><div class="nav-collapse"><ul class="nav">
-<li class="dropdown">
-<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a>Namespaces</a></li>
-<li><a href="../namespaces/Camspiers.html"><i class="icon-th"></i> Camspiers</a></li>
-<li><a href="../namespaces/global.html"><i class="icon-th"></i> global</a></li>
-<li><a>Packages</a></li>
-<li><a href="../packages/Camspiers.html"><i class="icon-folder-open"></i> Camspiers</a></li>
-<li><a href="../packages/Statistical%20Classifier.html"><i class="icon-folder-open"></i> Statistical Classifier</a></li>
-</ul>
-</li>
-<li class="dropdown" id="charts-menu">
-<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
-</li>
-<li class="dropdown" id="reports-menu">
-<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">185</span></a></li>
-<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
-<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">0</span></a></li>
-</ul>
-</li>
-</ul></div>
-</div></div>
-<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span> </a>
+            <a class="brand" href="../index.html">PHP Classifier</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                                                </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graph_class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
+                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
+                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="go_to_top">
+        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+    </div>
 </div>
+
 <div id="___" class="container">
-<noscript><div class="alert alert-warning">
-                            Javascript is disabled; several features are only available
-                            if Javascript is enabled.
-                        </div></noscript>
-<div class="row">
-<div class="span4">
-<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
-</div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
-<i class="icon-custom icon-method"></i> Methods
+    <noscript>
+        <div class="alert alert-warning">
+            Javascript is disabled; several features are only available if Javascript is enabled.
+        </div>
+    </noscript>
+
+        
+    <div class="row">
+        <div class="span4">
+            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+            </div>
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">
+                    <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Constructor."><span class="description">Constructor.</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_getParameter" title="getParameter :: {@inheritdoc}"><span class="description">{@inheritdoc}</span><pre>getParameter()</pre></a></li>
-<li class="method public "><a href="#method_getParameterBag" title="getParameterBag :: {@inheritDoc}"><span class="description">{@inheritDoc}</span><pre>getParameterBag()</pre></a></li>
-<li class="method public "><a href="#method_hasParameter" title="hasParameter :: {@inheritdoc}"><span class="description">{@inheritdoc}</span><pre>hasParameter()</pre></a></li>
-<li class="method public "><a href="#method_setParameter" title="setParameter :: {@inheritdoc}"><span class="description">{@inheritdoc}</span><pre>setParameter()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header protected">» Protected
+                                                                                <li class="method public">
+                                <a href="#method___construct" title="__construct :: Constructor.">
+                                    <span class="description">Constructor.</span><pre>__construct</pre>
+                                </a>
+                            </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li class="method public">
+                                <a href="#method_getParameter" title="getParameter :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>getParameter</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_hasParameter" title="hasParameter :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>hasParameter</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_setParameter" title="setParameter :: {@inheritdoc}">
+                                    <span class="description">{@inheritdoc}</span><pre>setParameter</pre>
+                                </a>
+                            </li>
+                                                                                                            <li class="method public">
+                                <a href="#method_getParameterBag" title="getParameterBag :: {@inheritDoc}">
+                                    <span class="description">{@inheritDoc}</span><pre>getParameterBag</pre>
+                                </a>
+                            </li>
+                                                                                                                            </ul>
+                </li>
+                <li class="nav-header protected">» Protected
                     <ul>
-<li class="method protected "><a href="#method_getCacheService" title="getCacheService :: Gets the 'cache' service."><span class="description">Gets the 'cache' service.</span><pre>getCacheService()</pre></a></li>
-<li class="method protected "><a href="#method_getCache_BackendService" title="getCache_BackendService :: Gets the 'cache.backend' service."><span class="description">Gets the 'cache.backend' service.</span><pre>getCache_BackendService()</pre></a></li>
-<li class="method protected "><a href="#method_getClassifier_ComplementNaiveBayesService" title="getClassifier_ComplementNaiveBayesService :: Gets the 'classifier.complement_naive_bayes' service."><span class="description">Gets the 'classifier.complement_naive_bayes' service.</span><pre>getClassifier_ComplementNaiveBayesService()</pre></a></li>
-<li class="method protected "><a href="#method_getClassifier_SvmService" title="getClassifier_SvmService :: Gets the 'classifier.svm' service."><span class="description">Gets the 'classifier.svm' service.</span><pre>getClassifier_SvmService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_ApplicationService" title="getConsole_ApplicationService :: Gets the 'console.application' service."><span class="description">Gets the 'console.application' service.</span><pre>getConsole_ApplicationService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_ClassifyService" title="getConsole_Command_ClassifyService :: Gets the 'console.command.classify' service."><span class="description">Gets the 'console.command.classify' service.</span><pre>getConsole_Command_ClassifyService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Config_CreateService" title="getConsole_Command_Config_CreateService :: Gets the 'console.command.config.create' service."><span class="description">Gets the 'console.command.config.create' service.</span><pre>getConsole_Command_Config_CreateService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Config_OpenService" title="getConsole_Command_Config_OpenService :: Gets the 'console.command.config.open' service."><span class="description">Gets the 'console.command.config.open' service.</span><pre>getConsole_Command_Config_OpenService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Config_RemoveService" title="getConsole_Command_Config_RemoveService :: Gets the 'console.command.config.remove' service."><span class="description">Gets the 'console.command.config.remove' service.</span><pre>getConsole_Command_Config_RemoveService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_GenerateContainerService" title="getConsole_Command_GenerateContainerService :: Gets the 'console.command.generate_container' service."><span class="description">Gets the 'console.command.generate_container' service.</span><pre>getConsole_Command_GenerateContainerService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Index_CreateService" title="getConsole_Command_Index_CreateService :: Gets the 'console.command.index.create' service."><span class="description">Gets the 'console.command.index.create' service.</span><pre>getConsole_Command_Index_CreateService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Index_PrepareService" title="getConsole_Command_Index_PrepareService :: Gets the 'console.command.index.prepare' service."><span class="description">Gets the 'console.command.index.prepare' service.</span><pre>getConsole_Command_Index_PrepareService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Index_RemoveService" title="getConsole_Command_Index_RemoveService :: Gets the 'console.command.index.remove' service."><span class="description">Gets the 'console.command.index.remove' service.</span><pre>getConsole_Command_Index_RemoveService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_SelfUpdateService" title="getConsole_Command_SelfUpdateService :: Gets the 'console.command.self_update' service."><span class="description">Gets the 'console.command.self_update' service.</span><pre>getConsole_Command_SelfUpdateService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Server_StartService" title="getConsole_Command_Server_StartService :: Gets the 'console.command.server.start' service."><span class="description">Gets the 'console.command.server.start' service.</span><pre>getConsole_Command_Server_StartService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Test_DirectoryService" title="getConsole_Command_Test_DirectoryService :: Gets the 'console.command.test.directory' service."><span class="description">Gets the 'console.command.test.directory' service.</span><pre>getConsole_Command_Test_DirectoryService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Test_PdoService" title="getConsole_Command_Test_PdoService :: Gets the 'console.command.test.pdo' service."><span class="description">Gets the 'console.command.test.pdo' service.</span><pre>getConsole_Command_Test_PdoService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Train_DirectoryService" title="getConsole_Command_Train_DirectoryService :: Gets the 'console.command.train.directory' service."><span class="description">Gets the 'console.command.train.directory' service.</span><pre>getConsole_Command_Train_DirectoryService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Train_DocumentService" title="getConsole_Command_Train_DocumentService :: Gets the 'console.command.train.document' service."><span class="description">Gets the 'console.command.train.document' service.</span><pre>getConsole_Command_Train_DocumentService()</pre></a></li>
-<li class="method protected "><a href="#method_getConsole_Command_Train_PdoService" title="getConsole_Command_Train_PdoService :: Gets the 'console.command.train.pdo' service."><span class="description">Gets the 'console.command.train.pdo' service.</span><pre>getConsole_Command_Train_PdoService()</pre></a></li>
-<li class="method protected "><a href="#method_getConverter_ConverterService" title="getConverter_ConverterService :: Gets the 'converter.converter' service."><span class="description">Gets the 'converter.converter' service.</span><pre>getConverter_ConverterService()</pre></a></li>
-<li class="method protected "><a href="#method_getConverter_FromService" title="getConverter_FromService :: Gets the 'converter.from' service."><span class="description">Gets the 'converter.from' service.</span><pre>getConverter_FromService()</pre></a></li>
-<li class="method protected "><a href="#method_getConverter_ToService" title="getConverter_ToService :: Gets the 'converter.to' service."><span class="description">Gets the 'converter.to' service.</span><pre>getConverter_ToService()</pre></a></li>
-<li class="method protected "><a href="#method_getDefaultParameters" title="getDefaultParameters :: Gets the default parameters."><span class="description">Gets the default parameters.</span><pre>getDefaultParameters()</pre></a></li>
-<li class="method protected "><a href="#method_getIndex_IndexService" title="getIndex_IndexService :: Gets the 'index.index' service."><span class="description">Gets the 'index.index' service.</span><pre>getIndex_IndexService()</pre></a></li>
-<li class="method protected "><a href="#method_getJsonPrettyService" title="getJsonPrettyService :: Gets the 'json_pretty' service."><span class="description">Gets the 'json_pretty' service.</span><pre>getJsonPrettyService()</pre></a></li>
-<li class="method protected "><a href="#method_getLoggerService" title="getLoggerService :: Gets the 'logger' service."><span class="description">Gets the 'logger' service.</span><pre>getLoggerService()</pre></a></li>
-<li class="method protected "><a href="#method_getLogger_StreamService" title="getLogger_StreamService :: Gets the 'logger.stream' service."><span class="description">Gets the 'logger.stream' service.</span><pre>getLogger_StreamService()</pre></a></li>
-<li class="method protected "><a href="#method_getNormalizer_LowercaseService" title="getNormalizer_LowercaseService :: Gets the 'normalizer.lowercase' service."><span class="description">Gets the 'normalizer.lowercase' service.</span><pre>getNormalizer_LowercaseService()</pre></a></li>
-<li class="method protected "><a href="#method_getNormalizer_PorterService" title="getNormalizer_PorterService :: Gets the 'normalizer.porter' service."><span class="description">Gets the 'normalizer.porter' service.</span><pre>getNormalizer_PorterService()</pre></a></li>
-<li class="method protected "><a href="#method_getNormalizer_StopwordLowercasePorterService" title="getNormalizer_StopwordLowercasePorterService :: Gets the 'normalizer.stopword_lowercase_porter' service."><span class="description">Gets the 'normalizer.stopword_lowercase_porter' service.</span><pre>getNormalizer_StopwordLowercasePorterService()</pre></a></li>
-<li class="method protected "><a href="#method_getNormalizer_StopwordLowercaseService" title="getNormalizer_StopwordLowercaseService :: Gets the 'normalizer.stopword_lowercase' service."><span class="description">Gets the 'normalizer.stopword_lowercase' service.</span><pre>getNormalizer_StopwordLowercaseService()</pre></a></li>
-<li class="method protected "><a href="#method_getNormalizer_StopwordService" title="getNormalizer_StopwordService :: Gets the 'normalizer.stopword' service."><span class="description">Gets the 'normalizer.stopword' service.</span><pre>getNormalizer_StopwordService()</pre></a></li>
-<li class="method protected "><a href="#method_getSvmService" title="getSvmService :: Gets the 'svm' service."><span class="description">Gets the 'svm' service.</span><pre>getSvmService()</pre></a></li>
-<li class="method protected "><a href="#method_getTokenizer_WordService" title="getTokenizer_WordService :: Gets the 'tokenizer.word' service."><span class="description">Gets the 'tokenizer.word' service.</span><pre>getTokenizer_WordService()</pre></a></li>
-</ul>
-</li>
-</ul>
+                                                                                                                                        <li class="method protected">
+                                    <a href="#method_getCacheService" title="getCacheService :: Gets the &#039;cache&#039; service.">
+                                        <span class="description">Gets the &#039;cache&#039; service.</span><pre>getCacheService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getCache_BackendService" title="getCache_BackendService :: Gets the &#039;cache.backend&#039; service.">
+                                        <span class="description">Gets the &#039;cache.backend&#039; service.</span><pre>getCache_BackendService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getClassifier_ComplementNaiveBayesService" title="getClassifier_ComplementNaiveBayesService :: Gets the &#039;classifier.complement_naive_bayes&#039; service.">
+                                        <span class="description">Gets the &#039;classifier.complement_naive_bayes&#039; service.</span><pre>getClassifier_ComplementNaiveBayesService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getClassifier_SvmService" title="getClassifier_SvmService :: Gets the &#039;classifier.svm&#039; service.">
+                                        <span class="description">Gets the &#039;classifier.svm&#039; service.</span><pre>getClassifier_SvmService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_ApplicationService" title="getConsole_ApplicationService :: Gets the &#039;console.application&#039; service.">
+                                        <span class="description">Gets the &#039;console.application&#039; service.</span><pre>getConsole_ApplicationService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_ClassifyService" title="getConsole_Command_ClassifyService :: Gets the &#039;console.command.classify&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.classify&#039; service.</span><pre>getConsole_Command_ClassifyService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Config_CreateService" title="getConsole_Command_Config_CreateService :: Gets the &#039;console.command.config.create&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.config.create&#039; service.</span><pre>getConsole_Command_Config_CreateService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Config_OpenService" title="getConsole_Command_Config_OpenService :: Gets the &#039;console.command.config.open&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.config.open&#039; service.</span><pre>getConsole_Command_Config_OpenService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Config_RemoveService" title="getConsole_Command_Config_RemoveService :: Gets the &#039;console.command.config.remove&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.config.remove&#039; service.</span><pre>getConsole_Command_Config_RemoveService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_GenerateContainerService" title="getConsole_Command_GenerateContainerService :: Gets the &#039;console.command.generate_container&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.generate_container&#039; service.</span><pre>getConsole_Command_GenerateContainerService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Index_CreateService" title="getConsole_Command_Index_CreateService :: Gets the &#039;console.command.index.create&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.index.create&#039; service.</span><pre>getConsole_Command_Index_CreateService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Index_PrepareService" title="getConsole_Command_Index_PrepareService :: Gets the &#039;console.command.index.prepare&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.index.prepare&#039; service.</span><pre>getConsole_Command_Index_PrepareService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Index_RemoveService" title="getConsole_Command_Index_RemoveService :: Gets the &#039;console.command.index.remove&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.index.remove&#039; service.</span><pre>getConsole_Command_Index_RemoveService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_SelfUpdateService" title="getConsole_Command_SelfUpdateService :: Gets the &#039;console.command.self_update&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.self_update&#039; service.</span><pre>getConsole_Command_SelfUpdateService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Server_StartService" title="getConsole_Command_Server_StartService :: Gets the &#039;console.command.server.start&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.server.start&#039; service.</span><pre>getConsole_Command_Server_StartService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Test_DirectoryService" title="getConsole_Command_Test_DirectoryService :: Gets the &#039;console.command.test.directory&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.test.directory&#039; service.</span><pre>getConsole_Command_Test_DirectoryService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Test_PdoService" title="getConsole_Command_Test_PdoService :: Gets the &#039;console.command.test.pdo&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.test.pdo&#039; service.</span><pre>getConsole_Command_Test_PdoService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Train_DirectoryService" title="getConsole_Command_Train_DirectoryService :: Gets the &#039;console.command.train.directory&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.train.directory&#039; service.</span><pre>getConsole_Command_Train_DirectoryService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Train_DocumentService" title="getConsole_Command_Train_DocumentService :: Gets the &#039;console.command.train.document&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.train.document&#039; service.</span><pre>getConsole_Command_Train_DocumentService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConsole_Command_Train_PdoService" title="getConsole_Command_Train_PdoService :: Gets the &#039;console.command.train.pdo&#039; service.">
+                                        <span class="description">Gets the &#039;console.command.train.pdo&#039; service.</span><pre>getConsole_Command_Train_PdoService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConverter_ConverterService" title="getConverter_ConverterService :: Gets the &#039;converter.converter&#039; service.">
+                                        <span class="description">Gets the &#039;converter.converter&#039; service.</span><pre>getConverter_ConverterService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConverter_FromService" title="getConverter_FromService :: Gets the &#039;converter.from&#039; service.">
+                                        <span class="description">Gets the &#039;converter.from&#039; service.</span><pre>getConverter_FromService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getConverter_ToService" title="getConverter_ToService :: Gets the &#039;converter.to&#039; service.">
+                                        <span class="description">Gets the &#039;converter.to&#039; service.</span><pre>getConverter_ToService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getIndex_IndexService" title="getIndex_IndexService :: Gets the &#039;index.index&#039; service.">
+                                        <span class="description">Gets the &#039;index.index&#039; service.</span><pre>getIndex_IndexService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getJsonPrettyService" title="getJsonPrettyService :: Gets the &#039;json_pretty&#039; service.">
+                                        <span class="description">Gets the &#039;json_pretty&#039; service.</span><pre>getJsonPrettyService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getLoggerService" title="getLoggerService :: Gets the &#039;logger&#039; service.">
+                                        <span class="description">Gets the &#039;logger&#039; service.</span><pre>getLoggerService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getLogger_StreamService" title="getLogger_StreamService :: Gets the &#039;logger.stream&#039; service.">
+                                        <span class="description">Gets the &#039;logger.stream&#039; service.</span><pre>getLogger_StreamService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getNormalizer_LowercaseService" title="getNormalizer_LowercaseService :: Gets the &#039;normalizer.lowercase&#039; service.">
+                                        <span class="description">Gets the &#039;normalizer.lowercase&#039; service.</span><pre>getNormalizer_LowercaseService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getNormalizer_PorterService" title="getNormalizer_PorterService :: Gets the &#039;normalizer.porter&#039; service.">
+                                        <span class="description">Gets the &#039;normalizer.porter&#039; service.</span><pre>getNormalizer_PorterService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getNormalizer_StopwordService" title="getNormalizer_StopwordService :: Gets the &#039;normalizer.stopword&#039; service.">
+                                        <span class="description">Gets the &#039;normalizer.stopword&#039; service.</span><pre>getNormalizer_StopwordService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getNormalizer_StopwordLowercaseService" title="getNormalizer_StopwordLowercaseService :: Gets the &#039;normalizer.stopword_lowercase&#039; service.">
+                                        <span class="description">Gets the &#039;normalizer.stopword_lowercase&#039; service.</span><pre>getNormalizer_StopwordLowercaseService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getNormalizer_StopwordLowercasePorterService" title="getNormalizer_StopwordLowercasePorterService :: Gets the &#039;normalizer.stopword_lowercase_porter&#039; service.">
+                                        <span class="description">Gets the &#039;normalizer.stopword_lowercase_porter&#039; service.</span><pre>getNormalizer_StopwordLowercasePorterService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getSvmService" title="getSvmService :: Gets the &#039;svm&#039; service.">
+                                        <span class="description">Gets the &#039;svm&#039; service.</span><pre>getSvmService</pre>
+                                    </a>
+                                </li>
+                                                                                                                <li class="method protected">
+                                    <a href="#method_getTokenizer_WordService" title="getTokenizer_WordService :: Gets the &#039;tokenizer.word&#039; service.">
+                                        <span class="description">Gets the &#039;tokenizer.word&#039; service.</span><pre>getTokenizer_WordService</pre>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                                                                                                                                                <li class="method protected">
+                                    <a href="#method_getDefaultParameters" title="getDefaultParameters :: Gets the default parameters.">
+                                        <span class="description">Gets the default parameters.</span><pre>getDefaultParameters</pre>
+                                    </a>
+                                </li>
+                                                                        </ul>
+                </li>
+                <li class="nav-header private">» Private
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                </li>
+                <li class="nav-header">
+                    <i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+                                            </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>StatisticalClassifierServiceContainer</h1>
+                <small style="display: block; text-align: right">
+                                            Extends \Symfony\Component\DependencyInjection\Container
+                                                        </small>
+                <p class="short_description">StatisticalClassifierServiceContainer</p>
+                <div class="details">
+                    <div class="long_description">
+                        <p>This class has been auto-generated
+by the Symfony Dependency Injection Component.</p>
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                                </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                            <a id="method___construct"></a>
+                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Constructor.</h2>
+                            <pre>__construct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<div class="span8">
-<a id="\StatisticalClassifierServiceContainer"></a><ul class="breadcrumb">
-<li>
-<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
-</li>
-<li><a href="../namespaces/global.html">global</a></li>
-<li class="active">
-<span class="divider">\</span><a href="../classes/StatisticalClassifierServiceContainer.html">StatisticalClassifierServiceContainer</a>
-</li>
-</ul>
-<div class="element class">
-<p class="short_description">StatisticalClassifierServiceContainer</p>
-<div class="details">
-<div class="long_description"><p>This class has been auto-generated
-by the Symfony Dependency Injection Component.</p></div>
-<h3>
-<i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Constructor.</h2>
-<pre>__construct() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCacheService"></a>
+                        <div class="element clickable method protected method_getCacheService" data-toggle="collapse" data-target=".method_getCacheService .collapse">
+                            <h2>Gets the &#039;cache&#039; service.</h2>
+                            <pre>getCacheService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getParameter"></a><div class="element clickable method public method_getParameter" data-toggle="collapse" data-target=".method_getParameter .collapse">
-<h2>{@inheritdoc}</h2>
-<pre>getParameter($name) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$name</h4></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCache_BackendService"></a>
+                        <div class="element clickable method protected method_getCache_BackendService" data-toggle="collapse" data-target=".method_getCache_BackendService .collapse">
+                            <h2>Gets the &#039;cache.backend&#039; service.</h2>
+                            <pre>getCache_BackendService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getParameterBag"></a><div class="element clickable method public method_getParameterBag" data-toggle="collapse" data-target=".method_getParameterBag .collapse">
-<h2>{@inheritDoc}</h2>
-<pre>getParameterBag() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getClassifier_ComplementNaiveBayesService"></a>
+                        <div class="element clickable method protected method_getClassifier_ComplementNaiveBayesService" data-toggle="collapse" data-target=".method_getClassifier_ComplementNaiveBayesService .collapse">
+                            <h2>Gets the &#039;classifier.complement_naive_bayes&#039; service.</h2>
+                            <pre>getClassifier_ComplementNaiveBayesService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_hasParameter"></a><div class="element clickable method public method_hasParameter" data-toggle="collapse" data-target=".method_hasParameter .collapse">
-<h2>{@inheritdoc}</h2>
-<pre>hasParameter($name) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$name</h4></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getClassifier_SvmService"></a>
+                        <div class="element clickable method protected method_getClassifier_SvmService" data-toggle="collapse" data-target=".method_getClassifier_SvmService .collapse">
+                            <h2>Gets the &#039;classifier.svm&#039; service.</h2>
+                            <pre>getClassifier_SvmService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_setParameter"></a><div class="element clickable method public method_setParameter" data-toggle="collapse" data-target=".method_setParameter .collapse">
-<h2>{@inheritdoc}</h2>
-<pre>setParameter($name, $value) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$name</h4></div>
-<div class="subelement argument"><h4>$value</h4></div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_ApplicationService"></a>
+                        <div class="element clickable method protected method_getConsole_ApplicationService" data-toggle="collapse" data-target=".method_getConsole_ApplicationService .collapse">
+                            <h2>Gets the &#039;console.application&#039; service.</h2>
+                            <pre>getConsole_ApplicationService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getCacheService"></a><div class="element clickable method protected method_getCacheService" data-toggle="collapse" data-target=".method_getCacheService .collapse">
-<h2>Gets the 'cache' service.</h2>
-<pre>getCacheService() : \CacheCache\Cache</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\CacheCache\Cache</code>A CacheCache\Cache instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_ClassifyService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_ClassifyService" data-toggle="collapse" data-target=".method_getConsole_Command_ClassifyService .collapse">
+                            <h2>Gets the &#039;console.command.classify&#039; service.</h2>
+                            <pre>getConsole_Command_ClassifyService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getCache_BackendService"></a><div class="element clickable method protected method_getCache_BackendService" data-toggle="collapse" data-target=".method_getCache_BackendService .collapse">
-<h2>Gets the 'cache.backend' service.</h2>
-<pre>getCache_BackendService() : \CacheCache\Backends\File</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\CacheCache\Backends\File</code>A CacheCache\Backends\File instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Config_CreateService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Config_CreateService" data-toggle="collapse" data-target=".method_getConsole_Command_Config_CreateService .collapse">
+                            <h2>Gets the &#039;console.command.config.create&#039; service.</h2>
+                            <pre>getConsole_Command_Config_CreateService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getClassifier_ComplementNaiveBayesService"></a><div class="element clickable method protected method_getClassifier_ComplementNaiveBayesService" data-toggle="collapse" data-target=".method_getClassifier_ComplementNaiveBayesService .collapse">
-<h2>Gets the 'classifier.complement_naive_bayes' service.</h2>
-<pre>getClassifier_ComplementNaiveBayesService() : <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html">\Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html">\Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes</a></code>A Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Config_OpenService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Config_OpenService" data-toggle="collapse" data-target=".method_getConsole_Command_Config_OpenService .collapse">
+                            <h2>Gets the &#039;console.command.config.open&#039; service.</h2>
+                            <pre>getConsole_Command_Config_OpenService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getClassifier_SvmService"></a><div class="element clickable method protected method_getClassifier_SvmService" data-toggle="collapse" data-target=".method_getClassifier_SvmService .collapse">
-<h2>Gets the 'classifier.svm' service.</h2>
-<pre>getClassifier_SvmService() : <a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">\Camspiers\StatisticalClassifier\Classifier\SVM</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">\Camspiers\StatisticalClassifier\Classifier\SVM</a></code>A Camspiers\StatisticalClassifier\Classifier\SVM instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Config_RemoveService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Config_RemoveService" data-toggle="collapse" data-target=".method_getConsole_Command_Config_RemoveService .collapse">
+                            <h2>Gets the &#039;console.command.config.remove&#039; service.</h2>
+                            <pre>getConsole_Command_Config_RemoveService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_ApplicationService"></a><div class="element clickable method protected method_getConsole_ApplicationService" data-toggle="collapse" data-target=".method_getConsole_ApplicationService .collapse">
-<h2>Gets the 'console.application' service.</h2>
-<pre>getConsole_ApplicationService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Application.html">\Camspiers\StatisticalClassifier\Console\Application</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Application.html">\Camspiers\StatisticalClassifier\Console\Application</a></code>A Camspiers\StatisticalClassifier\Console\Application instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_GenerateContainerService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_GenerateContainerService" data-toggle="collapse" data-target=".method_getConsole_Command_GenerateContainerService .collapse">
+                            <h2>Gets the &#039;console.command.generate_container&#039; service.</h2>
+                            <pre>getConsole_Command_GenerateContainerService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_ClassifyService"></a><div class="element clickable method protected method_getConsole_Command_ClassifyService" data-toggle="collapse" data-target=".method_getConsole_Command_ClassifyService .collapse">
-<h2>Gets the 'console.command.classify' service.</h2>
-<pre>getConsole_Command_ClassifyService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.ClassifyCommand.html">\Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.ClassifyCommand.html">\Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\ClassifyCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Index_CreateService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Index_CreateService" data-toggle="collapse" data-target=".method_getConsole_Command_Index_CreateService .collapse">
+                            <h2>Gets the &#039;console.command.index.create&#039; service.</h2>
+                            <pre>getConsole_Command_Index_CreateService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Config_CreateService"></a><div class="element clickable method protected method_getConsole_Command_Config_CreateService" data-toggle="collapse" data-target=".method_getConsole_Command_Config_CreateService .collapse">
-<h2>Gets the 'console.command.config.create' service.</h2>
-<pre>getConsole_Command_Config_CreateService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.CreateCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.CreateCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Config\CreateCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Index_PrepareService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Index_PrepareService" data-toggle="collapse" data-target=".method_getConsole_Command_Index_PrepareService .collapse">
+                            <h2>Gets the &#039;console.command.index.prepare&#039; service.</h2>
+                            <pre>getConsole_Command_Index_PrepareService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Config_OpenService"></a><div class="element clickable method protected method_getConsole_Command_Config_OpenService" data-toggle="collapse" data-target=".method_getConsole_Command_Config_OpenService .collapse">
-<h2>Gets the 'console.command.config.open' service.</h2>
-<pre>getConsole_Command_Config_OpenService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.OpenCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.OpenCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Config\OpenCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Index_RemoveService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Index_RemoveService" data-toggle="collapse" data-target=".method_getConsole_Command_Index_RemoveService .collapse">
+                            <h2>Gets the &#039;console.command.index.remove&#039; service.</h2>
+                            <pre>getConsole_Command_Index_RemoveService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Config_RemoveService"></a><div class="element clickable method protected method_getConsole_Command_Config_RemoveService" data-toggle="collapse" data-target=".method_getConsole_Command_Config_RemoveService .collapse">
-<h2>Gets the 'console.command.config.remove' service.</h2>
-<pre>getConsole_Command_Config_RemoveService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Config\RemoveCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_SelfUpdateService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_SelfUpdateService" data-toggle="collapse" data-target=".method_getConsole_Command_SelfUpdateService .collapse">
+                            <h2>Gets the &#039;console.command.self_update&#039; service.</h2>
+                            <pre>getConsole_Command_SelfUpdateService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_GenerateContainerService"></a><div class="element clickable method protected method_getConsole_Command_GenerateContainerService" data-toggle="collapse" data-target=".method_getConsole_Command_GenerateContainerService .collapse">
-<h2>Gets the 'console.command.generate_container' service.</h2>
-<pre>getConsole_Command_GenerateContainerService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.GenerateContainerCommand.html">\Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.GenerateContainerCommand.html">\Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Server_StartService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Server_StartService" data-toggle="collapse" data-target=".method_getConsole_Command_Server_StartService .collapse">
+                            <h2>Gets the &#039;console.command.server.start&#039; service.</h2>
+                            <pre>getConsole_Command_Server_StartService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Index_CreateService"></a><div class="element clickable method protected method_getConsole_Command_Index_CreateService" data-toggle="collapse" data-target=".method_getConsole_Command_Index_CreateService .collapse">
-<h2>Gets the 'console.command.index.create' service.</h2>
-<pre>getConsole_Command_Index_CreateService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Test_DirectoryService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Test_DirectoryService" data-toggle="collapse" data-target=".method_getConsole_Command_Test_DirectoryService .collapse">
+                            <h2>Gets the &#039;console.command.test.directory&#039; service.</h2>
+                            <pre>getConsole_Command_Test_DirectoryService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Index_PrepareService"></a><div class="element clickable method protected method_getConsole_Command_Index_PrepareService" data-toggle="collapse" data-target=".method_getConsole_Command_Index_PrepareService .collapse">
-<h2>Gets the 'console.command.index.prepare' service.</h2>
-<pre>getConsole_Command_Index_PrepareService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Test_PdoService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Test_PdoService" data-toggle="collapse" data-target=".method_getConsole_Command_Test_PdoService .collapse">
+                            <h2>Gets the &#039;console.command.test.pdo&#039; service.</h2>
+                            <pre>getConsole_Command_Test_PdoService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Index_RemoveService"></a><div class="element clickable method protected method_getConsole_Command_Index_RemoveService" data-toggle="collapse" data-target=".method_getConsole_Command_Index_RemoveService .collapse">
-<h2>Gets the 'console.command.index.remove' service.</h2>
-<pre>getConsole_Command_Index_RemoveService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Train_DirectoryService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Train_DirectoryService" data-toggle="collapse" data-target=".method_getConsole_Command_Train_DirectoryService .collapse">
+                            <h2>Gets the &#039;console.command.train.directory&#039; service.</h2>
+                            <pre>getConsole_Command_Train_DirectoryService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_SelfUpdateService"></a><div class="element clickable method protected method_getConsole_Command_SelfUpdateService" data-toggle="collapse" data-target=".method_getConsole_Command_SelfUpdateService .collapse">
-<h2>Gets the 'console.command.self_update' service.</h2>
-<pre>getConsole_Command_SelfUpdateService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html">\Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html">\Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\SelfUpdateCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Train_DocumentService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Train_DocumentService" data-toggle="collapse" data-target=".method_getConsole_Command_Train_DocumentService .collapse">
+                            <h2>Gets the &#039;console.command.train.document&#039; service.</h2>
+                            <pre>getConsole_Command_Train_DocumentService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Server_StartService"></a><div class="element clickable method protected method_getConsole_Command_Server_StartService" data-toggle="collapse" data-target=".method_getConsole_Command_Server_StartService .collapse">
-<h2>Gets the 'console.command.server.start' service.</h2>
-<pre>getConsole_Command_Server_StartService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConsole_Command_Train_PdoService"></a>
+                        <div class="element clickable method protected method_getConsole_Command_Train_PdoService" data-toggle="collapse" data-target=".method_getConsole_Command_Train_PdoService .collapse">
+                            <h2>Gets the &#039;console.command.train.pdo&#039; service.</h2>
+                            <pre>getConsole_Command_Train_PdoService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Test_DirectoryService"></a><div class="element clickable method protected method_getConsole_Command_Test_DirectoryService" data-toggle="collapse" data-target=".method_getConsole_Command_Test_DirectoryService .collapse">
-<h2>Gets the 'console.command.test.directory' service.</h2>
-<pre>getConsole_Command_Test_DirectoryService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.DirectoryCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.DirectoryCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Test\DirectoryCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConverter_ConverterService"></a>
+                        <div class="element clickable method protected method_getConverter_ConverterService" data-toggle="collapse" data-target=".method_getConverter_ConverterService .collapse">
+                            <h2>Gets the &#039;converter.converter&#039; service.</h2>
+                            <pre>getConverter_ConverterService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Test_PdoService"></a><div class="element clickable method protected method_getConsole_Command_Test_PdoService" data-toggle="collapse" data-target=".method_getConsole_Command_Test_PdoService .collapse">
-<h2>Gets the 'console.command.test.pdo' service.</h2>
-<pre>getConsole_Command_Test_PdoService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Test\PDOCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConverter_FromService"></a>
+                        <div class="element clickable method protected method_getConverter_FromService" data-toggle="collapse" data-target=".method_getConverter_FromService .collapse">
+                            <h2>Gets the &#039;converter.from&#039; service.</h2>
+                            <pre>getConverter_FromService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Train_DirectoryService"></a><div class="element clickable method protected method_getConsole_Command_Train_DirectoryService" data-toggle="collapse" data-target=".method_getConsole_Command_Train_DirectoryService .collapse">
-<h2>Gets the 'console.command.train.directory' service.</h2>
-<pre>getConsole_Command_Train_DirectoryService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Train\DirectoryCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                            <p>always since this service is expected to be injected dynamically</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConverter_ToService"></a>
+                        <div class="element clickable method protected method_getConverter_ToService" data-toggle="collapse" data-target=".method_getConverter_ToService .collapse">
+                            <h2>Gets the &#039;converter.to&#039; service.</h2>
+                            <pre>getConverter_ToService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Train_DocumentService"></a><div class="element clickable method protected method_getConsole_Command_Train_DocumentService" data-toggle="collapse" data-target=".method_getConsole_Command_Train_DocumentService .collapse">
-<h2>Gets the 'console.command.train.document' service.</h2>
-<pre>getConsole_Command_Train_DocumentService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Train\DocumentCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                            <p>always since this service is expected to be injected dynamically</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getIndex_IndexService"></a>
+                        <div class="element clickable method protected method_getIndex_IndexService" data-toggle="collapse" data-target=".method_getIndex_IndexService .collapse">
+                            <h2>Gets the &#039;index.index&#039; service.</h2>
+                            <pre>getIndex_IndexService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConsole_Command_Train_PdoService"></a><div class="element clickable method protected method_getConsole_Command_Train_PdoService" data-toggle="collapse" data-target=".method_getConsole_Command_Train_PdoService .collapse">
-<h2>Gets the 'console.command.train.pdo' service.</h2>
-<pre>getConsole_Command_Train_PdoService() : <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html">\Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand</a></code>A Camspiers\StatisticalClassifier\Console\Command\Train\PDOCommand instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                            <p>always since this service is expected to be injected dynamically</p>
+<br />
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getJsonPrettyService"></a>
+                        <div class="element clickable method protected method_getJsonPrettyService" data-toggle="collapse" data-target=".method_getJsonPrettyService .collapse">
+                            <h2>Gets the &#039;json_pretty&#039; service.</h2>
+                            <pre>getJsonPrettyService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConverter_ConverterService"></a><div class="element clickable method protected method_getConverter_ConverterService" data-toggle="collapse" data-target=".method_getConverter_ConverterService .collapse">
-<h2>Gets the 'converter.converter' service.</h2>
-<pre>getConverter_ConverterService() : <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Converter.html">\Camspiers\StatisticalClassifier\DataSource\Converter</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Converter.html">\Camspiers\StatisticalClassifier\DataSource\Converter</a></code>A Camspiers\StatisticalClassifier\DataSource\Converter instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getLoggerService"></a>
+                        <div class="element clickable method protected method_getLoggerService" data-toggle="collapse" data-target=".method_getLoggerService .collapse">
+                            <h2>Gets the &#039;logger&#039; service.</h2>
+                            <pre>getLoggerService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConverter_FromService"></a><div class="element clickable method protected method_getConverter_FromService" data-toggle="collapse" data-target=".method_getConverter_FromService .collapse">
-<h2>Gets the 'converter.from' service.</h2>
-<pre>getConverter_FromService() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Exceptions</h3>
-<table class="table table-bordered"><tr>
-<th><code>\Symfony\Component\DependencyInjection\Exception\RuntimeException</code></th>
-<td>always since this service is expected to be injected dynamically</td>
-</tr></table>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getLogger_StreamService"></a>
+                        <div class="element clickable method protected method_getLogger_StreamService" data-toggle="collapse" data-target=".method_getLogger_StreamService .collapse">
+                            <h2>Gets the &#039;logger.stream&#039; service.</h2>
+                            <pre>getLogger_StreamService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getConverter_ToService"></a><div class="element clickable method protected method_getConverter_ToService" data-toggle="collapse" data-target=".method_getConverter_ToService .collapse">
-<h2>Gets the 'converter.to' service.</h2>
-<pre>getConverter_ToService() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Exceptions</h3>
-<table class="table table-bordered"><tr>
-<th><code>\Symfony\Component\DependencyInjection\Exception\RuntimeException</code></th>
-<td>always since this service is expected to be injected dynamically</td>
-</tr></table>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getNormalizer_LowercaseService"></a>
+                        <div class="element clickable method protected method_getNormalizer_LowercaseService" data-toggle="collapse" data-target=".method_getNormalizer_LowercaseService .collapse">
+                            <h2>Gets the &#039;normalizer.lowercase&#039; service.</h2>
+                            <pre>getNormalizer_LowercaseService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getDefaultParameters"></a><div class="element clickable method protected method_getDefaultParameters" data-toggle="collapse" data-target=".method_getDefaultParameters .collapse">
-<h2>Gets the default parameters.</h2>
-<pre>getDefaultParameters() : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>array</code>An array of the default parameters</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getNormalizer_PorterService"></a>
+                        <div class="element clickable method protected method_getNormalizer_PorterService" data-toggle="collapse" data-target=".method_getNormalizer_PorterService .collapse">
+                            <h2>Gets the &#039;normalizer.porter&#039; service.</h2>
+                            <pre>getNormalizer_PorterService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getIndex_IndexService"></a><div class="element clickable method protected method_getIndex_IndexService" data-toggle="collapse" data-target=".method_getIndex_IndexService .collapse">
-<h2>Gets the 'index.index' service.</h2>
-<pre>getIndex_IndexService() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Exceptions</h3>
-<table class="table table-bordered"><tr>
-<th><code>\Symfony\Component\DependencyInjection\Exception\RuntimeException</code></th>
-<td>always since this service is expected to be injected dynamically</td>
-</tr></table>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getNormalizer_StopwordService"></a>
+                        <div class="element clickable method protected method_getNormalizer_StopwordService" data-toggle="collapse" data-target=".method_getNormalizer_StopwordService .collapse">
+                            <h2>Gets the &#039;normalizer.stopword&#039; service.</h2>
+                            <pre>getNormalizer_StopwordService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getJsonPrettyService"></a><div class="element clickable method protected method_getJsonPrettyService" data-toggle="collapse" data-target=".method_getJsonPrettyService .collapse">
-<h2>Gets the 'json_pretty' service.</h2>
-<pre>getJsonPrettyService() : \Camspiers\JsonPretty\JsonPretty</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\Camspiers\JsonPretty\JsonPretty</code>A Camspiers\JsonPretty\JsonPretty instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getNormalizer_StopwordLowercaseService"></a>
+                        <div class="element clickable method protected method_getNormalizer_StopwordLowercaseService" data-toggle="collapse" data-target=".method_getNormalizer_StopwordLowercaseService .collapse">
+                            <h2>Gets the &#039;normalizer.stopword_lowercase&#039; service.</h2>
+                            <pre>getNormalizer_StopwordLowercaseService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getLoggerService"></a><div class="element clickable method protected method_getLoggerService" data-toggle="collapse" data-target=".method_getLoggerService .collapse">
-<h2>Gets the 'logger' service.</h2>
-<pre>getLoggerService() : \Monolog\Logger</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\Monolog\Logger</code>A Monolog\Logger instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getNormalizer_StopwordLowercasePorterService"></a>
+                        <div class="element clickable method protected method_getNormalizer_StopwordLowercasePorterService" data-toggle="collapse" data-target=".method_getNormalizer_StopwordLowercasePorterService .collapse">
+                            <h2>Gets the &#039;normalizer.stopword_lowercase_porter&#039; service.</h2>
+                            <pre>getNormalizer_StopwordLowercasePorterService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getLogger_StreamService"></a><div class="element clickable method protected method_getLogger_StreamService" data-toggle="collapse" data-target=".method_getLogger_StreamService .collapse">
-<h2>Gets the 'logger.stream' service.</h2>
-<pre>getLogger_StreamService() : \Monolog\Handler\StreamHandler</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\Monolog\Handler\StreamHandler</code>A Monolog\Handler\StreamHandler instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getSvmService"></a>
+                        <div class="element clickable method protected method_getSvmService" data-toggle="collapse" data-target=".method_getSvmService .collapse">
+                            <h2>Gets the &#039;svm&#039; service.</h2>
+                            <pre>getSvmService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getNormalizer_LowercaseService"></a><div class="element clickable method protected method_getNormalizer_LowercaseService" data-toggle="collapse" data-target=".method_getNormalizer_LowercaseService .collapse">
-<h2>Gets the 'normalizer.lowercase' service.</h2>
-<pre>getNormalizer_LowercaseService() : <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html">\Camspiers\StatisticalClassifier\Normalizer\Lowercase</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html">\Camspiers\StatisticalClassifier\Normalizer\Lowercase</a></code>A Camspiers\StatisticalClassifier\Normalizer\Lowercase instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTokenizer_WordService"></a>
+                        <div class="element clickable method protected method_getTokenizer_WordService" data-toggle="collapse" data-target=".method_getTokenizer_WordService .collapse">
+                            <h2>Gets the &#039;tokenizer.word&#039; service.</h2>
+                            <pre>getTokenizer_WordService() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>This service is shared.
+This method always returns the same instance of the service.</p>
 </div>
-<a id="method_getNormalizer_PorterService"></a><div class="element clickable method protected method_getNormalizer_PorterService" data-toggle="collapse" data-target=".method_getNormalizer_PorterService .collapse">
-<h2>Gets the 'normalizer.porter' service.</h2>
-<pre>getNormalizer_PorterService() : <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html">\Camspiers\StatisticalClassifier\Normalizer\Porter</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html">\Camspiers\StatisticalClassifier\Normalizer\Porter</a></code>A Camspiers\StatisticalClassifier\Normalizer\Porter instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getParameter"></a>
+                        <div class="element clickable method public method_getParameter" data-toggle="collapse" data-target=".method_getParameter .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>getParameter($name) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getNormalizer_StopwordLowercasePorterService"></a><div class="element clickable method protected method_getNormalizer_StopwordLowercasePorterService" data-toggle="collapse" data-target=".method_getNormalizer_StopwordLowercasePorterService .collapse">
-<h2>Gets the 'normalizer.stopword_lowercase_porter' service.</h2>
-<pre>getNormalizer_StopwordLowercasePorterService() : <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">\Camspiers\StatisticalClassifier\Normalizer\Grouped</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">\Camspiers\StatisticalClassifier\Normalizer\Grouped</a></code>A Camspiers\StatisticalClassifier\Normalizer\Grouped instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_hasParameter"></a>
+                        <div class="element clickable method public method_hasParameter" data-toggle="collapse" data-target=".method_hasParameter .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>hasParameter($name) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getNormalizer_StopwordLowercaseService"></a><div class="element clickable method protected method_getNormalizer_StopwordLowercaseService" data-toggle="collapse" data-target=".method_getNormalizer_StopwordLowercaseService .collapse">
-<h2>Gets the 'normalizer.stopword_lowercase' service.</h2>
-<pre>getNormalizer_StopwordLowercaseService() : <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">\Camspiers\StatisticalClassifier\Normalizer\Grouped</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">\Camspiers\StatisticalClassifier\Normalizer\Grouped</a></code>A Camspiers\StatisticalClassifier\Normalizer\Grouped instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setParameter"></a>
+                        <div class="element clickable method public method_setParameter" data-toggle="collapse" data-target=".method_setParameter .collapse">
+                            <h2>{@inheritdoc}</h2>
+                            <pre>setParameter($name, $value) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getNormalizer_StopwordService"></a><div class="element clickable method protected method_getNormalizer_StopwordService" data-toggle="collapse" data-target=".method_getNormalizer_StopwordService .collapse">
-<h2>Gets the 'normalizer.stopword' service.</h2>
-<pre>getNormalizer_StopwordService() : <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">\Camspiers\StatisticalClassifier\Normalizer\Stopword</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">\Camspiers\StatisticalClassifier\Normalizer\Stopword</a></code>A Camspiers\StatisticalClassifier\Normalizer\Stopword instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$value</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getParameterBag"></a>
+                        <div class="element clickable method public method_getParameterBag" data-toggle="collapse" data-target=".method_getParameterBag .collapse">
+                            <h2>{@inheritDoc}</h2>
+                            <pre>getParameterBag() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getSvmService"></a><div class="element clickable method protected method_getSvmService" data-toggle="collapse" data-target=".method_getSvmService .collapse">
-<h2>Gets the 'svm' service.</h2>
-<pre>getSvmService() : \SVM</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\SVM</code>A SVM instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getDefaultParameters"></a>
+                        <div class="element clickable method protected method_getDefaultParameters" data-toggle="collapse" data-target=".method_getDefaultParameters .collapse">
+                            <h2>Gets the default parameters.</h2>
+                            <pre>getDefaultParameters() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
 </div>
-<a id="method_getTokenizer_WordService"></a><div class="element clickable method protected method_getTokenizer_WordService" data-toggle="collapse" data-target=".method_getTokenizer_WordService .collapse">
-<h2>Gets the 'tokenizer.word' service.</h2>
-<pre>getTokenizer_WordService() : <a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html">\Camspiers\StatisticalClassifier\Tokenizer\Word</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This service is shared.
-This method always returns the same instance of the service.</p></div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html">\Camspiers\StatisticalClassifier\Tokenizer\Word</a></code>A Camspiers\StatisticalClassifier\Tokenizer\Word instance.</div>
-</div></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                    
+                                    </div>
+            </div>
+            <a id="\StatisticalClassifierServiceContainer"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/default.html">\</a>
+    </li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/StatisticalClassifierServiceContainer.html">StatisticalClassifierServiceContainer</a></li>
+            </ul>
+        </div>
+    </div>
+
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="row"><footer class="span12">
-            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-22T13:33:20+12:00.<br></footer></div>
-</div>
+
+<footer class="span12">
+    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+    generated on Wed, 03 Jul 2013 23:16:36 +0000.<br/>
+</footer>
 </body>
 </html>
