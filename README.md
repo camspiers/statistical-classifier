@@ -85,6 +85,7 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ### Non-cached SVM
 
 ```php
+<?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier\Classifier;
 use Camspiers\StatisticalClassifier\Index;
