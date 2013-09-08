@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta charset="utf-8"/>
-    <title>     &raquo; \Camspiers
-</title>
+    <title>API Documentation</title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
 
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
-    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../js/template.js" type="text/javascript"></script>
-    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
-
-    <link rel="shortcut icon" href="../img/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
 </head>
 <body>
 
@@ -31,1402 +33,555 @@
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span> </a>
-            <a class="brand" href="../index.html">PHP Classifier</a>
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
 
             <div class="nav-collapse">
-                <ul class="nav">
+                <ul class="nav pull-right">
                     <li class="dropdown">
-                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
                             API Documentation <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                                                                                </ul>
+                                                        <li><a href="../namespaces/Camspiers.html">\Camspiers</a></li>
+                                                    </ul>
                     </li>
                     <li class="dropdown" id="charts-menu">
-                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Charts <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../graph_class.html">
+                                <a href="../graphs/class.html">
                                     <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown" id="reports-menu">
-                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Reports <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
-                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
-                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="go_to_top">
-        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
-    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
 </div>
 
-<div id="___" class="container">
-    <noscript>
-        <div class="alert alert-warning">
-            Javascript is disabled; several features are only available if Javascript is enabled.
-        </div>
-    </noscript>
-
-        
-    <div class="row">
-
-        <div class="span4">
-            <div class="btn-group view pull-right" data-toggle="buttons-radio">
-                <button class="btn details" title="Show descriptions and method names">
-                    <i class="icon-list"></i></button><button class="btn simple" title="Show only method names">
-                    <i class="icon-align-justify"></i>
-                </button>
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-961126528"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <ul class="side-nav nav nav-list">
-                <li class="nav-header">
-                    <i class="icon-map-marker"></i> Namespaces
-                </li>
+            <div id="namespace-961126528" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-433053249"></a>
+                                <a href="../namespaces/Camspiers.html" style="margin-left: 30px; padding-left: 0">Camspiers</a>
+            </div>
+            <div id="namespace-433053249" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-287087599"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.html" style="margin-left: 30px; padding-left: 0">StatisticalClassifier</a>
+            </div>
+            <div id="namespace-287087599" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1067904140"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.ClassificationRule.html" style="margin-left: 30px; padding-left: 0">ClassificationRule</a>
+            </div>
+            <div id="namespace-1067904140" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
                     
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.html" title="StatisticalClassifier">
-            <i class="icon-th"></i> StatisticalClassifier
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.ClassificationRule.html" title="ClassificationRule">
-            <i class="icon-th"></i> ClassificationRule
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Classifier.html" title="Classifier">
-            <i class="icon-th"></i> Classifier
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Config.html" title="Config">
-            <i class="icon-th"></i> Config
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.html" title="Console">
-            <i class="icon-th"></i> Console
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html" title="Command">
-            <i class="icon-th"></i> Command
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Config.html" title="Config">
-            <i class="icon-th"></i> Config
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Index.html" title="Index">
-            <i class="icon-th"></i> Index
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Server.html" title="Server">
-            <i class="icon-th"></i> Server
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html" title="Test">
-            <i class="icon-th"></i> Test
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Train.html" title="Train">
-            <i class="icon-th"></i> Train
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-    
-        </ul>
-    </li>
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.DataSource.html" title="DataSource">
-            <i class="icon-th"></i> DataSource
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.DependencyInjection.html" title="DependencyInjection">
-            <i class="icon-th"></i> DependencyInjection
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Index.html" title="Index">
-            <i class="icon-th"></i> Index
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Loader.html" title="Loader">
-            <i class="icon-th"></i> Loader
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Normalizer.html" title="Normalizer">
-            <i class="icon-th"></i> Normalizer
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Tokenizer.html" title="Tokenizer">
-            <i class="icon-th"></i> Tokenizer
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-        <li>
-        <a href="../namespaces/Camspiers.StatisticalClassifier.Transform.html" title="Transform">
-            <i class="icon-th"></i> Transform
-        </a>
-        <ul class="nav nav-list nav-namespaces">
-                
-    
-        </ul>
-    </li>
-    
-        </ul>
-    </li>
-    
-            </ul>
-        </div>
-
-        <div class="span8 namespace-contents">
-                
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="Compiler" class="element ajax clickable class">
-        <h1>Compiler<a href="../classes/Camspiers.StatisticalClassifier.Compiler.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Compiler.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.ClassificationRule.html">ClassificationRule</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="ClassificationRuleInterface" class="element ajax clickable interface">
-        <h1>ClassificationRuleInterface<a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html">¶</a></h1>
-        <p class="short_description">Provides an interface for classification rule.</p>
-        <div class="details collapse">Classes of this type are injected into the constructor of a classifier</div>
-        <a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="ComplementNaiveBayes" class="element ajax clickable class">
-        <h1>ComplementNaiveBayes<a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ComplementNaiveBayes.html">¶</a></h1>
-        <p class="short_description">The classification rule for the NaiveBayes classifier</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ComplementNaiveBayes.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="SVM" class="element ajax clickable class">
-        <h1>SVM<a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.SVM.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.SVM.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Classifier.html">Classifier</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="ClassifierInterface" class="element ajax clickable interface">
-        <h1>ClassifierInterface<a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">¶</a></h1>
-        <p class="short_description">Provides an interface for classifier.</p>
-        <div class="details collapse">Implementing classes are classifiers capable of classifying documents into categories</div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="ComplementNaiveBayes" class="element ajax clickable class">
-        <h1>ComplementNaiveBayes<a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html">¶</a></h1>
-        <p class="short_description">An implementation of a Naive Bayes classifier.</p>
-        <div class="details collapse">This classifier is based off *Tackling the Poor Assumptions of Naive Bayes Text Classifiers* by Jason Rennie</div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="GenericClassifier" class="element ajax clickable class">
-        <h1>GenericClassifier<a href="../classes/Camspiers.StatisticalClassifier.Classifier.GenericClassifier.html">¶</a></h1>
-        <p class="short_description">A generic classifier which can be used to built a classifier given a number of injected components</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Classifier.GenericClassifier.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="SVM" class="element ajax clickable class">
-        <h1>SVM<a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">¶</a></h1>
-        <p class="short_description">A generic classifier which can be used to built a classifier given a number of injected components</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Config.html">Config</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="Config" class="element ajax clickable class">
-        <h1>Config<a href="../classes/Camspiers.StatisticalClassifier.Config.Config.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Config.Config.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DataSourceConfiguration" class="element ajax clickable class">
-        <h1>DataSourceConfiguration<a href="../classes/Camspiers.StatisticalClassifier.Config.DataSourceConfiguration.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Config.DataSourceConfiguration.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="StatisticalClassifierConfig" class="element ajax clickable class">
-        <h1>StatisticalClassifierConfig<a href="../classes/Camspiers.StatisticalClassifier.Config.StatisticalClassifierConfig.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Config.StatisticalClassifierConfig.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="Application" class="element ajax clickable class">
-        <h1>Application<a href="../classes/Camspiers.StatisticalClassifier.Console.Application.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Application.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="ClassifyCommand" class="element ajax clickable class">
-        <h1>ClassifyCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.ClassifyCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.ClassifyCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Command" class="element ajax clickable class">
-        <h1>Command<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="GenerateContainerCommand" class="element ajax clickable class">
-        <h1>GenerateContainerCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.GenerateContainerCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.GenerateContainerCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="SelfUpdateCommand" class="element ajax clickable class">
-        <h1>SelfUpdateCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Config.html">Config</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="Command" class="element ajax clickable class">
-        <h1>Command<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.Command.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.Command.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="CreateCommand" class="element ajax clickable class">
-        <h1>CreateCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.CreateCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.CreateCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="OpenCommand" class="element ajax clickable class">
-        <h1>OpenCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.OpenCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.OpenCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="RemoveCommand" class="element ajax clickable class">
-        <h1>RemoveCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Index.html">Index</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="CreateCommand" class="element ajax clickable class">
-        <h1>CreateCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PrepareCommand" class="element ajax clickable class">
-        <h1>PrepareCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="RemoveCommand" class="element ajax clickable class">
-        <h1>RemoveCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Server.html">Server</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="StartCommand" class="element ajax clickable class">
-        <h1>StartCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html">Test</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="Command" class="element ajax clickable class">
-        <h1>Command<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.Command.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.Command.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DirectoryCommand" class="element ajax clickable class">
-        <h1>DirectoryCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.DirectoryCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.DirectoryCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PDOCommand" class="element ajax clickable class">
-        <h1>PDOCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.html">Console</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html">Command</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Train.html">Train</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="Command" class="element ajax clickable class">
-        <h1>Command<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.Command.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.Command.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DirectoryCommand" class="element ajax clickable class">
-        <h1>DirectoryCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DocumentCommand" class="element ajax clickable class">
-        <h1>DocumentCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PDOCommand" class="element ajax clickable class">
-        <h1>PDOCommand<a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-    
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.DataSource.html">DataSource</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="DataSourceInterface" class="element ajax clickable interface">
-        <h1>DataSourceInterface<a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="Closure" class="element ajax clickable class">
-        <h1>Closure<a href="../classes/Camspiers.StatisticalClassifier.DataSource.Closure.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Closure.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Converter" class="element ajax clickable class">
-        <h1>Converter<a href="../classes/Camspiers.StatisticalClassifier.DataSource.Converter.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Converter.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="CSV" class="element ajax clickable class">
-        <h1>CSV<a href="../classes/Camspiers.StatisticalClassifier.DataSource.CSV.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.CSV.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DataArray" class="element ajax clickable class">
-        <h1>DataArray<a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataArray.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataArray.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Directory" class="element ajax clickable class">
-        <h1>Directory<a href="../classes/Camspiers.StatisticalClassifier.DataSource.Directory.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Directory.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Grouped" class="element ajax clickable class">
-        <h1>Grouped<a href="../classes/Camspiers.StatisticalClassifier.DataSource.Grouped.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Grouped.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Json" class="element ajax clickable class">
-        <h1>Json<a href="../classes/Camspiers.StatisticalClassifier.DataSource.Json.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Json.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PDOQuery" class="element ajax clickable class">
-        <h1>PDOQuery<a href="../classes/Camspiers.StatisticalClassifier.DataSource.PDOQuery.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.PDOQuery.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Serialized" class="element ajax clickable class">
-        <h1>Serialized<a href="../classes/Camspiers.StatisticalClassifier.DataSource.Serialized.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DataSource.Serialized.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.DependencyInjection.html">DependencyInjection</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="CommandCompilerPass" class="element ajax clickable class">
-        <h1>CommandCompilerPass<a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.CommandCompilerPass.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.CommandCompilerPass.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="StatisticalClassifierExtension" class="element ajax clickable class">
-        <h1>StatisticalClassifierExtension<a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.StatisticalClassifierExtension.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.StatisticalClassifierExtension.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Index.html">Index</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="IndexInterface" class="element ajax clickable interface">
-        <h1>IndexInterface<a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="CachedIndex" class="element ajax clickable class">
-        <h1>CachedIndex<a href="../classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Index" class="element ajax clickable class">
-        <h1>Index<a href="../classes/Camspiers.StatisticalClassifier.Index.Index.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Index.Index.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="SVMCachedIndex" class="element ajax clickable class">
-        <h1>SVMCachedIndex<a href="../classes/Camspiers.StatisticalClassifier.Index.SVMCachedIndex.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Index.SVMCachedIndex.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Loader.html">Loader</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                
-                                        <div id="JsonConfigLoader" class="element ajax clickable class">
-        <h1>JsonConfigLoader<a href="../classes/Camspiers.StatisticalClassifier.Loader.JsonConfigLoader.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Loader.JsonConfigLoader.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Normalizer.html">Normalizer</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="NormalizerInterface" class="element ajax clickable interface">
-        <h1>NormalizerInterface<a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="Grouped" class="element ajax clickable class">
-        <h1>Grouped<a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Lowercase" class="element ajax clickable class">
-        <h1>Lowercase<a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Porter" class="element ajax clickable class">
-        <h1>Porter<a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Stopword" class="element ajax clickable class">
-        <h1>Stopword<a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Tokenizer.html">Tokenizer</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="TokenizerInterface" class="element ajax clickable interface">
-        <h1>TokenizerInterface<a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="Word" class="element ajax clickable class">
-        <h1>Word<a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-                
-    
-        <ul class="breadcrumb">
-            <li><a href="../index.html"><i class="icon-th"></i></a></li>
-                
-                
-                
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.html">Camspiers</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a>
-    </li>
-
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Transform.html">Transform</a>
-    </li>
-
-        </ul>
-
-        
-        
-                    <div class="namespace-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                
-                                        <div id="TransformInterface" class="element ajax clickable interface">
-        <h1>TransformInterface<a href="../classes/Camspiers.StatisticalClassifier.Transform.TransformInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.TransformInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="Complement" class="element ajax clickable class">
-        <h1>Complement<a href="../classes/Camspiers.StatisticalClassifier.Transform.Complement.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.Complement.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DC" class="element ajax clickable class">
-        <h1>DC<a href="../classes/Camspiers.StatisticalClassifier.Transform.DC.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.DC.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DL" class="element ajax clickable class">
-        <h1>DL<a href="../classes/Camspiers.StatisticalClassifier.Transform.DL.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.DL.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DocumentTokenCounts" class="element ajax clickable class">
-        <h1>DocumentTokenCounts<a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenCounts.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenCounts.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DocumentTokenSums" class="element ajax clickable class">
-        <h1>DocumentTokenSums<a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenSums.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenSums.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="IDF" class="element ajax clickable class">
-        <h1>IDF<a href="../classes/Camspiers.StatisticalClassifier.Transform.IDF.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.IDF.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Prune" class="element ajax clickable class">
-        <h1>Prune<a href="../classes/Camspiers.StatisticalClassifier.Transform.Prune.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.Prune.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="SVM" class="element ajax clickable class">
-        <h1>SVM<a href="../classes/Camspiers.StatisticalClassifier.Transform.SVM.html">¶</a></h1>
-        <p class="short_description">Class SVM</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.SVM.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TAC" class="element ajax clickable class">
-        <h1>TAC<a href="../classes/Camspiers.StatisticalClassifier.Transform.TAC.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.TAC.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TBC" class="element ajax clickable class">
-        <h1>TBC<a href="../classes/Camspiers.StatisticalClassifier.Transform.TBC.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.TBC.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TCBD" class="element ajax clickable class">
-        <h1>TCBD<a href="../classes/Camspiers.StatisticalClassifier.Transform.TCBD.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.TCBD.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TF" class="element ajax clickable class">
-        <h1>TF<a href="../classes/Camspiers.StatisticalClassifier.Transform.TF.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.TF.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TFIDF" class="element ajax clickable class">
-        <h1>TFIDF<a href="../classes/Camspiers.StatisticalClassifier.Transform.TFIDF.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.TFIDF.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Weight" class="element ajax clickable class">
-        <h1>Weight<a href="../classes/Camspiers.StatisticalClassifier.Transform.Weight.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.Weight.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="WeightNormalization" class="element ajax clickable class">
-        <h1>WeightNormalization<a href="../classes/Camspiers.StatisticalClassifier.Transform.WeightNormalization.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Camspiers.StatisticalClassifier.Transform.WeightNormalization.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
-    
-    
-    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html">ClassificationRuleInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ComplementNaiveBayes.html">ComplementNaiveBayes</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.SVM.html">SVM</a></li>
+                                            </ul>
+                </div>
+            </div>
         </div>
     </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2028512402"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Classifier.html" style="margin-left: 30px; padding-left: 0">Classifier</a>
+            </div>
+            <div id="namespace-2028512402" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">ClassifierInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html">ComplementNaiveBayes</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.GenericClassifier.html">GenericClassifier</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">SVM</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1758941165"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-1758941165" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Config.Config.html">Config</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Config.DataSourceConfiguration.html">DataSourceConfiguration</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Config.StatisticalClassifierConfig.html">StatisticalClassifierConfig</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1869263772"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.html" style="margin-left: 30px; padding-left: 0">Console</a>
+            </div>
+            <div id="namespace-1869263772" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1054375588"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html" style="margin-left: 30px; padding-left: 0">Command</a>
+            </div>
+            <div id="namespace-1054375588" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-100917132"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-100917132" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.CreateCommand.html">CreateCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.OpenCommand.html">OpenCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html">RemoveCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1201063589"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Index.html" style="margin-left: 30px; padding-left: 0">Index</a>
+            </div>
+            <div id="namespace-1201063589" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html">CreateCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html">PrepareCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html">RemoveCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1485233511"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Server.html" style="margin-left: 30px; padding-left: 0">Server</a>
+            </div>
+            <div id="namespace-1485233511" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html">StartCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1352310568"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html" style="margin-left: 30px; padding-left: 0">Test</a>
+            </div>
+            <div id="namespace-1352310568" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.DirectoryCommand.html">DirectoryCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html">PDOCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-624328092"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Train.html" style="margin-left: 30px; padding-left: 0">Train</a>
+            </div>
+            <div id="namespace-624328092" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html">DirectoryCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html">DocumentCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html">PDOCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.ClassifyCommand.html">ClassifyCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.GenerateContainerCommand.html">GenerateContainerCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html">SelfUpdateCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Application.html">Application</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1273731302"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.DataSource.html" style="margin-left: 30px; padding-left: 0">DataSource</a>
+            </div>
+            <div id="namespace-1273731302" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html">DataSourceInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Closure.html">Closure</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Converter.html">Converter</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.CSV.html">CSV</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataArray.html">DataArray</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Directory.html">Directory</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Grouped.html">Grouped</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Json.html">Json</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.PDOQuery.html">PDOQuery</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Serialized.html">Serialized</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1808458890"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.DependencyInjection.html" style="margin-left: 30px; padding-left: 0">DependencyInjection</a>
+            </div>
+            <div id="namespace-1808458890" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.CommandCompilerPass.html">CommandCompilerPass</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.StatisticalClassifierExtension.html">StatisticalClassifierExtension</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-823011734"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Index.html" style="margin-left: 30px; padding-left: 0">Index</a>
+            </div>
+            <div id="namespace-823011734" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">IndexInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html">CachedIndex</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Index.Index.html">Index</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Index.SVMCachedIndex.html">SVMCachedIndex</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-925400231"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Loader.html" style="margin-left: 30px; padding-left: 0">Loader</a>
+            </div>
+            <div id="namespace-925400231" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Loader.JsonConfigLoader.html">JsonConfigLoader</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1333991290"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Normalizer.html" style="margin-left: 30px; padding-left: 0">Normalizer</a>
+            </div>
+            <div id="namespace-1333991290" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">NormalizerInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">Grouped</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html">Lowercase</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html">Porter</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">Stopword</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1899010613"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Tokenizer.html" style="margin-left: 30px; padding-left: 0">Tokenizer</a>
+            </div>
+            <div id="namespace-1899010613" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html">TokenizerInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html">Word</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1450481876"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Transform.html" style="margin-left: 30px; padding-left: 0">Transform</a>
+            </div>
+            <div id="namespace-1450481876" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TransformInterface.html">TransformInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.Complement.html">Complement</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DC.html">DC</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DL.html">DL</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenCounts.html">DocumentTokenCounts</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenSums.html">DocumentTokenSums</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.IDF.html">IDF</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.Prune.html">Prune</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.SVM.html">SVM</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TAC.html">TAC</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TBC.html">TBC</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TCBD.html">TCBD</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TF.html">TF</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TFIDF.html">TFIDF</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.Weight.html">Weight</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.WeightNormalization.html">WeightNormalization</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Compiler.html">Compiler</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/StatisticalClassifierServiceContainer.html">StatisticalClassifierServiceContainer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content namespace">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a>
+                                            </nav>
+                    <h1><small>\</small>Camspiers</h1>
+
+                                        <h2>Namespaces</h2>
+                    <table class="table table-hover">
+                                                    <tr>
+                                <td><a href="../namespaces/Camspiers.StatisticalClassifier.html">StatisticalClassifier</a></td>
+                            </tr>
+                                            </table>
+                    
+                    
+                    
+                                    </div>
+
+                <aside class="span4 detailsbar">
+                    <dl>
+                        <dt>Namespace hierarchy</dt>
+                        <dd class="hierarchy">
+                                                                                                                                                                                                                                                                
+                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
+                                                                                        <div class="namespace-wrapper">\Camspiers</div>
+                        </dd>
+                    </dl>
+                </aside>
+            </div>
+
+            
+            
+        </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Camspiers.html">\Camspiers</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 8th, 2013 at 14:15.
+                </section>
+            </section>
+        </section>
+    </footer>
 </div>
 
-<footer class="span12">
-    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
-    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
-    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-    generated on Wed, 03 Jul 2013 23:16:35 +0000.<br/>
-</footer>
 </body>
 </html>

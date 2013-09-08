@@ -1,29 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta charset="utf-8"/>
-    <title>     &raquo; \Camspiers\StatisticalClassifier\Normalizer\Stopword
-</title>
+    <title>API Documentation</title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
 
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
 
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
-    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.js" type="text/javascript"></script>
-    <script src="../js/template.js" type="text/javascript"></script>
-    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
 
-    <link rel="shortcut icon" href="../img/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
 </head>
 <body>
 
@@ -31,245 +81,737 @@
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span> </a>
-            <a class="brand" href="../index.html">PHP Classifier</a>
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
 
             <div class="nav-collapse">
-                <ul class="nav">
+                <ul class="nav pull-right">
                     <li class="dropdown">
-                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
                             API Documentation <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                                                                                </ul>
+                                                        <li><a href="../namespaces/Camspiers.html">\Camspiers</a></li>
+                                                    </ul>
                     </li>
                     <li class="dropdown" id="charts-menu">
-                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Charts <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="../graph_class.html">
+                                <a href="../graphs/class.html">
                                     <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown" id="reports-menu">
-                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Reports <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
-                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
-                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="go_to_top">
-        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
-    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
 </div>
 
-<div id="___" class="container">
-    <noscript>
-        <div class="alert alert-warning">
-            Javascript is disabled; several features are only available if Javascript is enabled.
-        </div>
-    </noscript>
-
-        
-    <div class="row">
-        <div class="span4">
-            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-291756779"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <ul class="side-nav nav nav-list">
-                <li class="nav-header">
-                    <i class="icon-custom icon-method"></i> Methods
+            <div id="namespace-291756779" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1684751407"></a>
+                                <a href="../namespaces/Camspiers.html" style="margin-left: 30px; padding-left: 0">Camspiers</a>
+            </div>
+            <div id="namespace-1684751407" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-621372532"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.html" style="margin-left: 30px; padding-left: 0">StatisticalClassifier</a>
+            </div>
+            <div id="namespace-621372532" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1909190509"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.ClassificationRule.html" style="margin-left: 30px; padding-left: 0">ClassificationRule</a>
+            </div>
+            <div id="namespace-1909190509" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
                     <ul>
-                                                                                <li class="method public">
-                                <a href="#method___construct" title="__construct :: Create the normalizer from an array of stopwords">
-                                    <span class="description">Create the normalizer from an array of stopwords</span><pre>__construct</pre>
-                                </a>
-                            </li>
-                                                                                                            <li class="method public">
-                                <a href="#method_normalize" title="normalize :: {@inheritdoc}">
-                                    <span class="description">{@inheritdoc}</span><pre>normalize</pre>
-                                </a>
-                            </li>
-                                                                        </ul>
-                </li>
-                <li class="nav-header protected">» Protected
-                    <ul>
-                                                                                                                                                    </ul>
-                </li>
-                <li class="nav-header private">» Private
-                    <ul>
-                                                                                                                                                    </ul>
-                </li>
-                <li class="nav-header">
-                    <i class="icon-custom icon-constant"></i> Constants
-                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ClassificationRuleInterface.html">ClassificationRuleInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.ComplementNaiveBayes.html">ComplementNaiveBayes</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.ClassificationRule.SVM.html">SVM</a></li>
                                             </ul>
-                </li>
-            </ul>
-        </div>
-
-        <div class="span8">
-            <div class="element class">
-                <h1>Stopword</h1>
-                <small style="display: block; text-align: right">
-                                                                Implements <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">\Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface</a>
-                                    </small>
-                <p class="short_description"></p>
-                <div class="details">
-                    <div class="long_description">
-                        
-
-                    </div>
-                    <table class="table table-bordered">
-                                                                                    <tr>
-                                    <th>
-                                        author
-                                                                            </th>
-                                    <td>Cam Spiers &lt;camspiers@gmail.com&gt;</td>
-                                </tr>
-                                                                                                                <tr>
-                                    <th>
-                                        package
-                                                                            </th>
-                                    <td>Statistical Classifier</td>
-                                </tr>
-                                                                                                                            </table>
-
-                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
-                                            <a id="method___construct"></a>
-                        <div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-                            <h2>Create the normalizer from an array of stopwords</h2>
-                            <pre>__construct(array $stopwords) </pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$stopwords</h4>
-                                                <code>array</code><p><p>The array of stopwords</p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
-                                            <a id="method_normalize"></a>
-                        <div class="element clickable method public method_normalize" data-toggle="collapse" data-target=".method_normalize .collapse">
-                            <h2>{@inheritdoc}</h2>
-                            <pre>normalize($tokens) </pre>
-                            <div class="labels">
-                                                                                                                                                                                            </div>
-                            <div class="row collapse">
-                                <div class="detail-description">
-                                    <div class="long_description">
-</div>
-
-                                    <table class="table">
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                                    <tr>
-                                                <th>
-                                                    
-                                                </th>
-                                                <td>
-                                                                                                    </td>
-                                            </tr>
-                                                                            </table>
-
-                                                                            <h3>Arguments</h3>
-                                                                                    <div class="subelement argument">
-                                                <h4>$tokens</h4>
-                                                <code></code><p>
-</p>
-                                            </div>
-                                                                            
-                                                                    </div>
-                            </div>
-                        </div>
-                    
-                    
-                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
-                                                    <a id="property_stopwords"> </a>
-                            <div class="element clickable property protected property_stopwords" data-toggle="collapse" data-target=".property_stopwords .collapse">
-                                <h2>An array of words to filter</h2>
-                                <pre>stopwords</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description">
-</div>
-                                    </div>
-                                </div>
-                            </div>
-                                                            </div>
+                </div>
             </div>
-            <a id="\Camspiers\StatisticalClassifier\Normalizer\Stopword"></a>
-            <ul class="breadcrumb">
-                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
-                    
-    
-    <li>
-        <span class="divider">\</span><a href="../namespaces/Camspiers.StatisticalClassifier.Normalizer.html">Normalizer</a>
-    </li>
-
-                <li class="active"><span class="divider">\</span><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">Stopword</a></li>
-            </ul>
         </div>
     </div>
 
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1461086117"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Classifier.html" style="margin-left: 30px; padding-left: 0">Classifier</a>
+            </div>
+            <div id="namespace-1461086117" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ClassifierInterface.html">ClassifierInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.ComplementNaiveBayes.html">ComplementNaiveBayes</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.GenericClassifier.html">GenericClassifier</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Classifier.SVM.html">SVM</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1329017396"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-1329017396" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Config.Config.html">Config</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Config.DataSourceConfiguration.html">DataSourceConfiguration</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Config.StatisticalClassifierConfig.html">StatisticalClassifierConfig</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1404551599"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.html" style="margin-left: 30px; padding-left: 0">Console</a>
+            </div>
+            <div id="namespace-1404551599" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2075992852"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.html" style="margin-left: 30px; padding-left: 0">Command</a>
+            </div>
+            <div id="namespace-2075992852" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2090689455"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-2090689455" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.CreateCommand.html">CreateCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.OpenCommand.html">OpenCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Config.RemoveCommand.html">RemoveCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-85391549"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Index.html" style="margin-left: 30px; padding-left: 0">Index</a>
+            </div>
+            <div id="namespace-85391549" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.CreateCommand.html">CreateCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.PrepareCommand.html">PrepareCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Index.RemoveCommand.html">RemoveCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1177670742"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Server.html" style="margin-left: 30px; padding-left: 0">Server</a>
+            </div>
+            <div id="namespace-1177670742" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Server.StartCommand.html">StartCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-60186105"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Test.html" style="margin-left: 30px; padding-left: 0">Test</a>
+            </div>
+            <div id="namespace-60186105" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.DirectoryCommand.html">DirectoryCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Test.PDOCommand.html">PDOCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-660659627"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Console.Command.Train.html" style="margin-left: 30px; padding-left: 0">Train</a>
+            </div>
+            <div id="namespace-660659627" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DirectoryCommand.html">DirectoryCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.DocumentCommand.html">DocumentCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Train.PDOCommand.html">PDOCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.ClassifyCommand.html">ClassifyCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.Command.html">Command</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.GenerateContainerCommand.html">GenerateContainerCommand</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Command.SelfUpdateCommand.html">SelfUpdateCommand</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Console.Application.html">Application</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1438479036"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.DataSource.html" style="margin-left: 30px; padding-left: 0">DataSource</a>
+            </div>
+            <div id="namespace-1438479036" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataSourceInterface.html">DataSourceInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Closure.html">Closure</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Converter.html">Converter</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.CSV.html">CSV</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.DataArray.html">DataArray</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Directory.html">Directory</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Grouped.html">Grouped</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Json.html">Json</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.PDOQuery.html">PDOQuery</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DataSource.Serialized.html">Serialized</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-467051313"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.DependencyInjection.html" style="margin-left: 30px; padding-left: 0">DependencyInjection</a>
+            </div>
+            <div id="namespace-467051313" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.CommandCompilerPass.html">CommandCompilerPass</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.DependencyInjection.StatisticalClassifierExtension.html">StatisticalClassifierExtension</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1903091111"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Index.html" style="margin-left: 30px; padding-left: 0">Index</a>
+            </div>
+            <div id="namespace-1903091111" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Index.IndexInterface.html">IndexInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Index.CachedIndex.html">CachedIndex</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Index.Index.html">Index</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Index.SVMCachedIndex.html">SVMCachedIndex</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1764921220"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Loader.html" style="margin-left: 30px; padding-left: 0">Loader</a>
+            </div>
+            <div id="namespace-1764921220" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Loader.JsonConfigLoader.html">JsonConfigLoader</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-198128722"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Normalizer.html" style="margin-left: 30px; padding-left: 0">Normalizer</a>
+            </div>
+            <div id="namespace-198128722" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.NormalizerInterface.html">NormalizerInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Grouped.html">Grouped</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Lowercase.html">Lowercase</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Porter.html">Porter</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html">Stopword</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1289711032"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Tokenizer.html" style="margin-left: 30px; padding-left: 0">Tokenizer</a>
+            </div>
+            <div id="namespace-1289711032" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.TokenizerInterface.html">TokenizerInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Tokenizer.Word.html">Word</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-516904967"></a>
+                                <a href="../namespaces/Camspiers.StatisticalClassifier.Transform.html" style="margin-left: 30px; padding-left: 0">Transform</a>
+            </div>
+            <div id="namespace-516904967" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TransformInterface.html">TransformInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.Complement.html">Complement</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DC.html">DC</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DL.html">DL</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenCounts.html">DocumentTokenCounts</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.DocumentTokenSums.html">DocumentTokenSums</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.IDF.html">IDF</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.Prune.html">Prune</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.SVM.html">SVM</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TAC.html">TAC</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TBC.html">TBC</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TCBD.html">TCBD</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TF.html">TF</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.TFIDF.html">TFIDF</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.Weight.html">Weight</a></li>
+                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Transform.WeightNormalization.html">WeightNormalization</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Camspiers.StatisticalClassifier.Compiler.html">Compiler</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/StatisticalClassifierServiceContainer.html">StatisticalClassifierServiceContainer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Camspiers.StatisticalClassifier.Normalizer.html">\Camspiers\StatisticalClassifier\Normalizer</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Camspiers\StatisticalClassifier\Normalizer</small>Stopword</h1>
+                    <p><em></em></p>
+                    
+
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html#method_normalize" class="">normalize()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Camspiers.StatisticalClassifier.Normalizer.Stopword.html#property_stopwords" class="">$stopwords</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Camspiers.StatisticalClassifier.Normalizer.Stopword.php.html"><div class="path-wrapper">Camspiers/StatisticalClassifier/Normalizer/Stopword.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Statistical Classifier</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Camspiers\StatisticalClassifier\Normalizer\Stopword</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Cam Spiers <a href="&#109;&#x61;i&#108;&#x74;&#111;&#58;&#x63;&#97;&#x6d;&#x73;&#112;&#x69;e&#114;&#x73;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#97;&#x6d;&#x73;&#112;&#x69;e&#114;&#x73;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
+
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_stopwords" name="property_stopwords" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$stopwords</h3>
+                <pre class="signature">$stopwords : array</pre>
+                <p><em>An array of words to filter</em></p>
+                
+
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array <span class="argument">$stopwords</span>)</pre>
+                <p><em>Create the normalizer from an array of stopwords</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$stopwords</td>
+                                <td><p>The array of stopwords</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_normalize" name="method_normalize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">normalize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">normalize(array <span class="argument">$tokens</span>)</pre>
+                <p><em>{@inheritdoc}</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$tokens</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Stopword.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Camspiers/StatisticalClassifier/Normalizer/Stopword.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Camspiers.html">\Camspiers</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 8th, 2013 at 14:15.
+                </section>
+            </section>
+        </section>
+    </footer>
 </div>
 
-<footer class="span12">
-    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
-    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
-    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-    generated on Wed, 03 Jul 2013 23:16:36 +0000.<br/>
-</footer>
 </body>
 </html>
