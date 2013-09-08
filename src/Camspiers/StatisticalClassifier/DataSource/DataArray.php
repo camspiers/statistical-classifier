@@ -83,6 +83,9 @@ class DataArray implements DataSourceInterface, Serializable
             'category' => $category,
             'document' => $document
         );
+        if (!$this->hasCategory($category)) {
+            $this->categories[] = $category;
+        }
     }
     /**
      * @{inheritdoc}
