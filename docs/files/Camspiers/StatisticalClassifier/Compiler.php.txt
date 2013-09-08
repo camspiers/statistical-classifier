@@ -30,10 +30,12 @@ class Compiler
     /**
      * Compiles classifier into a single phar file
      *
+     *
+     * @param  string $pharFile The full path to the file to create
+     * @param string  $interpreter
      * @throws \RuntimeException
-     * @param  string            $pharFile The full path to the file to create
      */
-    public function compile($pharFile = 'classifier.phar')
+    public function compile($pharFile = 'classifier.phar', $interpreter = 'php')
     {
         if (file_exists($pharFile)) {
             unlink($pharFile);
@@ -116,15 +118,17 @@ class Compiler
         $this->addClassifierBin($phar);
 
         // Stubs
-        $phar->setStub($this->getStub());
+        $phar->setStub($this->getStub($interpreter));
 
         $phar->stopBuffering();
 
         $this->addFile($phar, new \SplFileInfo(__DIR__.'/../../../LICENSE'), false);
+        
+        $phar->setStub($this->getStub($interpreter));
 
         unset($phar);
 
-        file_put_contents('classifier.phar.version', trim($this->version));
+        file_put_contents($pharFile . '.version', trim($this->version));
     }
 
     private function addFile($phar, $file)
@@ -148,10 +152,10 @@ class Compiler
         $phar->addFromString('bin/classifier', $content);
     }
 
-    private function getStub()
+    private function getStub($interpreter)
     {
-        return <<<'EOF'
-#!/usr/bin/env php
+        return <<<EOF
+#!/usr/bin/env $interpreter
 <?php
 /**
  * This file is part of the Statistical Classifier package.
