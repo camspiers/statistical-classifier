@@ -36,7 +36,7 @@ Classifiers are also used in automatically categorizing site content (pages, art
 ## For your PHP application
 
 ```bash
-$ composer requre camspiers/statistical-classifier:~0.5
+$ composer require camspiers/statistical-classifier:~0.5
 ```
 
 ## For command-line use
@@ -61,9 +61,9 @@ For SVM Support both libsvm and php-svm are required. For installation intructio
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
-$c = new Classifier\ComplementNaiveBayes(
-    new Index\Index(
-        $source = new DataSource\DataArray()
+$c = new StatisticalClassifier\Classifier\ComplementNaiveBayes(
+    new StatisticalClassifier\Index\Index(
+        $source = new StatisticalClassifier\DataSource\DataArray()
     )
 );
 $source->addDocument('spam', 'Some spam document');
@@ -80,9 +80,9 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
-$c = new Classifier\SVM(
-    new Index\Index(
-        $source = new DataSource\DataArray()
+$c = new StatisticalClassifier\Classifier\SVM(
+    new StatisticalClassifier\Index\Index(
+        $source = new StatisticalClassifier\DataSource\DataArray()
     )
 );
 $source->addDocument('spam', 'Some spam document');
@@ -99,8 +99,8 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
-$c = new Classifier\ComplementNaiveBayes(
-    new Index\CachedIndex(
+$c = new StatisticalClassifier\Classifier\ComplementNaiveBayes(
+    new StatisticalClassifier\Index\CachedIndex(
         'mycachename',
         new CacheCache\Cache(
             new CacheCache\Backends\File(
@@ -109,7 +109,7 @@ $c = new Classifier\ComplementNaiveBayes(
                 )
             )
         )
-        $source = new DataSource\DataArray()
+        $source = new StatisticalClassifier\DataSource\DataArray()
     )
 );
 $source->addDocument('spam', 'Some spam document');
@@ -126,8 +126,8 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier;
-$c = new Classifier\SVM(
-    new Index\SVMCachedIndex(
+$c = new StatisticalClassifier\Classifier\SVM(
+    new StatisticalClassifier\Index\SVMCachedIndex(
         __DIR__ . '/model.svm',
         'mycachename',
         new CacheCache\Cache(
@@ -137,7 +137,7 @@ $c = new Classifier\SVM(
                 )
             )
         )
-        $source = new DataSource\DataArray()
+        $source = new StatisticalClassifier\DataSource\DataArray()
     )
 );
 $source->addDocument('spam', 'Some spam document');
