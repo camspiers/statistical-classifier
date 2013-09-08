@@ -1,7 +1,7 @@
 /indexes/
 /logs/
-/classifier.phar
-/classifier.phar.version
+/classifier*.phar
+/classifier*.phar.version
 /vendor
 /.settings
 /.idea

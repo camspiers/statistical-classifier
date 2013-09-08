@@ -51,6 +51,12 @@ To stay up to date run
 
 For SVM Support both libsvm and php-svm are required. For installation intructions refer to [php-svm](https://github.com/ianbarber/php-svm).
 
+## HipHop VM support
+
+PHP Classifier runs in `hhvm` which dramatically decreases run-time and memory usage. See [HipHop VM for PHP](https://github.com/facebook/hiphop-php/) for installation instructions.
+
+For a command-line version that uses the `hhvm` interpreter by default download [`classifier-hhvm.phar`](http://php-classifier.com/classifier-hhvm.phar)
+
 # Usage
 
 ## Without Symfony Dependency Injection

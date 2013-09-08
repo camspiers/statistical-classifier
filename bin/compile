@@ -14,6 +14,7 @@ ini_set('display_errors', 1);
 try {
     $compiler = new Compiler();
     $compiler->compile();
+    $compiler->compile('classifier-hhvm.phar', 'hhvm');
 } catch (\Exception $e) {
     echo 'Failed to compile phar: ['.get_class($e).'] '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine();
     exit(1);

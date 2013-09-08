@@ -32,7 +32,13 @@ class SelfUpdateCommand extends Command
     {
         $this
             ->setName('self-update')
-            ->setDescription('Update the classifeir');
+            ->setDescription('Update the classifier')
+            ->addOption(
+                'hhvm',
+                null,
+                Input\InputOption::VALUE_NONE,
+                'Downloads a version that uses hhvm for the interpreter'
+            );
     }
     /**
      * @param Input\InputInterface   $input
@@ -42,7 +48,11 @@ class SelfUpdateCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $url = "http://php-classifier.com/classifier.phar";
+        $url = sprintf(
+            "http://php-classifier.com/classifier%s.phar",
+            $input->getOption('hhvm') ? '-hhvm' : '' 
+        );
+        
         $version = trim($this->getApplication()->getVersion());
 
         if ($version === '~package_version~') {
