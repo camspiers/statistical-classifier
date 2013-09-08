@@ -36,7 +36,7 @@ Classifiers are also used in automatically categorizing site content (pages, art
 ## For your PHP application
 
 ```bash
-$ composer requre camspiers/statistical-classifier:~0.5
+$ composer require camspiers/statistical-classifier:~0.5
 ```
 
 ## For command-line use
