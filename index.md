@@ -59,37 +59,44 @@ For SVM Support both libsvm and php-svm are required. For installation intructio
 
 ```php
 <?php
-// Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
+//Ensure composer autoloader is required
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
 $c = new Classifier\ComplementNaiveBayes(
     new Index\Index(
         $source = new DataSource\DataArray()
     )
 );
+
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ### Non-cached SVM
 
 ```php
-<?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
 $c = new Classifier\SVM(
     new Index\Index(
         $source = new DataSource\DataArray()
     )
 );
+
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
@@ -98,7 +105,10 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
 $c = new Classifier\ComplementNaiveBayes(
     new Index\CachedIndex(
         'mycachename',
@@ -108,7 +118,7 @@ $c = new Classifier\ComplementNaiveBayes(
                     'dir' => __DIR__
                 )
             )
-        )
+        ),
         $source = new DataSource\DataArray()
     )
 );
@@ -116,7 +126,7 @@ $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
@@ -125,7 +135,10 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
 $c = new Classifier\SVM(
     new Index\SVMCachedIndex(
         __DIR__ . '/model.svm',
@@ -136,7 +149,7 @@ $c = new Classifier\SVM(
                     'dir' => __DIR__
                 )
             )
-        )
+        ),
         $source = new DataSource\DataArray()
     )
 );
@@ -144,7 +157,7 @@ $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
