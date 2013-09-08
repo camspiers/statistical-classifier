@@ -59,37 +59,44 @@ For SVM Support both libsvm and php-svm are required. For installation intructio
 
 ```php
 <?php
-// Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
-$c = new StatisticalClassifier\Classifier\ComplementNaiveBayes(
-    new StatisticalClassifier\Index\Index(
-        $source = new StatisticalClassifier\DataSource\DataArray()
+//Ensure composer autoloader is required
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
+$c = new Classifier\ComplementNaiveBayes(
+    new Index\Index(
+        $source = new DataSource\DataArray()
     )
 );
+
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ### Non-cached SVM
 
 ```php
-<?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
-$c = new StatisticalClassifier\Classifier\SVM(
-    new StatisticalClassifier\Index\Index(
-        $source = new StatisticalClassifier\DataSource\DataArray()
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
+$c = new Classifier\SVM(
+    new Index\Index(
+        $source = new DataSource\DataArray()
     )
 );
+
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
@@ -98,9 +105,12 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
-$c = new StatisticalClassifier\Classifier\ComplementNaiveBayes(
-    new StatisticalClassifier\Index\CachedIndex(
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
+$c = new Classifier\ComplementNaiveBayes(
+    new Index\CachedIndex(
         'mycachename',
         new CacheCache\Cache(
             new CacheCache\Backends\File(
@@ -108,15 +118,15 @@ $c = new StatisticalClassifier\Classifier\ComplementNaiveBayes(
                     'dir' => __DIR__
                 )
             )
-        )
-        $source = new StatisticalClassifier\DataSource\DataArray()
+        ),
+        $source = new DataSource\DataArray()
     )
 );
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
@@ -125,9 +135,12 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier;
-$c = new StatisticalClassifier\Classifier\SVM(
-    new StatisticalClassifier\Index\SVMCachedIndex(
+use Camspiers\StatisticalClassifier\Classifier;
+use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\DataSource;
+
+$c = new Classifier\SVM(
+    new Index\SVMCachedIndex(
         __DIR__ . '/model.svm',
         'mycachename',
         new CacheCache\Cache(
@@ -136,15 +149,15 @@ $c = new StatisticalClassifier\Classifier\SVM(
                     'dir' => __DIR__
                 )
             )
-        )
-        $source = new StatisticalClassifier\DataSource\DataArray()
+        ),
+        $source = new DataSource\DataArray()
     )
 );
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-$c->is('ham', 'Some ham document'); // true
+echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```
 
