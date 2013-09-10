@@ -31,7 +31,7 @@ class PDOCommand extends Command
         $this
             ->setName('test:pdo')
             ->setDescription('Test the classifier with a PDO query')
-            ->configureIndex()
+            ->configureModel()
             ->addArgument(
                 'category',
                 Input\InputArgument::REQUIRED,

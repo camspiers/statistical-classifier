@@ -30,7 +30,7 @@ class DirectoryCommand extends Command
         $this
             ->setName('test:directory')
             ->setDescription('Test the classifier against a directory')
-            ->configureIndex()
+            ->configureModel()
             ->addArgument(
                 'directory',
                 Input\InputArgument::REQUIRED,

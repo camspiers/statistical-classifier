@@ -5,26 +5,23 @@ require_once __DIR__ . '/../src/bootstrap.php';
 mb_internal_encoding('UTF-8');
 
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Index\CachedIndex;
+use Camspiers\StatisticalClassifier\Model\CachedModel;
 use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
 
 $c = new StatisticalClassifierServiceContainer;
-$d = new DataArray();
+$source = new DataArray();
 
 if (!file_exists(__DIR__ . '/../resources/language-samples')) {
     throw new Exception('Please extract language-samples.zip in resources/');
 }
 
 foreach (glob(__DIR__ . '/../resources/language-samples/*') as $file) {
-    $d->addDocument(basename($file), file_get_contents($file));
+    $source->addDocument(basename($file), file_get_contents($file));
 }
 
 $nb = new ComplementNaiveBayes(
-    new CachedIndex(
-        'language',
-        $c->get('cache'),
-        $d
-    )
+    $source,
+    new CachedModel('language', $c->get('cache'))
 );
 
 $examples = array(

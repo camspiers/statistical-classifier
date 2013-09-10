@@ -16,9 +16,9 @@ $container = new $containerClass;
  */
 if (!$container->has('console.application')) {
     unlink(Config::getOptionPath('container_dir') . "/$containerClass.php");
-	echo 'There appears to be a problem with your container. The service \'console.application\' must exist.', PHP_EOL;
-	echo 'The current container has been deleted, please make the required modifications and re-run the classifier', PHP_EOL;
-	exit(1);
+    echo 'There appears to be a problem with your container. The service \'console.application\' must exist.', PHP_EOL;
+    echo 'The current container has been deleted, please make the required modifications and re-run the classifier', PHP_EOL;
+    exit(1);
 }
 
 /**

@@ -17,7 +17,7 @@ Important Features:
 * Multiple ways of using the library (PHP, command-line, HTTP server)
 * Support for use from non-PHP programming languages (through command-line or HTTP server)
 * Multiple **data import types** to get your data into the classifier (Directory of files, Database queries, Json, Serialized arrays)
-* Multiple **types of caching** for the index the classifier builds (Memcache, Apc, File, Session)
+* Multiple **types of caching** for the model the classifier builds (Memcache, Apc, File, Session)
 * Multiple ways to make your input data more consistent (Lowercase, Porter Stemmer)
 * Faster setup time in applications using Symfony Dependency Injection
 
@@ -36,7 +36,7 @@ Classifiers are also used in automatically categorizing site content (pages, art
 ## For your PHP application
 
 ```bash
-$ composer require camspiers/statistical-classifier:~0.5
+$ composer require camspiers/statistical-classifier:~0.6
 ```
 
 ## For command-line use
@@ -65,13 +65,10 @@ PHP Classifier runs in `hhvm` which dramatically decreases run-time and memory u
 <?php
 //Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\Index;
 use Camspiers\StatisticalClassifier\DataSource;
 
 $c = new Classifier\ComplementNaiveBayes(
-    new Index\Index(
-        $source = new DataSource\DataArray()
-    )
+    $source = new DataSource\DataArray()
 );
 
 $source->addDocument('spam', 'Some spam document');
@@ -87,13 +84,10 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\Index;
 use Camspiers\StatisticalClassifier\DataSource;
 
 $c = new Classifier\SVM(
-    new Index\Index(
-        $source = new DataSource\DataArray()
-    )
+    $source = new DataSource\DataArray()
 );
 
 $source->addDocument('spam', 'Some spam document');
@@ -110,11 +104,12 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\Model;
 use Camspiers\StatisticalClassifier\DataSource;
 
 $c = new Classifier\ComplementNaiveBayes(
-    new Index\CachedIndex(
+    $source = new DataSource\DataArray()
+    new Model\CachedModel(
         'mycachename',
         new CacheCache\Cache(
             new CacheCache\Backends\File(
@@ -122,8 +117,7 @@ $c = new Classifier\ComplementNaiveBayes(
                     'dir' => __DIR__
                 )
             )
-        ),
-        $source = new DataSource\DataArray()
+        )
     )
 );
 $source->addDocument('spam', 'Some spam document');
@@ -140,21 +134,20 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 <?php
 // Ensure composer autoloader is required
 use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\Index;
+use Camspiers\StatisticalClassifier\Model;
 use Camspiers\StatisticalClassifier\DataSource;
 
 $c = new Classifier\SVM(
-    new Index\SVMCachedIndex(
+    $source = new DataSource\DataArray(),
+    new Model\SVMCachedModel(
         __DIR__ . '/model.svm',
-        'mycachename',
         new CacheCache\Cache(
             new CacheCache\Backends\File(
                 array(
                     'dir' => __DIR__
                 )
             )
-        ),
-        $source = new DataSource\DataArray()
+        )
     )
 );
 $source->addDocument('spam', 'Some spam document');
@@ -175,13 +168,15 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 $c = new StatisticalClassifierServiceContainer;
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Index\Index;
-// This sets the index to the soon created classifier using a synthetic symfony service
+use Camspiers\StatisticalClassifier\Model\Model;
+// This sets the model to the soon created classifier using a synthetic symfony service
 $c->set(
-    'index.index',
-    new Index(
-        $source = new DataArray()
-    )
+    'classifier.source',
+    $source = new DataArray()
+);
+$c->set(
+    'classifier.model',
+    new Model()
 );
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
@@ -196,15 +191,18 @@ echo $c->get('classifier.complement_naive_bayes')->classify("Some ham document")
 <?php
 // ensure bootstrap is loaded
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Index\SVMCachedIndex;
+use Camspiers\StatisticalClassifier\Model\SVMCachedModel;
 
 $c->set(
-    'index.index',
-    new SVMCachedIndex(
+    'classifier.source',
+    $source = new DataArray()
+);
+
+$c->set(
+    'classifier.model',
+    new SVMCachedModel(
         __DIR__ . '/model.svm',
-        'svm',
-        $c->get('cache'),
-        $source = new DataArray()
+        $c->get('cache')
     )
 );
 
@@ -223,56 +221,56 @@ echo $c->get('classifier.svm')->classify("Some ham document"), PHP_EOL; //ham
 
 ```
 Usage:
- train:document [-c|--classifier[="..."]] [-p|--prepare] index category document
+ train:document [-c|--classifier[="..."]] [-p|--prepare] model category document
 
 Arguments:
- index                 Name of index
+ model                 Name of model
  category              Which category this data is
  document              The document to train on
 
 Options:
  --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
- --prepare (-p)        Prepare the index after training
+ --prepare (-p)        Prepare the model after training
 ```
 
 #### Example
 
 ```bash
-$ classifier train:document MyIndex spam "This is spam"
+$ classifier train:document MyModel spam "This is spam"
 ```
 
 *train:directory*
 
 ```
 Usage:
- train:directory [-i|--include[="..."]] [-c|--classifier[="..."]] [-p|--prepare] index directory
+ train:directory [-i|--include[="..."]] [-c|--classifier[="..."]] [-p|--prepare] model directory
 
 Arguments:
- index                 Name of index
+ model                 Name of model
  directory             The directory to train on
 
 Options:
  --include (-i)        The categories from the directory to include (multiple values allowed)
  --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
- --prepare (-p)        Prepare the index after training
+ --prepare (-p)        Prepare the model after training
 
 ```
 
 #### Examples
 
 ```bash
-$ classifier train:directory MyIndex ./mydocs/
-$ classifier train:directory -i MyCategory MyIndex ./mydocs/
+$ classifier train:directory MyModel ./mydocs/
+$ classifier train:directory -i MyCategory MyModel ./mydocs/
 ```
 
 *train:pdo*
 
 ```
 Usage:
- train:pdo [-c|--classifier[="..."]] [-p|--prepare] index category column query dsn [username] [password]
+ train:pdo [-c|--classifier[="..."]] [-p|--prepare] model category column query dsn [username] [password]
 
 Arguments:
- index                 Name of index
+ model                 Name of model
  category              Which category this data is
  column                Which column to select
  query                 The query to run
@@ -282,71 +280,55 @@ Arguments:
 
 Options:
  --classifier (-c)     Name of classifier (default: "classifier.complement_naive_bayes")
- --prepare (-p)        Prepare the index after training
+ --prepare (-p)        Prepare the model after training
 ```
 
 #### Example
 
 ```bash
-$ classifier train:pdo MyIndex spam Comment "SELECT Comment FROM Comment WHERE Spam = 1" "mysql:dbname=mydb;host=127.0.0.1" root root
+$ classifier train:pdo MyModel spam Comment "SELECT Comment FROM Comment WHERE Spam = 1" "mysql:dbname=mydb;host=127.0.0.1" root root
 ```
 
-*index:create*
+*model:remove*
 
 ```
 Usage:
- index:create index
+ model:remove model
 
 Arguments:
- index                 Name of index
+ model                 Name of model
 ```
 
 #### Example
 
 ```bash
-$ classifier index:create MyIndex
+$ classifier model:remove MyModel
 ```
 
-*index:remove*
+*model:prepare*
 
 ```
 Usage:
- index:remove index
+ model:prepare model
 
 Arguments:
- index                 Name of index
+ model                 Name of model
 ```
 
 #### Example
 
 ```bash
-$ classifier index:remove MyIndex
-```
-
-*index:prepare*
-
-```
-Usage:
- index:prepare index
-
-Arguments:
- index                 Name of index
-```
-
-#### Example
-
-```bash
-$ classifier index:prepare MyIndex
+$ classifier model:prepare MyModel
 ```
 
 *classify*
 
 ```
 Usage:
- classify [-c|--classifier[="..."]] index document
+ classify [-c|--classifier[="..."]] model document
 
 Arguments:
- index                 Name of index
+ model                 Name of model
  document              The document to classify
 
 Options:
@@ -356,14 +338,14 @@ Options:
 #### Example
 
 ```bash
-$ classifier classify MyIndex "Some document to classify"
+$ classifier classify MyModel "Some document to classify"
 ```
 
-*server:start*
+*server:run*
 
 ```
 Usage:
- server:start [--host[="..."]] [-p|--port[="..."]]
+ server:run [--host[="..."]] [-p|--port[="..."]]
 
 Options:
  --host                Set a host (default: "127.0.0.1")
@@ -373,9 +355,9 @@ Options:
 #### Examples
 
 ```bash
-$ classifier server:start
-$ classifier server:start -p 9999
-$ classifier server:start &
+$ classifier server:run
+$ classifier server:run -p 9999
+$ classifier server:run &
 ```
 
 *generate-container*
@@ -441,20 +423,6 @@ Options:
 $ classifier config:open
 $ classifier config:open -g
 ```
-
-# Technical details
-
-A classifier is built using the following component types:
-
-| Component | Interface | Description |
-| --------- | --------- | ----------- |
-| Generic Classifier | ClassifierInterface | Acts as a base that other components are added to to build a classifier |
-| Data Source | DataSourceInterface | Multiple available, they provide the raw training data to the classifier |
-| Index | IndexInterface | This stores the results of each transform and is eventually the thing that is cached |
-| Normalizer | NormalizerInterface | Takes an array of words and makes them more consistent, for example, lowercase, porter stemmed |
-| Tokenizer | TokenizerInterface | Breaks up a string into tokens |
-| Transforms | TransformInterface | Manipulates the Index to produce data ready for a classification rule |
-| Classification rule | ClassificationRuleInterface | Uses the index prepared by the transforms and the data source to classify a document |
 
 # Dependency injection (Symfony)
 
