@@ -97,9 +97,7 @@ class Compiler
             ->in("$vendorDir/evenement/evenement/src/")
             ->in("$vendorDir/guzzle/")
             ->in("$vendorDir/maximebf/cachecache/src/")
-            ->in("$vendorDir/monolog/monolog/src/")
             ->in("$vendorDir/pimple/pimple/lib/")
-            ->in("$vendorDir/psr/")
             ->in("$vendorDir/react/")
             ->in("$vendorDir/symfony/");
 
