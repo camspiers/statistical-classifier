@@ -4,6 +4,11 @@ namespace Camspiers\StatisticalClassifier\Classifier;
 
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
+/**
+ * Class SVMTest
+ * @package Camspiers\StatisticalClassifier\Classifier
+ * @group svm
+ */
 class SVMTest extends \PHPUnit_Framework_TestCase
 {
     public function testClassify()
