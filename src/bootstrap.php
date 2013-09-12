@@ -1,14 +1,14 @@
 <?php
 
+/**
+ * Support autoloading when running as installed package
+ */
 use Camspiers\StatisticalClassifier\Config\Config;
 use Camspiers\StatisticalClassifier\Console\Command\GenerateContainerCommand;
 use Composer\Autoload\ClassLoader;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 
-/**
- * Support autoloading when running as installed package
- */
 $files = array(
     __DIR__ . '/../vendor/autoload.php',
     __DIR__ . '/../../../autoload.php'

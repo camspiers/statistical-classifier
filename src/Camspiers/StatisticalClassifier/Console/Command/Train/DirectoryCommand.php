@@ -12,7 +12,6 @@
 namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
-use Camspiers\StatisticalClassifier\DataSource\Grouped;
 use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
@@ -31,7 +30,7 @@ class DirectoryCommand extends Command
         $this
             ->setName('train:directory')
             ->setDescription('Train the classifier with a directory')
-            ->configureIndex()
+            ->configureModel()
             ->addArgument(
                 'directory',
                 Input\InputArgument::REQUIRED,
@@ -54,30 +53,31 @@ class DirectoryCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $classifier = $this->getClassifier($input);
-        $index = $classifier->getIndex();
-        $index->setDataSource(
-            $grouped = new Grouped(
-                array(
-                    $index->getDataSource(),
-                    $directory = new Directory(
-                        array(
-                            'directory' => $input->getArgument('directory'),
-                            'include' => $input->getOption('include')
-                        )
-                    )
-                )
+        $modelName = $input->getArgument('model');
+        
+        $dataSource = $this->getDataSource($modelName);
+
+        $changes = new Directory(
+            array(
+                'directory' => $input->getArgument('directory'),
+                'include' => $input->getOption('include')
             )
         );
-        if ($input->getOption('prepare')) {
-            $classifier->prepareIndex();
-        } else {
-            $index->preserve();
+
+        foreach ($changes->getData() as $document) {
+            $dataSource->addDocument($document['category'], $document['document']);
         }
+
+        $this->cacheDataSource($modelName);
+        
+        if ($input->getOption('prepare')) {
+            $this->getClassifier($input)->prepareModel();
+        }
+        
         $this->updateSummary(
             $output,
-            $directory,
-            $grouped
+            $changes,
+            $dataSource
         );
     }
 }

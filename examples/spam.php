@@ -8,14 +8,14 @@ ini_set('memory_limit', '1G');
 
 require_once __DIR__ . '/../src/bootstrap.php';
 
-use Camspiers\StatisticalClassifier\Index\CachedIndex;
+use Camspiers\StatisticalClassifier\Model\CachedModel;
 use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
 use Camspiers\StatisticalClassifier\DataSource\Closure;
 
 $c = new StatisticalClassifierServiceContainer;
 
 $nb = new ComplementNaiveBayes(
-    new CachedIndex(
+    new CachedModel(
         'spam',
         $c->get('cache'),
         new Closure(

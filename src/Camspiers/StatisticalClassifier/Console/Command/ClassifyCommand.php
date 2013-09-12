@@ -30,7 +30,7 @@ class ClassifyCommand extends Command
         $this
             ->setName('classify')
             ->setDescription('Classify a document')
-            ->configureIndex()
+            ->configureModel()
             ->addArgument(
                 'document',
                 Input\InputArgument::REQUIRED,
@@ -39,7 +39,7 @@ class ClassifyCommand extends Command
             ->configureClassifier();
     }
     /**
-     * Classify a document against an index and an optionally specified classifier
+     * Classify a document against an model and an optionally specified classifier
      * @param  Input\InputInterface   $input  The commands input
      * @param  Output\OutputInterface $output The commands output
      * @return null

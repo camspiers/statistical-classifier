@@ -5,7 +5,8 @@ ini_set('memory_limit', '6G');
 require_once __DIR__ . '/../src/bootstrap.php';
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
-use Camspiers\StatisticalClassifier\Index\CachedIndex;
+use Camspiers\StatisticalClassifier\Model\CachedModel;
+use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
 
 $c = new StatisticalClassifierServiceContainer;
 
@@ -26,21 +27,20 @@ $cats = array(
 //soc.religion.christian: 0.90954773869347
 //talk.religion.misc: 0.70517928286853
 
-$c->set(
-    'index.index',
-    new CachedIndex(
-        '20news-bydate',
-        $c->get('cache'),
-        new Directory(
-            array(
-                'directory' => __DIR__ . '/../resources/20news-bydate/20news-bydate-train',
-                'include' => $cats
-            )
+$classifier = new ComplementNaiveBayes(
+    new Directory(
+        array(
+            'directory' => __DIR__ . '/../resources/20news-bydate/20news-bydate-train',
+            'include' => $cats
         )
-    )
+    ),
+    new CachedModel(
+        '20news-bydate',
+        $c->get('cache')
+    ),
+    null,
+    $c->get('normalizer.stopword_lowercase')
 );
-
-$nb = $c->get('classifier.complement_naive_bayes');
 
 $testSource = new Directory(
     array(
@@ -56,7 +56,7 @@ foreach ($documents as $document) {
     if (!isset($stats[$document['category']])) {
         $stats[$document['category']] = array(0, 0);
     }
-    if ($nb->classify($document['document']) == $document['category']) {
+    if ($classifier->classify($document['document']) == $document['category']) {
         $stats[$document['category']][0]++;
     }
     $stats[$document['category']][1]++;
