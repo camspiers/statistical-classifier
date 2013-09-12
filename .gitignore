@@ -1,5 +1,4 @@
-/indexes/
-/logs/
+/cache/
 /classifier*.phar
 /classifier*.phar.version
 /vendor

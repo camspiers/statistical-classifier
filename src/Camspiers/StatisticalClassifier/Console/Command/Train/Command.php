@@ -22,7 +22,7 @@ use Symfony\Component\Console\Output;
 abstract class Command extends BaseCommand
 {
     /**
-     * Outputs a summary of what has changes in the index
+     * Outputs a summary of what has changes in the model
      * @param  Output\OutputInterface $output  The output object
      * @param  DataSourceInterface    $changes The data source with changes
      * @param  DataSourceInterface    $current The grouped data source
@@ -40,7 +40,7 @@ abstract class Command extends BaseCommand
         $output->writeLn(
             array(
                 "Added $changesDocTotal documents from $changesCatTotal categories",
-                "Index now contains $documentsTotal documents in $categoriesTotal categories"
+                "Model now contains $documentsTotal documents in $categoriesTotal categories"
             )
         );
     }

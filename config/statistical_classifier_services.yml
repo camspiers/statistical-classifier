@@ -3,8 +3,10 @@ imports:
 
 parameters:
     cache.backend.options:
-        dir: %classifier_path%/indexes/
-        file_extension: .idx
+        dir: %cache.path%
+        file_extension: .cache
+        
+    cache.path: %classifier_path%/cache
 
     svm.class: SVM
     svm.options:
@@ -26,16 +28,15 @@ parameters:
     console.application.class: %classifier_namespace%\Console\Application
     console.application.name: PHP Classifier
     console.application.version: ~package_version~
-    console.command.index.create.class: %classifier_namespace%\Console\Command\Index\CreateCommand
-    console.command.index.remove.class: %classifier_namespace%\Console\Command\Index\RemoveCommand
-    console.command.index.prepare.class: %classifier_namespace%\Console\Command\Index\PrepareCommand
+    console.command.model.remove.class: %classifier_namespace%\Console\Command\Model\RemoveCommand
+    console.command.model.prepare.class: %classifier_namespace%\Console\Command\Model\PrepareCommand
     console.command.train.document.class: %classifier_namespace%\Console\Command\Train\DocumentCommand
     console.command.train.directory.class: %classifier_namespace%\Console\Command\Train\DirectoryCommand
     console.command.train.pdo.class: %classifier_namespace%\Console\Command\Train\PDOCommand
     console.command.classify.class: %classifier_namespace%\Console\Command\ClassifyCommand
     console.command.test.pdo.class: %classifier_namespace%\Console\Command\Test\PDOCommand
     console.command.test.directory.class: %classifier_namespace%\Console\Command\Test\DirectoryCommand
-    console.command.server.start.class: %classifier_namespace%\Console\Command\Server\StartCommand
+    console.command.server.run.class: %classifier_namespace%\Console\Command\Server\RunCommand
     console.command.generate_container.class: %classifier_namespace%\Console\Command\GenerateContainerCommand
     console.command.config.create.class: %classifier_namespace%\Console\Command\Config\CreateCommand
     console.command.config.remove.class: %classifier_namespace%\Console\Command\Config\RemoveCommand
@@ -44,11 +45,6 @@ parameters:
 
     cache.class: CacheCache\Cache
     cache.backend.class: CacheCache\Backends\File
-
-    logger.class: Monolog\Logger
-    logger.stream.class: Monolog\Handler\StreamHandler
-    logger.stream.stream: %classifier_path%/logs/classifier.log
-    logger.stream.level: 100
 
     json_pretty.class: Camspiers\JsonPretty\JsonPretty
 
@@ -91,14 +87,16 @@ services:
     classifier.complement_naive_bayes:
         class: %classifier.complement_naive_bayes.class%
         arguments:
-            - @index.index
+            - @classifier.source
+            - @classifier.model
             - @tokenizer.word
             - @normalizer.stopword_lowercase
 
     classifier.svm:
         class: %classifier.svm.class%
         arguments:
-            - @index.index
+            - @classifier.source
+            - @classifier.model
             - @tokenizer.word
             - @normalizer.stopword_lowercase
             - @svm
@@ -109,8 +107,12 @@ services:
       calls:
         - [ setOptions, [ %svm.options% ] ]
 
-    # Indexes
-    index.index:
+    # model
+    classifier.model:
+        synthetic: true
+        
+    # source
+    classifier.source:
         synthetic: true
 
     # Caches
@@ -131,18 +133,13 @@ services:
           - %console.application.name%
           - %console.application.version%
 
-    console.command.index.create:
-        class: %console.command.index.create.class%
+    console.command.model.remove:
+        class: %console.command.model.remove.class%
         tags:
             - { name: console.command, cache: true }
 
-    console.command.index.remove:
-        class: %console.command.index.remove.class%
-        tags:
-            - { name: console.command, cache: true }
-
-    console.command.index.prepare:
-        class: %console.command.index.prepare.class%
+    console.command.model.prepare:
+        class: %console.command.model.prepare.class%
         tags:
             - { name: console.command, cache: true }
 
@@ -176,8 +173,8 @@ services:
         tags:
             - { name: console.command, cache: true }
 
-    console.command.server.start:
-        class: %console.command.server.start.class%
+    console.command.server.run:
+        class: %console.command.server.run.class%
         tags:
             - { name: console.command, cache: true }
 
@@ -206,19 +203,6 @@ services:
         class: %console.command.self_update.class%
         tags:
             - { name: console.command }
-
-    logger:
-        class: %logger.class%
-        arguments:
-            - classifier
-        calls:
-            - [ pushHandler, [ @logger.stream ] ]
-
-    logger.stream:
-        class: %logger.stream.class%
-        arguments:
-            - %logger.stream.stream%
-            - %logger.stream.level%
 
     json_pretty:
         class: %json_pretty.class%

@@ -12,11 +12,11 @@
 namespace Camspiers\StatisticalClassifier\Console\Command;
 
 use CacheCache\Cache;
-use Camspiers\StatisticalClassifier\Classifier\ClassifierInterface;
+use Camspiers\StatisticalClassifier\Classifier\Classifier;
 use Camspiers\StatisticalClassifier\Config\Config;
-use Camspiers\StatisticalClassifier\Index\CachedIndex;
-use Camspiers\StatisticalClassifier\Index\IndexInterface;
-use Camspiers\StatisticalClassifier\Index\SVMCachedIndex;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
+use Camspiers\StatisticalClassifier\Model\CachedModel;
+use Camspiers\StatisticalClassifier\Model\SVMCachedModel;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input;
 
@@ -43,7 +43,7 @@ abstract class Command extends BaseCommand
     protected $container;
     /**
      * Holds the classifier instance for caching
-     * @var ClassifierInterface
+     * @var Classifier
      */
     protected $classifier;
     /**
@@ -64,22 +64,22 @@ abstract class Command extends BaseCommand
         return $this;
     }
     /**
-     * Adds arguments required for using a specified index in a command
+     * Adds arguments required for using a specified model in a command
      * @return Command This command to allow chaining
      */
-    protected function configureIndex()
+    protected function configureModel()
     {
         $this
             ->addArgument(
-                'index',
+                'model',
                 Input\InputArgument::REQUIRED,
-                'Name of index'
+                'Name of model'
             );
 
         return $this;
     }
     /**
-     * Adds options to allow automatically prepare the index
+     * Adds options to allow automatically prepare the model
      * @return Command This command to allow chaining
      */
     protected function configurePrepare()
@@ -89,7 +89,7 @@ abstract class Command extends BaseCommand
                 'prepare',
                 'p',
                 Input\InputOption::VALUE_NONE,
-                'Prepare the index after training'
+                'Prepare the model after training'
             );
 
         return $this;
@@ -103,28 +103,57 @@ abstract class Command extends BaseCommand
         $this->cache = $cache;
     }
     /**
-     * Get an CachedIndex based off a index name and the Cache instance
-     * @param  string      $name The name of the index
-     * @return CachedIndex The cached index
+     * Get an CachedModel based off a model name and the Cache instance
+     * @param  string $name The name of the model
+     * @param bool    $svm
+     * @return CachedModel The cached model
      */
-    protected function getCachedIndex($name)
+    protected function getModel($name, $svm = false)
     {
-        return new CachedIndex(
-            $name,
-            $this->cache
-        );
+        static $models = array();
+        
+        if (!isset($models[$name])) {
+            if ($svm) {
+                $models[$name] = new SVMCachedModel(
+                    sprintf(
+                        "%s/%s.svm",
+                        rtrim($this->getContainer()->getParameter('cache.path'), '/'),
+                        $name
+                    ),
+                    $this->cache
+                );
+            } else {
+                $models[$name] = new CachedModel(
+                    $name.'.model',
+                    $this->cache
+                );
+            }
+        }
+        
+        return $models[$name];
     }
     /**
-     * Get a SVMCachedIndex based of an index name and the Cache instance
      * @param $name
-     * @return SVMCachedIndex
+     * @return DataArray
      */
-    protected function getSVMCachedIndex($name)
+    protected function getDataSource($name)
     {
-        return new SVMCachedIndex(
-            Config::getClassifierPath() . "/indexes/$name.svm",
-            $name,
-            $this->cache
+        static $datasource = array();
+        
+        if (!isset($datasource[$name])) {
+            $datasource[$name] = $this->cache->get($name.'.source') ?: new DataArray();
+        }
+        
+        return $datasource[$name];
+    }
+    /**
+     * @param $name
+     */
+    protected function cacheDataSource($name)
+    {
+        $this->cache->set(
+            $name.'.source',
+            $this->getDataSource($name)
         );
     }
     /**
@@ -140,10 +169,10 @@ abstract class Command extends BaseCommand
         return $this->container;
     }
     /**
-     * Returns a classifier based of the commands input and the specified index (if exists)
+     * Returns a classifier based of the commands input and the specified model (if exists)
      * @param  Input\InputInterface $input The commands input
-     * @param  IndexInterface       $index Optional index to use in the classifier
-     * @return ClassifierInterface  The built classifier
+     * @throws \RuntimeException
+     * @return Classifier           The built classifier
      */
     protected function getClassifier(Input\InputInterface $input)
     {
@@ -151,19 +180,18 @@ abstract class Command extends BaseCommand
             $container = $this->getContainer();
             $classifier = 'classifier.' . $input->getOption('classifier');
             if ($container->has($classifier)) {
-                if ($classifier == 'classifier.svm') {
-                    $index = $this->getSVMCachedIndex(
-                        $input->getArgument('index')
-                    );
-                } else {
-                    $index = $this->getCachedIndex(
-                        $input->getArgument('index')
-                    );
-                }
+                $modelName = $input->getArgument('model');
+                
                 $container->set(
-                    'index.index',
-                    $index
+                    'classifier.model',
+                    $this->getModel($modelName, $classifier == 'classifier.svm')
                 );
+
+                $container->set(
+                    'classifier.source',
+                    $this->getDataSource($modelName)
+                );
+                
                 $this->classifier = $container->get($classifier);
             } else {
                 throw new \RuntimeException("Classifier '$classifier' doesn't exist");
