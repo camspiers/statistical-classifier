@@ -11,41 +11,24 @@
 
 namespace Camspiers\StatisticalClassifier\Transform;
 
-use Camspiers\StatisticalClassifier\Index\IndexInterface;
-
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class TFIDF implements TransformInterface
+class TFIDF
 {
-    const PARTITION_NAME = 'term_frequency_inverse_document_frequency';
-
-    private $dataPartitionName;
-    private $documentCountPartitionName;
-    private $tokenAppreanceCountPartitionName;
-
-    public function __construct(
-        $dataPartitionName,
-        $documentCountPartitionName,
-        $tokenAppreanceCountPartitionName
+    public function __invoke(
+        $tokenCountByDocument,
+        $documentCount,
+        $tokenAppreanceCount
     ) {
-        $this->dataPartitionName = $dataPartitionName;
-        $this->documentCountPartitionName = $documentCountPartitionName;
-        $this->tokenAppreanceCountPartitionName = $tokenAppreanceCountPartitionName;
-    }
-
-    public function apply(IndexInterface $index)
-    {
-        $documentCount = $index->getPartition($this->documentCountPartitionName);
-        $tokenAppreanceCount = $index->getPartition($this->tokenAppreanceCountPartitionName);
-        $transform = $tokenCountByDocument = $index->getPartition($this->dataPartitionName);
+        $transform = $tokenCountByDocument;
         foreach ($tokenCountByDocument as $category => $documents) {
-            foreach ($documents as $documentIndex => $document) {
+            foreach ($documents as $documentModel => $document) {
                 foreach ($document as $token => $count) {
                     $transform
                     [$category]
-                    [$documentIndex]
+                    [$documentModel]
                     [$token] = log($count + 1, 10) * log(
                         $documentCount / $tokenAppreanceCount[$token],
                         10
@@ -53,8 +36,8 @@ class TFIDF implements TransformInterface
                 }
             }
         }
-        $index->setPartition(self::PARTITION_NAME, $transform);
-
+        
+        return $transform;
     }
 }
 

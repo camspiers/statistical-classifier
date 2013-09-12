@@ -11,8 +11,9 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\ClassificationRule;
-use Camspiers\StatisticalClassifier\Index\IndexInterface;
+use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
+use Camspiers\StatisticalClassifier\Model\Model;
+use Camspiers\StatisticalClassifier\Model\ModelInterface;
 use Camspiers\StatisticalClassifier\Normalizer\Lowercase;
 use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
 use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
@@ -26,67 +27,130 @@ use Camspiers\StatisticalClassifier\Transform;
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class ComplementNaiveBayes extends GenericClassifier
+class ComplementNaiveBayes extends Classifier
 {
     /**
+     * Tokenizer (the way of breaking up documents)
+     * @var TokenizerInterface
+     */
+    protected $tokenizer;
+    /**
+     * Take tokenized data and make it consistent or stem it
+     * @var NormalizerInterface
+     */
+    protected $normalizer;
+    /**
      * Create the Naive Bayes Classifier
-     * @param IndexInterface      $index      An index to modify with transforms
+     * @param DataSourceInterface $dataSource
+     * @param ModelInterface      $model      An model to store data in
      * @param TokenizerInterface  $tokenizer  The tokenizer to break up the documents
      * @param NormalizerInterface $normalizer The normaizer to make tokens consistent
      */
     public function __construct(
-        IndexInterface $index,
+        DataSourceInterface $dataSource,
+        ModelInterface $model = null,
         TokenizerInterface $tokenizer = null,
         NormalizerInterface $normalizer = null
     ) {
-        $tokenizer = $tokenizer ?: new Word();
-        $normalizer = $normalizer ?: new Lowercase();
-        parent::__construct(
-            $index,
-            new ClassificationRule\ComplementNaiveBayes(
-                Transform\Weight::PARTITION_NAME
+        $this->dataSource = $dataSource;
+        $this->model = $model ?: new Model();
+        $this->tokenizer = $tokenizer ?: new Word();
+        $this->normalizer = $normalizer ?: new Lowercase();
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function prepareModel()
+    {
+        $data = $this->dataSource->getData();
+        
+        $tokenCountByDocument = $this->applyTransform(
+            new Transform\TokenCountByDocument(
+                $this->tokenizer,
+                $this->normalizer
             ),
-            $tokenizer,
-            $normalizer,
-            array(
-                new Transform\DC(),
-                new Transform\TCBD(
-                    $tokenizer,
-                    $normalizer
-                ),
-                new Transform\TAC(
-                    Transform\TCBD::PARTITION_NAME
-                ),
-                new Transform\TFIDF(
-                    Transform\TCBD::PARTITION_NAME,
-                    Transform\DC::PARTITION_NAME,
-                    Transform\TAC::PARTITION_NAME
-                ),
-                new Transform\DL(
-                    Transform\TFIDF::PARTITION_NAME
-                ),
-                new Transform\TBC(
-                    Transform\TCBD::PARTITION_NAME
-                ),
-                new Transform\DocumentTokenSums(
-                    Transform\DL::PARTITION_NAME
-                ),
-                new Transform\DocumentTokenCounts(
-                    Transform\DL::PARTITION_NAME
-                ),
-                new Transform\Complement(
-                    Transform\DL::PARTITION_NAME
-                ),
-                new Transform\Weight(
-                    Transform\Complement::PARTITION_NAME
-                ),
-                new Transform\Prune(
-                    array(
-                        Transform\Weight::PARTITION_NAME
-                    )
+            $data
+        );
+        
+        $documentCount = $this->applyTransform(
+            new Transform\DocumentCount(),
+            $data
+        );
+        
+        $tokenAppearanceCount = $this->applyTransform(
+            new Transform\TokenAppearanceCount(),
+            $tokenCountByDocument
+        );
+        
+        $tfidf = $this->applyTransform(
+            new Transform\TFIDF(),
+            $tokenCountByDocument,
+            $documentCount,
+            $tokenAppearanceCount
+        );
+        
+        $documentLength = $this->applyTransform(
+            new Transform\DocumentLength(),
+            $tfidf
+        );
+        
+        $tokensByCateory = $this->applyTransform(
+            new Transform\TokensByCategory(),
+            $tokenCountByDocument
+        );
+        
+        $documentTokenCounts = $this->applyTransform(
+            new Transform\DocumentTokenCounts(),
+            $documentLength
+        );
+        
+        $complement = $this->applyTransform(
+            new Transform\Complement(),
+            $documentLength,
+            $tokensByCateory,
+            $documentCount,
+            $documentTokenCounts
+        );
+        
+        $this->model->setModel(
+            $this->applyTransform(
+                new Transform\Weight(),
+                $complement
+            )
+        );
+
+        $this->model->setPrepared(true);
+    }
+    /**
+     * @param string $document
+     * @return mixed|string
+     */
+    public function classify($document)
+    {
+        $results = array();
+        
+        $tokens = array_count_values(
+            $this->normalizer->normalize(
+                $this->tokenizer->tokenize(
+                    $document
                 )
             )
         );
+        
+        $weights = $this->preparedModel()->getModel();
+        
+        foreach (array_keys($weights) as $category) {
+            $results[$category] = 0;
+            foreach ($tokens as $token => $count) {
+                if (array_key_exists($token, $weights[$category])) {
+                    $results[$category] += $count * $weights[$category][$token];
+                }
+            }
+        }
+        
+        asort($results, SORT_NUMERIC);
+
+        return key($results);
     }
 }
 

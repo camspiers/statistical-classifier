@@ -59,13 +59,13 @@
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
       <td class="danger small"><div align="right">0&nbsp;/&nbsp;2</div></td>
-      <td class="danger small"><acronym title="Change Risk Anti-Patterns (CRAP) Index">CRAP</acronym></td>
+      <td class="danger small"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></td>
       <td class="danger big">       <div class="progress progress-danger" style="width: 100px;">
         <div class="bar" style="width: 0.00%;"></div>
        </div>
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
-      <td class="danger small"><div align="right">0&nbsp;/&nbsp;26</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;27</div></td>
      </tr>
 
      <tr>
@@ -88,7 +88,7 @@
        </div>
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
-      <td class="danger small"><div align="right">0&nbsp;/&nbsp;26</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;27</div></td>
      </tr>
 
      <tr>
@@ -122,7 +122,7 @@
        </div>
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
-      <td class="danger small"><div align="right">0&nbsp;/&nbsp;11</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;12</div></td>
      </tr>
 
 
@@ -161,7 +161,7 @@
      <tr class="danger"><td><div align="right"><a name="29"></a><a href="#29">29</a></div></td><td class="codeLine">        $this</td></tr>
      <tr class="danger"><td><div align="right"><a name="30"></a><a href="#30">30</a></div></td><td class="codeLine">            -&gt;setName('train:document')</td></tr>
      <tr class="danger"><td><div align="right"><a name="31"></a><a href="#31">31</a></div></td><td class="codeLine">            -&gt;setDescription('Train the classifier with a document')</td></tr>
-     <tr class="danger"><td><div align="right"><a name="32"></a><a href="#32">32</a></div></td><td class="codeLine">            -&gt;configureIndex()</td></tr>
+     <tr class="danger"><td><div align="right"><a name="32"></a><a href="#32">32</a></div></td><td class="codeLine">            -&gt;configureModel()</td></tr>
      <tr class="danger"><td><div align="right"><a name="33"></a><a href="#33">33</a></div></td><td class="codeLine">            -&gt;addArgument(</td></tr>
      <tr class="danger"><td><div align="right"><a name="34"></a><a href="#34">34</a></div></td><td class="codeLine">                'category',</td></tr>
      <tr class="danger"><td><div align="right"><a name="35"></a><a href="#35">35</a></div></td><td class="codeLine">                Input\InputArgument::REQUIRED,</td></tr>
@@ -183,18 +183,24 @@
      <tr><td><div align="right"><a name="51"></a><a href="#51">51</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="52"></a><a href="#52">52</a></div></td><td class="codeLine">    protected function execute(Input\InputInterface $input, Output\OutputInterface $output)</td></tr>
      <tr><td><div align="right"><a name="53"></a><a href="#53">53</a></div></td><td class="codeLine">    {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="54"></a><a href="#54">54</a></div></td><td class="codeLine">        $index = $this-&gt;getCachedIndex($input-&gt;getArgument('index'));</td></tr>
-     <tr class="danger"><td><div align="right"><a name="55"></a><a href="#55">55</a></div></td><td class="codeLine">        $index-&gt;getDataSource()-&gt;addDocument(</td></tr>
-     <tr class="danger"><td><div align="right"><a name="56"></a><a href="#56">56</a></div></td><td class="codeLine">            $input-&gt;getArgument('category'),</td></tr>
-     <tr class="danger"><td><div align="right"><a name="57"></a><a href="#57">57</a></div></td><td class="codeLine">            $input-&gt;getArgument('document')</td></tr>
-     <tr class="danger"><td><div align="right"><a name="58"></a><a href="#58">58</a></div></td><td class="codeLine">        );</td></tr>
-     <tr class="danger"><td><div align="right"><a name="59"></a><a href="#59">59</a></div></td><td class="codeLine">        $index-&gt;preserve();</td></tr>
-     <tr class="danger"><td><div align="right"><a name="60"></a><a href="#60">60</a></div></td><td class="codeLine">        if ($input-&gt;getOption('prepare')) {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="61"></a><a href="#61">61</a></div></td><td class="codeLine">            $this-&gt;getClassifier($input, $index)-&gt;prepareIndex();</td></tr>
-     <tr class="danger"><td><div align="right"><a name="62"></a><a href="#62">62</a></div></td><td class="codeLine">        }</td></tr>
-     <tr class="danger"><td><div align="right"><a name="63"></a><a href="#63">63</a></div></td><td class="codeLine">        $output-&gt;writeLn(&quot;Document added to index&quot;);</td></tr>
-     <tr class="danger"><td><div align="right"><a name="64"></a><a href="#64">64</a></div></td><td class="codeLine">    }</td></tr>
-     <tr><td><div align="right"><a name="65"></a><a href="#65">65</a></div></td><td class="codeLine">}</td></tr>
+     <tr class="danger"><td><div align="right"><a name="54"></a><a href="#54">54</a></div></td><td class="codeLine">        $modelName = $input-&gt;getArgument('model');</td></tr>
+     <tr><td><div align="right"><a name="55"></a><a href="#55">55</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="56"></a><a href="#56">56</a></div></td><td class="codeLine">        $dataSource = $this-&gt;getDataSource($modelName);</td></tr>
+     <tr><td><div align="right"><a name="57"></a><a href="#57">57</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="58"></a><a href="#58">58</a></div></td><td class="codeLine">        $dataSource-&gt;addDocument(</td></tr>
+     <tr class="danger"><td><div align="right"><a name="59"></a><a href="#59">59</a></div></td><td class="codeLine">            $input-&gt;getArgument('category'),</td></tr>
+     <tr class="danger"><td><div align="right"><a name="60"></a><a href="#60">60</a></div></td><td class="codeLine">            $input-&gt;getArgument('document')</td></tr>
+     <tr class="danger"><td><div align="right"><a name="61"></a><a href="#61">61</a></div></td><td class="codeLine">        );</td></tr>
+     <tr><td><div align="right"><a name="62"></a><a href="#62">62</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="63"></a><a href="#63">63</a></div></td><td class="codeLine">        $this-&gt;cacheDataSource($modelName);</td></tr>
+     <tr><td><div align="right"><a name="64"></a><a href="#64">64</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="65"></a><a href="#65">65</a></div></td><td class="codeLine">        if ($input-&gt;getOption('prepare')) {</td></tr>
+     <tr class="danger"><td><div align="right"><a name="66"></a><a href="#66">66</a></div></td><td class="codeLine">            $this-&gt;getClassifier($input)-&gt;prepareModel();</td></tr>
+     <tr class="danger"><td><div align="right"><a name="67"></a><a href="#67">67</a></div></td><td class="codeLine">        }</td></tr>
+     <tr><td><div align="right"><a name="68"></a><a href="#68">68</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="69"></a><a href="#69">69</a></div></td><td class="codeLine">        $output-&gt;writeLn(&quot;Document added to model&quot;);</td></tr>
+     <tr class="danger"><td><div align="right"><a name="70"></a><a href="#70">70</a></div></td><td class="codeLine">    }</td></tr>
+     <tr><td><div align="right"><a name="71"></a><a href="#71">71</a></div></td><td class="codeLine">}</td></tr>
 
     </tbody>
    </table>
@@ -206,7 +212,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.9</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.19</a> and <a href="http://phpunit.de/">PHPUnit 3.7.19</a> at Sun Sep 8 17:22:21 NZST 2013.</small>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.19</a> and <a href="http://phpunit.de/">PHPUnit 3.7.25</a> at Thu Sep 12 22:55:47 NZST 2013.</small>
     </p>
    </footer>
   </div>

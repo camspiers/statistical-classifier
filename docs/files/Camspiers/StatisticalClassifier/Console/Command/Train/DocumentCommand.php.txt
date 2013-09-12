@@ -29,7 +29,7 @@ class DocumentCommand extends Command
         $this
             ->setName('train:document')
             ->setDescription('Train the classifier with a document')
-            ->configureIndex()
+            ->configureModel()
             ->addArgument(
                 'category',
                 Input\InputArgument::REQUIRED,
@@ -51,16 +51,22 @@ class DocumentCommand extends Command
      */
     protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
     {
-        $index = $this->getCachedIndex($input->getArgument('index'));
-        $index->getDataSource()->addDocument(
+        $modelName = $input->getArgument('model');
+        
+        $dataSource = $this->getDataSource($modelName);
+        
+        $dataSource->addDocument(
             $input->getArgument('category'),
             $input->getArgument('document')
         );
-        $index->preserve();
+
+        $this->cacheDataSource($modelName);
+        
         if ($input->getOption('prepare')) {
-            $this->getClassifier($input, $index)->prepareIndex();
+            $this->getClassifier($input)->prepareModel();
         }
-        $output->writeLn("Document added to index");
+        
+        $output->writeLn("Document added to model");
     }
 }
 

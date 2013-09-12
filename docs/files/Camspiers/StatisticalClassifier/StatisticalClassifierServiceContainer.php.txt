@@ -33,6 +33,42 @@ class StatisticalClassifierServiceContainer extends Container
 
         $this->scopes = array();
         $this->scopeChildren = array();
+        $this->methodMap = array(
+            'cache' => 'getCacheService',
+            'cache.backend' => 'getCache_BackendService',
+            'classifier.complement_naive_bayes' => 'getClassifier_ComplementNaiveBayesService',
+            'classifier.model' => 'getClassifier_ModelService',
+            'classifier.source' => 'getClassifier_SourceService',
+            'classifier.svm' => 'getClassifier_SvmService',
+            'console.application' => 'getConsole_ApplicationService',
+            'console.command.classify' => 'getConsole_Command_ClassifyService',
+            'console.command.config.create' => 'getConsole_Command_Config_CreateService',
+            'console.command.config.open' => 'getConsole_Command_Config_OpenService',
+            'console.command.config.remove' => 'getConsole_Command_Config_RemoveService',
+            'console.command.generate_container' => 'getConsole_Command_GenerateContainerService',
+            'console.command.model.prepare' => 'getConsole_Command_Model_PrepareService',
+            'console.command.model.remove' => 'getConsole_Command_Model_RemoveService',
+            'console.command.self_update' => 'getConsole_Command_SelfUpdateService',
+            'console.command.server.run' => 'getConsole_Command_Server_RunService',
+            'console.command.test.directory' => 'getConsole_Command_Test_DirectoryService',
+            'console.command.test.pdo' => 'getConsole_Command_Test_PdoService',
+            'console.command.train.directory' => 'getConsole_Command_Train_DirectoryService',
+            'console.command.train.document' => 'getConsole_Command_Train_DocumentService',
+            'console.command.train.pdo' => 'getConsole_Command_Train_PdoService',
+            'converter.converter' => 'getConverter_ConverterService',
+            'converter.from' => 'getConverter_FromService',
+            'converter.to' => 'getConverter_ToService',
+            'json_pretty' => 'getJsonPrettyService',
+            'normalizer.lowercase' => 'getNormalizer_LowercaseService',
+            'normalizer.porter' => 'getNormalizer_PorterService',
+            'normalizer.stopword' => 'getNormalizer_StopwordService',
+            'normalizer.stopword_lowercase' => 'getNormalizer_StopwordLowercaseService',
+            'normalizer.stopword_lowercase_porter' => 'getNormalizer_StopwordLowercasePorterService',
+            'svm' => 'getSvmService',
+            'tokenizer.word' => 'getTokenizer_WordService',
+        );
+
+        $this->aliases = array();
     }
 
     /**
@@ -58,7 +94,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getCache_BackendService()
     {
-        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/indexes/', 'file_extension' => '.idx'));
+        return $this->services['cache.backend'] = new \CacheCache\Backends\File(array('dir' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/cache', 'file_extension' => '.cache'));
     }
 
     /**
@@ -71,7 +107,33 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getClassifier_ComplementNaiveBayesService()
     {
-        return $this->services['classifier.complement_naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes($this->get('index.index'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'));
+        return $this->services['classifier.complement_naive_bayes'] = new \Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes($this->get('classifier.source'), $this->get('classifier.model'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'));
+    }
+
+    /**
+     * Gets the 'classifier.model' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @throws RuntimeException always since this service is expected to be injected dynamically
+     */
+    protected function getClassifier_ModelService()
+    {
+        throw new RuntimeException('You have requested a synthetic service ("classifier.model"). The DIC does not know how to construct this service.');
+    }
+
+    /**
+     * Gets the 'classifier.source' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @throws RuntimeException always since this service is expected to be injected dynamically
+     */
+    protected function getClassifier_SourceService()
+    {
+        throw new RuntimeException('You have requested a synthetic service ("classifier.source"). The DIC does not know how to construct this service.');
     }
 
     /**
@@ -84,7 +146,7 @@ class StatisticalClassifierServiceContainer extends Container
      */
     protected function getClassifier_SvmService()
     {
-        return $this->services['classifier.svm'] = new \Camspiers\StatisticalClassifier\Classifier\SVM($this->get('index.index'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'), $this->get('svm'));
+        return $this->services['classifier.svm'] = new \Camspiers\StatisticalClassifier\Classifier\SVM($this->get('classifier.source'), $this->get('classifier.model'), $this->get('tokenizer.word'), $this->get('normalizer.stopword_lowercase'), $this->get('svm'));
     }
 
     /**
@@ -99,16 +161,15 @@ class StatisticalClassifierServiceContainer extends Container
     {
         $this->services['console.application'] = $instance = new \Camspiers\StatisticalClassifier\Console\Application('PHP Classifier', '~package_version~');
 
-        $instance->add($this->get('console.command.index.create'));
-        $instance->add($this->get('console.command.index.remove'));
-        $instance->add($this->get('console.command.index.prepare'));
+        $instance->add($this->get('console.command.model.remove'));
+        $instance->add($this->get('console.command.model.prepare'));
         $instance->add($this->get('console.command.train.document'));
         $instance->add($this->get('console.command.train.directory'));
         $instance->add($this->get('console.command.train.pdo'));
         $instance->add($this->get('console.command.classify'));
         $instance->add($this->get('console.command.test.pdo'));
         $instance->add($this->get('console.command.test.directory'));
-        $instance->add($this->get('console.command.server.start'));
+        $instance->add($this->get('console.command.server.run'));
         $instance->add($this->get('console.command.config.create'));
         $instance->add($this->get('console.command.config.remove'));
         $instance->add($this->get('console.command.config.open'));
@@ -188,16 +249,16 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'console.command.index.create' service.
+     * Gets the 'console.command.model.prepare' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand A Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand instance.
+     * @return Camspiers\StatisticalClassifier\Console\Command\Model\PrepareCommand A Camspiers\StatisticalClassifier\Console\Command\Model\PrepareCommand instance.
      */
-    protected function getConsole_Command_Index_CreateService()
+    protected function getConsole_Command_Model_PrepareService()
     {
-        $this->services['console.command.index.create'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\CreateCommand();
+        $this->services['console.command.model.prepare'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Model\PrepareCommand();
 
         $instance->setCache($this->get('cache'));
 
@@ -205,33 +266,16 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'console.command.index.prepare' service.
+     * Gets the 'console.command.model.remove' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand A Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand instance.
+     * @return Camspiers\StatisticalClassifier\Console\Command\Model\RemoveCommand A Camspiers\StatisticalClassifier\Console\Command\Model\RemoveCommand instance.
      */
-    protected function getConsole_Command_Index_PrepareService()
+    protected function getConsole_Command_Model_RemoveService()
     {
-        $this->services['console.command.index.prepare'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\PrepareCommand();
-
-        $instance->setCache($this->get('cache'));
-
-        return $instance;
-    }
-
-    /**
-     * Gets the 'console.command.index.remove' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand A Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand instance.
-     */
-    protected function getConsole_Command_Index_RemoveService()
-    {
-        $this->services['console.command.index.remove'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Index\RemoveCommand();
+        $this->services['console.command.model.remove'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Model\RemoveCommand();
 
         $instance->setCache($this->get('cache'));
 
@@ -252,16 +296,16 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'console.command.server.start' service.
+     * Gets the 'console.command.server.run' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand A Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand instance.
+     * @return Camspiers\StatisticalClassifier\Console\Command\Server\RunCommand A Camspiers\StatisticalClassifier\Console\Command\Server\RunCommand instance.
      */
-    protected function getConsole_Command_Server_StartService()
+    protected function getConsole_Command_Server_RunService()
     {
-        $this->services['console.command.server.start'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Server\StartCommand();
+        $this->services['console.command.server.run'] = $instance = new \Camspiers\StatisticalClassifier\Console\Command\Server\RunCommand();
 
         $instance->setCache($this->get('cache'));
 
@@ -393,19 +437,6 @@ class StatisticalClassifierServiceContainer extends Container
     }
 
     /**
-     * Gets the 'index.index' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @throws RuntimeException always since this service is expected to be injected dynamically
-     */
-    protected function getIndex_IndexService()
-    {
-        throw new RuntimeException('You have requested a synthetic service ("index.index"). The DIC does not know how to construct this service.');
-    }
-
-    /**
      * Gets the 'json_pretty' service.
      *
      * This service is shared.
@@ -416,36 +447,6 @@ class StatisticalClassifierServiceContainer extends Container
     protected function getJsonPrettyService()
     {
         return $this->services['json_pretty'] = new \Camspiers\JsonPretty\JsonPretty();
-    }
-
-    /**
-     * Gets the 'logger' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Monolog\Logger A Monolog\Logger instance.
-     */
-    protected function getLoggerService()
-    {
-        $this->services['logger'] = $instance = new \Monolog\Logger('classifier');
-
-        $instance->pushHandler($this->get('logger.stream'));
-
-        return $instance;
-    }
-
-    /**
-     * Gets the 'logger.stream' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Monolog\Handler\StreamHandler A Monolog\Handler\StreamHandler instance.
-     */
-    protected function getLogger_StreamService()
-    {
-        return $this->services['logger.stream'] = new \Monolog\Handler\StreamHandler('/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/logs/classifier.log', 100);
     }
 
     /**
@@ -1141,9 +1142,10 @@ class StatisticalClassifierServiceContainer extends Container
                 543 => 'zero',
             ),
             'cache.backend.options' => array(
-                'dir' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/indexes/',
-                'file_extension' => '.idx',
+                'dir' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/cache',
+                'file_extension' => '.cache',
             ),
+            'cache.path' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/cache',
             'svm.class' => 'SVM',
             'svm.options' => array(
                 102 => 0,
@@ -1162,16 +1164,15 @@ class StatisticalClassifierServiceContainer extends Container
             'console.application.class' => 'Camspiers\\StatisticalClassifier\\Console\\Application',
             'console.application.name' => 'PHP Classifier',
             'console.application.version' => '~package_version~',
-            'console.command.index.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\CreateCommand',
-            'console.command.index.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\RemoveCommand',
-            'console.command.index.prepare.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Index\\PrepareCommand',
+            'console.command.model.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Model\\RemoveCommand',
+            'console.command.model.prepare.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Model\\PrepareCommand',
             'console.command.train.document.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DocumentCommand',
             'console.command.train.directory.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\DirectoryCommand',
             'console.command.train.pdo.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Train\\PDOCommand',
             'console.command.classify.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\ClassifyCommand',
             'console.command.test.pdo.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\PDOCommand',
             'console.command.test.directory.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Test\\DirectoryCommand',
-            'console.command.server.start.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Server\\StartCommand',
+            'console.command.server.run.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Server\\RunCommand',
             'console.command.generate_container.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\GenerateContainerCommand',
             'console.command.config.create.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\CreateCommand',
             'console.command.config.remove.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\Config\\RemoveCommand',
@@ -1179,10 +1180,6 @@ class StatisticalClassifierServiceContainer extends Container
             'console.command.self_update.class' => 'Camspiers\\StatisticalClassifier\\Console\\Command\\SelfUpdateCommand',
             'cache.class' => 'CacheCache\\Cache',
             'cache.backend.class' => 'CacheCache\\Backends\\File',
-            'logger.class' => 'Monolog\\Logger',
-            'logger.stream.class' => 'Monolog\\Handler\\StreamHandler',
-            'logger.stream.stream' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier/logs/classifier.log',
-            'logger.stream.level' => 100,
             'json_pretty.class' => 'Camspiers\\JsonPretty\\JsonPretty',
             'classifier_path' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier',
             'run_path' => '/Users/cameron/Sites/statistical-classifier-pages/statistical-classifier',

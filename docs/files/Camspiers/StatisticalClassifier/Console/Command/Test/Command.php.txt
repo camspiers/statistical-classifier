@@ -34,21 +34,22 @@ abstract class Command extends BaseCommand
         ClassifierInterface $classifier,
         DataSourceInterface $data
     ) {
-        $correct = array();
-        $totalDocs = 0;
+        $documents = $data->getData();
+        $stats = array();
 
-        foreach ($data->getData() as $category => $documents) {
-            $correct[$category] = 0;
-            $docCount = count($documents);
-            $totalDocs += $docCount;
-            foreach ($documents as $document) {
-                if ($classifier->classify($document) == $category) {
-                    $correct[$category]++;
-                }
+        foreach ($documents as $document) {
+            if (!isset($stats[$document['category']])) {
+                $stats[$document['category']] = array(0, 0);
             }
-            $output->writeLn($category . ': ' . ($correct[$category] / $docCount));
+            if ($classifier->classify($document['document']) == $document['category']) {
+                $stats[$document['category']][0]++;
+            }
+            $stats[$document['category']][1]++;
         }
-        $output->writeLn('Total: ' . (array_sum($correct) / $totalDocs));
+
+        foreach ($stats as $category => $data) {
+            $output->writeLn($category . ': ' . ($data[0] / $data[1]));
+        }
     }
 }
 

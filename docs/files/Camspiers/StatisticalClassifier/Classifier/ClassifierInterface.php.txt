@@ -11,9 +11,6 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\Index\IndexInterface;
-use Camspiers\StatisticalClassifier\Transform\TransformInterface;
-
 /**
  * Provides an interface for classifier.
  * Implementing classes are classifiers capable of classifying documents into categories
@@ -36,37 +33,5 @@ interface ClassifierInterface
      * @return string The category of the document
      */
     public function classify($document);
-    /**
-     * Builds the index from the data source by applying transforms to the data source
-     * @return null
-     */
-    public function prepareIndex();
-    /**
-     * Set the index
-     * @param IndexInterface $index The index to set
-     */
-    public function setIndex(IndexInterface $index);
-    /**
-     * Get the index
-     * @return IndexInterface The index
-     */
-    public function getIndex();
-    /**
-     * Add a transform to be applied to the source data to achieve classification
-     * @param  TransformInterface $transform The transform to add
-     * @return null
-     */
-    public function addTransform(TransformInterface $transform);
-    /**
-     * Set an array of transforms to be applied to the source data to achieve classification
-     * @param  array $transforms The transforms to add
-     * @return null
-     */
-    public function setTransforms(array $transforms);
-    /**
-     * Get an array of transforms
-     * @return array The transforms
-     */
-    public function getTransforms();
 }
 
