@@ -5,5 +5,5 @@ git reset --hard origin/master
 composer install --dev
 phpdoc -d src/ -t ../docs/ --title="PHP Classifier" --defaultpackagename="Statistical Classifier"
 phpunit --coverage-html ../coverage
-cd ..
-statistical-classifier/bin/compile
+bin/compile
+mv classifier.phar* ../
