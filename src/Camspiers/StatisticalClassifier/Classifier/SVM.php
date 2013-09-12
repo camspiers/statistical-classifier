@@ -160,7 +160,7 @@ class SVM extends Classifier
      * @return mixed|string
      */
     public function classify($document)
-    {   
+    {
         /** @var SVMModel $model */
         $model = $this->preparedModel();
         

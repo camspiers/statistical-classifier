@@ -13,7 +13,6 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
 use Symfony\Component\Console\Input;
-use Symfony\Component\Console\Output;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -46,38 +45,16 @@ class DirectoryCommand extends Command
             ->configurePrepare();
     }
     /**
-     * Train a classifier with a Directory datasource
-     * @param  Input\InputInterface   $input  The commands input
-     * @param  Output\OutputInterface $output The commands output
-     * @return null
+     * @param Input\InputInterface $input
+     * @return \Camspiers\StatisticalClassifier\DataSource\DataArray|Directory
      */
-    protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
+    protected function getChanges(Input\InputInterface $input)
     {
-        $modelName = $input->getArgument('model');
-        
-        $dataSource = $this->getDataSource($modelName);
-
-        $changes = new Directory(
+        return new Directory(
             array(
                 'directory' => $input->getArgument('directory'),
                 'include' => $input->getOption('include')
             )
-        );
-
-        foreach ($changes->getData() as $document) {
-            $dataSource->addDocument($document['category'], $document['document']);
-        }
-
-        $this->cacheDataSource($modelName);
-        
-        if ($input->getOption('prepare')) {
-            $this->getClassifier($input)->prepareModel();
-        }
-        
-        $this->updateSummary(
-            $output,
-            $changes,
-            $dataSource
         );
     }
 }
