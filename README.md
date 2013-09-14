@@ -47,9 +47,7 @@ PHP Classifier can run in `hhvm` which dramatically decreases run-time and memor
 
 # Usage
 
-## Without Symfony Dependency Injection
-
-### Non-cached Naive Bayes
+## Non-cached Naive Bayes
 
 ```php
 <?php
@@ -68,7 +66,7 @@ echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-### Non-cached SVM
+## Non-cached SVM
 
 ```php
 <?php
@@ -87,7 +85,7 @@ echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-### Cached Naive Bayes
+## Cached Naive Bayes
 
 ```php
 <?php
@@ -119,7 +117,7 @@ echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
 echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
-### Cached SVM
+## Cached SVM
 
 ```php
 <?php
@@ -153,68 +151,7 @@ echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 
 ## With Symfony Dependency Injection
 
-### Naive Bayes
-
-```php
-<?php
-// ensure bootstrap is loaded
-$container = new StatisticalClassifierServiceContainer;
-
-// Using a plain data array source for simplicity
-use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Model\Model;
-
-$source = new DataArray();
-$source->addDocument('spam', 'Some spam document');
-$source->addDocument('spam', 'Another spam document');
-$source->addDocument('ham', 'Some ham document');
-$source->addDocument('ham', 'Another ham document');
-
-// This sets the model to the soon created classifier using a synthetic symfony service
-$container->set(
-    'classifier.source',
-    $source
-);
-
-$container->set(
-    'classifier.model',
-    new Model()
-);
-
-echo $container->get('classifier.complement_naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
-```
-
-### SVM Cached
-
-```php
-<?php
-// ensure bootstrap is loaded
-$container = new StatisticalClassifierServiceContainer;
-
-use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Model\SVMCachedModel;
-
-$source = new DataArray();
-$source->addDocument('spam', 'Some spam document');
-$source->addDocument('spam', 'Another spam document');
-$source->addDocument('ham', 'Some ham document');
-$source->addDocument('ham', 'Another ham document');
-
-$container->set(
-    'classifier.source',
-    $source
-);
-
-$container->set(
-    'classifier.model',
-    new SVMCachedModel(
-        __DIR__ . '/model.svm',
-        $classifier->get('cache')
-    )
-);
-
-echo $container->get('classifier.svm')->classify("Some ham document"), PHP_EOL; //ham
-```
+A container extension `StatisticalClassifierExtension` is available which allows for easy integration with Symfony apps.
 
 ## From command-line
 
