@@ -2,34 +2,24 @@
 
 [![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
 
-NOTE: PHP Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
+PHP Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
 
 # What is it?
 
 > In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
 
 PHP Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
+Classifiers can be used for many purposes, from spam classification, site content classification (tag or category suggestions).
 
 Important Features:
 
-* Complement Naive Bayes Classifier & SVM (libsvm) Classifier
-* Highly customizable
-* Multiple ways of using the library (PHP, command-line, HTTP server)
-* Support for use from non-PHP programming languages (through command-line or HTTP server)
+* Complement Naive Bayes Classifier
+* SVM (libsvm) Classifier
+* Highly customizable (easily modify or build your own classifier)
+* Command-line interface
 * Multiple **data import types** to get your data into the classifier (Directory of files, Database queries, Json, Serialized arrays)
-* Multiple **types of caching** for the model the classifier builds (Memcache, Apc, File, Session)
-* Multiple ways to make your input data more consistent (Lowercase, Porter Stemmer)
-* Faster setup time in applications using Symfony Dependency Injection
-
-PHP Classifier is also built with a structure that allows developers to easily implement their own classifiers, even reusing the underlying algorithms between classifiers.
-
-By default a Naive Bayes classifier is provided which performs well on the [20 Newsgroups Data Set](http://qwone.com/~jason/20Newsgroups/). This classifier was built using a paper *[Tackling the Poor Assumptions of Naive Bayes Text Classifiers](resources/Tackling the Poor Assumptions of Naive Bayes Text Classifiers.pdf)* by Jason Rennie (PDF).
-
-# Does it work?
-
-Classifiers are extensively used in combating spam. Having your own classifier allows you to have a classifier that is trained on the type of spam and ham your site receives, meaning it will be more accurate and allow you to not have dropoffs through using captcha methods.
-
-Classifiers are also used in automatically categorizing site content (pages, articles, news etc.).
+* Multiple **types of caching** for the model the classifier builds
+* Easy integration in Symfony applications
 
 # Installation
 
@@ -53,7 +43,7 @@ For SVM Support both libsvm and php-svm are required. For installation intructio
 
 ## HipHop VM support
 
-PHP Classifier runs in `hhvm` which dramatically decreases run-time and memory usage. See [HipHop VM for PHP](https://github.com/facebook/hiphop-php/) for installation instructions.
+PHP Classifier can run in `hhvm` which dramatically decreases run-time and memory usage. See [HipHop VM for PHP](https://github.com/facebook/hiphop-php/) for installation instructions.
 
 # Usage
 
@@ -64,19 +54,18 @@ PHP Classifier runs in `hhvm` which dramatically decreases run-time and memory u
 ```php
 <?php
 //Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\DataSource;
+use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
-$c = new Classifier\ComplementNaiveBayes(
-    $source = new DataSource\DataArray()
-);
+$classifier = new ComplementNaiveBayes($source = new DataArray());
 
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $c->classify('Some ham document'), PHP_EOL; // ham
+
+echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
+echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ### Non-cached SVM
@@ -84,19 +73,18 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\DataSource;
+use Camspiers\StatisticalClassifier\Classifier\SVM;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
-$c = new Classifier\SVM(
-    $source = new DataSource\DataArray()
-);
+$classifier = new SVM($source = new DataArray());
 
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $c->classify('Some ham document'), PHP_EOL; // ham
+
+echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
+echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ### Cached Naive Bayes
@@ -104,29 +92,31 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\Model;
-use Camspiers\StatisticalClassifier\DataSource;
+use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
+use Camspiers\StatisticalClassifier\Model\CachedModel;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
-$c = new Classifier\ComplementNaiveBayes(
-    $source = new DataSource\DataArray()
-    new Model\CachedModel(
-        'mycachename',
-        new CacheCache\Cache(
-            new CacheCache\Backends\File(
-                array(
-                    'dir' => __DIR__
-                )
-            )
-        )
-    )
-);
+$source = new DataArray();
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $c->classify('Some ham document'), PHP_EOL; // ham
+
+$model = new CachedModel(
+	'mycachename',
+	new CacheCache\Cache(
+		new CacheCache\Backends\File(
+			array(
+				'dir' => __DIR__
+			)
+		)
+	)
+);
+
+$classifier = new ComplementNaiveBayes($source, $model);
+
+echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
+echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ### Cached SVM
@@ -134,29 +124,31 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // Ensure composer autoloader is required
-use Camspiers\StatisticalClassifier\Classifier;
-use Camspiers\StatisticalClassifier\Model;
-use Camspiers\StatisticalClassifier\DataSource;
+use Camspiers\StatisticalClassifier\Classifier\SVM;
+use Camspiers\StatisticalClassifier\Model\SVMCachedModel;
+use Camspiers\StatisticalClassifier\DataSource\DataArray;
 
-$c = new Classifier\SVM(
-    $source = new DataSource\DataArray(),
-    new Model\SVMCachedModel(
-        __DIR__ . '/model.svm',
-        new CacheCache\Cache(
-            new CacheCache\Backends\File(
-                array(
-                    'dir' => __DIR__
-                )
-            )
-        )
-    )
-);
+$source = new DataArray();
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $c->classify('Some ham document'), PHP_EOL; // ham
+
+$model = new Model\SVMCachedModel(
+	__DIR__ . '/model.svm',
+	new CacheCache\Cache(
+		new CacheCache\Backends\File(
+			array(
+				'dir' => __DIR__
+			)
+		)
+	)
+);
+
+$classifier = new SVM($source, $model);
+
+echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
+echo $classifier->classify('Some ham document'), PHP_EOL; // ham
 ```
 
 ## With Symfony Dependency Injection
@@ -166,24 +158,30 @@ echo $c->classify('Some ham document'), PHP_EOL; // ham
 ```php
 <?php
 // ensure bootstrap is loaded
-$c = new StatisticalClassifierServiceContainer;
+$container = new StatisticalClassifierServiceContainer;
+
 // Using a plain data array source for simplicity
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\Model\Model;
-// This sets the model to the soon created classifier using a synthetic symfony service
-$c->set(
-    'classifier.source',
-    $source = new DataArray()
-);
-$c->set(
-    'classifier.model',
-    new Model()
-);
+
+$source = new DataArray();
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->get('classifier.complement_naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
+
+// This sets the model to the soon created classifier using a synthetic symfony service
+$container->set(
+    'classifier.source',
+    $source
+);
+
+$container->set(
+    'classifier.model',
+    new Model()
+);
+
+echo $container->get('classifier.complement_naive_bayes')->classify("Some ham document"), PHP_EOL; //ham
 ```
 
 ### SVM Cached
@@ -191,32 +189,63 @@ echo $c->get('classifier.complement_naive_bayes')->classify("Some ham document")
 ```php
 <?php
 // ensure bootstrap is loaded
+$container = new StatisticalClassifierServiceContainer;
+
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
 use Camspiers\StatisticalClassifier\Model\SVMCachedModel;
 
-$c->set(
-    'classifier.source',
-    $source = new DataArray()
-);
-
-$c->set(
-    'classifier.model',
-    new SVMCachedModel(
-        __DIR__ . '/model.svm',
-        $c->get('cache')
-    )
-);
-
+$source = new DataArray();
 $source->addDocument('spam', 'Some spam document');
 $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
-echo $c->get('classifier.svm')->classify("Some ham document"), PHP_EOL; //ham
+
+$container->set(
+    'classifier.source',
+    $source
+);
+
+$container->set(
+    'classifier.model',
+    new SVMCachedModel(
+        __DIR__ . '/model.svm',
+        $classifier->get('cache')
+    )
+);
+
+echo $container->get('classifier.svm')->classify("Some ham document"), PHP_EOL; //ham
 ```
 
 ## From command-line
 
 ### Commands
+
+#### Overview
+
+```
+Available commands:
+  classify             Classify a document
+  generate-container   Generate container
+  help                 Displays help for a command
+  list                 Lists commands
+  self-update          Update the classifier
+config
+  config:create        Creates the config
+  config:open          Opens the config
+  config:remove        Removes the config
+model
+  model:prepare        Prepare an model
+  model:remove         Remove a model
+server
+  server:run           Run a classifier server
+test
+  test:directory       Test the classifier against a directory
+  test:pdo             Test the classifier with a PDO query
+train
+  train:directory      Train the classifier with a directory
+  train:document       Train the classifier with a document
+  train:pdo            Train the classifier with a PDO query
+```
 
 *train:document*
 
