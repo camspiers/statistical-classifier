@@ -49,6 +49,15 @@ class Json extends DataArray
      */
     public function write()
     {
-        file_put_contents($this->filename, json_encode($this->data));
+        $data = array();
+        foreach ($this->data as $category => $documents) {
+            foreach ($documents as $document) {
+                $data[] = array(
+                    'category' => $category,
+                    'document' => $document
+                );
+            }
+        }
+        file_put_contents($this->filename, json_encode($data));
     }
 }

@@ -22,15 +22,19 @@ class ClosureTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->data = $data = array(
-            array(
-                'document' => 'This is a test document',
-                'category' => 'category'
+        $this->data = array(
+            'category' => array(
+                'This is a test document'
             )
         );
         $this->object = new Closure(
-            function () use ($data) {
-                return $data;
+            function () {
+                return array(
+                    array(
+                        'document' => 'This is a test document',
+                        'category' => 'category'
+                    )
+                );
             }
         );
     }

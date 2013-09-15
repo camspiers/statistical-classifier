@@ -45,17 +45,16 @@ $testSource = new Directory(
     )
 );
 
-$documents = $testSource->getData();
+$data = $testSource->getData();
 $stats = array();
 
-foreach ($documents as $document) {
-    if (!isset($stats[$document['category']])) {
-        $stats[$document['category']] = array(0, 0);
+foreach ($data as $category => $documents) {
+    $stats[$category] = array(0, count($documents));
+    foreach ($documents as $document) {
+        if ($classifier->is($category, $document)) {
+            $stats[$category][0]++;
+        }
     }
-    if ($classifier->classify($document['document']) == $document['category']) {
-        $stats[$document['category']][0]++;
-    }
-    $stats[$document['category']][1]++;
 }
 
 foreach ($stats as $category => $data) {

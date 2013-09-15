@@ -37,28 +37,40 @@ class SVM extends Classifier
      */
     protected $normalizer;
     /**
+     *
+     * @var float|bool
+     */
+    protected $threshold;
+    /**
      * @param DataSourceInterface $dataSource
      * @param SVMModel            $model
      * @param TokenizerInterface  $tokenizer
      * @param NormalizerInterface $normalizer
      * @param \SVM                $svm
+     * @param null                $threshold
      */
     public function __construct(
         DataSourceInterface $dataSource,
         SVMModel $model = null,
         TokenizerInterface $tokenizer = null,
         NormalizerInterface $normalizer = null,
-        \SVM $svm = null
+        \SVM $svm = null,
+        $threshold = null
     ) {
         $this->dataSource = $dataSource;
-        $this->model = $model ?: new SVMModel();
-        $this->tokenizer = $tokenizer ?: new Word();
-        $this->normalizer = $normalizer ?: new Lowercase();
+        $this->model = $model ? : new SVMModel();
+        $this->tokenizer = $tokenizer ? : new Word();
+        $this->normalizer = $normalizer ? : new Lowercase();
         if (!$svm) {
             $svm = new \SVM();
-            $svm->setOptions(array(102 => 0));
+            $svm->setOptions(
+                array(
+                    \SVM::OPT_KERNEL_TYPE => \SVM::KERNEL_LINEAR
+                )
+            );
         }
         $this->svm = $svm;
+        $this->setThreshold($threshold);
     }
     /**
      * {@inheritdoc}
@@ -66,7 +78,7 @@ class SVM extends Classifier
     public function prepareModel()
     {
         $data = $this->dataSource->getData();
-        
+
         $tokenCountByDocument = $this->applyTransform(
             new Transform\TokenCountByDocument(
                 $this->tokenizer,
@@ -111,7 +123,21 @@ class SVM extends Classifier
                 }
             }
         }
-        
+
+        // When using probabilities and our dataset is small we need to increase its
+        // size by duplicating the data
+        // see: http://www.csie.ntu.edu.tw/~cjlin/papers/libsvm.pdf section "8 Probability Estimates"
+        if ($this->hasThreshold()) {
+            foreach ($documentLength as $category => $documents) {
+                while (count($documents) <= 5) {
+                    foreach ($documents as $document) {
+                        $documents[] = $document;
+                    }
+                }
+                $documentLength[$category] = $documents;
+            }
+        }
+
         $transform = array();
 
         // Prep the svm data set for use
@@ -137,12 +163,9 @@ class SVM extends Classifier
 
         $lowest = min($weights);
 
-        $weights = array_map(
-            function ($weight) use ($lowest) {
-                return $lowest / $weight;
-            },
-            $weights
-        );
+        foreach ($weights as $index => $weight) {
+            $weights[$index] = $lowest / $weight;
+        }
 
         $this->model->setMaps(array_flip($categoryMap), $tokenMap);
 
@@ -163,12 +186,33 @@ class SVM extends Classifier
     {
         /** @var SVMModel $model */
         $model = $this->preparedModel();
-        
-        $tokenMap = $model->getTokenMap();
+
         $categoryMap = $model->getCategoryMap();
 
+        $data = $this->prepareData($document, $model);
+
+        if ($this->hasThreshold()) {
+            $probabilities = array();
+            $category = $model->getModel()->predict_probability($data, $probabilities);
+
+            return $probabilities[$category] > $this->threshold ? $categoryMap[$category] : false;
+        } else {
+            $category = $model->getModel()->predict($data);
+            
+            return $categoryMap[$category];
+        }
+    }
+    /**
+     * @param $document
+     * @param $model
+     * @return array
+     */
+    protected function prepareData($document, SVMModel $model)
+    {
+        $tokenMap = $model->getTokenMap();
+
         $data = array();
-        
+
         $tokenCounts = array_count_values(
             $this->normalizer->normalize(
                 $this->tokenizer->tokenize(
@@ -176,15 +220,51 @@ class SVM extends Classifier
                 )
             )
         );
-        
+
         foreach ($tokenCounts as $token => $value) {
             if (isset($tokenMap[$token])) {
                 $data[$tokenMap[$token]] = $value;
             }
         }
-        
+
         ksort($data, SORT_NUMERIC);
 
-        return $categoryMap[$model->getModel()->predict($data)];
+        return $data;
+    }
+    /**
+     * @param $threshold
+     */
+    public function setThreshold($threshold)
+    {
+        if (is_numeric($threshold)) {
+            $this->threshold = $threshold;
+            $this->svm->setOptions(
+                array(
+                    \SVM::OPT_PROBABILITY => true
+                )
+            );
+        }
+    }
+    /**
+     * @param $document
+     * @return array
+     */
+    public function getProbabilities($document)
+    {
+        if ($this->hasThreshold()) {
+            $model = $this->preparedModel();
+            $data = $this->prepareData($document, $model);
+            $probabilities = array();
+            $model->getModel()->predict_probability($data, $probabilities);
+
+            return array_combine($model->getCategoryMap(), $probabilities);
+        }
+    }
+    /**
+     * @return bool
+     */
+    protected function hasThreshold()
+    {
+        return $this->threshold !== null;
     }
 }

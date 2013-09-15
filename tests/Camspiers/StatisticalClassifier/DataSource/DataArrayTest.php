@@ -20,8 +20,16 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
+        $this->data = array(
+            'test' => array(
+                'Test'
+            ),
+            'test2' => array(
+                'Test'
+            )
+        );
         $this->object = new DataArray(
-            $this->data = array(
+            array(
                 array(
                     'category' => 'test',
                     'document' => 'Test'
@@ -57,17 +65,12 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
         $this->object->addDocument('test', 'Another');
         $this->assertEquals(
             array(
-                array(
-                    'document' => 'Test',
-                    'category' => 'test'
+                'test' => array(
+                    'Test',
+                    'Another'
                 ),
-                array(
-                    'document' => 'Test',
-                    'category' => 'test2'
-                ),
-                array(
-                    'document' => 'Another',
-                    'category' => 'test'
+                'test2' => array(
+                    'Test'
                 )
             ),
             $this->object->getData()

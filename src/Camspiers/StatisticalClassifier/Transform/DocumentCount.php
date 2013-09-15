@@ -19,6 +19,10 @@ class DocumentCount
 {
     public function __invoke($data)
     {
-        return count($data);
+        $count = 0;
+        foreach ($data as $docs) {
+            $count += count($docs);
+        }
+        return $count;
     }
 }

@@ -30,13 +30,11 @@ class CSVTest extends \PHPUnit_Framework_TestCase
     {
         vfsStream::setup();
         $this->data = array(
-            array(
-                'category' => 'test',
-                'document' => 'Some document'
+            'test' => array(
+                'Some document'
             ),
-            array(
-                'category' => 'test2',
-                'document' => 'Some document'
+            'test2' => array(
+                'Some document'
             )
         );
         $this->csv = <<<CSV

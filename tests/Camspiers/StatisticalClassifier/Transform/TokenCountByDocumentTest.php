@@ -15,7 +15,6 @@ class TokenCountByDocumentTest extends \PHPUnit_Framework_TestCase
         );
         
         $this->assertEquals(
-
             array(
                 'spam' => array(
                     array(
@@ -44,21 +43,13 @@ class TokenCountByDocumentTest extends \PHPUnit_Framework_TestCase
             ),
             $trasform(
                 array(
-                    array(
-                        'category' => 'spam',
-                        'document' => 'Some spam document'
+                    'spam' => array(
+                        'Some spam document',
+                        'another spam document'
                     ),
-                    array(
-                        'category' => 'spam',
-                        'document' => 'Another spam document'
-                    ),
-                    array(
-                        'category' => 'ham',
-                        'document' => 'Some ham document'
-                    ),
-                    array(
-                        'category' => 'ham',
-                        'document' => 'Another ham document'
+                    'ham'  => array(
+                        'Some ham document',
+                        'another ham document'
                     )
                 )
             )

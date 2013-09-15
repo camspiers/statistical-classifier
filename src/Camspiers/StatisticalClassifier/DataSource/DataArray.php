@@ -36,10 +36,6 @@ class DataArray implements DataSourceInterface, Serializable
      */
     protected $data = array();
     /**
-     * @var array
-     */
-    protected $categories = array();
-    /**
      * Holds the config class that setData needs to conforms to
      * @var
      */
@@ -65,27 +61,26 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function getCategories()
     {
-        return $this->categories;
+        return array_keys($this->data);
     }
     /**
      * @{inheritdoc}
      */
     public function hasCategory($category)
     {
-        return in_array($category, $this->categories);
+        $this->prepare();
+        
+        return isset($this->data[$category]);
     }
     /**
      * @{inheritdoc}
      */
     public function addDocument($category, $document)
     {
-        $this->data[] = array(
-            'category' => $category,
-            'document' => $document
-        );
-        if (!$this->hasCategory($category)) {
-            $this->categories[] = $category;
+        if (!isset($this->data[$category])) {
+            $this->data[$category] = array();
         }
+        $this->data[$category][] = $document;
     }
     /**
      * @{inheritdoc}
@@ -99,9 +94,7 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function getData()
     {
-        if (!is_array($this->data) || count($this->data) == 0) {
-            $this->setData($this->read());
-        }
+        $this->prepare();
 
         return $this->data;
     }
@@ -110,16 +103,14 @@ class DataArray implements DataSourceInterface, Serializable
      */
     public function setData(array $data)
     {
-        $this->data = $this->getProcessor()->processConfiguration(
+        $data = $this->getProcessor()->processConfiguration(
             $this->getConfig(),
             array(
                 $data
             )
         );
-        foreach ($this->data as $document) {
-            if (!in_array($document['category'], $this->categories)) {
-                $this->categories[] = $document['category'];
-            }
+        foreach ($data as $document) {
+            $this->addDocument($document['category'], $document['document']);
         }
     }
 
@@ -185,5 +176,14 @@ class DataArray implements DataSourceInterface, Serializable
         }
 
         return $this->processor;
+    }
+    /**
+     * Read the data and set it
+     */
+    protected function prepare()
+    {
+        if (!is_array($this->data) || count($this->data) == 0) {
+            $this->setData($this->read());
+        }
     }
 }
