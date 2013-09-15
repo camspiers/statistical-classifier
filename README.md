@@ -9,7 +9,7 @@ PHP Classifier uses [semantic versioning](http://semver.org/), it is currently a
 PHP Classifier is a text classification library with a focus on reuse, customizability and performance.
 Classifiers can be used for many purposes, but are particularly useful in detecting spam.
 
-Features:
+## Features
 
 * Complement Naive Bayes Classifier
 * SVM (libsvm) Classifier
