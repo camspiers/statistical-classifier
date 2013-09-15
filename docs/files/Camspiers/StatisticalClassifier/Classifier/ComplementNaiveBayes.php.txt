@@ -146,10 +146,18 @@ class ComplementNaiveBayes extends Classifier
                 }
             }
         }
-        
-        asort($results, SORT_NUMERIC);
 
-        return key($results);
+        asort($results, SORT_NUMERIC);
+        
+        $category = key($results);
+        
+        $value = array_shift($results);
+        
+        if ($value === array_shift($results)) {
+            return false;
+        } else {
+            return $category;
+        }
     }
 }
 
