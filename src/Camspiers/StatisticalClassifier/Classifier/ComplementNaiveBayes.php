@@ -122,8 +122,7 @@ class ComplementNaiveBayes extends Classifier
         $this->model->setPrepared(true);
     }
     /**
-     * @param string $document
-     * @return mixed|string
+     * @inheritdoc
      */
     public function classify($document)
     {

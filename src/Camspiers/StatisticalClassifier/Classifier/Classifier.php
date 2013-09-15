@@ -65,6 +65,7 @@ abstract class Classifier implements ClassifierInterface
         return $this->model;
     }
     /**
+     * Take a callable and run it passing in any additionally specified arguments
      * @param $transform
      * @throws \RuntimeException
      * @return mixed
