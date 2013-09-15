@@ -34,18 +34,20 @@ class TokenCountByDocument
     public function __invoke($data)
     {
         $transform = array();
-        foreach ($data as $document) {
-            if (!isset($transform[$document['category']])) {
-                $transform[$document['category']] = array();
-            }
-            $transform[$document['category']][] = array_count_values(
-                $this->normalizer->normalize(
-                    $this->tokenizer->tokenize(
-                        $document['document']
+        
+        foreach ($data as $category => $documents) {
+            $transform[$category]  = array();
+            foreach ($documents as $document) {
+                $transform[$category][] = array_count_values(
+                    $this->normalizer->normalize(
+                        $this->tokenizer->tokenize(
+                            $document
+                        )
                     )
-                )
-            );
+                );
+            }
         }
+        
         return $transform;
     }
 }

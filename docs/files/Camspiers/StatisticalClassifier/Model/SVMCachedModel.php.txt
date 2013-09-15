@@ -10,7 +10,8 @@ class SVMCachedModel extends SVMModel
      * @param Cache $cache
      * @param       $modelFilename
      */
-    public function __construct($modelFilename, Cache $cache) {
+    public function __construct($modelFilename, Cache $cache)
+    {
         $this->modelFilename = $modelFilename;
         $this->cache = $cache;
         $data = $this->cache->get($modelFilename);

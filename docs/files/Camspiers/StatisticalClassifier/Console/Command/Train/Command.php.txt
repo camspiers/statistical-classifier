@@ -13,6 +13,7 @@ namespace Camspiers\StatisticalClassifier\Console\Command\Train;
 
 use Camspiers\StatisticalClassifier\Console\Command\Command as BaseCommand;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
+use Symfony\Component\Console\Input;
 use Symfony\Component\Console\Output;
 
 /**
@@ -21,6 +22,42 @@ use Symfony\Component\Console\Output;
  */
 abstract class Command extends BaseCommand
 {
+
+    /**
+     * Train a classifier with a datasource
+     * @param  Input\InputInterface   $input  The commands input
+     * @param  Output\OutputInterface $output The commands output
+     * @return null
+     */
+    protected function execute(Input\InputInterface $input, Output\OutputInterface $output)
+    {
+        $modelName = $input->getArgument('model');
+
+        $dataSource = $this->getDataSource($modelName);
+
+        $changes = $this->getChanges($input);
+
+        foreach ($changes->getData() as $document) {
+            $dataSource->addDocument($document['category'], $document['document']);
+        }
+
+        $this->cacheDataSource($modelName);
+
+        if ($input->getOption('prepare')) {
+            $this->getClassifier($input)->prepareModel();
+        }
+
+        $this->updateSummary(
+            $output,
+            $changes,
+            $dataSource
+        );
+    }
+    /**
+     * @param Input\InputInterface $input
+     * @return \Camspiers\StatisticalClassifier\DataSource\DataArray
+     */
+    abstract protected function getChanges(Input\InputInterface $input);
     /**
      * Outputs a summary of what has changes in the model
      * @param  Output\OutputInterface $output  The output object

@@ -53,7 +53,10 @@ class Complement
                     }
                 }
                 foreach ($categoriesSelection as $currCat) {
-                    $trans[$cat][$token] = $trans[$cat][$token] / ($tokByCatSums[$currCat] + $documentTokenCounts[$currCat]);
+                    $trans[$cat][$token] =
+                        $trans[$cat][$token]
+                        /
+                        ($tokByCatSums[$currCat] + $documentTokenCounts[$currCat]);
                 }
 
             }

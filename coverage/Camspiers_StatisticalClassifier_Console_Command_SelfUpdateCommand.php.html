@@ -64,7 +64,7 @@
        </div>
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
-      <td class="danger small"><div align="right">0&nbsp;/&nbsp;48</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;50</div></td>
      </tr>
 
      <tr>
@@ -87,7 +87,7 @@
        </div>
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
-      <td class="danger small"><div align="right">0&nbsp;/&nbsp;48</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;50</div></td>
      </tr>
 
      <tr>
@@ -121,7 +121,7 @@
        </div>
 </td>
       <td class="danger small"><div align="right">0.00%</div></td>
-      <td class="danger small"><div align="right">0&nbsp;/&nbsp;36</div></td>
+      <td class="danger small"><div align="right">0&nbsp;/&nbsp;38</div></td>
      </tr>
 
 
@@ -187,46 +187,48 @@
      <tr class="danger"><td><div align="right"><a name="56"></a><a href="#56">56</a></div></td><td class="codeLine">        $version = trim($this-&gt;getApplication()-&gt;getVersion());</td></tr>
      <tr><td><div align="right"><a name="57"></a><a href="#57">57</a></div></td><td class="codeLine"></td></tr>
      <tr class="danger"><td><div align="right"><a name="58"></a><a href="#58">58</a></div></td><td class="codeLine">        if ($version === '~package_version~') {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="59"></a><a href="#59">59</a></div></td><td class="codeLine">            throw new \RuntimeException(&quot;This command is only available for compiled phar files which you can obtain at $url&quot;);</td></tr>
-     <tr class="danger"><td><div align="right"><a name="60"></a><a href="#60">60</a></div></td><td class="codeLine">        }</td></tr>
-     <tr><td><div align="right"><a name="61"></a><a href="#61">61</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="62"></a><a href="#62">62</a></div></td><td class="codeLine">        $latest = @file_get_contents(&quot;$url.version&quot;);</td></tr>
+     <tr class="danger"><td><div align="right"><a name="59"></a><a href="#59">59</a></div></td><td class="codeLine">            throw new \RuntimeException(</td></tr>
+     <tr class="danger"><td><div align="right"><a name="60"></a><a href="#60">60</a></div></td><td class="codeLine">                &quot;This command is only available for compiled phar files which you can obtain at $url&quot;</td></tr>
+     <tr class="danger"><td><div align="right"><a name="61"></a><a href="#61">61</a></div></td><td class="codeLine">            );</td></tr>
+     <tr class="danger"><td><div align="right"><a name="62"></a><a href="#62">62</a></div></td><td class="codeLine">        }</td></tr>
      <tr><td><div align="right"><a name="63"></a><a href="#63">63</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="64"></a><a href="#64">64</a></div></td><td class="codeLine">        if (false === $latest) {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="65"></a><a href="#65">65</a></div></td><td class="codeLine">            throw new \RuntimeException(sprintf('Could not fetch latest version. Please try again later.'));</td></tr>
-     <tr class="danger"><td><div align="right"><a name="66"></a><a href="#66">66</a></div></td><td class="codeLine">        }</td></tr>
-     <tr><td><div align="right"><a name="67"></a><a href="#67">67</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="68"></a><a href="#68">68</a></div></td><td class="codeLine">        if ($version !== trim($latest)) {</td></tr>
+     <tr class="danger"><td><div align="right"><a name="64"></a><a href="#64">64</a></div></td><td class="codeLine">        $latest = @file_get_contents(&quot;$url.version&quot;);</td></tr>
+     <tr><td><div align="right"><a name="65"></a><a href="#65">65</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="66"></a><a href="#66">66</a></div></td><td class="codeLine">        if (false === $latest) {</td></tr>
+     <tr class="danger"><td><div align="right"><a name="67"></a><a href="#67">67</a></div></td><td class="codeLine">            throw new \RuntimeException(sprintf('Could not fetch latest version. Please try again later.'));</td></tr>
+     <tr class="danger"><td><div align="right"><a name="68"></a><a href="#68">68</a></div></td><td class="codeLine">        }</td></tr>
      <tr><td><div align="right"><a name="69"></a><a href="#69">69</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="70"></a><a href="#70">70</a></div></td><td class="codeLine">            $output-&gt;writeln(</td></tr>
-     <tr class="danger"><td><div align="right"><a name="71"></a><a href="#71">71</a></div></td><td class="codeLine">                sprintf(</td></tr>
-     <tr class="danger"><td><div align="right"><a name="72"></a><a href="#72">72</a></div></td><td class="codeLine">                    'Updating from &lt;info&gt;%s&lt;/info&gt; to &lt;info&gt;%s&lt;/info&gt;',</td></tr>
-     <tr class="danger"><td><div align="right"><a name="73"></a><a href="#73">73</a></div></td><td class="codeLine">                    $version,</td></tr>
-     <tr class="danger"><td><div align="right"><a name="74"></a><a href="#74">74</a></div></td><td class="codeLine">                    $latest</td></tr>
-     <tr class="danger"><td><div align="right"><a name="75"></a><a href="#75">75</a></div></td><td class="codeLine">                )</td></tr>
-     <tr class="danger"><td><div align="right"><a name="76"></a><a href="#76">76</a></div></td><td class="codeLine">            );</td></tr>
-     <tr><td><div align="right"><a name="77"></a><a href="#77">77</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="78"></a><a href="#78">78</a></div></td><td class="codeLine">            $tmpFile = tempnam(sys_get_temp_dir(), 'classifier').'.phar';</td></tr>
+     <tr class="danger"><td><div align="right"><a name="70"></a><a href="#70">70</a></div></td><td class="codeLine">        if ($version !== trim($latest)) {</td></tr>
+     <tr><td><div align="right"><a name="71"></a><a href="#71">71</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="72"></a><a href="#72">72</a></div></td><td class="codeLine">            $output-&gt;writeln(</td></tr>
+     <tr class="danger"><td><div align="right"><a name="73"></a><a href="#73">73</a></div></td><td class="codeLine">                sprintf(</td></tr>
+     <tr class="danger"><td><div align="right"><a name="74"></a><a href="#74">74</a></div></td><td class="codeLine">                    'Updating from &lt;info&gt;%s&lt;/info&gt; to &lt;info&gt;%s&lt;/info&gt;',</td></tr>
+     <tr class="danger"><td><div align="right"><a name="75"></a><a href="#75">75</a></div></td><td class="codeLine">                    $version,</td></tr>
+     <tr class="danger"><td><div align="right"><a name="76"></a><a href="#76">76</a></div></td><td class="codeLine">                    $latest</td></tr>
+     <tr class="danger"><td><div align="right"><a name="77"></a><a href="#77">77</a></div></td><td class="codeLine">                )</td></tr>
+     <tr class="danger"><td><div align="right"><a name="78"></a><a href="#78">78</a></div></td><td class="codeLine">            );</td></tr>
      <tr><td><div align="right"><a name="79"></a><a href="#79">79</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="80"></a><a href="#80">80</a></div></td><td class="codeLine">            if (false === @copy($url, $tmpFile)) {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="81"></a><a href="#81">81</a></div></td><td class="codeLine">                throw new \RuntimeException(sprintf('Could not download new version'));</td></tr>
-     <tr class="danger"><td><div align="right"><a name="82"></a><a href="#82">82</a></div></td><td class="codeLine">            }</td></tr>
-     <tr><td><div align="right"><a name="83"></a><a href="#83">83</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="84"></a><a href="#84">84</a></div></td><td class="codeLine">            $phar = new \Phar($tmpFile);</td></tr>
+     <tr class="danger"><td><div align="right"><a name="80"></a><a href="#80">80</a></div></td><td class="codeLine">            $tmpFile = tempnam(sys_get_temp_dir(), 'classifier').'.phar';</td></tr>
+     <tr><td><div align="right"><a name="81"></a><a href="#81">81</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="82"></a><a href="#82">82</a></div></td><td class="codeLine">            if (false === @copy($url, $tmpFile)) {</td></tr>
+     <tr class="danger"><td><div align="right"><a name="83"></a><a href="#83">83</a></div></td><td class="codeLine">                throw new \RuntimeException(sprintf('Could not download new version'));</td></tr>
+     <tr class="danger"><td><div align="right"><a name="84"></a><a href="#84">84</a></div></td><td class="codeLine">            }</td></tr>
      <tr><td><div align="right"><a name="85"></a><a href="#85">85</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="86"></a><a href="#86">86</a></div></td><td class="codeLine">            unset($phar);</td></tr>
+     <tr class="danger"><td><div align="right"><a name="86"></a><a href="#86">86</a></div></td><td class="codeLine">            $phar = new \Phar($tmpFile);</td></tr>
      <tr><td><div align="right"><a name="87"></a><a href="#87">87</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="88"></a><a href="#88">88</a></div></td><td class="codeLine">            if (false === @rename($tmpFile, $_SERVER['argv'][0])) {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="89"></a><a href="#89">89</a></div></td><td class="codeLine">                throw new \RuntimeException(sprintf('Could not deploy new file to &quot;%s&quot;.', $_SERVER['argv'][0]));</td></tr>
-     <tr class="danger"><td><div align="right"><a name="90"></a><a href="#90">90</a></div></td><td class="codeLine">            }</td></tr>
-     <tr><td><div align="right"><a name="91"></a><a href="#91">91</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="92"></a><a href="#92">92</a></div></td><td class="codeLine">            $output-&gt;writeln('Classifier updated.');</td></tr>
+     <tr class="danger"><td><div align="right"><a name="88"></a><a href="#88">88</a></div></td><td class="codeLine">            unset($phar);</td></tr>
+     <tr><td><div align="right"><a name="89"></a><a href="#89">89</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="90"></a><a href="#90">90</a></div></td><td class="codeLine">            if (false === @rename($tmpFile, $_SERVER['argv'][0])) {</td></tr>
+     <tr class="danger"><td><div align="right"><a name="91"></a><a href="#91">91</a></div></td><td class="codeLine">                throw new \RuntimeException(sprintf('Could not deploy new file to &quot;%s&quot;.', $_SERVER['argv'][0]));</td></tr>
+     <tr class="danger"><td><div align="right"><a name="92"></a><a href="#92">92</a></div></td><td class="codeLine">            }</td></tr>
      <tr><td><div align="right"><a name="93"></a><a href="#93">93</a></div></td><td class="codeLine"></td></tr>
-     <tr class="danger"><td><div align="right"><a name="94"></a><a href="#94">94</a></div></td><td class="codeLine">        } else {</td></tr>
-     <tr class="danger"><td><div align="right"><a name="95"></a><a href="#95">95</a></div></td><td class="codeLine">            $output-&gt;writeln('You are already using the latest version.');</td></tr>
-     <tr class="danger"><td><div align="right"><a name="96"></a><a href="#96">96</a></div></td><td class="codeLine">        }</td></tr>
-     <tr class="danger"><td><div align="right"><a name="97"></a><a href="#97">97</a></div></td><td class="codeLine">    }</td></tr>
-     <tr><td><div align="right"><a name="98"></a><a href="#98">98</a></div></td><td class="codeLine">}</td></tr>
+     <tr class="danger"><td><div align="right"><a name="94"></a><a href="#94">94</a></div></td><td class="codeLine">            $output-&gt;writeln('Classifier updated.');</td></tr>
+     <tr><td><div align="right"><a name="95"></a><a href="#95">95</a></div></td><td class="codeLine"></td></tr>
+     <tr class="danger"><td><div align="right"><a name="96"></a><a href="#96">96</a></div></td><td class="codeLine">        } else {</td></tr>
+     <tr class="danger"><td><div align="right"><a name="97"></a><a href="#97">97</a></div></td><td class="codeLine">            $output-&gt;writeln('You are already using the latest version.');</td></tr>
+     <tr class="danger"><td><div align="right"><a name="98"></a><a href="#98">98</a></div></td><td class="codeLine">        }</td></tr>
+     <tr class="danger"><td><div align="right"><a name="99"></a><a href="#99">99</a></div></td><td class="codeLine">    }</td></tr>
+     <tr><td><div align="right"><a name="100"></a><a href="#100">100</a></div></td><td class="codeLine">}</td></tr>
 
     </tbody>
    </table>
@@ -238,7 +240,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.19</a> and <a href="http://phpunit.de/">PHPUnit 3.7.25</a> at Thu Sep 12 22:59:22 NZST 2013.</small>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.19</a> and <a href="http://phpunit.de/">PHPUnit 3.7.25</a> at Sun Sep 15 13:58:18 NZST 2013.</small>
     </p>
    </footer>
   </div>

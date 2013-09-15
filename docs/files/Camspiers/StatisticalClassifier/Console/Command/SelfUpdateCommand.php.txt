@@ -50,13 +50,15 @@ class SelfUpdateCommand extends Command
     {
         $url = sprintf(
             "http://php-classifier.com/classifier%s.phar",
-            $input->getOption('hhvm') ? '-hhvm' : '' 
+            $input->getOption('hhvm') ? '-hhvm' : ''
         );
         
         $version = trim($this->getApplication()->getVersion());
 
         if ($version === '~package_version~') {
-            throw new \RuntimeException("This command is only available for compiled phar files which you can obtain at $url");
+            throw new \RuntimeException(
+                "This command is only available for compiled phar files which you can obtain at $url"
+            );
         }
 
         $latest = @file_get_contents("$url.version");

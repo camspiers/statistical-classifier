@@ -36,3 +36,4 @@ class SVMModel extends Model
         return $this->tokenMap;
     }
 }
+
