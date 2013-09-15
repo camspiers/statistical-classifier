@@ -58,7 +58,7 @@ class ComplementNaiveBayes extends Classifier
         $this->normalizer = $normalizer ?: new Lowercase();
     }
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function prepareModel()
     {

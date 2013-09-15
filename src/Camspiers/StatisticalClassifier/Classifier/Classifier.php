@@ -23,16 +23,16 @@ use RuntimeException;
 abstract class Classifier implements ClassifierInterface
 {
     /**
-     * @var DataSourceInterface
+     * @var \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface
      */
     protected $dataSource;
     /**
      * The model to apply the transforms to
-     * @var ModelInterface
+     * @var \Camspiers\StatisticalClassifier\Model\ModelInterface
      */
     protected $model;
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function is($category, $document)
     {
@@ -66,7 +66,7 @@ abstract class Classifier implements ClassifierInterface
     }
     /**
      * Take a callable and run it passing in any additionally specified arguments
-     * @param $transform
+     * @param callable $transform
      * @throws \RuntimeException
      * @return mixed
      */
@@ -86,7 +86,7 @@ abstract class Classifier implements ClassifierInterface
         $this->model = $model;
     }
     /**
-     * @param DataSourceInterface $dataSource
+     * @param \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface $dataSource
      */
     public function setDataSource(DataSourceInterface $dataSource)
     {
