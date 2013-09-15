@@ -69,7 +69,9 @@ class SVM extends Classifier
             );
         }
         $this->svm = $svm;
-        $this->setThreshold($threshold);
+        if ($threshold) {
+            $this->setThreshold($threshold);
+        }
     }
     /**
      * {@inheritdoc}
