@@ -8,15 +8,15 @@ PHP Classifier uses [semantic versioning](http://semver.org/), it is currently a
 
 > In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
 
-PHP Classifier is written entirely in PHP, with a focus on reuse and customizability, allowed by dependancy injection and interfaces.
+PHP Classifier is written entirely in PHP, with a focus on reuse and customizability.
 Classifiers can be used for many purposes, from spam classification, site content classification (tag or category suggestions).
 
-Important Features:
+Features:
 
 * Complement Naive Bayes Classifier
 * SVM (libsvm) Classifier
 * Highly customizable (easily modify or build your own classifier)
-* Command-line interface
+* Command-line interface (phar archive)
 * Multiple **data import types** to get your data into the classifier (Directory of files, Database queries, Json, Serialized arrays)
 * Multiple **types of caching** for the model the classifier builds
 * Easy integration in Symfony applications
@@ -62,8 +62,8 @@ $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
 
-echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $classifier->classify('Some ham document'), PHP_EOL; // ham
+$classifier->is('ham', 'Some ham document'); // bool(true)
+$classifier->classify('Some ham document'); // string "ham"
 ```
 
 ## Non-cached SVM
@@ -81,8 +81,8 @@ $source->addDocument('spam', 'Another spam document');
 $source->addDocument('ham', 'Some ham document');
 $source->addDocument('ham', 'Another ham document');
 
-echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $classifier->classify('Some ham document'), PHP_EOL; // ham
+$classifier->is('ham', 'Some ham document'); // bool(true)
+$classifier->classify('Some ham document'); // string "ham"
 ```
 
 ## Cached Naive Bayes
@@ -113,8 +113,8 @@ $model = new CachedModel(
 
 $classifier = new ComplementNaiveBayes($source, $model);
 
-echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $classifier->classify('Some ham document'), PHP_EOL; // ham
+$classifier->is('ham', 'Some ham document'); // bool(true)
+$classifier->classify('Some ham document'); // string "ham"
 ```
 
 ## Cached SVM
@@ -145,8 +145,8 @@ $model = new Model\SVMCachedModel(
 
 $classifier = new SVM($source, $model);
 
-echo $classifier->is('ham', 'Some ham document'), PHP_EOL; // 1 (true)
-echo $classifier->classify('Some ham document'), PHP_EOL; // ham
+$classifier->is('ham', 'Some ham document'); // bool(true)
+$classifier->classify('Some ham document'); // string "ham"
 ```
 
 ## With Symfony Dependency Injection
