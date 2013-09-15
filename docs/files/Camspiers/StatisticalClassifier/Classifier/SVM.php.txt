@@ -20,6 +20,8 @@ use Camspiers\StatisticalClassifier\Tokenizer\Word;
 use Camspiers\StatisticalClassifier\Transform;
 
 /**
+ * Provides a text based SVM classifier which uses libsvm
+ *
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
