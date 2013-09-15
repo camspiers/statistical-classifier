@@ -6,10 +6,8 @@ PHP Classifier uses [semantic versioning](http://semver.org/), it is currently a
 
 # What is it?
 
-> In machine learning and statistics, classification is the problem of identifying to which of a set of categories (sub-populations) a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known. - [Wikipedia - Statistical Classification](http://en.wikipedia.org/wiki/Statistical_classification)
-
-PHP Classifier is written entirely in PHP, with a focus on reuse and customizability.
-Classifiers can be used for many purposes, from spam classification, site content classification (tag or category suggestions).
+PHP Classifier is a text classification library with a focus on reuse, customizability and performance.
+Classifiers can be used for many purposes, but are particularly useful in detecting spam.
 
 Features:
 
