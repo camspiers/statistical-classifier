@@ -11,7 +11,6 @@
 
 namespace Camspiers\StatisticalClassifier\Classifier;
 
-use Camspiers\StatisticalClassifier\ClassificationRule;
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\Model\SVMModel;
 use Camspiers\StatisticalClassifier\Normalizer\Lowercase;
@@ -70,7 +69,9 @@ class SVM extends Classifier
             );
         }
         $this->svm = $svm;
-        $this->setThreshold($threshold);
+        if ($threshold) {
+            $this->setThreshold($threshold);
+        }
     }
     /**
      * {@inheritdoc}
@@ -179,8 +180,7 @@ class SVM extends Classifier
         $this->model->setPrepared(true);
     }
     /**
-     * @param string $document
-     * @return mixed|string
+     * @inheritdoc
      */
     public function classify($document)
     {
@@ -189,7 +189,7 @@ class SVM extends Classifier
 
         $categoryMap = $model->getCategoryMap();
 
-        $data = $this->prepareData($document, $model);
+        $data = $this->prepareDocument($document, $model);
 
         if ($this->hasThreshold()) {
             $probabilities = array();
@@ -203,11 +203,12 @@ class SVM extends Classifier
         }
     }
     /**
+     * Formats the document for use in \SVMModel
      * @param $document
      * @param $model
      * @return array
      */
-    protected function prepareData($document, SVMModel $model)
+    protected function prepareDocument($document, SVMModel $model)
     {
         $tokenMap = $model->getTokenMap();
 
@@ -232,7 +233,9 @@ class SVM extends Classifier
         return $data;
     }
     /**
-     * @param $threshold
+     * Set the threshold probability a classifier document must meet
+     * @param float $threshold float value between 0-1
+     * @throws \InvalidArgumentException
      */
     public function setThreshold($threshold)
     {
@@ -243,9 +246,15 @@ class SVM extends Classifier
                     \SVM::OPT_PROBABILITY => true
                 )
             );
+            if ($this->model->isPrepared()) {
+                $this->model->setPrepared(false);
+            }
+        } else {
+            throw new \InvalidArgumentException("Threshold must be a float value between 0-1");
         }
     }
     /**
+     * Returns the probabilities of the document being in each category
      * @param $document
      * @return array
      */
@@ -253,7 +262,7 @@ class SVM extends Classifier
     {
         if ($this->hasThreshold()) {
             $model = $this->preparedModel();
-            $data = $this->prepareData($document, $model);
+            $data = $this->prepareDocument($document, $model);
             $probabilities = array();
             $model->getModel()->predict_probability($data, $probabilities);
 
