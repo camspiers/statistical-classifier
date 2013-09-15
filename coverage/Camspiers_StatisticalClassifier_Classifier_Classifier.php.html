@@ -218,16 +218,16 @@
      <tr><td><div align="right"><a name="23"></a><a href="#23">23</a></div></td><td class="codeLine">abstract class Classifier implements ClassifierInterface</td></tr>
      <tr><td><div align="right"><a name="24"></a><a href="#24">24</a></div></td><td class="codeLine">{</td></tr>
      <tr><td><div align="right"><a name="25"></a><a href="#25">25</a></div></td><td class="codeLine">    /**</td></tr>
-     <tr><td><div align="right"><a name="26"></a><a href="#26">26</a></div></td><td class="codeLine">     * @var DataSourceInterface</td></tr>
+     <tr><td><div align="right"><a name="26"></a><a href="#26">26</a></div></td><td class="codeLine">     * @var \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface</td></tr>
      <tr><td><div align="right"><a name="27"></a><a href="#27">27</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="28"></a><a href="#28">28</a></div></td><td class="codeLine">    protected $dataSource;</td></tr>
      <tr><td><div align="right"><a name="29"></a><a href="#29">29</a></div></td><td class="codeLine">    /**</td></tr>
      <tr><td><div align="right"><a name="30"></a><a href="#30">30</a></div></td><td class="codeLine">     * The model to apply the transforms to</td></tr>
-     <tr><td><div align="right"><a name="31"></a><a href="#31">31</a></div></td><td class="codeLine">     * @var ModelInterface</td></tr>
+     <tr><td><div align="right"><a name="31"></a><a href="#31">31</a></div></td><td class="codeLine">     * @var \Camspiers\StatisticalClassifier\Model\ModelInterface</td></tr>
      <tr><td><div align="right"><a name="32"></a><a href="#32">32</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="33"></a><a href="#33">33</a></div></td><td class="codeLine">    protected $model;</td></tr>
      <tr><td><div align="right"><a name="34"></a><a href="#34">34</a></div></td><td class="codeLine">    /**</td></tr>
-     <tr><td><div align="right"><a name="35"></a><a href="#35">35</a></div></td><td class="codeLine">     * {@inheritdoc}</td></tr>
+     <tr><td><div align="right"><a name="35"></a><a href="#35">35</a></div></td><td class="codeLine">     * @inheritdoc</td></tr>
      <tr><td><div align="right"><a name="36"></a><a href="#36">36</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="37"></a><a href="#37">37</a></div></td><td class="codeLine">    public function is($category, $document)</td></tr>
      <tr><td><div align="right"><a name="38"></a><a href="#38">38</a></div></td><td class="codeLine">    {</td></tr>
@@ -261,7 +261,7 @@
      <tr><td><div align="right"><a name="66"></a><a href="#66">66</a></div></td><td class="codeLine">    }</td></tr>
      <tr><td><div align="right"><a name="67"></a><a href="#67">67</a></div></td><td class="codeLine">    /**</td></tr>
      <tr><td><div align="right"><a name="68"></a><a href="#68">68</a></div></td><td class="codeLine">     * Take a callable and run it passing in any additionally specified arguments</td></tr>
-     <tr><td><div align="right"><a name="69"></a><a href="#69">69</a></div></td><td class="codeLine">     * @param $transform</td></tr>
+     <tr><td><div align="right"><a name="69"></a><a href="#69">69</a></div></td><td class="codeLine">     * @param callable $transform</td></tr>
      <tr><td><div align="right"><a name="70"></a><a href="#70">70</a></div></td><td class="codeLine">     * @throws \RuntimeException</td></tr>
      <tr><td><div align="right"><a name="71"></a><a href="#71">71</a></div></td><td class="codeLine">     * @return mixed</td></tr>
      <tr><td><div align="right"><a name="72"></a><a href="#72">72</a></div></td><td class="codeLine">     */</td></tr>
@@ -281,7 +281,7 @@
      <tr class="success popin" data-title="2 tests cover line 86" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ClassifierTest::testIs&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ClassifierTest::testIsException&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="86"></a><a href="#86">86</a></div></td><td class="codeLine">        $this-&gt;model = $model;</td></tr>
      <tr class="success popin" data-title="2 tests cover line 87" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ClassifierTest::testIs&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ClassifierTest::testIsException&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="87"></a><a href="#87">87</a></div></td><td class="codeLine">    }</td></tr>
      <tr><td><div align="right"><a name="88"></a><a href="#88">88</a></div></td><td class="codeLine">    /**</td></tr>
-     <tr><td><div align="right"><a name="89"></a><a href="#89">89</a></div></td><td class="codeLine">     * @param DataSourceInterface $dataSource</td></tr>
+     <tr><td><div align="right"><a name="89"></a><a href="#89">89</a></div></td><td class="codeLine">     * @param \Camspiers\StatisticalClassifier\DataSource\DataSourceInterface $dataSource</td></tr>
      <tr><td><div align="right"><a name="90"></a><a href="#90">90</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="91"></a><a href="#91">91</a></div></td><td class="codeLine">    public function setDataSource(DataSourceInterface $dataSource)</td></tr>
      <tr><td><div align="right"><a name="92"></a><a href="#92">92</a></div></td><td class="codeLine">    {</td></tr>
@@ -299,7 +299,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.19</a> and <a href="http://phpunit.de/">PHPUnit 3.7.25</a> at Sun Sep 15 14:22:58 NZST 2013.</small>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.19</a> and <a href="http://phpunit.de/">PHPUnit 3.7.25</a> at Sun Sep 15 14:28:39 NZST 2013.</small>
     </p>
    </footer>
   </div>

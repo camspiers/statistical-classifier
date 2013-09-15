@@ -76,7 +76,7 @@ class SVM extends Classifier
         }
     }
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function prepareModel()
     {
@@ -206,8 +206,8 @@ class SVM extends Classifier
     }
     /**
      * Formats the document for use in \SVMModel
-     * @param $document
-     * @param $model
+     * @param string $document
+     * @param \Camspiers\StatisticalClassifier\Model\SVMModel $model
      * @return array
      */
     protected function prepareDocument($document, SVMModel $model)
@@ -257,7 +257,7 @@ class SVM extends Classifier
     }
     /**
      * Returns the probabilities of the document being in each category
-     * @param $document
+     * @param string $document
      * @return array
      */
     public function getProbabilities($document)
