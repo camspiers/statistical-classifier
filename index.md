@@ -395,7 +395,3 @@ $ classifier config:open -g
 
     statistical-classifier/ $ composer install --dev
     statistical-classifier/ $ phpunit
-
-# Internals
-
-## [View class diagram](docs/graph_class.html)
