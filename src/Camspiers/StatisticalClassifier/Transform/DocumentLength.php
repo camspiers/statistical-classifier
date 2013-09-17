@@ -28,11 +28,15 @@ class DocumentLength
                     $denominator += $count * $count;
                 }
                 $denominator = sqrt($denominator);
-                foreach ($document as $token => $count) {
-                    $transform
-                        [$category]
-                        [$documentIndex]
-                        [$token] = $count / $denominator;
+                if ($denominator !== 0) {
+                    foreach ($document as $token => $count) {
+                        $transform
+                            [$category]
+                            [$documentIndex]
+                            [$token] = $count / $denominator;
+                    }
+                } else {
+                    throw new \RuntimeException("Cannot divide by 0 in DocumentLength transform");
                 }
             }
         }
