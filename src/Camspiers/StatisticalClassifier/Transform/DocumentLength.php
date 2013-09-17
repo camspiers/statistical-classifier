@@ -28,7 +28,7 @@ class DocumentLength
                     $denominator += $count * $count;
                 }
                 $denominator = sqrt($denominator);
-                if ($denominator !== 0) {
+                if ($denominator != 0) {
                     foreach ($document as $token => $count) {
                         $transform
                             [$category]
