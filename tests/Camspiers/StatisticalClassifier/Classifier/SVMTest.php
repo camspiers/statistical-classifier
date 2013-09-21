@@ -7,7 +7,7 @@ use Camspiers\StatisticalClassifier\DataSource\DataArray;
 /**
  * Class SVMTest
  * @package Camspiers\StatisticalClassifier\Classifier
- * @group svm
+ * @requires extension svm
  */
 class SVMTest extends \PHPUnit_Framework_TestCase
 {
