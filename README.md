@@ -1,6 +1,7 @@
 # PHP Classifier
 
 [![Build Status](https://travis-ci.org/camspiers/statistical-classifier.png?branch=master)](https://travis-ci.org/camspiers/statistical-classifier)
+[![Latest Stable Version](https://poser.pugx.org/camspiers/statistical-classifier/v/stable.png)](https://packagist.org/packages/camspiers/statistical-classifier)
 
 PHP Classifier uses [semantic versioning](http://semver.org/), it is currently at major version 0, so the public API should not be considered stable.
 
