@@ -1,42 +1,38 @@
 {
-    "name": "camspiers/statistical-classifier",
-    "description": "A PHP implementation of Complement Naive Bayes and SVM statistical classifiers, including a structure for building other classifier, multiple data sources and multiple caching backends",
-    "keywords": ["classifier", "svm", "naive", "bayes", "statistical", "tokenizer", "normalizer", "porter", "stemmer", "cache", "command-line"],
-    "homepage": "http://php-classifier.com/",
-    "type": "library",
-    "license": "MIT",
-    "authors": [{
-        "name": "Cam Spiers",
-        "email": "camspiers@gmail.com"
-    }],
-    "require": {
-        "php": ">=5.3.3",
-        "maximebf/cachecache": "~1.0",
-        "symfony/console": "~2.2",
-        "symfony/dependency-injection": "~2.2",
-        "symfony/yaml": "~2.2",
-        "symfony/config": "~2.2",
-        "symfony/finder": "~2.2",
-        "symfony/options-resolver": "~2.2",
-        "camspiers/porter-stemmer": "~1.0",
-        "camspiers/json-pretty": "~0.1",
-        "react/http": "~0.2"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~3.7",
-        "mikey179/vfsStream": "~1.2",
-        "symfony/process": "~2.2"
-    },
-    "bin": ["bin/classifier"],
-    "autoload": {
-        "psr-0": {"Camspiers\\StatisticalClassifier": "src/"}
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.6.x-dev"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": "bin/classifier generate-container"
-    }
+	"name": "camspiers/statistical-classifier",
+	"description": "A PHP implementation of Complement Naive Bayes and SVM statistical classifiers, including a structure for building other classifier, multiple data sources and multiple caching backends",
+	"keywords": ["classifier", "svm", "naive", "bayes"],
+	"homepage": "http://php-classifier.com/",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Cam Spiers",
+			"email": "camspiers@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3",
+		"maximebf/cachecache": "~1.0",
+		"symfony/config": "~2.2",
+		"symfony/options-resolver": "~2.2"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~3.7",
+		"mikey179/vfsStream": "~1.2"
+	},
+	"suggest": {
+		"camspiers/porter-stemmer": "Using a stemmer can help with language based classification",
+		"maximebf/cachecache": "Using caching will help improve performance on large datasets"
+	},
+	"autoload": {
+		"psr-0": {
+			"Camspiers\\StatisticalClassifier": "src/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.7.x-dev"
+		}
+	}
 }

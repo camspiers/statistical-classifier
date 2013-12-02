@@ -1,7 +1,4 @@
 /cache/
-/classifier*.phar
-/classifier*.phar.version
 /vendor
 /.settings
 /.idea
-/src/Camspiers/StatisticalClassifier/StatisticalClassifierServiceContainer.php
