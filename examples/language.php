@@ -1,14 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../src/bootstrap.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 mb_internal_encoding('UTF-8');
 
 use Camspiers\StatisticalClassifier\DataSource\DataArray;
-use Camspiers\StatisticalClassifier\Model\CachedModel;
 use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
 
-$c = new StatisticalClassifierServiceContainer;
 $source = new DataArray();
 
 if (!file_exists(__DIR__ . '/../resources/language-samples')) {
@@ -19,10 +17,7 @@ foreach (glob(__DIR__ . '/../resources/language-samples/*') as $file) {
     $source->addDocument(basename($file), file_get_contents($file));
 }
 
-$nb = new ComplementNaiveBayes(
-    $source,
-    new CachedModel('language', $c->get('cache'))
-);
+$nb = new ComplementNaiveBayes($source);
 
 $examples = array(
     "Agricultura (-ae, f.), sensu latissimo, est summa omnium artium et scientiarum et technologiarum quae de terris colendis et animalibus creandis curant, ut poma, frumenta, charas, carnes, textilia, et aliae res e terra bene producantur. Specialius, agronomia est ars et scientia quae terris colendis student, agricultio autem animalibus creandis.",

@@ -1,14 +1,11 @@
 <?php
 
-ini_set('memory_limit', '6G');
+ini_set('memory_limit', '512M');
 
-require_once __DIR__ . '/../src/bootstrap.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
-use Camspiers\StatisticalClassifier\Model\CachedModel;
 use Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayes;
-
-$c = new StatisticalClassifierServiceContainer;
 
 $cats = array(
     'alt.atheism',
@@ -33,13 +30,7 @@ $classifier = new ComplementNaiveBayes(
             'directory' => __DIR__ . '/../resources/20news-bydate/20news-bydate-train',
             'include' => $cats
         )
-    ),
-    new CachedModel(
-        '20news-bydate',
-        $c->get('cache')
-    ),
-    null,
-    $c->get('normalizer.stopword_lowercase')
+    )
 );
 
 $testSource = new Directory(

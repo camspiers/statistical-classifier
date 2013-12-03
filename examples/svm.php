@@ -1,14 +1,11 @@
 <?php
 
-ini_set('memory_limit', '2G');
+ini_set('memory_limit', '512M');
 
-require_once __DIR__ . '/../src/bootstrap.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Camspiers\StatisticalClassifier\DataSource\Directory;
-use Camspiers\StatisticalClassifier\Model\SVMCachedModel;
 use Camspiers\StatisticalClassifier\Classifier\SVM;
-
-$c = new StatisticalClassifierServiceContainer;
 
 $cats = array(
     'alt.atheism',
@@ -26,17 +23,7 @@ $source = new Directory(
     )
 );
 
-$model = new SVMCachedModel(
-    __DIR__ . '/model.svm',
-    $c->get('cache')
-);
-
-$classifier = new SVM(
-    $source,
-    $model,
-    null,
-    $c->get('normalizer.stopword_lowercase')
-);
+$classifier = new SVM($source);
 
 $testSource = new Directory(
     array(
