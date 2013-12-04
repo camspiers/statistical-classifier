@@ -71,14 +71,21 @@ class ComplementNaiveBayes extends Classifier
             ),
             $data
         );
-        
+
         $documentCount = $this->applyTransform(
             new Transform\DocumentCount(),
             $data
         );
         
+        unset($data);
+        
         $tokenAppearanceCount = $this->applyTransform(
             new Transform\TokenAppearanceCount(),
+            $tokenCountByDocument
+        );
+
+        $tokensByCateory = $this->applyTransform(
+            new Transform\TokensByCategory(),
             $tokenCountByDocument
         );
         
@@ -88,16 +95,16 @@ class ComplementNaiveBayes extends Classifier
             $documentCount,
             $tokenAppearanceCount
         );
-        
+
+        unset($tokenCountByDocument);
+        unset($tokenAppearanceCount);
+
         $documentLength = $this->applyTransform(
             new Transform\DocumentLength(),
             $tfidf
         );
         
-        $tokensByCateory = $this->applyTransform(
-            new Transform\TokensByCategory(),
-            $tokenCountByDocument
-        );
+        unset($tfidf);
         
         $documentTokenCounts = $this->applyTransform(
             new Transform\DocumentTokenCounts(),
@@ -106,6 +113,13 @@ class ComplementNaiveBayes extends Classifier
         
         $complement = $this->applyTransform(
             new Transform\Complement(),
+            $documentLength,
+            $tokensByCateory,
+            $documentCount,
+            $documentTokenCounts
+        );
+        
+        unset(
             $documentLength,
             $tokensByCateory,
             $documentCount,
