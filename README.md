@@ -23,7 +23,7 @@ Classifiers can be used for many purposes, but are particularly useful in detect
 # Installation
 
 ```bash
-$ composer require camspiers/statistical-classifier:~0.6
+$ composer require camspiers/statistical-classifier
 ```
 
 ## SVM Support
