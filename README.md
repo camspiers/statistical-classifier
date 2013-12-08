@@ -74,6 +74,10 @@ $classifier->is('ham', 'Some ham document'); // bool(true)
 $classifier->classify('Some ham document'); // string "ham"
 ```
 
+# Caching models
+
+Caching models requires [maximebf/CacheCache](https://github.com/maximebf/CacheCache) which can be installed via packagist. Additional caching systems can be easily integrated.
+
 ## Cached Naive Bayes
 
 ```php
