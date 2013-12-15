@@ -1,68 +1,80 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{{ page.title }} by Cam Spiers</title>
-    <link rel="canonical" href="http://php-classifier.com">
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <script type="text/javascript">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>{{ page.title }} by Cam Spiers</title>
+	<link rel="canonical" href="http://php-classifier.com">
+	<link rel="stylesheet" href="stylesheets/styles.css">
+	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="javascripts/respond.js"></script>
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-39398752-1']);
-      _gaq.push(['_trackPageview']);
+		var _gaq = _gaq || [];
+		_gaq.push( ['_setAccount', 'UA-39398752-1'] );
+		_gaq.push( ['_trackPageview'] );
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+		(function() {
+			var ga = document.createElement( 'script' );
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName( 'script' )[0];
+			s.parentNode.insertBefore( ga, s );
+		})();
 
-    </script>
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="item left"><a href="https://github.com/camspiers/statistical-classifier">GitHub</a></li>
-          <li class="item left"><a href="https://packagist.org/packages/camspiers/statistical-classifier">Packagist</a></li>
-          <li class="item left"><a href="docs/">Documentation</a></li>
-          <li class="item left"><a href="coverage/">Coverage</a></li>
-          <li class="left">
-          	<a href="https://travis-ci.org/camspiers/statistical-classifier"><img src="https://travis-ci.org/camspiers/statistical-classifier.png?branch=master" alt="Build Status"></a>
-          </li>
-          <li class="item right"><a href="https://github.com/camspiers/statistical-classifier/zipball/master">ZIP</a></li>
-          <li class="item right"><a href="https://github.com/camspiers/statistical-classifier/tarball/master">TAR</a></li>
-          <li class="item title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+	</script>
+</head>
+<body>
+<div id="header">
+	<nav>
+		<li class="item left"><a href="https://github.com/camspiers/statistical-classifier">GitHub</a></li>
+		<li class="item left"><a href="https://packagist.org/packages/camspiers/statistical-classifier">Packagist</a></li>
+		<li class="item left"><a href="docs/">Documentation</a></li>
+		<li class="item left"><a href="coverage/">Coverage</a></li>
+		<li class="right">
+			<a href="https://packagist.org/packages/camspiers/statistical-classifier">
+				<img src="https://poser.pugx.org/camspiers/statistical-classifier/v/stable.png" alt="Latest Stable Version" style="max-width:100%;">
+			</a>
+		</li>
+		<li class="right">
+			<a href="https://travis-ci.org/camspiers/statistical-classifier">
+				<img src="https://travis-ci.org/camspiers/statistical-classifier.png?branch=master" alt="Build Status">
+			</a>
+		</li>
+	</nav>
+</div>
+<!-- end header -->
 
-    <div class="wrapper">
+<div class="wrapper">
 
-      <section>
-        <div id="title">
-          <h1>PHP Classifier</h1>
-          <p>A PHP implementation of a Naive Bayes statistical classifier, including a structure for building other classifiers, multiple data sources and multiple caching backends.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/camspiers">camspiers</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
+	<section>
+		<div id="title">
+			<h1>PHP Classifier</h1>
 
-        {{ content }}
+			<p>A PHP implementation of a Naive Bayes statistical classifier, including a structure for building other
+				classifiers, multiple data sources and multiple caching backends.</p>
+			<hr>
+			<span class="credits left">Project maintained by <a href="https://github.com/camspiers">camspiers</a></span>
+			<span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a
+					href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+		</div>
 
-      </section>
+		{{ content }}
 
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	</section>
 
-  </body>
+</div>
+<!--[if !IE]>
+<script>fixScale( document );</script><![endif]-->
+
+</body>
 </html>
