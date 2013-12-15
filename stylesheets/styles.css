@@ -730,13 +730,16 @@ dt {
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   font-size: 14px;
 }
-#header nav li a {
-	padding: 10px 12px;
+#header nav li.item a {
+  padding: 10px 12px;
   margin-top: 6px;
   line-height: 14px;
   font-size: 14px;
   display: inline-block;
   text-align: center;
+}
+#header nav li.right a {
+  padding: 10px 0;
 }
 #header nav li.item a {
   color: white;
