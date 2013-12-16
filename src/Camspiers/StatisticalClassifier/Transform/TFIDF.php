@@ -22,21 +22,20 @@ class TFIDF
         $documentCount,
         $tokenAppreanceCount
     ) {
-        $transform = $tokenCountByDocument;
         foreach ($tokenCountByDocument as $category => $documents) {
             foreach ($documents as $documentModel => $document) {
                 foreach ($document as $token => $count) {
-                    $transform
-                    [$category]
-                    [$documentModel]
-                    [$token] = log($count + 1, 10) * log(
-                        $documentCount / $tokenAppreanceCount[$token],
-                        10
-                    );
+                    $tokenCountByDocument
+                        [$category]
+                        [$documentModel]
+                        [$token] = log($count + 1, 10) * log(
+                            $documentCount / $tokenAppreanceCount[$token],
+                            10
+                        );
                 }
             }
         }
         
-        return $transform;
+        return $tokenCountByDocument;
     }
 }
