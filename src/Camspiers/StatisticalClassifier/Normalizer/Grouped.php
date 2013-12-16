@@ -11,7 +11,7 @@
 
 namespace Camspiers\StatisticalClassifier\Normalizer;
 
-use RuntimeException;
+use InvalidArgumentException;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -26,14 +26,19 @@ class Grouped implements NormalizerInterface
     protected $normalizers = array();
     /**
      * Create the normalizer using an array or normalizers as input
-     * @param  array             $normalizers [description]
-     * @throws \RuntimeException
+     * @param  mixed             $normalizers
+     * @throws \InvalidArgumentException
      */
-    public function __construct(array $normalizers = array())
+    public function __construct($normalizers = array())
     {
-        if (count($normalizers) === 0) {
-            throw new RuntimeException('A group of normalizers must contain at least one normalizer');
+        if (!is_array($normalizers)) {
+            $normalizers = func_get_args();
         }
+        
+        if (count($normalizers) === 0) {
+            throw new InvalidArgumentException('A group of normalizers must contain at least one normalizer');
+        }
+        
         foreach ($normalizers as $normalizer) {
             $this->addNormalizer($normalizer);
         }

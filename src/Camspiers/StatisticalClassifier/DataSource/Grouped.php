@@ -11,6 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\DataSource;
 
+use InvalidArgumentException;
+
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
@@ -24,14 +26,21 @@ class Grouped extends DataArray
     protected $dataSources = array();
     /**
      * Create the object passing in the datasources as an array
-     * @param array $dataSources The data sources
+     * @param mixed $dataSources The data sources
+     * @throws \InvalidArgumentException
      */
-    public function __construct($dataSources = null)
+    public function __construct($dataSources = array())
     {
-        if (is_array($dataSources)) {
-            foreach ($dataSources as $dataSource) {
-                $this->addDataSource($dataSource);
-            }
+        if (!is_array($dataSources)) {
+            $dataSources = func_get_args();
+        }
+        
+        if (count($dataSources) < 2) {
+            throw new InvalidArgumentException("A group of data sources must contain at least 2 data sources");
+        }
+        
+        foreach ($dataSources as $dataSource) {
+            $this->addDataSource($dataSource);
         }
     }
     /**
@@ -43,15 +52,24 @@ class Grouped extends DataArray
         $this->dataSources[] = $dataSource;
     }
     /**
+     * Returns any datasources that are part of the group
+     * @return array
+     */
+    public function getDataSources()
+    {
+        return $this->dataSources;
+    }
+    /**
      * @{inheritdoc}
      */
     public function read()
     {
         $groupedData = array();
+        
         foreach ($this->dataSources as $dataSource) {
-            $groupedData = array_merge($groupedData, $dataSource->getData());
+            $groupedData[] = $dataSource->getData();
         }
 
-        return $groupedData;
+        return call_user_func_array('array_merge', $groupedData);
     }
 }
