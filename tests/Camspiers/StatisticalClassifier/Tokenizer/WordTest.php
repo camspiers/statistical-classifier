@@ -25,10 +25,11 @@ class WordTest extends \PHPUnit_Framework_TestCase
             array(
                 'this',
                 'is',
-                'a'
+                'a',
+                'français',
             ),
             $this->word->tokenize(
-                'this is a'
+                'this is a "français"'
             )
         );
     }
