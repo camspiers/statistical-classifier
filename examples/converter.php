@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../src/bootstrap.php';
+require_once __DIR__ . '/../tests/bootstrap.php';
 
 use Camspiers\StatisticalClassifier\DataSource;
 
