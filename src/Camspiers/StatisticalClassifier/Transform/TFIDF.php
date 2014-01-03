@@ -35,7 +35,7 @@ class TFIDF
                 }
             }
         }
-        
+
         return $tokenCountByDocument;
     }
 }

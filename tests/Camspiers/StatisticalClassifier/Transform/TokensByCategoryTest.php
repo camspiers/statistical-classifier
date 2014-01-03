@@ -7,7 +7,7 @@ class TokensByCategoryTest extends \PHPUnit_Framework_TestCase
     public function testTransform()
     {
         $transform = new TokensByCategory();
-        
+
         $this->assertEquals(
             array(
                 'spam' => array(

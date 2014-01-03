@@ -1,6 +1,6 @@
 <?php
 
-namespace Camspiers\StatisticalClassifier\Normalizer;
+namespace Camspiers\StatisticalClassifier\Normalizer\Token;
 
 class StopwordTest extends \PHPUnit_Framework_TestCase
 {

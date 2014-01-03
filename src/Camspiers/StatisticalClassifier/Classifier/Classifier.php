@@ -66,7 +66,7 @@ abstract class Classifier implements ClassifierInterface
     }
     /**
      * Take a callable and run it passing in any additionally specified arguments
-     * @param callable $transform
+     * @param  callable          $transform
      * @throws \RuntimeException
      * @return mixed
      */

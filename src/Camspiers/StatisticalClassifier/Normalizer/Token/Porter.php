@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Camspiers\StatisticalClassifier\Normalizer;
+namespace Camspiers\StatisticalClassifier\Normalizer\Token;
 
 use Porter as PorterStemmer;
 
