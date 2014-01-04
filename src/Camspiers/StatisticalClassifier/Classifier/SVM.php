@@ -80,13 +80,13 @@ class SVM extends Classifier
      */
     public function prepareModel()
     {
-        $data = $this->dataSource->getData();
+        $data = $this->applyTransform(
+            new Transform\TokenPreparation($this->tokenizer, $this->normalizer),
+            $this->dataSource->getData()
+        );
 
         $tokenCountByDocument = $this->applyTransform(
-            new Transform\TokenCountByDocument(
-                $this->tokenizer,
-                $this->normalizer
-            ),
+            new Transform\TokenCountByDocument(),
             $data
         );
 

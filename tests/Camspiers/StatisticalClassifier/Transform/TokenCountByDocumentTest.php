@@ -9,10 +9,7 @@ class TokenCountByDocumentTest extends \PHPUnit_Framework_TestCase
 {
     public function testTransform()
     {
-        $trasform = new TokenCountByDocument(
-            new Word(),
-            new Lowercase()
-        );
+        $trasform = new TokenCountByDocument();
         
         $this->assertEquals(
             array(
@@ -44,12 +41,28 @@ class TokenCountByDocumentTest extends \PHPUnit_Framework_TestCase
             $trasform(
                 array(
                     'spam' => array(
-                        'Some spam document',
-                        'another spam document'
+                        array(
+                            'some',
+                            'spam',
+                            'document'
+                        ),
+                        array(
+                            'another',
+                            'spam',
+                            'document'
+                        )
                     ),
                     'ham'  => array(
-                        'Some ham document',
-                        'another ham document'
+                        array(
+                            'some',
+                            'ham',
+                            'document'
+                        ),
+                        array(
+                            'another',
+                            'ham',
+                            'document'
+                        )
                     )
                 )
             )
