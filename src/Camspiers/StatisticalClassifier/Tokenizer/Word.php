@@ -17,6 +17,11 @@ namespace Camspiers\StatisticalClassifier\Tokenizer;
  */
 class Word implements TokenizerInterface
 {
+    public function __invoke($document)
+    {
+        return $this->tokenize($document);
+    }
+
     /**
      * @{inheritdoc}
      */
