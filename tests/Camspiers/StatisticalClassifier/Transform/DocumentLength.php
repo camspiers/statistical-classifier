@@ -7,7 +7,7 @@ class DocumentLengthTest extends \PHPUnit_Framework_TestCase
     public function testApply()
     {
         $transform = new DocumentLength();
-        
+
         $this->assertEquals(
             array(
                 'cat' => array(

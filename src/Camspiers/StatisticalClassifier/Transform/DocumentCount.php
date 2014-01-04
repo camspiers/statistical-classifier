@@ -23,6 +23,7 @@ class DocumentCount
         foreach ($data as $docs) {
             $count += count($docs);
         }
+
         return $count;
     }
 }

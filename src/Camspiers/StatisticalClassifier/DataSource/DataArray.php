@@ -69,7 +69,7 @@ class DataArray implements DataSourceInterface, Serializable
     public function hasCategory($category)
     {
         $this->prepare();
-        
+
         return isset($this->data[$category]);
     }
     /**

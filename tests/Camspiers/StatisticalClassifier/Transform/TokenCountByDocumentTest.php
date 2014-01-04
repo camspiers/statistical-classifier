@@ -2,18 +2,18 @@
 
 namespace Camspiers\StatisticalClassifier\Transform;
 
-use Camspiers\StatisticalClassifier\Normalizer\Lowercase;
+use Camspiers\StatisticalClassifier\Normalizer\Document;
 use Camspiers\StatisticalClassifier\Tokenizer\Word;
 
 class TokenCountByDocumentTest extends \PHPUnit_Framework_TestCase
 {
     public function testTransform()
     {
-        $trasform = new TokenCountByDocument(
+        $transform = new TokenCountByDocument(
             new Word(),
-            new Lowercase()
+            new Document\Lowercase()
         );
-        
+
         $this->assertEquals(
             array(
                 'spam' => array(
@@ -41,7 +41,7 @@ class TokenCountByDocumentTest extends \PHPUnit_Framework_TestCase
                     )
                 )
             ),
-            $trasform(
+            $transform(
                 array(
                     'spam' => array(
                         'Some spam document',

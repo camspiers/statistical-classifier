@@ -11,7 +11,8 @@
 
 namespace Camspiers\StatisticalClassifier\Transform;
 
-use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
+use Camspiers\StatisticalClassifier\Normalizer\Document\NormalizerInterface as DocumentNormalizerInterface;
+use Camspiers\StatisticalClassifier\Normalizer\Token\NormalizerInterface as TokenNormalizerInterface;
 use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
 
 /**
@@ -20,34 +21,46 @@ use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
  */
 class TokenCountByDocument
 {
+    protected $documentNormalizer;
     protected $tokenizer;
-    protected $normalizer;
-    
+    protected $tokenNormalizer;
+
+    /**
+     * @param TokenizerInterface          $tokenizer
+     * @param DocumentNormalizerInterface $documentNormalizer
+     * @param TokenNormalizerInterface    $tokenNormalizer
+     */
     public function __construct(
         TokenizerInterface $tokenizer,
-        NormalizerInterface $normalizer
+        DocumentNormalizerInterface $documentNormalizer = null,
+        TokenNormalizerInterface $tokenNormalizer = null
     ) {
-        $this->tokenizer = $tokenizer;
-        $this->normalizer = $normalizer;
+        $this->documentNormalizer = $documentNormalizer;
+        $this->tokenizer          = $tokenizer;
+        $this->tokenNormalizer    = $tokenNormalizer;
     }
-    
+
     public function __invoke($data)
     {
         $transform = array();
-        
+
         foreach ($data as $category => $documents) {
             $transform[$category]  = array();
             foreach ($documents as $document) {
-                $transform[$category][] = array_count_values(
-                    $this->normalizer->normalize(
-                        $this->tokenizer->tokenize(
-                            $document
-                        )
-                    )
-                );
+                if ($this->documentNormalizer) {
+                    $document = $this->documentNormalizer->normalize($document);
+                }
+
+                $tokens = $this->tokenizer->tokenize($document);
+
+                if ($this->tokenNormalizer) {
+                    $tokens = $this->tokenNormalizer->normalize($tokens);
+                }
+
+                $transform[$category][] = array_count_values($tokens);
             }
         }
-        
+
         return $transform;
     }
 }

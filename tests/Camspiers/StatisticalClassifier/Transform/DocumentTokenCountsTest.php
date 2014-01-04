@@ -7,7 +7,7 @@ class DocumentTokenCountsTest extends \PHPUnit_Framework_TestCase
     public function testApply()
     {
         $transform = new DocumentTokenCounts();
-        
+
         $this->assertEquals(
             array(
                 'cat' => 110,

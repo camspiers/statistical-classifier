@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Camspiers\StatisticalClassifier\Normalizer;
+namespace Camspiers\StatisticalClassifier\Normalizer\Token;
 
 use InvalidArgumentException;
 
@@ -26,7 +26,7 @@ class Grouped implements NormalizerInterface
     protected $normalizers = array();
     /**
      * Create the normalizer using an array or normalizers as input
-     * @param  mixed             $normalizers
+     * @param  mixed                     $normalizers
      * @throws \InvalidArgumentException
      */
     public function __construct($normalizers = array())
@@ -34,11 +34,11 @@ class Grouped implements NormalizerInterface
         if (!is_array($normalizers)) {
             $normalizers = func_get_args();
         }
-        
+
         if (count($normalizers) === 0) {
             throw new InvalidArgumentException('A group of normalizers must contain at least one normalizer');
         }
-        
+
         foreach ($normalizers as $normalizer) {
             $this->addNormalizer($normalizer);
         }

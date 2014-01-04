@@ -7,7 +7,7 @@ class TFIDFTest extends \PHPUnit_Framework_TestCase
     public function testTransform()
     {
         $tfidf = new TFIDF();
-        
+
         $this->assertEquals(
             array(
                 'spam' => array(

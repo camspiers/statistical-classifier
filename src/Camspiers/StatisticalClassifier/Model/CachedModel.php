@@ -31,8 +31,8 @@ class CachedModel extends Model
     private $cache;
     /**
      * Create the CachedModel using the modelname, cache and datasource
-     * @param string              $modelName  The name of the model
-     * @param Cache               $cache      The cache to use
+     * @param string $modelName The name of the model
+     * @param Cache  $cache     The cache to use
      */
     public function __construct(
         $modelName,
@@ -47,7 +47,7 @@ class CachedModel extends Model
         }
     }
     /**
-     * @param array $model
+     * @param  array      $model
      * @return mixed|void
      */
     public function setModel($model)

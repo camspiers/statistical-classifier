@@ -13,8 +13,8 @@ namespace Camspiers\StatisticalClassifier\Classifier;
 
 use Camspiers\StatisticalClassifier\DataSource\DataSourceInterface;
 use Camspiers\StatisticalClassifier\Model\SVMModel;
-use Camspiers\StatisticalClassifier\Normalizer\Lowercase;
-use Camspiers\StatisticalClassifier\Normalizer\NormalizerInterface;
+use Camspiers\StatisticalClassifier\Normalizer\Document;
+use Camspiers\StatisticalClassifier\Normalizer\Token;
 use Camspiers\StatisticalClassifier\Tokenizer\TokenizerInterface;
 use Camspiers\StatisticalClassifier\Tokenizer\Word;
 use Camspiers\StatisticalClassifier\Transform;
@@ -33,35 +33,43 @@ class SVM extends Classifier
      */
     protected $tokenizer;
     /**
-     * Take tokenized data and make it consistent or stem it
-     * @var NormalizerInterface
+     * Takes document and makes it consistent
+     * @var Document\NormalizerInterface
      */
-    protected $normalizer;
+    protected $documentNormalizer;
+    /**
+     * Takes tokenized data and makes it consistent or stem it
+     * @var Token\NormalizerInterface
+     */
+    protected $tokenNormalizer;
     /**
      *
      * @var float|bool
      */
     protected $threshold;
     /**
-     * @param DataSourceInterface $dataSource
-     * @param SVMModel            $model
-     * @param TokenizerInterface  $tokenizer
-     * @param NormalizerInterface $normalizer
-     * @param \SVM                $svm
-     * @param null                $threshold
+     * @param DataSourceInterface          $dataSource
+     * @param SVMModel                     $model
+     * @param Document\NormalizerInterface $documentNormalizer
+     * @param TokenizerInterface           $tokenizer
+     * @param Token\NormalizerInterface    $tokenNormalizer
+     * @param \SVM                         $svm
+     * @param null                         $threshold
      */
     public function __construct(
         DataSourceInterface $dataSource,
         SVMModel $model = null,
+        Document\NormalizerInterface $documentNormalizer = null,
         TokenizerInterface $tokenizer = null,
-        NormalizerInterface $normalizer = null,
+        Token\NormalizerInterface $tokenNormalizer = null,
         \SVM $svm = null,
         $threshold = null
     ) {
-        $this->dataSource = $dataSource;
-        $this->model = $model ? : new SVMModel();
-        $this->tokenizer = $tokenizer ? : new Word();
-        $this->normalizer = $normalizer ? : new Lowercase();
+        $this->dataSource         = $dataSource;
+        $this->model              = $model ? : new SVMModel();
+        $this->documentNormalizer = $documentNormalizer ?: new Document\Lowercase();
+        $this->tokenizer          = $tokenizer ?: new Word();
+        $this->tokenNormalizer    = $tokenNormalizer;
         if (!$svm) {
             $svm = new \SVM();
             $svm->setOptions(
@@ -85,7 +93,8 @@ class SVM extends Classifier
         $tokenCountByDocument = $this->applyTransform(
             new Transform\TokenCountByDocument(
                 $this->tokenizer,
-                $this->normalizer
+                $this->documentNormalizer,
+                $this->tokenNormalizer
             ),
             $data
         );
@@ -200,14 +209,14 @@ class SVM extends Classifier
             return $probabilities[$category] > $this->threshold ? $categoryMap[$category] : false;
         } else {
             $category = $model->getModel()->predict($data);
-            
+
             return $categoryMap[$category];
         }
     }
     /**
      * Formats the document for use in \SVMModel
-     * @param string $document
-     * @param \Camspiers\StatisticalClassifier\Model\SVMModel $model
+     * @param  string                                          $document
+     * @param  \Camspiers\StatisticalClassifier\Model\SVMModel $model
      * @return array
      */
     protected function prepareDocument($document, SVMModel $model)
@@ -216,13 +225,17 @@ class SVM extends Classifier
 
         $data = array();
 
-        $tokenCounts = array_count_values(
-            $this->normalizer->normalize(
-                $this->tokenizer->tokenize(
-                    $document
-                )
-            )
-        );
+        if ($this->documentNormalizer) {
+            $document = $this->documentNormalizer->normalize($document);
+        }
+
+        $tokens = $this->tokenizer->tokenize($document);
+
+        if ($this->tokenNormalizer) {
+            $tokens = $this->tokenNormalizer->normalize($tokens);
+        }
+
+        $tokenCounts = array_count_values($tokens);
 
         foreach ($tokenCounts as $token => $value) {
             if (isset($tokenMap[$token])) {
@@ -236,7 +249,7 @@ class SVM extends Classifier
     }
     /**
      * Set the threshold probability a classifier document must meet
-     * @param float $threshold float value between 0-1
+     * @param  float                     $threshold float value between 0-1
      * @throws \InvalidArgumentException
      */
     public function setThreshold($threshold)
@@ -257,7 +270,7 @@ class SVM extends Classifier
     }
     /**
      * Returns the probabilities of the document being in each category
-     * @param string $document
+     * @param  string $document
      * @return array
      */
     public function getProbabilities($document)

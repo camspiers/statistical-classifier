@@ -24,6 +24,7 @@ class Weight
                 $data[$category][$token] = log($value, 10);
             }
         }
+
         return $data;
     }
 }
