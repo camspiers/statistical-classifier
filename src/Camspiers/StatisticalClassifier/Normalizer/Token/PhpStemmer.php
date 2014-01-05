@@ -19,6 +19,15 @@ namespace Camspiers\StatisticalClassifier\Normalizer\Token;
 class PhpStemmer implements NormalizerInterface
 {
     /**
+     * Available languages.
+     *
+     * @var array
+     */
+    protected $availableLanguages = array('danish', 'dutch', 'english', 'finnish', 'french', 'german', 'hungarian',
+                                          'italian', 'norwegian', 'porter', 'portuguese', 'romanian', 'russian',
+                                          'spanish', 'swedish', 'turkish');
+
+    /**
      * Charset.
      *
      * @var string
@@ -26,9 +35,7 @@ class PhpStemmer implements NormalizerInterface
     protected $charset;
 
     /**
-     * Lang (danish, dutch, english, finnish, french,
-     *      german, hungarian, italian, norwegian, porter, portuguese,
-     *      romanian, russian, spanish, swedish, turkish)
+     * Lang.
      *
      * @var string
      */
@@ -40,6 +47,12 @@ class PhpStemmer implements NormalizerInterface
      */
     public function __construct($lang, $charset = 'utf-8')
     {
+        $lang = strtolower($lang);
+
+        if (! in_array($lang, $this->availableLanguages)) {
+            throw new \InvalidArgumentException("Invalid language $lang");
+        }
+
         $this->charset = strtoupper(str_replace('-', '_', $charset));;
         $this->lang    = $lang;
     }
