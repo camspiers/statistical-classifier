@@ -29,7 +29,7 @@ interface ClassifierInterface
     public function is($category, $document);
     /**
      * Classify the document and return its category
-     * @param  string $document The document to classify
+     * @param  string      $document The document to classify
      * @return string|bool The category of the document
      */
     public function classify($document);

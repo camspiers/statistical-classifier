@@ -20,7 +20,7 @@ class DocumentLength
     public function __invoke($tfidf)
     {
         $transform = $tfidf;
-        
+
         foreach ($tfidf as $category => $documents) {
             foreach ($documents as $documentIndex => $document) {
                 $denominator = 0;
@@ -40,7 +40,7 @@ class DocumentLength
                 }
             }
         }
-        
+
         return $transform;
     }
 }

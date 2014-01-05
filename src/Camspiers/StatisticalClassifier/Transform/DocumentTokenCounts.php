@@ -27,7 +27,7 @@ class DocumentTokenCounts
                 $transform[$category] += count($document);
             }
         }
-        
+
         return $transform;
     }
 }

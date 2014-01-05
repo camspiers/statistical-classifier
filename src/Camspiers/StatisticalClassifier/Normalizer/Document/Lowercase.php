@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Camspiers\StatisticalClassifier\Normalizer;
+namespace Camspiers\StatisticalClassifier\Normalizer\Document;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
@@ -20,11 +20,8 @@ class Lowercase implements NormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize(array $tokens)
+    public function normalize($document)
     {
-        return array_map(
-            'mb_strtolower',
-            $tokens
-        );
+        return mb_strtolower($document, 'utf-8');
     }
 }

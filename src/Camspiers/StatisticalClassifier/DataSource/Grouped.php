@@ -26,7 +26,7 @@ class Grouped extends DataArray
     protected $dataSources = array();
     /**
      * Create the object passing in the datasources as an array
-     * @param mixed $dataSources The data sources
+     * @param  mixed                     $dataSources The data sources
      * @throws \InvalidArgumentException
      */
     public function __construct($dataSources = array())
@@ -34,11 +34,11 @@ class Grouped extends DataArray
         if (!is_array($dataSources)) {
             $dataSources = func_get_args();
         }
-        
+
         if (count($dataSources) < 2) {
             throw new InvalidArgumentException("A group of data sources must contain at least 2 data sources");
         }
-        
+
         foreach ($dataSources as $dataSource) {
             $this->addDataSource($dataSource);
         }
@@ -65,7 +65,7 @@ class Grouped extends DataArray
     public function read()
     {
         $groupedData = array();
-        
+
         foreach ($this->dataSources as $dataSource) {
             $groupedData[] = $dataSource->getData();
         }

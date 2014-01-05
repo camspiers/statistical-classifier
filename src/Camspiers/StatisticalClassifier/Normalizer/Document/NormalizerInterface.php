@@ -9,22 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Camspiers\StatisticalClassifier\Transform;
+namespace Camspiers\StatisticalClassifier\Normalizer\Document;
 
 /**
  * @author  Cam Spiers <camspiers@gmail.com>
  * @package Statistical Classifier
  */
-class Weight
+interface NormalizerInterface
 {
-    public function __invoke($data)
-    {
-        foreach ($data as $category => $tokens) {
-            foreach ($tokens as $token => $value) {
-                $data[$category][$token] = log($value, 10);
-            }
-        }
-
-        return $data;
-    }
+    /**
+     * Makes document more consistent by a particular method.
+     *
+     * @param  string $document The document to normalize
+     * @return string The normalized document
+     */
+    public function normalize($document);
 }

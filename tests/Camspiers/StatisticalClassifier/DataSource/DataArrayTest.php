@@ -100,6 +100,7 @@ class DataArrayTest extends \PHPUnit_Framework_TestCase
             serialize($this->data),
             $serialize = $this->object->serialize()
         );
+
         return $serialize;
     }
 

@@ -20,7 +20,7 @@ class TokensByCategory
     public function __invoke($tokenCountbyDocument)
     {
         $transform = array();
-        
+
         foreach ($tokenCountbyDocument as $category => $documents) {
             $transform[$category] = array();
             foreach ($documents as $document) {
@@ -33,7 +33,7 @@ class TokensByCategory
                 }
             }
         }
-        
+
         return $transform;
     }
 }

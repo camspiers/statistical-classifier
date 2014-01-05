@@ -24,7 +24,7 @@ class TokenAppearanceCount
             foreach ($documents as $document) {
                 foreach ($document as $token => $count) {
                     if ($count > 0) {
-                        if (!array_key_exists($token, $transform)) {
+                        if (!isset($transform[$token])) {
                             $transform[$token] = 0;
                         }
                         $transform[$token]++;
@@ -32,6 +32,7 @@ class TokenAppearanceCount
                 }
             }
         }
+
         return $transform;
     }
 }

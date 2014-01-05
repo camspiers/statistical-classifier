@@ -10,14 +10,14 @@ class GroupedTest extends \PHPUnit_Framework_TestCase
             $this->getMock(__NAMESPACE__ . '\\' . 'DataSourceInterface'),
             $this->getMock(__NAMESPACE__ . '\\' . 'DataSourceInterface')
         );
-        
+
         $object = new Grouped($sources);
-        
+
         $this->assertInstanceOf(__NAMESPACE__ . '\\' . 'Grouped', $object);
-        
+
         $this->assertEquals(2, count($object->getDataSources()));
     }
-    
+
     public function testObjectCreateViaDynamicArgs()
     {
         $object = new Grouped(
@@ -29,7 +29,7 @@ class GroupedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(2, count($object->getDataSources()));
     }
-    
+
     public function testRead()
     {
         $source1 = $this->getMock(__NAMESPACE__ . '\\' . 'DataSourceInterface');
@@ -46,9 +46,9 @@ class GroupedTest extends \PHPUnit_Framework_TestCase
                 'category' => 'super'
             )
         )));
-        
+
         $object = new Grouped($source1, $source2);
-        
+
         $this->assertEquals(
             array(
                 array(
