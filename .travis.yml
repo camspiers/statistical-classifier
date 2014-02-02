@@ -9,7 +9,7 @@ php:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq libsvm-dev
-  - if command -v pecl > /dev/null 2>&1; then pecl install svm-beta; fi
+  - pecl install svm-beta || true
 
 before_script:
   - composer self-update
