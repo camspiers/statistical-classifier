@@ -61,7 +61,7 @@
        </div>
 </td>
       <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">3&nbsp;/&nbsp;3</div></td>
+      <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
      </tr>
 
      <tr>
@@ -78,13 +78,13 @@
 </td>
       <td class="success small"><div align="right">100.00%</div></td>
       <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
-      <td class="success small">2</td>
+      <td class="success small">1</td>
       <td class="success big">       <div class="progress progress-success" style="width: 100px;">
         <div class="bar" style="width: 100.00%;"></div>
        </div>
 </td>
       <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">3&nbsp;/&nbsp;3</div></td>
+      <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
      </tr>
 
      <tr>
@@ -95,13 +95,13 @@
 </td>
       <td class="success small"><div align="right">100.00%</div></td>
       <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
-      <td class="success small">2</td>
+      <td class="success small">1</td>
       <td class="success big">       <div class="progress progress-success" style="width: 100px;">
         <div class="bar" style="width: 100.00%;"></div>
        </div>
 </td>
       <td class="success small"><div align="right">100.00%</div></td>
-      <td class="success small"><div align="right">3&nbsp;/&nbsp;3</div></td>
+      <td class="success small"><div align="right">1&nbsp;/&nbsp;1</div></td>
      </tr>
 
 
@@ -133,12 +133,9 @@
      <tr><td><div align="right"><a name="22"></a><a href="#22">22</a></div></td><td class="codeLine">     */</td></tr>
      <tr><td><div align="right"><a name="23"></a><a href="#23">23</a></div></td><td class="codeLine">    public function tokenize($document)</td></tr>
      <tr><td><div align="right"><a name="24"></a><a href="#24">24</a></div></td><td class="codeLine">    {</td></tr>
-     <tr class="success popin" data-title="4 tests cover line 25" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayesTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\SVMTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Tokenizer\WordTest::testTokenize&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Transform\TokenCountByDocumentTest::testTransform&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="25"></a><a href="#25">25</a></div></td><td class="codeLine">        $matches = array();</td></tr>
-     <tr class="success popin" data-title="4 tests cover line 26" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayesTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\SVMTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Tokenizer\WordTest::testTokenize&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Transform\TokenCountByDocumentTest::testTransform&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="26"></a><a href="#26">26</a></div></td><td class="codeLine">        preg_match_all(&quot;/[\w]+/&quot;, $document, $matches, PREG_PATTERN_ORDER);</td></tr>
-     <tr><td><div align="right"><a name="27"></a><a href="#27">27</a></div></td><td class="codeLine"></td></tr>
-     <tr class="success popin" data-title="4 tests cover line 28" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayesTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\SVMTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Tokenizer\WordTest::testTokenize&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Transform\TokenCountByDocumentTest::testTransform&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="28"></a><a href="#28">28</a></div></td><td class="codeLine">        return isset($matches[0]) ? $matches[0] : array();</td></tr>
-     <tr><td><div align="right"><a name="29"></a><a href="#29">29</a></div></td><td class="codeLine">    }</td></tr>
-     <tr><td><div align="right"><a name="30"></a><a href="#30">30</a></div></td><td class="codeLine">}</td></tr>
+     <tr class="success popin" data-title="2 tests cover line 25" data-content="&lt;ul&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Classifier\ComplementNaiveBayesTest::testClassify&lt;/li&gt;&lt;li class=&quot;success&quot;&gt;Camspiers\StatisticalClassifier\Tokenizer\WordTest::testTokenize&lt;/li&gt;&lt;/ul&gt;" data-placement="bottom" data-html="true"><td><div align="right"><a name="25"></a><a href="#25">25</a></div></td><td class="codeLine">        return preg_split('/\PL+/u', $document, null, PREG_SPLIT_NO_EMPTY);</td></tr>
+     <tr><td><div align="right"><a name="26"></a><a href="#26">26</a></div></td><td class="codeLine">    }</td></tr>
+     <tr><td><div align="right"><a name="27"></a><a href="#27">27</a></div></td><td class="codeLine">}</td></tr>
 
     </tbody>
    </table>
@@ -150,7 +147,7 @@
      <span class="warning"><strong>Dead Code</strong></span>
     </p>
     <p>
-     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.20</a> and <a href="http://phpunit.de/">PHPUnit 3.7.28</a> at Tue Dec 17 10:09:24 NZDT 2013.</small>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.2.13</a> using <a href="http://www.php.net/" target="_top">PHP 5.5.8</a> and <a href="http://phpunit.de/">PHPUnit 3.7.28</a> at Sun Feb 2 21:24:08 NZDT 2014.</small>
     </p>
    </footer>
   </div>
